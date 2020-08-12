@@ -59,4 +59,4 @@ def CalculateLoopedFibo():
 if __name__ == "__main__":
     def _(thestring):
         return thestring
-    FibLoop()
+    CalculateLoopedFibo()
