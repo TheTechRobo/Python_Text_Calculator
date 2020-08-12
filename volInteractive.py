@@ -1,4 +1,4 @@
-from volume import *
+from mathmod.volume import *
 from modules.cprint import cprint
 import logging
 logging.info("Running volinteractive")
