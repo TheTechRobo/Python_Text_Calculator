@@ -76,17 +76,17 @@ except Exception as ename:
 #import func and basicfunc
 logging.info("Attempting to import func.py and basicfunc.py.")
 try:
-    from func import *
+    from mathmod.func import *
 except Exception as e:
     logging.critical("Could not access file func.py (%s)" % e)
     cprint.fatal(_("I can't access the file func.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py")
 try:
     if "y" in ignore:
-        import func as f
+        import mathmod.func as f
         f.main(_)
         del f
-        import basicfunc as b
+        import mathmod.basicfunc as b
         b.main(_)
         del b
         import areaInteractive as a
@@ -95,13 +95,13 @@ try:
         import volInteractive as v
         v.main(_)
         del v
-        import fibonacci as fi
+        import mathmod.fibonacci as fi
         fi.main(_)
         del fi
 except Exception as ename:
     logging.info("Errored Running *.main(_) (errid %s)" % ename)
 try:
-    from basicfunc import *
+    from mathmod.basicfunc import *
 except Exception as e:
     logging.critical("Could Not Access basicfunc.py (%s)" % e)
     cprint.fatal(_("I can't access file basicfunc.py. This file is necessary for proper function of the Software."), interrupt=True)
