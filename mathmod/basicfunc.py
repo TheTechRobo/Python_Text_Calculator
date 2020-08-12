@@ -1,6 +1,6 @@
 # This file is for basic functions and small functions that would be in func.py.
 import logging
-from cprint import cprint
+from modules.cprint import cprint
 from areaInteractive import *
 from volInteractive import *
 

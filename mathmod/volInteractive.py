@@ -1,5 +1,5 @@
 from volume import *
-from cprint import cprint
+from modules.cprint import cprint
 import logging
 logging.info("Running volinteractive")
 def main(Comandeer):
