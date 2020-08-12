@@ -6,7 +6,7 @@ try:
         global _
         _ = Comandeer
 except Exception as ename:
-    logging.info("During the definition of _ (due to missing translations) in fibo, this error occured: %s" % ename)
+    logging.info("During the definition of `main(Commandeer)' (due to missing translations) in fibo, this error occured: %s" % ename)
 
 def CalculateFixedFibo(amount):
     """
@@ -34,6 +34,9 @@ def CalculateFixedFibo(amount):
     return theList
 
 def CalculateLoopedFibo():
+    """
+    this is Looped fibo which is indefinite.
+    """
     print(_("Press Control-C to stop."))
     print("0, 1", end=", ")
     try:
