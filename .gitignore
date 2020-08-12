@@ -1,7 +1,7 @@
 .DS_Store
 Thumbs.db
 palc.log*
-baseconvert/__pycache__/
+modules/__pycache__/
 __pycache__/*
 __pycache__
 __pycache__/
