@@ -13,7 +13,7 @@ if not six.PY3:
 # IMPORTS
 import gettext #to translate Palc
 from sys import exit as e #so that we can exit later on
-from cprint import cprint #printing in colour
+from modules.cprint import cprint #printing in colour
 import time
 import sys, os, logging #sys so I can exit, os so I can do I can't remember, logging so I can log.
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!

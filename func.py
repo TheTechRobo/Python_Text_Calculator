@@ -1,5 +1,5 @@
 import logging
-from cprint import cprint
+from modules.cprint import cprint
 def main(Comandeer):
     global _
     _ = Comandeer
