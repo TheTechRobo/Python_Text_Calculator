@@ -1,4 +1,4 @@
-from area import *
+from mathmod.area import *
 from modules.cprint import cprint
 import logging
 logging.info("User used areaInteractive...")
