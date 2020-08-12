@@ -10,6 +10,7 @@ except Exception as ename:
 
 def CalculateFixedFibo(amount):
     """
+    This is manual fibonacci mode -- that is, you choose how many numbers it does and returns a list of fibonacci up to that amount of calculations. Instead of it in a while loop and printing the numbers to the screen.
     Set `amount' to how many numbers of fibonacci you want to calculate.
     """
     if amount == 1:
