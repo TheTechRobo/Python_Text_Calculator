@@ -26,5 +26,5 @@ Bug reports and questions belong at my [Support repo](https://github.com/thetech
 **The only time you should ever use my email is if you need to contact me personally.** Even though it sounds obvious. Thank you for your cooperation -- I get too much spam :wink:
 
 
-###### Current Release: v.0.9.2-stable
+###### Current Release: v.0.9.3-stable
 ###### There are currently no previews available for testing
