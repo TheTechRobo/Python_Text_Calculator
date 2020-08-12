@@ -61,7 +61,7 @@ def cu(): #backwards-compatibility
     curoot()
 
 def fib():
-    from fibonacci import CalculateLoopedFibo
+    from mathmod.fibonacci import CalculateLoopedFibo
     logging.info("About to run fibonacci")
     CalculateLoopedFibo()
     logging.info("user ran fibonacci function")
