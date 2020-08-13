@@ -14,19 +14,11 @@ if not six.PY3:
 import gettext #to translate Palc
 from sys import exit as e #so that we can exit later on
 from modules.cprint import cprint #printing in colour
+from modules.clearscreen import clearScreen #clear the screen
+from modules.pressanykey import pressanykey #for the press any key to continue
 import time
 import sys, os, logging #sys so I can exit, os so I can do I can't remember, logging so I can log.
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
-#set up "press any key to continue"
-try:
-    import msvcrt
-    _IS_WINDOWS = True
-    logging.info("Imported msvcrt")
-except ImportError:
-    import tty
-    import termios
-    _IS_WINDOWS = False
-    logging.info("Imported tty, termios")
 #ask for language
 language = input("English or/ou Francais? (do not add accents to letters/n'ajoute pas les accents aux lettres): ")
 language = language.lower()
@@ -110,20 +102,8 @@ cprint.ok(_("Loading...............\n"))
 time.sleep(2)
 def palc():
     while True:
-       print(_("Press any key to continue..."), end="", flush=True)
-       if _IS_WINDOWS:
-           msvcrt.getch()
-       else:
-           fd = sys.stdin.fileno()
-           settings = termios.tcgetattr(fd)
-           try:
-               tty.setraw(sys.stdin.fileno())
-               sys.stdin.read(1)
-           finally:
-               termios.tcsetattr(fd, termios.TCSADRAIN, settings)
-       print(chr(27)+'[2j') #First attempt at clearing the screen with ANSI escape codes.
-       print('\033c') #Second attempt at clearing the screen with ANSI escape codes.
-       print('\x1bc') #Third attempt at clearing the screen with ANSI escape codes.
+       pressanykey()
+       clearScreen()
 #CALCULATION CHOICE
        calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
        logging.info("Got calc choice %s" % calc)
