@@ -68,10 +68,10 @@ except Exception as ename:
 #import func and basicfunc
 logging.info("Attempting to import func.py and basicfunc.py.")
 try:
-    from mathmod.func import *
+    from parsefunc import *
 except Exception as e:
-    logging.critical("Could not access file func.py (%s)" % e)
-    cprint.fatal(_("I can't access the file func.py. This file is necessary for proper function of the Software."), interrupt=True)
+    logging.critical("Could not access file parsefunc.py (%s)" % e)
+    cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py")
 try:
     if "y" in ignore:
@@ -94,9 +94,10 @@ except Exception as ename:
     logging.info("Errored Running *.main(_) (errid %s)" % ename)
 try:
     from mathmod.basicfunc import *
+    from mathmod.func import *
 except Exception as e:
-    logging.critical("Could Not Access basicfunc.py (%s)" % e)
-    cprint.fatal(_("I can't access file basicfunc.py. This file is necessary for proper function of the Software."), interrupt=True)
+    logging.critical("Could Not Access either basicfunc.py or func.py (%s)" % e)
+    cprint.fatal(_("I can't access either basicfunc.py or func.py. Or maybe both. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported basicfunc.py!")
 cprint.ok(_("Loading...............\n"))
 time.sleep(2)
