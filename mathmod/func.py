@@ -29,18 +29,6 @@ def showUserWhatIThink(whatDOyouthink):
     else:
         cprint.info(_("Defaulting to yes."))
         logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
-def power():
-    showUserWhatIThink(_("use the exponent function"))
-    origin = float(input(_("Original number?")))
-    ex = float(input(_("Exponent? ")))
-    cprint.info("=%s" % origin ** ex)
-    logging.info("User exponented number %s with %s, getting %s" % (origin, ex, (origin ** ex)))
-def h():
-    cprint.info(_('''
-Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
-Bugs? Head on over to https://github.com/thetechrobo/support/
-To contribute: go to https://github.com/thetechrobo/python-text-calculator/
-'''))
 def mod(): #modulo
     try:
         bigger = int(input(_("\nType the first number (greater): ")))
@@ -58,6 +46,7 @@ def mod(): #modulo
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (bigger, smaller, (bigger-smaller*int(bigger/smaller))))
         print()
 def base():
+    """Will be improved "later"."""
     base = int(input('''What base would you like to convert to?
 Available: 2 (binary) 8 (octo) 10 (decimal (normal)) 16 (hex)
 Type 2, 8, 10, or 16: '''))
