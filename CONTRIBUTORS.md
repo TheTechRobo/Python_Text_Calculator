@@ -1,7 +1,6 @@
 # Contributors - Please add your name before creating a pull request.
 
 ## Contributed to lewiswatson55/Python_Text_Calculator
-
 - Lewiswatson55  
 Creator of original Python_Text_Calculator repo.
 
@@ -22,6 +21,9 @@ Support for volume and area calculation.
 
 - maloncard  
  add modulo to help text, fix spaces/tab error 
+
+### Created a PR on lewiswatson55/Python_Text_Calculator but was not merged
+View list [here](https://github.com/lewiswatson55/Python_Text_Calculator/pulls?q=is%3Aunmerged+)
  
 ## Contributed to TheTechRobo/python-text-calculator
 
