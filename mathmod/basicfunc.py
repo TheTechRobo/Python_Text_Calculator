@@ -1,4 +1,4 @@
-# This file is for basic functions and small functions that would be in func.py.
+# This file is for basic functions and small functions that would be in func.py but are too small to be worth it.
 import logging
 from modules.cprint import cprint
 from areaInteractive import *
@@ -65,6 +65,20 @@ def fib():
     logging.info("About to run fibonacci")
     CalculateLoopedFibo()
     logging.info("user ran fibonacci function")
+
+def h():
+    cprint.info(_('''
+Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
+Bugs? Head on over to https://github.com/thetechrobo/support/
+To contribute: go to https://github.com/thetechrobo/python-text-calculator/
+'''))
+
+def power():
+    showUserWhatIThink(_("use the exponent function"))
+    origin = float(input(_("Original number?")))
+    ex = float(input(_("Exponent? ")))
+    cprint.info("=%s" % origin ** ex)
+    logging.info("User exponented number %s with %s, getting %s" % (origin, ex, (origin ** ex)))
 
 #def sin():
     #which = input(_("Would you like sine or inverse sine? (sin / inverse)\nType:
