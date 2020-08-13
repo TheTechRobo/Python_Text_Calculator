@@ -10,4 +10,4 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'Hello and thanks for creating your issue! I''ll get to it as soon as I can :D'
-        pr-message: 'Hello and thanks for creating your PR! Make sure that you test everything to make sure it''s all good. This will help reduce my workload :D'
+        pr-message: 'Hello and thanks for creating your PR! Make sure that you test everything to make sure it''s all good. Also make sure to add your username (and what your contribution was) to `CONTRIBUTORS.md`. Both of these will help reduce my workload :D'
