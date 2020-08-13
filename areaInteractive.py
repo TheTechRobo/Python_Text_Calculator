@@ -7,78 +7,78 @@ def main(Comandeer):
     _ = Comandeer
 
 def equ_triangle():
-    a = int(input(_("What length is the side of the triangle? ")))
+    a = float(input(_("What length is the side of the triangle? ")))
     cprint.info(_("The area is: %s" % equtri(a)))
 def right_triangle():
-    b = int(input(_("What length is the base of the triangle? ")))
-    h = int(input(_("What length is the height of the triangle? ")))
+    b = float(input(_("What length is the base of the triangle? ")))
+    h = float(input(_("What length is the height of the triangle? ")))
     cprint.info(_("The area is: %s" % righttri(b=b, h=h)))
 def acute_triangle():
-    a = int(input(_("What is the length of the first side? ")))
-    b = int(input(_("what is the length of the second side? ")))
-    c = int(input(_("What is the length of the third side? ")))
+    a = float(input(_("What is the length of the first side? ")))
+    b = float(input(_("what is the length of the second side? ")))
+    c = float(input(_("What is the length of the third side? ")))
     cprint.info(_("The area is: "))
     cprint.info(actri(a, b, c))
 def obtuse_triangle():
-    a = int(input(_("What is the length of the first side? ")))
-    b = int(input(_("what is the length of the second side? ")))
-    c = int(input(_("What is the length of the third side? ")))
+    a = float(input(_("What is the length of the first side? ")))
+    b = float(input(_("what is the length of the second side? ")))
+    c = float(input(_("What is the length of the third side? ")))
     cprint.info(_("The area is: "))
     cprint.info(obtri(a, b, c))
 def square():
-    a = int(input(_("What is the length of the side of the square? ")))
+    a = float(input(_("What is the length of the side of the square? ")))
     cprint.info(_("The area is: "))
     cprint.info(sq(a))
 def rectangle():
     from area import rectangle as rec
-    l = int(input(_("What is the length of the rectangle? ")))
-    b = int(input(_("What is the height of the rectangle? ")))
+    l = float(input(_("What is the length of the rectangle? ")))
+    b = float(input(_("What is the height of the rectangle? ")))
     cprint.info(_("The area is: "))
     cprint.info(rec(l, b))
 def parallelogram():
     from area import parallelogram as para
-    b = int(input(_("What is the length of the base? ")))
-    h = int(input(_("What is the height of the shape? ")))
+    b = float(input(_("What is the length of the base? ")))
+    h = float(input(_("What is the height of the shape? ")))
     cprint.info(_("The area is: "))
     cprint.info(para(b, h))
 def rhombus():
     from area import rhombus as rhombu
-    do = int(input(_("What is the length of the first diagonal? ")))
-    ds = int(input(_("What is the length of the 2nd diagonal? ")))
+    do = float(input(_("What is the length of the first diagonal? ")))
+    ds = float(input(_("What is the length of the 2nd diagonal? ")))
     cprint.info(_("The area is: "))
     cprint.info(rhombu(do, ds))
 def trapezium():
     from area import trapezium as trapezi
-    a = int(input(_("What is the length of the 1st set of parallel sides? ")))
-    b = int(input(_("What is the length of the 2nd set of parallel sides? ")))
-    h = int(input(_("What is the height of the trapezium? ")))
+    a = float(input(_("What is the length of the 1st set of parallel sides? ")))
+    b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
+    h = float(input(_("What is the height of the trapezium? ")))
     cprint.info(_("The area is: "))
     cprint.info(trapezi(a, b, h))
 def circle():
     from area import circle as circl
-    r = int(input(_("What is the radius of the circle? ")))
+    r = float(input(_("What is the radius of the circle? ")))
     cprint.info(_("The area is: "))
     cprint.info(circl(r))
 def semicircle():
     from area import semicircle as semi
-    r = int(input(_("What is the radius of the semicircle? ")))
+    r = float(input(_("What is the radius of the semicircle? ")))
     cprint.info(_("The area is: "))
     cprint.info(semi(r))
 def sector():
-    r = int(input(_("What is the radius of the circular sector? ")))
-    a = int(input(_("What is the angle of the circular sector *in degrees*? ")))
+    r = float(input(_("What is the radius of the circular sector? ")))
+    a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
     cprint.info(_("The area is: "))
     cprint.info(cirsector(r, a))
 def ring():
     from area import ring as myprecious
-    ro = int(input(_("What is the radius of the outer circle? ")))
-    rs = int(input(_("What is the radius of the inner circle? ")))
+    ro = float(input(_("What is the radius of the outer circle? ")))
+    rs = float(input(_("What is the radius of the inner circle? ")))
     cprint.info(_("The area is: "))
     cprint.info(myprecious(ro, rs))
 def ellipse():
     from area import ellipse as el
-    a = int(input(_("What is the length of the major axis? ")))
-    b = int(input(_("What is the length of the minor axis? ")))
+    a = float(input(_("What is the length of the major axis? ")))
+    b = float(input(_("What is the length of the minor axis? ")))
     cprint.info(_("The area is: "))
     cprint.info(el(a, b))
 
