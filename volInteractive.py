@@ -7,61 +7,61 @@ def main(Comandeer):
     _ = Comandeer
 
 def cuvol():
-    a = int(input(_("What length is the side of the cube? ")))
+    a = float(input(_("What length is the side of the cube? ")))
     cprint.info(_("The volume is: %s" % vol_cube(a)))
 def cuboid():
-    b = int(input(_("What length is the breadth of the cuboid? ")))
-    h = int(input(_("What length is the height of the cuboid? ")))
-    l = int(input(_("What length is the cuboid? ")))
+    b = float(input(_("What length is the breadth of the cuboid? ")))
+    h = float(input(_("What length is the height of the cuboid? ")))
+    l = float(input(_("What length is the cuboid? ")))
     cprint.info(_("The volume is: %s" % vol_cuboid(b=b, h=h, l=l)))
 def cylindervol():
-    r = int(input(_("What is the radius of the cylinder? ")))
-    h = int(input(_("what is the height of the cylinder? ")))
+    r = float(input(_("What is the radius of the cylinder? ")))
+    h = float(input(_("what is the height of the cylinder? ")))
     cprint.info(_("The volume is: %s" % vol_cylinder(r=r, h=h)))
 def hollow_cylinder():
-    ro = int(input(_("What is the radius of the hollow space? ")))
-    rs = int(input(_("What is the radius of the cylinder? ")))
-    h = int(input(_("What is the height of the cylinder? ")))
+    ro = float(input(_("What is the radius of the hollow space? ")))
+    rs = float(input(_("What is the radius of the cylinder? ")))
+    h = float(input(_("What is the height of the cylinder? ")))
     cprint.info(_("The volume is: %s" % vol_hollow_cylinder(ro=ro, rs=rs, h=h)))
 def cone():
-    r = int(input(_("What is the radius of the cone? ")))
-    h = int(input(_("What is the height of the cone? ")))
+    r = float(input(_("What is the radius of the cone? ")))
+    h = float(input(_("What is the height of the cone? ")))
     cprint.info(_("The volume is: %s" % vol_cone(r=r, h=h)))
 def sphere():
-    r = int(input(_("What is the radius of the sphere? ")))
+    r = float(input(_("What is the radius of the sphere? ")))
     cprint.info(_("The volume is: %s" % vol_sphere(r)))
     vol_sphere(r)
 def hollow_sphere():
-    ro = int(input(_("What is the radius of the sphere? ")))
-    rs = int(input(_("What is the radius of the hollow space? ")))
+    ro = float(input(_("What is the radius of the sphere? ")))
+    rs = float(input(_("What is the radius of the hollow space? ")))
     cprint.info(_("The volume is: %s" % vol_hollow_sphere(ro=ro, rs=rs)))
 def triprism():
-    a = int(input(_("What is the length of the side of the base? ")))
-    h = int(input(_("What is the height of the prism? ")))
+    a = float(input(_("What is the length of the side of the base? ")))
+    h = float(input(_("What is the height of the prism? ")))
     cprint.info(_("The volume is: %s" % vol_tri_prism(a=a, h=h)))
 def pentprism():
-    a = int(input(_("What is the length of the side of the base? ")))
-    h = int(input(_("What is the height of the prism? ")))
+    a = float(input(_("What is the length of the side of the base? ")))
+    h = float(input(_("What is the height of the prism? ")))
     cprint.info(_("The volume is: %s" % vol_penta_prism(a=a, h=h)))
 def hexaprism():
-    a = int(input(_("What is the length of the side of the hexagon? ")))
-    h = int(input(_("What is the height of the prism? ")))
+    a = float(input(_("What is the length of the side of the hexagon? ")))
+    h = float(input(_("What is the height of the prism? ")))
     cprint.info(_("The volume is: %s" % vol_hexa_prism(a=a, h=h)))
 def squiramid():
-    a = int(input(_("What is the length of the side of the base? ")))
-    h = int(input(_("What is the height of the pyramid? ")))
+    a = float(input(_("What is the length of the side of the base? ")))
+    h = float(input(_("What is the height of the pyramid? ")))
     cprint.info(_("The volume is: %s" % vol_sqr_pyramid(a=a, h=h)))
 def triramid():
-    a = int(input(_("What is the length of the side of the base? ")))
-    h = int(input(_("What is the height of the pyramid? ")))
+    a = float(input(_("What is the length of the side of the base? ")))
+    h = float(input(_("What is the height of the pyramid? ")))
     cprint.info(_("The volume is: %s" % vol_tri_pyramid(a=a, h=h)))
 def pentapyr():
-    a = int(input(_("What is the length of the side of the base? ")))
-    h = int(input(_("What is the height of the pyramid? ")))
+    a = float(input(_("What is the length of the side of the base? ")))
+    h = float(input(_("What is the height of the pyramid? ")))
     cprint.info(_("The volume is: %s" % vol_penta_pyramid(a=a, h=h)))
 def hexramid():
-    a = int(input(_("What is the length of the side of the base? ")))
-    h = int(input(_("What is the height of the pyramid? ")))
+    a = float(input(_("What is the length of the side of the base? ")))
+    h = float(input(_("What is the height of the pyramid? ")))
     cprint.info(_("The volume is: %s" % vol_hexa_pyramid(a=a, h=h)))
 
 def VolMain():
