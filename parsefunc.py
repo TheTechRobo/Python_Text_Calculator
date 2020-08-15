@@ -59,4 +59,3 @@ class theBasics:
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber)
     def division(n1, n2):
         """Will do 'later'"""
-        pass
