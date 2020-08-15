@@ -249,7 +249,7 @@ Type: ''')))
                 cprint.info(_("That equals.....\n%s" % (num ** 0.5)))
                 logging.info("user sqrooted number %s" % (num**0.5))
             elif "cube" in root:
-                cu()
+                curoot()
             else:
                 cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :)"))
                 logging.error("User used non-existent root (%s)" % root)
