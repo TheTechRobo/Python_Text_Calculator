@@ -17,8 +17,11 @@ def getNum(): #ask for two numbers and then return to function
     return n1, n2
 
 def multi(): #multiplication
-    n1 = float(n1)
-    n2 = float(n2)
+    try:
+        n1 = float(n1)
+        n2 = float(n2)
+    except Exception as ename:
+        raise ValueError(ename)
     return (n1 * n2)
 def div(): #division
     """
@@ -35,12 +38,18 @@ def div(): #division
         cprint.err(_("There was an unknown issue dividing your Numbers..."))
         logging.error("User had an issue divvying up %s by %s (%s)" % (n1,n2,e))
 def sub(n1, n2): #subtraction
-    n1 = float(n1) #I _could_ write a function (replacing `getNum()') that would take both numbers and return a tuple with the float'ed numbers, so it could be called like `n1, n2 = getNum(n1, n2)' but i'm too lazy ;D
-    n2 = float(n2)
+    try:
+        n1 = float(n1) #I _could_ write a function (replacing `getNum()') that would take both numbers and return a tuple with the float'ed numbers, so it could be called like `n1, n2 = getNum(n1, n2)' but i'm too lazy ;D
+        n2 = float(n2)
+    except Exception as ename:
+        raise ValueError(ename)
     return (n1 - n2)
 def add(n1, n2): #addition
-    n1 = float(n1)
-    n2 = float(n2)
+    try:
+        n1 = float(n1)
+        n2 = float(n2)
+    except Exception as ename:
+        raise ValueError(ename)
     return (n1 + n2)
 
 
