@@ -58,11 +58,27 @@ class theBasics:
         cprint.info(_("The response is...%s"))
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def division(n1, n2):
-        """Will do 'later'"""
+        """
+        Will do 'later'
+        """
 
+"""
+these will have to be moved into a class later but for backwards compatibility it is temporarily kept
+"""
 def uc():
     logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
     VolMain()
 def area():
     logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
     AreaMain()
+def fib():
+    from mathmod.fibonacci import CalculateLoopedFibo
+    logging.info("About to run fibonacci")
+    CalculateLoopedFibo()
+    logging.info("User ran fibonacci function")
+def h():
+    cprint.info(_('''
+Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
+Bugs? Head on over to https://github.com/thetechrobo/support/
+To contribute: go to https://github.com/thetechrobo/python-text-calculator/
+'''))
