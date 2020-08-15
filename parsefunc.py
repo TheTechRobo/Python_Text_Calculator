@@ -56,6 +56,13 @@ class theBasics:
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise ValueError(ename)
         cprint.info(_("The response is...%s"))
-        logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber)
+        logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def division(n1, n2):
         """Will do 'later'"""
+
+def uc():
+    logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
+    VolMain()
+def area():
+    logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
+    AreaMain()
