@@ -17,29 +17,36 @@ def getNum(): #ask for two numbers and then return to function
     return n1, n2
 
 def multi(): #multiplication
-    n1, n2 = getNum()
-    cprint.info(_("\nThat equals...\n%s" % (n1 * n2)))
-    logging.info("User multiplied %s by %s and got result %s" % (n1, n2, (n1 * n2)))
+    n1 = float(n1)
+    n2 = float(n2)
+    return (n1 * n2)
 def div(): #division
+    """
+    Will do later
+    """
     n1, n2 = getNum()
     try:
         cprint.info(_("\nThat equals...\n%s" % (n1 / n2)))
         logging.info("User divvied %s by %s, getting a result of %s" % (n1, n2, (n1 / n2)))
     except ZeroDivisionError:
-        cprint.err(_("Do not divide by zero!"))
+        cprint.err(_("Yes, because dividing %s cookies for 0 friends makes sense." % n1))
         logging.error("User attempted to divide by zero.")
     except Exception as e:
         cprint.err(_("There was an unknown issue dividing your Numbers..."))
         logging.error("User had an issue divvying up %s by %s (%s)" % (n1,n2,e))
-def sub(): #subtraction
-    n1, n2 = getNum()
-    cprint.info(_("\nThat equals...\n%s" % (n1 - n2)))
-    logging.info("User subtracted %s by %s and got result %s" % (n1, n2, (n1 - n2)))
-def add(): #addition
-    n1, n2 = getNum()
-    cprint.info(_("\nThat equals...\n%s" % (n1 + n2)))
-    logging.info("User added %s to %s and got result %s" % (n1, n2, (n1 + n2)))
+def sub(n1, n2): #subtraction
+    n1 = float(n1) #I _could_ write a function (replacing `getNum()') that would take both numbers and return a tuple with the float'ed numbers, so it could be called like `n1, n2 = getNum(n1, n2)' but i'm too lazy ;D
+    n2 = float(n2)
+    return (n1 - n2)
+def add(n1, n2): #addition
+    n1 = float(n1)
+    n2 = float(n2)
+    return (n1 + n2)
 
+
+"""
+Will do these ones later
+"""
 def uc():
     logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
     VolMain()
@@ -64,7 +71,7 @@ def fib():
     from mathmod.fibonacci import CalculateLoopedFibo
     logging.info("About to run fibonacci")
     CalculateLoopedFibo()
-    logging.info("user ran fibonacci function")
+    logging.info("User ran fibonacci function")
 
 def h():
     cprint.info(_('''
