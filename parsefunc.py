@@ -17,8 +17,8 @@ class theBasics:
             float(n1)
             float(n2)
         except Exception as ename:
-            cprint.err(_("ERROR: One or more of your two numbers was not a number. (Errid 3) (Dump: n1=%s, n2=%s)" % (n1, n2)))
-            raise ValueError(_("ERRID 3: One or more of the two numbers was not a number. (n1=%s, n2=%s)" % (n1, n2)))
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+            raise ValueError(_("ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
         try:
             returnedNumber = add(n1, n2)
         except ValueError as ename:
@@ -26,11 +26,37 @@ class theBasics:
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise ValueError(ename)
         cprint.info(_("The response is...%s"))
-        logging.info("Parsed addition with %s as n1, %s as n2, answer = %s")
-        return
+        logging.info("Parsed addition with %s as n1, %s as n2, answer = %s" % (n1, n2, returnedNumber))
     def subtraction(n1, n2):
-        pass
+        try:
+            float(n1)
+            float(n2)
+        except Exception as ename:
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        try:
+            returnedNumber = sub(n1, n2)
+        except ValueError as ename:
+            logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was raised. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            cprint.info(_("An exception was raised!\nValueError\n"))
+            raise ValueError(ename)
+        cprint.info(_("The response is...%s"))
+        logging.info("Parsed subtraction with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber)
     def multiplication(n1, n2):
-        pass
+        try:
+            float(n1)
+            float(n2)
+        except Exception as ename:
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        try:
+            returnedNumber = multi(n1, n2)
+        except ValueError as ename:
+            logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was raised. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            cprint.info(_("An exception was raised!\nValueError\n"))
+            raise ValueError(ename)
+        cprint.info(_("The response is...%s"))
+        logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber)
     def division(n1, n2):
+        """Will do 'later'"""
         pass
