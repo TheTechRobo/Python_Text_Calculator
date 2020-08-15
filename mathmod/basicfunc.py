@@ -47,13 +47,6 @@ def add(n1, n2): #addition
 """
 Will do these ones later
 """
-def uc():
-    logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
-    VolMain()
-def area():
-    logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
-    AreaMain()
-
 def cubeInternal(x):
     # all credit goes to user4466285's answer to "https://stackoverflow.com/questions/28014241/how-to-find-cube-root-using-python"
     if 0 <= x:
@@ -64,21 +57,6 @@ def curoot():
     nothernumber = cubeInternal(number)
     logging.info("User curooted number %s to get %s..." % (number, nothernumber))
     cprint.info("=%s" % nothernumber)
-def cu(): #backwards-compatibility
-    curoot()
-
-def fib():
-    from mathmod.fibonacci import CalculateLoopedFibo
-    logging.info("About to run fibonacci")
-    CalculateLoopedFibo()
-    logging.info("User ran fibonacci function")
-
-def h():
-    cprint.info(_('''
-Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
-Bugs? Head on over to https://github.com/thetechrobo/support/
-To contribute: go to https://github.com/thetechrobo/python-text-calculator/
-'''))
 
 def power():
     showUserWhatIThink(_("use the exponent function"))
