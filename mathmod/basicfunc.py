@@ -20,8 +20,8 @@ def multi(): #multiplication
     try:
         n1 = float(n1)
         n2 = float(n2)
-    except Exception as ename:
-        raise ValueError(ename)
+    except ValueError as ename:
+        raise ValueError("ERRID 3: %s" % ename)
     return (n1 * n2)
 def div(): #division
     """
@@ -41,15 +41,15 @@ def sub(n1, n2): #subtraction
     try:
         n1 = float(n1) #I _could_ write a function (replacing `getNum()') that would take both numbers and return a tuple with the float'ed numbers, so it could be called like `n1, n2 = getNum(n1, n2)' but i'm too lazy ;D
         n2 = float(n2)
-    except Exception as ename:
-        raise ValueError(ename)
+    except ValueError as ename:
+        raise ValueError("ERRID 3: %s" % ename)
     return (n1 - n2)
 def add(n1, n2): #addition
     try:
         n1 = float(n1)
         n2 = float(n2)
-    except Exception as ename:
-        raise ValueError(ename)
+    except ValueError as ename:
+        raise ValueError("ERRID 3: %s" % ename)
     return (n1 + n2)
 
 
