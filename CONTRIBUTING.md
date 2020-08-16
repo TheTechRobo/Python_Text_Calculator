@@ -1,5 +1,5 @@
 # Contributing
-\<insert code style etc\>
+\<insert code style, pr style, etc etc\>
 
 ## Docs
 \<insert e.g. what are dirs, files, code style, etc\>
