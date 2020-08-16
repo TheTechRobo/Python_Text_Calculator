@@ -20,20 +20,10 @@ def multi(): #multiplication
     n1 = float(n1)
     n2 = float(n2)
     return (n1 * n2)
-def div(): #division
-    """
-    Will do later
-    """
-    n1, n2 = getNum()
-    try:
-        cprint.info(_("\nThat equals...\n%s" % (n1 / n2)))
-        logging.info("User divvied %s by %s, getting a result of %s" % (n1, n2, (n1 / n2)))
-    except ZeroDivisionError:
-        cprint.err(_("Yes, because dividing %s cookies for 0 friends makes sense." % n1))
-        logging.error("User attempted to divide by zero.")
-    except Exception as e:
-        cprint.err(_("There was an unknown issue dividing your Numbers..."))
-        logging.error("User had an issue divvying up %s by %s (%s)" % (n1,n2,e))
+def div(n1, n2): #division
+    n1 = float(n1)
+    n2 = float(n2)
+    return (n1 / n2)
 def sub(n1, n2): #subtraction
     n1 = float(n1)
     n2 = float(n2)
