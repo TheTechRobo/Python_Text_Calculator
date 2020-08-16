@@ -107,7 +107,6 @@ def palc():
        pressanykey()
        clearScreen()
 #CALCULATION CHOICE
-       print("\n")
        calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
        logging.info("Got calc choice %s" % calc)
        calc = calc.lower() #make variable "calc" lowercase
