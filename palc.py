@@ -41,11 +41,11 @@ elif language == "english":
         gettext.bindtextdomain('base', localedir="locales")
         lang_translations = gettext.translation('base', localedir='locales', languages=["en"])
     except (FileNotFoundError, IOError) as ename:
-        logging.fatal("Could not get translation files. This is fatal. (%s)" % ename)
+        logging.fatal("Could not get translation files. (%s)" % ename)
         cprint.fatal("Could not get translation files! Make sure that the `locales' directory exists!\nJe ne peux pas trouver la dossier `locales' ! ")
         cprint.info("This is not fatal with English translations, we can ignore it.")
         ignore = input("Ignore? (Y/n) ").lower()
-        if "y" in ignore: #if user chooses to ignore
+        if ignore[0] == "y": #if user chooses to ignore
             logging.info("User ignored error !")
             def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
                 return theEnglishString
@@ -61,7 +61,6 @@ elif language == "english":
 else:
     logging.fatal("USER DID NOT SPECIFY A LANGUAGE, ABORT!")
     cprint.fatal("You did not specify a language. Abort.\nTu n'a pas dit une language supporte.", interrupt=True)
-    ignore = False
 try:
     lang_translations.install()
     _ = lang_translations.gettext
@@ -76,7 +75,7 @@ except Exception as e:
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py")
 try:
-    if "y" in ignore:
+    if ignore[0] == "y":
         import mathmod.func as f
         f.main(_)
         del f
