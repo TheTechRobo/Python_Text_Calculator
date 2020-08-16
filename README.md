@@ -28,7 +28,7 @@ Bug reports and questions belong at my [Support repo](https://github.com/thetech
 
 # What is in directories?
 - **Modules**
-Just some useful modules. See [modules/README.md](modules/README.md) for more details.  
+Just some useful modules used by Palc. See [modules/README.md](modules/README.md) for more details.  
 - **MathMod**
 The base of palc. Completely open source under the dbad clean license (like the rest of Palc). Currently working on changing user interaction to parameters and return statements and moving the interactivity to parsefunc.py.  
 - **.github**
