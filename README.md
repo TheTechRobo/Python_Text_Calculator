@@ -3,6 +3,8 @@
 
 **Please, if you make a pull request add your username to CONTRIBUTORS.md**
 
+**Todo: when this is merged, switch back to codefactor MASTER**
+
 [![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/integrate-mathmod)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/integrate-mathmod)
 
 This is a Python script I forked when I wanted to learn math in Python.
