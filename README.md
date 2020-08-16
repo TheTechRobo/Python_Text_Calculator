@@ -25,17 +25,6 @@ Bug reports and questions belong at my [Support repo](https://github.com/thetech
 
 **The only time you should ever use my email is if you need to contact me personally.** Even though it sounds obvious. Thank you for your cooperation -- I get too much spam :wink:
 
-
-# What is in directories?
-- **Modules**
-Just some useful modules used by Palc. See [modules/README.md](modules/README.md) for more details.  
-- **MathMod**
-The base of palc. Completely open source under the dbad clean license (like the rest of Palc). Currently working on changing user interaction to parameters and return statements and moving the interactivity to parsefunc.py.  
-- **.github**
-Just some GitHub related stuff.  
-- **locales**
-Includes the translated translations.  
-
 **And that's about it.**
 
 ###### Current Release: v.0.9.3-stable
