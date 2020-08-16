@@ -134,30 +134,30 @@ def palc():
 #DIVISION
        elif "/" in calc:
             showUserWhatIThink(_("divide a number"))
-            div()
+            theBasics.division()
        elif "div" in calc:
             showUserWhatIThink(_("divide a number"))
-            div()
+            theBasics.division()
 #SUBTRACTION
        elif "-" in calc:
             showUserWhatIThink(_("subtract a number from a number"))
-            sub()
+            theBasics.subtraction()()
        elif _("sub") in calc:
             showUserWhatIThink(_("subtract a number from a number"))
-            sub()
+            theBasics.subtraction()
        elif "min" in calc:
             showUserWhatIThink(_("subtract a number from a number"))
-            sub()
+            theBasics.subtraction()
 #ADDITION
        elif "+" in calc:
             showUserWhatIThink(_("add two numbers"))
-            add()
+            theBasics.addition()
        elif "add" in calc:
             showUserWhatIThink(_("add two numbers"))
-            add()
+            theBasics.addition()
        elif "plus" in calc:
             showUserWhatIThink(_("add two numbers"))
-            add()
+            theBasics.addition()
 #MODULO
        elif "%" in calc:
             print(_("1 - Find the remainder of two numbers after division\n\
