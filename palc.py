@@ -347,6 +347,8 @@ for i in range(0, width):
 logging.info("Printed %s dashes" % width)
 try:
     palc() #run all that code
+except SyntaxError as ename: #easter eggz
+    raise #raise exact same exception
 except KeyboardInterrupt: #if ^C
     logging.info("KeyboardInterrupt")
     cprint.ok(_("\nNote that you CAN type `quit' instead of pressing the interrupt key"))
