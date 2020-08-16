@@ -17,6 +17,8 @@ def clearScreenOld():
     print('\x1bc')#third attempt at clearing the screen w/ ansi escape codes
 
 def clearScreenV1():
-    """Harder to understand but a two-liner. Doesn't work if the user doesn't have `clear' or `cls' installed."""
+    """Harder to understand but not many lines (can be shortened to two by putting imports on the same line, and removing the del statement). Doesn't work if the user doesn't have `clear' or `cls' installed."""
     import os
-    os.system("cls" if os.name == "nt" else "clear")
+    import subprocess
+    subprocess.Popen(["cls" if os.name == "nt" else "clear"], shell=False)
+    del os, subprocess
