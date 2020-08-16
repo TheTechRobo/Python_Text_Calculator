@@ -11,17 +11,19 @@ if not six.PY3:
     print("You are using a currently unsupported version of Python. Your mileage may vary.")
 
 # IMPORTS
-import gettext #to translate Palc
-from sys import exit as e #so that we can exit later on
-from modules.cprint import cprint #printing in colour
-from modules.clearscreen import clearScreen #clear the screen
-from modules.pressanykey import pressanykey #for the press any key to continue
-import time
-import sys, os, logging #sys so I can exit, os so I can do I can't remember, logging so I can log.
+try:
+    import gettext #to translate Palc
+    from sys import exit as e #so that we can exit later on
+    from modules.cprint import cprint #printing in colour
+    from modules.clearscreen import clearScreen #clear the screen
+    from modules.pressanykey import pressanykey #for the press any key to continue
+    import time
+    import sys, os, logging #sys so I can exit, os so I can do I can't remember, logging so I can log.
+except Exception as ename:
+    print("Errid 0: Could not load required modules! (%s)" % ename)
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
-language = input("English or/ou Francais? (do not add accents to letters/n'ajoute pas les accents aux lettres): ")
-language = language.lower()
+language = input("English or/ou Francais? (do not add accents to letters/n'ajoute pas les accents aux lettres): ").lower()
 if language == "francais":
     try:
         logging.info("Set language to French")
