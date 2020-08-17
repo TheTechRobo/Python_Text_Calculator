@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2020-08-16 09:15-0400\n"
-"PO-Revision-Date: 2020-08-16 09:18-0400\n"
+"POT-Creation-Date: 2020-08-17 15:46-0400\n"
+"PO-Revision-Date: 2020-08-17 15:46-0400\n"
 "Last-Translator: ittussarom\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -169,47 +169,29 @@ msgstr "Merci d'entrer un nombre entier"
 msgid "I was too lazy to change 7."
 msgstr "J’étais trop paresseux pour changer 7."
 
-#: mathmod/basicfunc.py:14 mathmod/func.py:10
+#: mathmod/basicfunc.py:14 mathmod/func.py:10 parsefunc.py:17 parsefunc.py:34
+#: parsefunc.py:51 parsefunc.py:68
 msgid "Please enter the first number: "
 msgstr "Premier nombre ? "
 
-#: mathmod/basicfunc.py:15 mathmod/func.py:11
+#: mathmod/basicfunc.py:15 mathmod/func.py:11 parsefunc.py:18 parsefunc.py:35
+#: parsefunc.py:52 parsefunc.py:69
 msgid "Please enter the second number: "
 msgstr "Deuxième nombre ? "
 
-#: mathmod/basicfunc.py:29 mathmod/func.py:45
-#, python-format
-msgid ""
-"\n"
-"That equals...\n"
-"%s"
-msgstr ""
-"\n"
-"Le résultat est...\n"
-"%s"
-
-#: mathmod/basicfunc.py:32
-#, python-format
-msgid "Yes, because dividing %s cookies for 0 friends makes sense."
-msgstr "Ouais, car diviser %s biscuits pour 0 amis fait du sens."
-
-#: mathmod/basicfunc.py:35
-msgid "There was an unknown issue dividing your Numbers..."
-msgstr "Il y a eu un problème inconnu en divisant vos nombres..."
-
-#: mathmod/basicfunc.py:56
+#: mathmod/basicfunc.py:46
 msgid "Number to be rooted? "
 msgstr "Nombre ? "
 
-#: mathmod/basicfunc.py:62
+#: mathmod/basicfunc.py:52
 msgid "use the exponent function"
 msgstr "utiliser la fonction exposant"
 
-#: mathmod/basicfunc.py:63
+#: mathmod/basicfunc.py:53
 msgid "Original number?"
 msgstr "Saisissez le nombre d'origine : "
 
-#: mathmod/basicfunc.py:64
+#: mathmod/basicfunc.py:54
 msgid "Exponent? "
 msgstr "Saisissez l'exposant : "
 
@@ -292,6 +274,17 @@ msgstr "Saisie invalide (code 1)\n"
 #: mathmod/func.py:42
 msgid "The second number entered is greater than the first number (code 2)\n"
 msgstr "Le second nombre est plus grand que le premier (code 2)\n"
+
+#: mathmod/func.py:45
+#, python-format
+msgid ""
+"\n"
+"That equals...\n"
+"%s"
+msgstr ""
+"\n"
+"Le résultat est...\n"
+"%s"
 
 #: mathmod/func.py:54 mathmod/func.py:59 mathmod/func.py:84
 msgid "Type the original number: "
@@ -964,7 +957,7 @@ msgstr ""
 msgid "Welcome to Palc!"
 msgstr "Bienvenue dans Palc !"
 
-#: palc.py:352
+#: palc.py:354
 msgid ""
 "\n"
 "Note that you CAN type `quit' instead of pressing the interrupt key"
@@ -972,7 +965,7 @@ msgstr ""
 "\n"
 "Vous pouvez saisir `quitter' plutôt que ^C..."
 
-#: palc.py:356
+#: palc.py:358
 msgid ""
 "\n"
 "Why ^D? Why not just type `quit'?"
@@ -980,11 +973,11 @@ msgstr ""
 "\n"
 "Pourquoi ^D ? Pourquoi pas juste `quitter' ?"
 
-#: palc.py:364
+#: palc.py:366
 msgid "\aERROR!"
 msgstr "\aERREUR !"
 
-#: palc.py:368
+#: palc.py:370
 msgid ""
 "You typed in an invalid integer or float. Or maybe the program needs "
 "debugging. Either way, it's a pretty big error."
@@ -992,19 +985,19 @@ msgstr ""
 "Soit vous avez entré un nombre invalide, soit le logiciel a besoin d'être "
 "débogué. En tout cas, il s'agit d'une une erreur importante."
 
-#: palc.py:369
+#: palc.py:371
 msgid "Details are in the log."
 msgstr "Les détails sont dans le journal."
 
-#: palc.py:372
+#: palc.py:374
 msgid "Looks like you exited."
 msgstr "Vous quittez Palc."
 
-#: palc.py:379
+#: palc.py:381
 msgid "Unknown Error!"
 msgstr "Erreur inconnue !"
 
-#: palc.py:384
+#: palc.py:386
 msgid ""
 "An unknown error occured. Please file an Issue at github.com/thetechrobo/"
 "support."
@@ -1012,15 +1005,11 @@ msgstr ""
 "Une erreur s'est produite. Veuillez soumettre un billet sur github.com/"
 "thetechrobo/support."
 
-#: parsefunc.py:20 parsefunc.py:35 parsefunc.py:50
-#, python-format
-msgid ""
-"ERRID 3: One or more of your numbers was not a number. (Dump: n1=%s, n2=%s)"
-msgstr ""
-"Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre. (Dump: n1=%s, "
-"n2=%s)"
+#: parsefunc.py:23 parsefunc.py:40 parsefunc.py:57 parsefunc.py:74
+msgid "ERRID 3: One or more of your numbers was not a number."
+msgstr "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre."
 
-#: parsefunc.py:21
+#: parsefunc.py:24
 #, python-format
 msgid ""
 "ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)"
@@ -1028,7 +1017,7 @@ msgstr ""
 "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre. (Dump: n1=%s, "
 "n2=%s)"
 
-#: parsefunc.py:26 parsefunc.py:41 parsefunc.py:56
+#: parsefunc.py:29 parsefunc.py:46 parsefunc.py:63 parsefunc.py:82
 msgid ""
 "An exception was raised!\n"
 "ValueError\n"
@@ -1036,12 +1025,12 @@ msgstr ""
 "Une erreur a se passe ! \n"
 "ValueError\n"
 
-#: parsefunc.py:28 parsefunc.py:43 parsefunc.py:58
+#: parsefunc.py:31 parsefunc.py:48 parsefunc.py:65 parsefunc.py:85
 #, python-format
 msgid "The response is...%s"
 msgstr "L'aire est...%s"
 
-#: parsefunc.py:36 parsefunc.py:51
+#: parsefunc.py:41 parsefunc.py:58 parsefunc.py:75
 #, python-format
 msgid ""
 "ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)"
@@ -1049,7 +1038,7 @@ msgstr ""
 "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre. (Dump: n1=%s, "
 "n2=%s)"
 
-#: parsefunc.py:80
+#: parsefunc.py:106
 msgid ""
 "\n"
 "Current list of commands: multiplication, division, addition, square, "
@@ -1176,6 +1165,12 @@ msgstr ""
 "13 - Pyramide a base triangulaire\n"
 "14 - Pyramide a base pentagonale\n"
 "15 - Pyramide a base hexagonale"
+
+#~ msgid "Yes, because dividing %s cookies for 0 friends makes sense."
+#~ msgstr "Ouais, car diviser %s biscuits pour 0 amis fait du sens."
+
+#~ msgid "There was an unknown issue dividing your Numbers..."
+#~ msgstr "Il y a eu un problème inconnu en divisant vos nombres..."
 
 #~ msgid "Do not divide by zero!"
 #~ msgstr "Ne divisez pas par zéro !"
