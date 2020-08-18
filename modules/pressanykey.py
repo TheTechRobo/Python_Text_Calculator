@@ -6,6 +6,8 @@ def pressanykey(noGettext=False):
     if noGettext:
         def _(string):
             return string
+    else:
+        _ = _
     import sys
     try:
         import msvcrt
