@@ -104,7 +104,7 @@ cprint.ok(_("Loading...............\n"))
 time.sleep(2)
 def palc():
     while True:
-       pressanykey()
+       pressanykey(_("Press any key to continue..."))
        clearScreen()
 #CALCULATION CHOICE
        calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
