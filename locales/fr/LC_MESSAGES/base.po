@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2020-08-17 15:46-0400\n"
-"PO-Revision-Date: 2020-08-17 15:46-0400\n"
+"POT-Creation-Date: 2020-08-18 16:34-0400\n"
+"PO-Revision-Date: 2020-08-18 16:34-0400\n"
 "Last-Translator: ittussarom\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -592,6 +592,10 @@ msgstr "Veuillez entrer la température en degré KELVIN : "
 msgid "Invalid response."
 msgstr "Saisie invalide."
 
+#: modules/pressanykey.py:17
+msgid "Press any key to continue..."
+msgstr "Appuyer sur une touche pour continuer…"
+
 #: palc.py:75
 msgid ""
 "I can't access the file parsefunc.py. This file is necessary for proper "
@@ -1174,9 +1178,6 @@ msgstr ""
 
 #~ msgid "Do not divide by zero!"
 #~ msgstr "Ne divisez pas par zéro !"
-
-#~ msgid "Press any key to continue..."
-#~ msgstr "Appuyer sur une touche pour continuer…"
 
 #~ msgid "Type something!"
 #~ msgstr "Saisissez quelque chose !"
