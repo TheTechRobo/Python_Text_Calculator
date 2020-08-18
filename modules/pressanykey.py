@@ -1,7 +1,11 @@
-def pressanykey():
+def pressanykey(noGettext=False):
     """
     SOURCE: https://raw.githubusercontent.com/TheTechRobo/python-text-calculator/master/FOR%20CLEARING%20THE%20SCREEN%20AND%20PRESS%20ANY%20KEY%20TO%20CONTINUE.md
+    (set noGettext to True if you get an error that _ is not defined)
     """
+    if noGettext:
+        def _(string):
+            return string
     import sys
     try:
         import msvcrt
@@ -10,7 +14,7 @@ def pressanykey():
         import tty
         import termios
         windows = False
-    print("Press any key to continue...", end="", flush=True)
+    print(_("Press any key to continue..."), end="", flush=True)
     if windows:
        msvcrt.getch()
     else:
