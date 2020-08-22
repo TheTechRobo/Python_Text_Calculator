@@ -84,12 +84,38 @@ class theBasics:
             raise
         cprint.info(_("The response is...%s"))
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
-class roots:
+class rootsAndTheOtherOne:
     def curoot():
-        number = float(input(_("Number to be rooted? ")))
-        nothernumber = cuRoot(number)
-        logging.info("User curooted number %s to get %s..." % (number, nothernumber))
+        try:
+            number = float(input(_("Number to be rooted? ")))
+        except Exception as ename:
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        try:
+            nothernumber = cuRoot(number)
+        except ValueError as ename:
+            cprint.err(_("An exception was raised!\nValueError\n"))
+            logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
+            raise
+        logging.info("Parsed curoot(%s) to get %s..." % (number, nothernumber))
         cprint.info(_("The answer is... %s") % nothernumber)
+    def powerful():
+        origin = input(_("Original number?"))
+        ex = input(_("Exponent? "))
+        try:
+            float(origin)
+            float(ex)
+        except Exception as ename:
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)" % (origin, ex)))
+        try:
+            returnedNumber = exponent(origin, ex)
+        except ValueError as ename:
+            cprint.err(_("An exception was raised!\nValueError\n"))
+            logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
+            raise
+        cprint.info(_("The answer is... %s") % returnedNumber)
+        logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
 
 class misc:
     """put the uc() area() etc here"""
@@ -118,3 +144,5 @@ uc = misc.vol
 area = misc.area
 fib = misc.fib
 h = misc.h
+curoot = rootsAndTheOtherOne.curoot
+power = rootsAndTheOtherOne.powerful
