@@ -144,5 +144,3 @@ uc = misc.vol
 area = misc.area
 fib = misc.fib
 h = misc.h
-curoot = rootsAndTheOtherOne.curoot
-power = rootsAndTheOtherOne.powerful
