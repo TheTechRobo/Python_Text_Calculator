@@ -33,26 +33,20 @@ def add(n1, n2): #addition
     n2 = float(n2)
     return (n1 + n2)
 
-
-"""
-Will do these ones later
-"""
-def cubeInternal(x):
-    # all credit goes to user4466285's answer to "https://stackoverflow.com/questions/28014241/how-to-find-cube-root-using-python"
+def cuRoot(x):
+    # all credit goes to https://stackoverflow.com/a/28014443/9654083
     if 0 <= x:
-        return x**(1./3.)
-    return -(-x)**(1./3.)
-def curoot():
-    number = float(input(_("Number to be rooted? ")))
-    nothernumber = cubeInternal(number)
-    logging.info("User curooted number %s to get %s..." % (number, nothernumber))
-    cprint.info("=%s" % nothernumber)
+        return x ** (1./3.)
+    return - (-x) ** (1./3.)
 
+"""
+Will do this one later
+"""
 def power():
     showUserWhatIThink(_("use the exponent function"))
     origin = float(input(_("Original number?")))
     ex = float(input(_("Exponent? ")))
-    cprint.info("=%s" % origin ** ex)
+    cprint.info("The answer is... %s" % origin ** ex)
     logging.info("User exponented number %s with %s, getting %s" % (origin, ex, (origin ** ex)))
 
 #def sin():
