@@ -221,10 +221,13 @@ Type: ''')))
             e()
 #EXPONENTS
        elif "power" in calc:
+            showUserWhatIThink(_("use the exponent function"))
             power()
        elif "ex" in calc:
+            showUserWhatIThink(_("use the exponent function"))
             power()
        elif "^" in calc: #IDEA SOURCE: 3N4N's (first) Pull Request on the original repo
+            showUserWhatIThink(_("use the exponent function"))
             power()
 #MULTIPLICATION
        elif "*" in calc:
