@@ -1,4 +1,4 @@
-# This file is for basic functions and small functions that would be in func.py but are too small to be worth it.
+# This file is for basic functions and small functions that would be in func.py but are too small to fit.
 import logging
 from modules.cprint import cprint
 from areaInteractive import *
