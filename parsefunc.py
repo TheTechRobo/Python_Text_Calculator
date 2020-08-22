@@ -116,6 +116,11 @@ class rootsAndTheOtherOne:
             raise
         cprint.info(_("The answer is... %s") % returnedNumber)
         logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
+    def sqroot():
+        num = float(input(_("Number to be rooted?")))
+        returnedNumber = sqRoot(num)
+        cprint.info(_("That equals... %s" % returnedNumber))
+        logging.info("user sqrooted number %s" % (returnedNumber))
 
 class misc:
     """put the uc() area() etc here"""
