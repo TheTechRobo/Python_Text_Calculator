@@ -1,5 +1,5 @@
 """
-Just a small...thing to Parse Functions from mathmod. Nothing to see here.
+Just a small module to call mathmod's functions and then parse the results.
 """
 
 def main(theThing):
