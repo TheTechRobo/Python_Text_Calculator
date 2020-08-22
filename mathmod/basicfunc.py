@@ -41,6 +41,3 @@ def exponent(n1, n2):
     origin = float(n1)
     ex = float(n2)
     return (origin ** ex)
-
-#def sin():
-    #which = input(_("Would you like sine or inverse sine? (sin / inverse)\nType:
