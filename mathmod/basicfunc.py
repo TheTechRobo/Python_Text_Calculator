@@ -32,22 +32,15 @@ def add(n1, n2): #addition
     n1 = float(n1)
     n2 = float(n2)
     return (n1 + n2)
-
 def cuRoot(x):
     # all credit goes to https://stackoverflow.com/a/28014443/9654083
     if 0 <= x:
         return x ** (1./3.)
     return - (-x) ** (1./3.)
-
-"""
-Will do this one later
-"""
-def power():
-    showUserWhatIThink(_("use the exponent function"))
-    origin = float(input(_("Original number?")))
-    ex = float(input(_("Exponent? ")))
-    cprint.info("The answer is... %s" % origin ** ex)
-    logging.info("User exponented number %s with %s, getting %s" % (origin, ex, (origin ** ex)))
+def exponent(n1, n2):
+    origin = float(n1)
+    ex = float(n2)
+    return (origin ** ex)
 
 #def sin():
     #which = input(_("Would you like sine or inverse sine? (sin / inverse)\nType:
