@@ -1,11 +1,16 @@
-#CREDITS
-#THANKS TO https://simpleit.rocks/python/how-to-translate-a-python-project-with-gettext-the-easy-way/ and https://inventwithpython.com/blog/2014/12/20/translate-your-python-3-program-with-the-gettext-module/ for their gettext guides!
+"""
+PALC INFO
+CREDITS
+=======
+THANKS TO https://simpleit.rocks/python/how-to-translate-a-python-project-with-gettext-the-easy-way/ and https://inventwithpython.com/blog/2014/12/20/translate-your-python-3-program-with-the-gettext-module/ for their gettext guides!
+THANKS TO @ErdoganOnal for their comment on this SO question: https://stackoverflow.com/questions/61621821/any-secure-alternatives-for-this?noredirect=1#comment109002742_61621821 That comment helped with the Press Any Key To Continue function (UPDATE::: That link is now dead, it is in the file FOR CLEARING THE SCREEN AND PRESS ANY KEY TO CONTINUE.md)
+THANKS TO https://stackoverflow.com/questions/33594958/is-it-possible-to-align-a-print-statement-to-the-center-in-python FOR showing how to ALIGN the PRINT STATEMENT
 
-# THANKS TO @ErdoganOnal for their comment on this SO question: https://stackoverflow.com/questions/61621821/any-secure-alternatives-for-this?noredirect=1#comment109002742_61621821 That comment helped with the Press Any Key To Continue function
-#(UPDATE::: That link is now dead, it is in the file FOR CLEARING THE SCREEN AND PRESS ANY KEY TO CONTINUE.md)
-
-# THANKS TO https://stackoverflow.com/questions/33594958/is-it-possible-to-align-a-print-statement-to-the-center-in-python FOR showing how to ALIGN the PRINT STATEMENT
-
+CREATED BY: lewiswatson55
+FORKED BY: TheTechRobo
+CONTRIBUTORS: See contributors.md
+LICENSE: DBAD Clean
+"""
 import six
 if not six.PY3:
     print("You are using a currently unsupported version of Python. Your mileage may vary.")
@@ -13,12 +18,14 @@ if not six.PY3:
 # IMPORTS
 try:
     import gettext #to translate Palc
-    from sys import exit as e #so that we can exit later on
+    from sys import exit as e #for exiting
     from modules.cprint import cprint #printing in colour
     from modules.clearscreen import clearScreen #clear the screen
     from modules.pressanykey import pressanykey #for the press any key to continue
     import time
-    import sys, os, logging #sys so I can exit, os so I can do I can't remember, logging so I can log.
+    import sys #for misc
+    import os #for misc
+    import logging #self explanatory
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
@@ -60,14 +67,14 @@ elif language == "english":
                 return theEnglishString
 else:
     logging.fatal("USER DID NOT SPECIFY A LANGUAGE, ABORT!")
-    cprint.fatal("You did not specify a language. Abort.\nTu n'a pas dit une language supporte.", interrupt=True)
+    cprint.fatal("You did not specify a language. Abort.\nTu n'a pas dit une language supporté.", interrupt=True)
 try:
     lang_translations.install()
     _ = lang_translations.gettext
 except Exception as ename:
-    logging.info("This is not necessary to be logged, but exception %s occured while installing Traductions" % ename)
+    logging.info("This is not necessary to be logged, but exception %s occured while installing translations" % ename)
 #import func and basicfunc
-logging.info("Attempting to import func.py and basicfunc.py.")
+logging.info("Attempting to import func.py and basicfunc.py and parsefunc.py (DEPRECATION WARNING: Later func and basicfunc will not be necessary.)")
 try:
     from parsefunc import *
 except Exception as e:
@@ -222,13 +229,13 @@ Type: ''')))
 #EXPONENTS
        elif "power" in calc:
             showUserWhatIThink(_("use the exponent function"))
-            power()
+            rootsAndTheOtherOne.powerful()
        elif "ex" in calc:
             showUserWhatIThink(_("use the exponent function"))
-            power()
+            rootsAndTheOtherOne.powerful()
        elif "^" in calc: #IDEA SOURCE: 3N4N's (first) Pull Request on the original repo
             showUserWhatIThink(_("use the exponent function"))
-            power()
+            rootsAndTheOtherOne.powerful()
 #MULTIPLICATION
        elif "*" in calc:
             showUserWhatIThink(_("multiply a number"))
@@ -241,19 +248,19 @@ Type: ''')))
             multi()
 #CUBE TWICE
        elif "{2}" in calc:
-            cprint.err(_("The \" CUBE TWICE \" feature was discontinued."))
-            logging.error("User attempted to use cube twice function but it's discontinued")
+            cprint.err(_("The \"cube twice\" feature was discontinued as it was pointless. Sorry for the inconvenience."))
+            logging.error("User attempted to use cube twice function but it's gone")
 #ROOTS
        elif _("root") in calc:
             showUserWhatIThink(_("use the root function (opposite of exponents)"))
-            root = input(_("Square root or cube root? (square/cube)\nType: "))
-            root = root.lower()
+            root = input(_("Square root or cube root? (square/cube)\nType: ")).lower()
             if _("square") in root:
                 num = float(input(_("Number to be rooted?")))
+                cprint.warn(_("Will be improved later."))
                 cprint.info(_("That equals.....\n%s" % (num ** 0.5)))
-                logging.info("user sqrooted number %s" % (num**0.5))
+                logging.info("user sqrooted number %s" % (num ** 0.5))
             elif "cube" in root:
-                curoot()
+                rootsAndTheOtherOne.curoot()
             else:
                 cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :)"))
                 logging.error("User used non-existent root (%s)" % root)
