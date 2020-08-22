@@ -84,27 +84,37 @@ class theBasics:
             raise
         cprint.info(_("The response is...%s"))
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+class roots:
+    def curoot():
+        number = float(input(_("Number to be rooted? ")))
+        nothernumber = cuRoot(number)
+        logging.info("User curooted number %s to get %s..." % (number, nothernumber))
+        cprint.info(_("The answer is... %s") % nothernumber)
 
 class misc:
     """put the uc() area() etc here"""
-
-"""
-these will have to be moved into a class later but for backwards compatibility it is temporarily kept
-"""
-def uc():
-    logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
-    VolMain()
-def area():
-    logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
-    AreaMain()
-def fib():
-    from mathmod.fibonacci import CalculateLoopedFibo
-    logging.info("About to run fibonacci")
-    CalculateLoopedFibo()
-    logging.info("User ran fibonacci function")
-def h():
-    cprint.info(_('''
+    def h():
+        cprint.info(_('''
 Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
 Bugs? Head on over to https://github.com/thetechrobo/support/
 To contribute: go to https://github.com/thetechrobo/python-text-calculator/
-'''))
+        '''))
+    def vol():
+        logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
+        VolMain()
+    def area():
+        logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
+        AreaMain()
+    def fib():
+        from mathmod.fibonacci import CalculateLoopedFibo
+        logging.info("About to run fibonacci")
+        CalculateLoopedFibo()
+        logging.info("User ran fibonacci function")
+
+"""
+Will be removed in a future update!
+"""
+uc = misc.vol
+area = misc.area
+fib = misc.fib
+h = misc.h
