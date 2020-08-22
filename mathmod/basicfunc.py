@@ -37,6 +37,8 @@ def cuRoot(x):
     if 0 <= x:
         return x ** (1./3.)
     return - (-x) ** (1./3.)
+def sqRoot(x):
+    return x ** 0.5
 def exponent(n1, n2):
     origin = float(n1)
     ex = float(n2)
