@@ -255,14 +255,11 @@ Type: ''')))
             showUserWhatIThink(_("use the root function (opposite of exponents)"))
             root = input(_("Square root or cube root? (square/cube)\nType: ")).lower()
             if _("square") in root:
-                num = float(input(_("Number to be rooted?")))
-                cprint.warn(_("Will be improved later."))
-                cprint.info(_("That equals.....\n%s" % (num ** 0.5)))
-                logging.info("user sqrooted number %s" % (num ** 0.5))
+                rootsAndTheOtherOne.sqroot()
             elif "cube" in root:
                 rootsAndTheOtherOne.curoot()
             else:
-                cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :)"))
+                cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :D"))
                 logging.error("User used non-existent root (%s)" % root)
 #EASTER EGG!
        elif "=" in calc:
