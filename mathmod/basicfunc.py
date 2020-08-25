@@ -1,4 +1,4 @@
-# This file is for basic functions and small functions that would be in func.py but are too small to be worth it.
+# This file is for basic functions and small functions that would be in func.py but are too small to fit.
 import logging
 from modules.cprint import cprint
 from areaInteractive import *
@@ -32,28 +32,14 @@ def add(n1, n2): #addition
     n1 = float(n1)
     n2 = float(n2)
     return (n1 + n2)
-
-
-"""
-Will do these ones later
-"""
-def cubeInternal(x):
-    # all credit goes to user4466285's answer to "https://stackoverflow.com/questions/28014241/how-to-find-cube-root-using-python"
+def cuRoot(x):
+    # all credit goes to https://stackoverflow.com/a/28014443/9654083
     if 0 <= x:
-        return x**(1./3.)
-    return -(-x)**(1./3.)
-def curoot():
-    number = float(input(_("Number to be rooted? ")))
-    nothernumber = cubeInternal(number)
-    logging.info("User curooted number %s to get %s..." % (number, nothernumber))
-    cprint.info("=%s" % nothernumber)
-
-def power():
-    showUserWhatIThink(_("use the exponent function"))
-    origin = float(input(_("Original number?")))
-    ex = float(input(_("Exponent? ")))
-    cprint.info("=%s" % origin ** ex)
-    logging.info("User exponented number %s with %s, getting %s" % (origin, ex, (origin ** ex)))
-
-#def sin():
-    #which = input(_("Would you like sine or inverse sine? (sin / inverse)\nType:
+        return x ** (1./3.)
+    return - (-x) ** (1./3.)
+def sqRoot(x):
+    return x ** 0.5
+def exponent(n1, n2):
+    origin = float(n1)
+    ex = float(n2)
+    return (origin ** ex)

@@ -1,5 +1,5 @@
 """
-Just a small...thing to Parse Functions from mathmod. Nothing to see here.
+Just a small module to call mathmod's functions and then parse the results.
 """
 
 def main(theThing):
@@ -84,27 +84,68 @@ class theBasics:
             raise
         cprint.info(_("The response is...%s"))
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+class rootsAndTheOtherOne:
+    def curoot():
+        try:
+            number = float(input(_("Number to be rooted? ")))
+        except Exception as ename:
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        try:
+            nothernumber = cuRoot(number)
+        except ValueError as ename:
+            cprint.err(_("An exception was raised!\nValueError\n"))
+            logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
+            raise
+        logging.info("Parsed curoot(%s) to get %s..." % (number, nothernumber))
+        cprint.info(_("The answer is... %s") % nothernumber)
+    def powerful():
+        origin = input(_("Original number?"))
+        ex = input(_("Exponent? "))
+        try:
+            float(origin)
+            float(ex)
+        except Exception as ename:
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)" % (origin, ex)))
+        try:
+            returnedNumber = exponent(origin, ex)
+        except ValueError as ename:
+            cprint.err(_("An exception was raised!\nValueError\n"))
+            logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
+            raise
+        cprint.info(_("The answer is... %s") % returnedNumber)
+        logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
+    def sqroot():
+        num = float(input(_("Number to be rooted?")))
+        returnedNumber = sqRoot(num)
+        cprint.info(_("That equals... %s" % returnedNumber))
+        logging.info("user sqrooted number %s" % (returnedNumber))
 
 class misc:
     """put the uc() area() etc here"""
-
-"""
-these will have to be moved into a class later but for backwards compatibility it is temporarily kept
-"""
-def uc():
-    logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
-    VolMain()
-def area():
-    logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
-    AreaMain()
-def fib():
-    from mathmod.fibonacci import CalculateLoopedFibo
-    logging.info("About to run fibonacci")
-    CalculateLoopedFibo()
-    logging.info("User ran fibonacci function")
-def h():
-    cprint.info(_('''
+    def h():
+        cprint.info(_('''
 Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
 Bugs? Head on over to https://github.com/thetechrobo/support/
 To contribute: go to https://github.com/thetechrobo/python-text-calculator/
-'''))
+        '''))
+    def vol():
+        logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
+        VolMain()
+    def area():
+        logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
+        AreaMain()
+    def fib():
+        from mathmod.fibonacci import CalculateLoopedFibo
+        logging.info("About to run fibonacci")
+        CalculateLoopedFibo()
+        logging.info("User ran fibonacci function")
+
+"""
+Will be removed in a future update!
+"""
+uc = misc.vol
+area = misc.area
+fib = misc.fib
+h = misc.h
