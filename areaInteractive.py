@@ -1,7 +1,7 @@
 from mathmod.area import *
 from modules.cprint import cprint
 import logging
-logging.info("User used areaInteractive...")
+logging.info("Launched areaInteractive.")
 def main(Comandeer):
     global _
     _ = Comandeer
