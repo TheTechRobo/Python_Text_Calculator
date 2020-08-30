@@ -1,7 +1,7 @@
 from mathmod.volume import *
 from modules.cprint import cprint
 import logging
-logging.info("Running volinteractive")
+logging.info("Launched volinteractive.")
 def main(Comandeer):
     global _
     _ = Comandeer
