@@ -1,7 +1,7 @@
 # python-text-calculator
 # For installation instructions see [INSTALLING.md](INSTALLING.md)
 
-**Please, if you make a pull request add your username to CONTRIBUTORS.md**
+## I cannot emphasize this enough: to contribute, READ CONTRIBUTING.md FIRST!!!!
 
 [![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/master)
 
