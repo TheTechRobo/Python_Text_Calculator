@@ -84,26 +84,13 @@ except Exception as e:
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 try:
     if ignore[0] == "y":
-        """
-        Please, oh please future me, make this cleaner
-        """
-        import parsefunc as pf
-        pf.main(_)
-        del pf
-        import mathmod.basicfunc as b
-        b.main(_)
-        del b
-        import areaInteractive as a
-        a.main(_)
-        del a
-        import volInteractive as v
-        v.main(_)
-        del v
-        import mathmod.fibonacci as fi
-        fi.main(_)
-        del fi
-except Exception as ename:
-    logging.info("Errored Running *.main(_) (errid %s)" % ename)
+        modules = ['parsefunc', 'mathmod.func', 'areaInteractive', 'volInteractive', 'mathmod.fibonacci']
+        for module in modules:
+            try:
+                exec("from %s import main")
+                main(_)
+            except Exception as ename:
+                logging.info("Errored running %s.main(_) (errid %s)" % (module, ename))
 try:
     from mathmod.func import *
 except Exception as ename:
