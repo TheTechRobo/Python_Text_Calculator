@@ -318,7 +318,7 @@ Type: ''')))
        elif "conver" in calc:
             logging.info("use the converter functions")
             misc.showUserWhatIThink(_("use the converter functions"))
-            conversion = int(input(_("1 - Convert temperature units\nType: ")))
+            conversion = int(input(_("1 - Convert temperature units\n2 - Convert bits and bytes and kilobytes and mebibytes and stuff\nType: ")))
             if conversion == 1:
                 Temperature.tempCalc()
             else:
