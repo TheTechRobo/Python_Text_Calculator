@@ -11,24 +11,7 @@ def getNum(): #ask for two numbers and then return to function
     n2 = int(input(_("Please enter the second number: ")))
     logging.info("Palc got two numbers: %s and %s" % (n1, n2))
     return n1, n2
-def showUserWhatIThink(whatDOyouthink):
-    cprint.ok(_("I think you want me to: "))
-    cprint.ok(whatDOyouthink)
-    isItCorrect = input(_("Is this correct? (Y/n)")).lower()
-    if _("y") in isItCorrect:
-        logging.info("Palc chose the right calculation (%s) for calc choice that (should be) shown above." % whatDOyouthink)
-    elif "n" in isItCorrect:
-        cprint.info(_("Try different wording. Or, if you want that calculation choice to be made right, file a ticket."))
-        if _("y") in input(_("Would you like to file a ticket? (Y/n)\nType: ")).lower(): 
-            import webbrowser
-            webbrowser.open("http://github.com/thetechrobo/support/issues/new")
-            logging.info("User chose to file a ticket because they didn't want Palc to %s" % whatDOyouthink)
-            cprint.info(_("Proceeding with the function I thought it was."))
-        else:
-            cprint.info(_("OK, proceeding with the function I thought it was."))
-    else:
-        cprint.info(_("Defaulting to yes."))
-        logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
+
 def mod(): #modulo
     try:
         bigger = int(input(_("\nType the first number (greater): ")))
