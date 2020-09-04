@@ -8,9 +8,8 @@ def main(theThing):
 
 from mathmod.func import *
 from mathmod.basicfunc import *
-from modules.cprint import *
+from modules.cprint import cprint
 import logging
-import copy
 
 class theBasics:
     def addition():
@@ -123,7 +122,6 @@ class rootsAndTheOtherOne:
         logging.info("user sqrooted number %s" % (returnedNumber))
 
 class misc:
-    """put the uc() area() etc here"""
     def h():
         cprint.info(_('''
 Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
@@ -131,13 +129,22 @@ Bugs? Head on over to https://github.com/thetechrobo/support/
 To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         '''))
     def vol():
-        logging.warning("User ran `volume.py'. Log is barely-tested for area and volume.")
+        logging.warning("User ran `volume.py'. Log is barely tested for area and volume.")
         VolMain()
     def area():
         logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
         AreaMain()
     def fib():
-        from mathmod.fibonacci import CalculateLoopedFibo
-        logging.info("About to run fibonacci")
-        CalculateLoopedFibo()
+        hi = int(input(_("Would you like...\n1 - Looped Fibonacci\n2 - Calculate a fixed amount of fibonacci numbers.")))
+        if hi[0] == 1:
+            cprint.info(_("Looped it is."))
+            from mathmod.fibonacci import CalculateLoopedFibo
+            logging.info("About to run looped fibonacci")
+            CalculateLoopedFibo()
+        else:
+            cprint.info(_("Fixed it is."))
+            from mathmod.fibonacci import CalculateFixedFibo
+            amount = int(input(_("How many numbers of fibonacci would you like to calculate?")))
+            logging.info("About to run fixed fibonacci (amount=%s)" % amount)
+            CalculateFixedFibo(amount)
         logging.info("User ran fibonacci function")
