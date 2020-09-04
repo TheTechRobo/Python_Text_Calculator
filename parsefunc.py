@@ -152,46 +152,65 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             logging.info("About to run looped fibonacci")
             CalculateLoopedFibo()
         logging.info("User ran fibonacci function")
-    class Temperature:
-        def tempCalc():
-            message = "OPTIONS:\n    1 - Farenheit to Celsius\n    2 - Celsius to Farenheit\n    Farenheit to Kelvin\n    Celsius to Kelvin\n    Kelvin to Celsius\n    Kelvin to Farenheit\nType: "
-            hi = int(input(_(message)))
-            if hi == 1:
-                hello = float(input(_("Please enter the FAHRENHEIT temperature: ")))
-                #howdy = float(input(_("Please enter the CELSIUS temperature: ")))
-                yolo = hello - 32
-                yolo = yolo * 5/9
-                cprint.info(_("That equals...\n%s" % yolo))
-                logging.info("User did F to C with F=%s, result=%s" % (hello, yolo))
-            elif hi == 2:
-                howdy = float(input(_("Please enter the CELSIUS temperature: ")))
-                yolo = howdy * 9/5
-                yolo = yolo + 32
-                cprint.info(_("That equals...\n%s" % yolo))
-                logging.info("User did C to F with C=%s, result=%s" % (howdy, yolo))
-            elif hi == 3:
-                salut = float(input(_("Please enter the FAHRENHEIT temperature: ")))
-                #convert to celsius
-                yolo = salut - 32
-                yolo = yolo * 5/9
-                #convert from celsius to kelvin
-                yolo = yolo + 273.15
-                cprint.info(_("That equals...\n%s" % yolo))
-            elif hi == 4:
-                howdy = float(input(_("Please enter the CELSIUS temperature: ")))
-                yolo = howdy + 273.15 #convert to kelvin
-                cprint.info(_("That equals...\n%s" % yolo))
-            elif hi == 5:
-                ciao = float(input(_("Please enter the KELVIN temperature: ")))
-                yolo = ciao - 273.15 #do the opposite of celsius to kelvin
-                cprint.info(_("That equals...\n%s" % yolo))
-            elif hi == 6:
-                ciao = float(input(_("Please enter the KELVIN temperature: ")))
-                yolo = ciao - 273.15
-                yolo = yolo * 9/5
-                yolo = yolo + 32
-                cprint.info(_("That equals...\n%s" % yolo))
-            # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
+    def showUserWhatIThink(whatDOyouthink):
+        cprint.ok(_("I think you want me to: "))
+        cprint.ok(whatDOyouthink)
+        isItCorrect = input(_("Is this correct? (Y/n)")).lower()
+        if _("y") in isItCorrect:
+            logging.info("Palc chose the right calculation (%s) for calc choice that should be shown above." % whatDOyouthink)
+        elif "n" in isItCorrect:
+            cprint.info(_("Try different wording. Or, if you want that calculation choice to be made right, file a ticket."))
+            if _("y") in input(_("Would you like to file a ticket? (Y/n)\nType: ")).lower(): 
+                import webbrowser
+                webbrowser.open("http://github.com/thetechrobo/support/issues/new")
+                logging.info("User chose to file a ticket because they didn't want Palc to %s" % whatDOyouthink)
+                input(_("Press ENTER to continue..."))
+                cprint.info(_("Proceeding with the function I thought it was."))
             else:
-                cprint.err(_("Invalid response."))
-                logging.error("User typed invalid temperature answer %s" % hi)
+                cprint.info(_("OK, proceeding with the function I thought it was."))
+        else:
+            cprint.info(_("Defaulting to yes."))
+            logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
+class Temperature:
+    def tempCalc():
+        message = "OPTIONS:\n    1 - Farenheit to Celsius\n    2 - Celsius to Farenheit\n    Farenheit to Kelvin\n    Celsius to Kelvin\n    Kelvin to Celsius\n    Kelvin to Farenheit\nType: "
+        hi = int(input(_(message)))
+        if hi == 1:
+            hello = float(input(_("Please enter the FAHRENHEIT temperature: ")))
+            #howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+            yolo = hello - 32
+            yolo = yolo * 5/9
+            cprint.info(_("That equals...\n%s" % yolo))
+            logging.info("User did F to C with F=%s, result=%s" % (hello, yolo))
+        elif hi == 2:
+            howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+            yolo = howdy * 9/5
+            yolo = yolo + 32
+            cprint.info(_("That equals...\n%s" % yolo))
+            logging.info("User did C to F with C=%s, result=%s" % (howdy, yolo))
+        elif hi == 3:
+            salut = float(input(_("Please enter the FAHRENHEIT temperature: ")))
+            #convert to celsius
+            yolo = salut - 32
+            yolo = yolo * 5/9
+            #convert from celsius to kelvin
+            yolo = yolo + 273.15
+            cprint.info(_("That equals...\n%s" % yolo))
+        elif hi == 4:
+            howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+            yolo = howdy + 273.15 #convert to kelvin
+            cprint.info(_("That equals...\n%s" % yolo))
+        elif hi == 5:
+            ciao = float(input(_("Please enter the KELVIN temperature: ")))
+            yolo = ciao - 273.15 #do the opposite of celsius to kelvin
+            cprint.info(_("That equals...\n%s" % yolo))
+        elif hi == 6:
+            ciao = float(input(_("Please enter the KELVIN temperature: ")))
+            yolo = ciao - 273.15
+            yolo = yolo * 9/5
+            yolo = yolo + 32
+            cprint.info(_("That equals...\n%s" % yolo))
+        # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
+        else:
+            cprint.err(_("Invalid response."))
+            logging.error("User typed invalid temperature answer %s" % hi)
