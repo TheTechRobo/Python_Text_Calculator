@@ -8,79 +8,95 @@ def main(Comandeer):
 
 def equ_triangle():
     a = float(input(_("What length is the side of the triangle? ")))
-    cprint.info(_("The area is: %s" % equtri(a)))
+    area = equtri(a)
+    cprint.info(_("The area is: %s" % area))
+    logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
 def right_triangle():
     b = float(input(_("What length is the base of the triangle? ")))
     h = float(input(_("What length is the height of the triangle? ")))
-    cprint.info(_("The area is: %s" % righttri(b=b, h=h)))
+    area = righttri(b=b, h=h)
+    logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
+    cprint.info(_("The area is: %s" % area))
 def acute_triangle():
     a = float(input(_("What is the length of the first side? ")))
     b = float(input(_("what is the length of the second side? ")))
     c = float(input(_("What is the length of the third side? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(actri(a, b, c))
+    area = actri(a, b, c)
+    logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
+    cprint.info(_("The area is: %s" % area))
 def obtuse_triangle():
     a = float(input(_("What is the length of the first side? ")))
-    b = float(input(_("what is the length of the second side? ")))
+    b = float(input(_("What is the length of the second side? ")))
     c = float(input(_("What is the length of the third side? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(obtri(a, b, c))
+    area = obtri(a, b, c)
+    logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
+    cprint.info(_("The area is: %s" % area))
 def square():
     a = float(input(_("What is the length of the side of the square? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(sq(a))
+    area = sq(a)
+    logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
+    cprint.info(_("The area is: %s" % area))
 def rectangle():
     from area import rectangle as rec
     l = float(input(_("What is the length of the rectangle? ")))
     b = float(input(_("What is the height of the rectangle? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(rec(l, b))
+    area = rec(l, b)
+    logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
+    cprint.info(_("The area is: %s" % area))
 def parallelogram():
     from area import parallelogram as para
     b = float(input(_("What is the length of the base? ")))
     h = float(input(_("What is the height of the shape? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(para(b, h))
+    area = para(b, h)
+    logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
+    cprint.info(_("The area is: %s" % area))
 def rhombus():
     from area import rhombus as rhombu
     do = float(input(_("What is the length of the first diagonal? ")))
     ds = float(input(_("What is the length of the 2nd diagonal? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(rhombu(do, ds))
+    area = rhombu(do, ds)
+    logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
+    cprint.info(_("The area is: %s" % area))
 def trapezium():
     from area import trapezium as trapezi
     a = float(input(_("What is the length of the 1st set of parallel sides? ")))
     b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
     h = float(input(_("What is the height of the trapezium? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(trapezi(a, b, h))
+    area = trapezi(a, b, h)
+    logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
+    cprint.info(_("The area is: %s" % area))
 def circle():
     from area import circle as circl
     r = float(input(_("What is the radius of the circle? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(circl(r))
+    area = circl(r)
+    logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
+    cprint.info(_("The area is: %s" % area))
 def semicircle():
     from area import semicircle as semi
     r = float(input(_("What is the radius of the semicircle? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(semi(r))
+    area = semi(r)
+    logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
+    cprint.info(_("The area is: %s" % area))
 def sector():
     r = float(input(_("What is the radius of the circular sector? ")))
     a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(cirsector(r, a))
+    area = cirsector(r, a)
+    logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
+    cprint.info(_("The area is: %s" % area))
 def ring():
     from area import ring as myprecious
     ro = float(input(_("What is the radius of the outer circle? ")))
     rs = float(input(_("What is the radius of the inner circle? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(myprecious(ro, rs))
+    area = myprecious(ro, rs)
+    logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
+    cprint.info(_("The area is: %s" % area))
 def ellipse():
     from area import ellipse as el
     a = float(input(_("What is the length of the major axis? ")))
     b = float(input(_("What is the length of the minor axis? ")))
-    cprint.info(_("The area is: "))
-    cprint.info(el(a, b))
+    area = el(a, b)
+    logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
+    cprint.info(_("The area is: %s" % area))
 
 def AreaMain():
     cprint.info(_('''Options:
@@ -103,7 +119,7 @@ def AreaMain():
             choice = int(input(_("Please type one: ")))
         except (ValueError, TypeError):
             cprint.err(_("Please type an integer"))
-            logging.error("User did valueerror typeerror while inputting areaInteractive choice")
+            logging.error("User did ValueError // TypeError while inputting areaInteractive choice")
         if choice == 7:
             cprint.err(_("I was too lazy to change 7."))
             logging.info("Lazy 7")
