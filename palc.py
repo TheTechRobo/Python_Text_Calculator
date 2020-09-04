@@ -165,13 +165,13 @@ Anything else - Back to menu."))
             if pOrMod == "1":
                 mod()
             elif pOrMod == "2":
-                whichOne = int(input(_('''1 - Calculate "What is x% of y?"
-2 - Convert a number to percentage.
+                chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
+2 - Convert a number to percentage (i.e. how much percent of ___ is ___?).
 Type: ''')))
-                if whichOne == 1:
-                    whatIsPercent()
-                elif whichOne == 2:
-                    getPercentageRN()
+                if chosenPercentageCalc == 1:
+                    Percentage.percentage1()
+                elif chosenPercentageCalc == 2:
+                    Percentage.percentage2()
                 else:
                     cprint.err(_("You didn't type a valid answer. Abort."))
                     logging.info("User did not answer correct percentage interpretation")
@@ -296,13 +296,13 @@ Type: ''')))
 #PERCENTAGE
        elif _("percent") in calc: #SOURCE: https://stackoverflow.com/a/5998010/9654083
             misc.showUserWhatIThink(_("use the percentage function"))
-            whichOne = int(input(_('''1 - Calculate "What is x% of y?"
+            chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
 2 - Convert a number to percentage.
 Type: ''')))
-            if whichOne == 1:
-                whatIsPercent()
-            elif whichOne == 2:
-                getPercentageRN()
+            if chosenPercentageCalc == 1:
+                percentage1()
+            elif chosenPercentageCalc == 2:
+                percentage2()
             else:
                 cprint.err(_("You didn't type a valid answer. Abort."))
                 logging.info("User did not answer correct percentage interpretation (typed %s)" % whichOne)
