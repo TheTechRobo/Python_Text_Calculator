@@ -109,28 +109,26 @@ def readMyMemory():
     except Exception as e:
         logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
         cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file?"))
-def percentage(percent, whole):
+def whatIsXPercentOf(x, whole):
+    """
+    whole = ORIGINAL NUMBER
+    x = percent
+    This finds x percent of whole.
+    """
     if whole == 0:
-        logging.error("User typed 0 as whole.")
+        logging.error("User typed 0 as whole")
         return (_("Please do not type in a zero as the whole."))
-    return (percent * whole) / 100.0
-def whatIsPercent():
-    origin = float(input(_("what is the ORIGINAL NUMBER? ")))
-    percent = float(input(_("What is the PERCENTAGE? ")))
-    logging.info("Got percentage RN origin %s percent %s" % (origin, percent))
-    cprint.info(_("That equals..."))
-    cprint.info(percentage(percent, origin))
-def getPercentage(part, whole):
+    return (x * whole) / 100.0
+def findPercentage(part, whole):
+    """
+    whole = number that would be 100%
+    part = number that you want to convert to percentage (i.e. this number out of the number that would be 100%)
+    This converts `whole' to be 100%, and finds what percentage `part' is out of 100%. Yes its confusing. Bear with me.
+    """
     if whole == 0:
-        logging.error("user typed whole zero")
+        logging.error("User typed whole zero")
         return (_("Please do not type in a zero as the whole."))
     return 100 * float(part)/float(whole)
-def getPercentageRN():
-    origin = float(input(_("What is the number that would be 100%? ")))
-    part = float(input(_("What is the number that you want to convert to percentage (e.g. this number out of the number that would be 100%)? ")))
-    logging.info("Got percentage RN origin %s and %s" % (origin, part))
-    cprint.info(_("that equals:"))
-    cprint.info(getPercentage(part, origin))
 def calculateInterest():
     while True: 
         origin = int(input(_("What is the original number? ")))
