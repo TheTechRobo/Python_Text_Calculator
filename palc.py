@@ -259,7 +259,9 @@ Type: ''')))
                 cprint.info(_("=42 -- the answer to life, the universe, and everything"))
                 logging.info("User got the easter egg")
             else:
-                cprint.err(_("Do you really need a calculator for this?"))
+                cprint.info(_("Calculating..."))
+                time.sleep(3)
+                cprint.err(_("ERROR: Too big of a number, timed out!"))
                 logging.info("User used the `=' feature for number %s" % number)
 #NUMBER SYSTEMS
        elif "base" in calc:
@@ -373,7 +375,7 @@ except Exception as ename:
     for i in range(0, width):
         print("-", sep="", end="", flush=True)
     logging.info("Printed %s dashes" % width)
-    cprint.fatal(_("\aUnknown Error!\a".center(width)))
+    cprint.fatal(_("\aUnknown Error!\a".center(width))) #\a makes a beep
     for i in range(0, width):
         print("-", sep="", end="", flush=True)
     logging.info("Printed %s dashes" % width)
