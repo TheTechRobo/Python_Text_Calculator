@@ -116,45 +116,45 @@ def palc():
            misc.h()
 #TAX
        elif _("tax") in calc:
-            showUserWhatIThink(_("calculate tax"))
+            misc.misc.showUserWhatIThink(_("calculate tax"))
             taxCalc()
 #SQUARE
        elif _("sq") in calc:
-            showUserWhatIThink(_("square a number"))
+            misc.showUserWhatIThink(_("square a number"))
             n = int(input(_("Number to square? ")))
             cprint.info(n * n)
             logging.info("User squared number %s got result %s" % (n, (n * n)))
        elif "[]" in calc:
-            showUserWhatIThink(_("square a number"))
+            misc.showUserWhatIThink(_("square a number"))
             n = int(input(_("Number to square? ")))
             logging.info("User squared number %s got result %s" % (n, (n * n)))
             cprint.info(n * n)
 #DIVISION
        elif "/" in calc:
-            showUserWhatIThink(_("divide a number"))
+            misc.showUserWhatIThink(_("divide a number"))
             theBasics.division()
        elif "div" in calc:
-            showUserWhatIThink(_("divide a number"))
+            misc.showUserWhatIThink(_("divide a number"))
             theBasics.division()
 #SUBTRACTION
        elif "-" in calc:
-            showUserWhatIThink(_("subtract a number from a number"))
+            misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()()
        elif _("sub") in calc:
-            showUserWhatIThink(_("subtract a number from a number"))
+            misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()
        elif "min" in calc:
-            showUserWhatIThink(_("subtract a number from a number"))
+            misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()
 #ADDITION
        elif "+" in calc:
-            showUserWhatIThink(_("add two numbers"))
+            misc.showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
        elif "add" in calc:
-            showUserWhatIThink(_("add two numbers"))
+            misc.showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
        elif "plus" in calc:
-            showUserWhatIThink(_("add two numbers"))
+            misc.showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
 #MODULO
        elif "%" in calc:
@@ -179,29 +179,29 @@ Type: ''')))
                 cprint.info(_("going back."))
                 logging.info("going back.")
        elif "mod" in calc:
-            showUserWhatIThink(_("find the remainder of two numbers after division"))
+            misc.showUserWhatIThink(_("find the remainder of two numbers after division"))
             mod()
 #AREA
        elif _("area") in calc:
-            showUserWhatIThink(_("calculate area"))
+            misc.showUserWhatIThink(_("calculate area"))
             misc.area()
        elif "#" in calc:
-            showUserWhatIThink(_("calculate area"))
+            misc.showUserWhatIThink(_("calculate area"))
             misc.area()
 #VOLUME
        elif _("vol") in calc:
-            showUserWhatIThink(_("use the volume calculator"))
+            misc.showUserWhatIThink(_("use the volume calculator"))
             misc.vol()
 #CUBE
        elif "{}" in calc:
-            showUserWhatIThink(_("cube a number"))
+            misc.showUserWhatIThink(_("cube a number"))
             cubedNumber = int(input(_("\nType the number to be cubed: ")))
             print()
             cprint.info(cubedNumber ** 3) #Manually cube number
             logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
             print()
        elif _("cube") in calc: 
-            showUserWhatIThink(_("cube a number"))
+            misc.showUserWhatIThink(_("cube a number"))
             cubedNumber = int(input(_("\nType the number to be cubed: ")))
             print()
             cprint.info(cubedNumber ** 3) #Manually cube number
@@ -209,32 +209,32 @@ Type: ''')))
             print()
 #EXIT
        elif _("quit") in calc:
-            showUserWhatIThink(_("quit"))
+            misc.showUserWhatIThink(_("quit"))
             logging.info("User exited using `quit' command")
             e()
        elif "exit" in calc:
-            showUserWhatIThink(_("exit"))
+            misc.showUserWhatIThink(_("exit"))
             logging.info("User exited using `exit' command")
             e()
 #EXPONENTS
        elif "power" in calc:
-            showUserWhatIThink(_("use the exponent function"))
+            misc.showUserWhatIThink(_("use the exponent function"))
             rootsAndTheOtherOne.powerful()
        elif "ex" in calc:
-            showUserWhatIThink(_("use the exponent function"))
+            misc.showUserWhatIThink(_("use the exponent function"))
             rootsAndTheOtherOne.powerful()
        elif "^" in calc: #IDEA SOURCE: 3N4N's (first) Pull Request on the original repo
-            showUserWhatIThink(_("use the exponent function"))
+            misc.showUserWhatIThink(_("use the exponent function"))
             rootsAndTheOtherOne.powerful()
 #MULTIPLICATION
        elif "*" in calc:
-            showUserWhatIThink(_("multiply a number"))
+            misc.showUserWhatIThink(_("multiply a number"))
             multi()
        elif "x" in calc:
-            showUserWhatIThink(_("multiply a number"))
+            misc.showUserWhatIThink(_("multiply a number"))
             multi()
        elif "multi" in calc:
-            showUserWhatIThink(_("multiply a number"))
+            misc.showUserWhatIThink(_("multiply a number"))
             multi()
 #CUBE TWICE
        elif "{2}" in calc:
@@ -242,7 +242,7 @@ Type: ''')))
             logging.error("User attempted to use cube twice function but it's gone")
 #ROOTS
        elif _("root") in calc:
-            showUserWhatIThink(_("use the root function (opposite of exponents)"))
+            misc.showUserWhatIThink(_("use the root function (opposite of exponents)"))
             root = input(_("Square root or cube root? (square/cube)\nType: ")).lower()
             if _("square") in root:
                 rootsAndTheOtherOne.sqroot()
@@ -253,7 +253,7 @@ Type: ''')))
                 logging.error("User used non-existent root (%s)" % root)
 #EASTER EGG!
        elif "=" in calc:
-            showUserWhatIThink(_("use the equals function (completely useless)"))
+            misc.showUserWhatIThink(_("use the equals function (completely useless)"))
             number = int(input(_("\nType in a number: ")))
             if number == 42:
                 cprint.info(_("=42 -- the answer to life, the universe, and everything"))
@@ -265,21 +265,21 @@ Type: ''')))
                 logging.info("User used the `=' feature for number %s" % number)
 #NUMBER SYSTEMS
        elif "base" in calc:
-            showUserWhatIThink(_("convert number systems"))
+            misc.showUserWhatIThink(_("convert number systems"))
             base()
 #ORD
        elif "ord" in calc:
-           showUserWhatIThink(_("ord a character"))
+           misc.showUserWhatIThink(_("ord a character"))
            result = str(ord(input(_("Type in the character to ord: "))))
            logging.info("User ord'ed to get result %s" % result)
            cprint.info(_("The result is: \n%s" % result))
 #LOGARITHM
        elif _("log") in calc:
-           showUserWhatIThink(_("use the logarithm function"))
+           misc.showUserWhatIThink(_("use the logarithm function"))
            log()
 #MEMORY
        elif "mem" in calc:
-            showUserWhatIThink(_("use the memory function"))
+            misc.showUserWhatIThink(_("use the memory function"))
             memOrRecall = input(_("Would you like to set the memory or recall? (set / recall)\nType: "))
             if _("set") in memOrRecall.lower():
                 remember()
@@ -290,12 +290,12 @@ Type: ''')))
                 logging.error("User didn't type an answer in MEM function (typed %s)" % memOrRecall)
 #FIBONACCI
        elif "fib" in calc:
-            showUserWhatIThink(_("use the fibonacci calculator"))
+            misc.showUserWhatIThink(_("use the fibonacci calculator"))
             cprint.ok(_("Starting fibonacci sequence. Please wait."))
             misc.fib()
 #PERCENTAGE
        elif _("percent") in calc: #SOURCE: https://stackoverflow.com/a/5998010/9654083
-            showUserWhatIThink(_("use the percentage function"))
+            misc.showUserWhatIThink(_("use the percentage function"))
             whichOne = int(input(_('''1 - Calculate "What is x% of y?"
 2 - Convert a number to percentage.
 Type: ''')))
@@ -308,16 +308,16 @@ Type: ''')))
                 logging.info("User did not answer correct percentage interpretation (typed %s)" % whichOne)
 #INTEREST
        elif _("interest") in calc:
-            showUserWhatIThink(_("use the interest calculator"))
+            misc.showUserWhatIThink(_("use the interest calculator"))
             calculateInterest()
 #TEMPERATURE
        elif "temperature" in calc:
-            showUserWhatIThink(_("use the temperature converter"))
+            misc.showUserWhatIThink(_("use the temperature converter"))
             Temperature.tempCalc()
 #CONVERSIONS
        elif "conver" in calc:
             logging.info("use the converter functions")
-            showUserWhatIThink(_("use the converter functions"))
+            misc.showUserWhatIThink(_("use the converter functions"))
             conversion = int(input(_("1 - Convert temperature units\nType: ")))
             if conversion == 1:
                 Temperature.tempCalc()
