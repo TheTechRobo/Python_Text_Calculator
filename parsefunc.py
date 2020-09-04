@@ -136,15 +136,19 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         AreaMain()
     def fib():
         hi = int(input(_("Would you like...\n1 - Calculate a fixed amount of fibonacci numbers.\n2 - Calculate fibonacci indefinitely.")))
-        if hi[0] == 2:
-            cprint.info(_("Looped it is."))
-            from mathmod.fibonacci import CalculateLoopedFibo
-            logging.info("About to run looped fibonacci")
-            CalculateLoopedFibo()
-        else:
+        if hi[0] == 1:
             cprint.info(_("Fixed it is."))
             from mathmod.fibonacci import CalculateFixedFibo
             amount = int(input(_("How many numbers of fibonacci would you like to calculate?")))
             logging.info("About to run fixed fibonacci (amount=%s)" % amount)
-            CalculateFixedFibo(amount)
+            finalProduct = CalculateFixedFibo(amount)
+            cprint.info(_("Your fibonacci numbers were..."))
+            cprint.ok(finalProduct)
+            logging.info("User did fixed fibo with amount of %s, and the results are in the next log entry!..." % amount)
+            logging.info(finalProduct)
+        else:
+            cprint.info(_("Looped it is."))
+            from mathmod.fibonacci import CalculateLoopedFibo
+            logging.info("About to run looped fibonacci")
+            CalculateLoopedFibo()
         logging.info("User ran fibonacci function")
