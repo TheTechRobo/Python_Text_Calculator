@@ -33,7 +33,7 @@ except Exception as ename:
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
 language = input("English or/ou Francais? (do not add accents to letters/n'ajoute pas les accents aux lettres): ").lower()
-if language == "francais":
+if "francais" in language:
     try:
         logging.info("Set language to French")
         gettext.bindtextdomain('base', localedir="locales")
@@ -44,7 +44,7 @@ if language == "francais":
     except Exception as ename:
         logging.fatal("Could not get translations. (%s)" % ename)
         cprint.fatal("Could not load translations!\nJe ne peux pas utiliser les traductions ! ")
-elif language == "english":
+elif "english" in language:
     try:
         logging.info("Set language to English")
         gettext.bindtextdomain('base', localedir="locales")
