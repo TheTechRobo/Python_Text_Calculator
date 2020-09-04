@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2020-08-26 18:36-0400\n"
-"PO-Revision-Date: 2020-08-26 18:39-0400\n"
+"POT-Creation-Date: 2020-09-04 12:24-0400\n"
+"PO-Revision-Date: 2020-09-04 12:27-0400\n"
 "Last-Translator: ittussarom\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -169,13 +169,13 @@ msgstr "Merci d'entrer un nombre entier"
 msgid "I was too lazy to change 7."
 msgstr "J’étais trop paresseux pour changer 7."
 
-#: mathmod/basicfunc.py:14 mathmod/func.py:10 parsefunc.py:17 parsefunc.py:34
-#: parsefunc.py:51 parsefunc.py:68
+#: mathmod/basicfunc.py:14 mathmod/func.py:10 parsefunc.py:16 parsefunc.py:33
+#: parsefunc.py:50 parsefunc.py:67
 msgid "Please enter the first number: "
 msgstr "Premier nombre ? "
 
-#: mathmod/basicfunc.py:15 mathmod/func.py:11 parsefunc.py:18 parsefunc.py:35
-#: parsefunc.py:52 parsefunc.py:69
+#: mathmod/basicfunc.py:15 mathmod/func.py:11 parsefunc.py:17 parsefunc.py:34
+#: parsefunc.py:51 parsefunc.py:68
 msgid "Please enter the second number: "
 msgstr "Deuxième nombre ? "
 
@@ -297,9 +297,8 @@ msgstr ""
 msgid "Please enter the number to be converted from %s: "
 msgstr "Veuillez entrer le nombre à convertir depuis une %s : "
 
-#: mathmod/func.py:81 mathmod/func.py:248 mathmod/func.py:254
-#: mathmod/func.py:263 mathmod/func.py:267 mathmod/func.py:271
-#: mathmod/func.py:277
+#: mathmod/func.py:81 parsefunc.py:164 parsefunc.py:170 parsefunc.py:179
+#: parsefunc.py:183 parsefunc.py:187 parsefunc.py:193
 #, python-format
 msgid ""
 "That equals...\n"
@@ -540,43 +539,7 @@ msgstr ""
 msgid "You did not type answer. Abort."
 msgstr "Vous n'avez pas saisi une réponse valide."
 
-#: mathmod/func.py:235
-msgid ""
-"OPTIONS:\n"
-"    1 - Farenheit to Celsius\n"
-"    2 - Celsius to Farenheit\n"
-"    3 - Farenheit to Kelvin\n"
-"    4 - Celsius to Kelvin\n"
-"    5 - Kelvin to Celsius\n"
-"    6 - Kelvin to Farenheit\n"
-"Type: "
-msgstr ""
-"OPTIONS : \n"
-"    1 - Fahrenheit en Celsius\n"
-"    2 - Celsius en Fahrenheit\n"
-"    3 - Fahrenheit en Kelvin\n"
-"    4 - Celsius en Kelvin\n"
-"    5 - Kelvin en Celsius\n"
-"    6 - Kelvin en Fahrenheit\n"
-"Saisie : "
-
-#: mathmod/func.py:244 mathmod/func.py:257
-msgid "Please enter the FAHRENHEIT temperature: "
-msgstr "Veuillez entrer la température en degré FARENHEIT: "
-
-#: mathmod/func.py:251 mathmod/func.py:265
-msgid "Please enter the CELSIUS temperature: "
-msgstr "Veuillez entrer la température en degré CELSIUS : "
-
-#: mathmod/func.py:269 mathmod/func.py:273
-msgid "Please enter the KELVIN temperature: "
-msgstr "Veuillez entrer la température en degré KELVIN : "
-
-#: mathmod/func.py:280
-msgid "Invalid response."
-msgstr "Saisie invalide."
-
-#: palc.py:82
+#: palc.py:84
 msgid ""
 "I can't access the file parsefunc.py. This file is necessary for proper "
 "function of the Software."
@@ -584,23 +547,23 @@ msgstr ""
 "Impossible d'accéder au fichier parsefunc.py. Ce fichier est nécessaire pour "
 "le bon fonctionnement du logiciel."
 
-#: palc.py:108
+#: palc.py:98
 msgid ""
-"I can't access either basicfunc.py or func.py. Or maybe both. This file is "
-"necessary for proper function of the Software."
+"I can't access func.py. This file is necessary for proper function of the "
+"Software."
 msgstr ""
-"Impossible d'accéder au fichier basicfunc.py ou func.py. Ou peut-etre les "
-"deux. Ce fichier est nécessaire pour le bon fonctionnement du logiciel."
+"Impossible d'accéder au fichier func.py. Ce fichier est nécessaire pour le "
+"bon fonctionnement du logiciel."
 
-#: palc.py:110
+#: palc.py:100
 msgid "Loading...............\n"
 msgstr "Chargement...\n"
 
-#: palc.py:114
+#: palc.py:104
 msgid "Press any key to continue..."
 msgstr "Appuyer sur une touche pour continuer…"
 
-#: palc.py:117
+#: palc.py:107
 msgid ""
 "What calculation do you wish to do? (Type `?' for a list of commands)\n"
 "Type: "
@@ -610,50 +573,50 @@ msgstr ""
 "Saisie : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:124
+#: palc.py:114
 msgid "help"
 msgstr "aide"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:128
+#: palc.py:118
 msgid "tax"
 msgstr "taxe"
 
-#: palc.py:129
+#: palc.py:119
 msgid "calculate tax"
 msgstr "calculer une taxe"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:132
+#: palc.py:122
 msgid "sq"
 msgstr "carre"
 
-#: palc.py:133 palc.py:138
+#: palc.py:123 palc.py:128
 msgid "square a number"
 msgstr "élever un nombre au carré"
 
-#: palc.py:134 palc.py:139
+#: palc.py:124 palc.py:129
 msgid "Number to square? "
 msgstr "Nombre à mettre au carré? "
 
-#: palc.py:144 palc.py:147
+#: palc.py:134 palc.py:137
 msgid "divide a number"
 msgstr "diviser un nombre"
 
-#: palc.py:151 palc.py:154 palc.py:157
+#: palc.py:141 palc.py:144 palc.py:147
 msgid "subtract a number from a number"
 msgstr "soustraire un nombre par un nombre"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:153
+#: palc.py:143
 msgid "sub"
 msgstr "sous"
 
-#: palc.py:161 palc.py:164 palc.py:167
+#: palc.py:151 palc.py:154 palc.py:157
 msgid "add two numbers"
 msgstr "additionne deux nombres"
 
-#: palc.py:171
+#: palc.py:161
 msgid ""
 "1 - Find the remainder of two numbers after division\n"
 "2 - Use the percentage calculator.\n"
@@ -663,11 +626,11 @@ msgstr ""
 "2 - Utiliser la calculatrice pourcentage\n"
 "Autre chose - Retour au menu."
 
-#: palc.py:174
+#: palc.py:164
 msgid "Type: "
 msgstr "Tapez: "
 
-#: palc.py:178 palc.py:307
+#: palc.py:168 palc.py:299
 #, python-format
 msgid ""
 "1 - Calculate \"What is x% of y?\"\n"
@@ -678,43 +641,43 @@ msgstr ""
 "2 - Convertir un nombre en pourcentage.\n"
 "Saisie : "
 
-#: palc.py:186 palc.py:315
+#: palc.py:176 palc.py:307
 msgid "You didn't type a valid answer. Abort."
 msgstr "Vous n'avez pas saisi une réponse valide. Annulation."
 
 # Old source text:
 # Going back...
-#: palc.py:189
+#: palc.py:179
 msgid "going back."
 msgstr "retour au menu..."
 
-#: palc.py:192
+#: palc.py:182
 msgid "find the remainder of two numbers after division"
 msgstr "trouver le reste de deux numéros après la division"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:195
+#: palc.py:185
 msgid "area"
 msgstr "aire"
 
-#: palc.py:196 palc.py:199
+#: palc.py:186 palc.py:189
 msgid "calculate area"
 msgstr "calculer une aire"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:202
+#: palc.py:192
 msgid "vol"
 msgstr "vol"
 
-#: palc.py:203
+#: palc.py:193
 msgid "use the volume calculator"
 msgstr "utiliser la calculatrice volume"
 
-#: palc.py:207 palc.py:214
+#: palc.py:197 palc.py:204
 msgid "cube a number"
 msgstr "élever un nombre au cube"
 
-#: palc.py:208 palc.py:215
+#: palc.py:198 palc.py:205
 msgid ""
 "\n"
 "Type the number to be cubed: "
@@ -723,29 +686,29 @@ msgstr ""
 "Saisissez le nombre à mettre au cube : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:213
+#: palc.py:203
 msgid "cube"
 msgstr "cube"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:221 palc.py:222
+#: palc.py:211 palc.py:212
 msgid "quit"
 msgstr "quitter"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:226
+#: palc.py:216
 msgid "exit"
 msgstr "quitter"
 
-#: palc.py:231 palc.py:234 palc.py:237
+#: palc.py:221 palc.py:224 palc.py:227
 msgid "use the exponent function"
 msgstr "utiliser la fonction exposant"
 
-#: palc.py:241 palc.py:244 palc.py:247
+#: palc.py:231 palc.py:234 palc.py:237
 msgid "multiply a number"
 msgstr "multiplier un nombre"
 
-#: palc.py:251
+#: palc.py:241
 msgid ""
 "The \"cube twice\" feature was discontinued as it was pointless. Sorry for "
 "the inconvenience."
@@ -753,15 +716,15 @@ msgstr ""
 "La fonction << cube deux fois >> a ete supprime car c'est bete. Desole."
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:254
+#: palc.py:244
 msgid "root"
 msgstr "racine"
 
-#: palc.py:255
+#: palc.py:245
 msgid "use the root function (opposite of exponents)"
 msgstr "utiliser la fonction racine (opposé d'exposant)"
 
-#: palc.py:256
+#: palc.py:246
 msgid ""
 "Square root or cube root? (square/cube)\n"
 "Type: "
@@ -770,22 +733,22 @@ msgstr ""
 "Saisie : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:257
+#: palc.py:247
 msgid "square"
 msgstr "carre"
 
-#: palc.py:262
+#: palc.py:252
 msgid ""
 "Currently I don't support the root you chose. Hopefully this will change :D"
 msgstr ""
 "Pour le moment je ne supporte pas la racine que vous voulez. J'espère que ça "
 "va changer :D"
 
-#: palc.py:266
+#: palc.py:256
 msgid "use the equals function (completely useless)"
 msgstr "utiliser la fonction égale (complètement inutile)"
 
-#: palc.py:267
+#: palc.py:257
 msgid ""
 "\n"
 "Type in a number: "
@@ -793,28 +756,32 @@ msgstr ""
 "\n"
 "Saisissez un nombre : "
 
-#: palc.py:269
+#: palc.py:259
 msgid "=42 -- the answer to life, the universe, and everything"
 msgstr ""
 "=42 -- la réponse de la grande question sur la vie, l'univers et le reste"
 
-#: palc.py:272
-msgid "Do you really need a calculator for this?"
-msgstr "Vous avez vraiment besoin d'une calculatrice pour ça ?"
+#: palc.py:262
+msgid "Calculating..."
+msgstr "Calculation en progres..."
 
-#: palc.py:276
+#: palc.py:264
+msgid "ERROR: Too big of a number, timed out!"
+msgstr "ERREURE : Trop grand, il prend trop du temps"
+
+#: palc.py:268
 msgid "convert number systems"
 msgstr "convertir les systèmes de bases numérique"
 
-#: palc.py:280
+#: palc.py:272
 msgid "ord a character"
 msgstr "\"ord\" un caractère"
 
-#: palc.py:281
+#: palc.py:273
 msgid "Type in the character to ord: "
 msgstr "Saisissez le caractère à 'ord' : "
 
-#: palc.py:283
+#: palc.py:275
 #, python-format
 msgid ""
 "The result is: \n"
@@ -824,19 +791,19 @@ msgstr ""
 "%s"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:285
+#: palc.py:277
 msgid "log"
 msgstr "log"
 
-#: palc.py:286
+#: palc.py:278
 msgid "use the logarithm function"
 msgstr "utiliser la fonction logarithme"
 
-#: palc.py:290
+#: palc.py:282
 msgid "use the memory function"
 msgstr "utiliser la fonction mémoire"
 
-#: palc.py:291
+#: palc.py:283
 msgid ""
 "Would you like to set the memory or recall? (set / recall)\n"
 "Type: "
@@ -846,56 +813,56 @@ msgstr ""
 "Saisie : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:292
+#: palc.py:284
 msgid "set"
 msgstr "ecrire"
 
 # This is a translated if statement. DO NOT ADD ACCENTS (as some people dont add them), and make sure to keep a key word inside.
-#: palc.py:294
+#: palc.py:286
 msgid "recall"
 msgstr "lire"
 
-#: palc.py:297
+#: palc.py:289
 msgid ""
 "You did not type an answer.\n"
 "Abort."
 msgstr "Vous n'avez pas saisi une réponse valide. Annulation."
 
-#: palc.py:301
+#: palc.py:293
 msgid "use the fibonacci calculator"
 msgstr "utiliser la fonction fibonacci"
 
-#: palc.py:302
+#: palc.py:294
 msgid "Starting fibonacci sequence. Please wait."
 msgstr "Démarrage de la séquence Fibonacci. Veuillez patienter."
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:305
+#: palc.py:297
 msgid "percent"
 msgstr "pourcent"
 
-#: palc.py:306
+#: palc.py:298
 msgid "use the percentage function"
 msgstr "utiliser la fonction pourcentage"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:318
+#: palc.py:310
 msgid "interest"
 msgstr "interet"
 
-#: palc.py:319
+#: palc.py:311
 msgid "use the interest calculator"
 msgstr "utiliser le calculateur d'intérêt"
 
-#: palc.py:323
+#: palc.py:315
 msgid "use the temperature converter"
 msgstr "utiliser le convertisseur de température"
 
-#: palc.py:327
+#: palc.py:320
 msgid "use the converter functions"
 msgstr "utiliser les convertisseurs"
 
-#: palc.py:328
+#: palc.py:321
 msgid ""
 "1 - Convert temperature units\n"
 "Type: "
@@ -903,19 +870,23 @@ msgstr ""
 "1 - Convertir les unités de température\n"
 "Saisie : "
 
-#: palc.py:334
+#: palc.py:325
+msgid "Not developed yet, but maybe soon! :D"
+msgstr "Pas developpe, mais peut-etre une jour... :D"
+
+#: palc.py:330
 msgid "I can't heeeeaaaarrrrrr yooooouuuuuuuu"
 msgstr "Je ne peux pas enteeeeennnnndre toiiiiiii"
 
-#: palc.py:337
+#: palc.py:333
 msgid "You speak quietly"
 msgstr "Tu parles doux"
 
-#: palc.py:340
+#: palc.py:336
 msgid "I can't heeeaaaarrrrr youuuuuuuu"
 msgstr "Je ne peux pas enteeeeennnnndre toiiiiiii"
 
-#: palc.py:343
+#: palc.py:339
 msgid ""
 "\n"
 "I don't understand your request. Here are the currently supported "
@@ -935,11 +906,11 @@ msgstr ""
 "(IMPORTANT : N'AJOUTEZ PAS LES ACCENTS AUX COMMANDES, AUTREMENT CELA NE "
 "FONCTIONNERA PAS)\n"
 
-#: palc.py:351
+#: palc.py:347
 msgid "Welcome to Palc!"
 msgstr "Bienvenue dans Palc !"
 
-#: palc.py:361
+#: palc.py:357
 msgid ""
 "\n"
 "Note that you CAN type `quit' instead of pressing the interrupt key"
@@ -947,7 +918,7 @@ msgstr ""
 "\n"
 "Vous pouvez saisir `quitter' plutôt que ^C..."
 
-#: palc.py:365
+#: palc.py:361
 msgid ""
 "\n"
 "Why ^D? Why not just type `quit'?"
@@ -955,11 +926,11 @@ msgstr ""
 "\n"
 "Pourquoi ^D ? Pourquoi pas juste `quitter' ?"
 
-#: palc.py:373
+#: palc.py:369
 msgid "\aERROR!\a"
 msgstr "\aERREUR !\a"
 
-#: palc.py:377
+#: palc.py:373
 msgid ""
 "You typed in an invalid integer or float. Or maybe the program needs "
 "debugging. Either way, it's a pretty big error."
@@ -967,15 +938,15 @@ msgstr ""
 "Soit vous avez entré un nombre invalide, soit le logiciel a besoin d'être "
 "débogué. En tout cas, il s'agit d'une une erreur importante."
 
-#: palc.py:379
+#: palc.py:375
 msgid "Looks like you exited."
 msgstr "Vous quittez Palc."
 
-#: palc.py:386
+#: palc.py:382
 msgid "\aUnknown Error!\a"
 msgstr "\aErreur inconnue !\a"
 
-#: palc.py:391
+#: palc.py:387
 msgid ""
 "An unknown error occured. Please file an Issue at github.com/thetechrobo/"
 "support."
@@ -983,12 +954,12 @@ msgstr ""
 "Une erreur s'est produite. Veuillez soumettre un billet sur github.com/"
 "thetechrobo/support."
 
-#: parsefunc.py:23 parsefunc.py:40 parsefunc.py:57 parsefunc.py:74
-#: parsefunc.py:92 parsefunc.py:109
+#: parsefunc.py:22 parsefunc.py:39 parsefunc.py:56 parsefunc.py:73
+#: parsefunc.py:91 parsefunc.py:108
 msgid "ERRID 3: One or more of your numbers was not a number."
 msgstr "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre."
 
-#: parsefunc.py:24
+#: parsefunc.py:23
 #, python-format
 msgid ""
 "ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)"
@@ -996,8 +967,8 @@ msgstr ""
 "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre. (Dump: n1=%s, "
 "n2=%s)"
 
-#: parsefunc.py:29 parsefunc.py:46 parsefunc.py:63 parsefunc.py:82
-#: parsefunc.py:97 parsefunc.py:114
+#: parsefunc.py:28 parsefunc.py:45 parsefunc.py:62 parsefunc.py:81
+#: parsefunc.py:96 parsefunc.py:113
 msgid ""
 "An exception was raised!\n"
 "ValueError\n"
@@ -1005,12 +976,12 @@ msgstr ""
 "Une erreur a se passe ! \n"
 "ValueError\n"
 
-#: parsefunc.py:31 parsefunc.py:48 parsefunc.py:65 parsefunc.py:85
+#: parsefunc.py:30 parsefunc.py:47 parsefunc.py:64 parsefunc.py:84
 #, python-format
 msgid "The response is...%s"
 msgstr "L'aire est...%s"
 
-#: parsefunc.py:41 parsefunc.py:58 parsefunc.py:75 parsefunc.py:93
+#: parsefunc.py:40 parsefunc.py:57 parsefunc.py:74 parsefunc.py:92
 #, python-format
 msgid ""
 "ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)"
@@ -1018,24 +989,24 @@ msgstr ""
 "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre. (Dump: n1=%s, "
 "n2=%s)"
 
-#: parsefunc.py:90
+#: parsefunc.py:89
 msgid "Number to be rooted? "
 msgstr "Nombre ? "
 
-#: parsefunc.py:101 parsefunc.py:117
+#: parsefunc.py:100 parsefunc.py:116
 #, python-format
 msgid "The answer is... %s"
 msgstr "Le résultat est ... %s"
 
-#: parsefunc.py:103
+#: parsefunc.py:102
 msgid "Original number?"
 msgstr "Saisissez le nombre d'origine : "
 
-#: parsefunc.py:104
+#: parsefunc.py:103
 msgid "Exponent? "
 msgstr "Saisissez l'exposant : "
 
-#: parsefunc.py:110
+#: parsefunc.py:109
 #, python-format
 msgid ""
 "ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)"
@@ -1043,16 +1014,16 @@ msgstr ""
 "Erreure id 3: Un ou plus de tes nombres n'etais pas un nombre. (Dump: origin="
 "%s, ex=%s)"
 
-#: parsefunc.py:120
+#: parsefunc.py:119
 msgid "Number to be rooted?"
 msgstr "Nombre dont vous souhaitez obtenir la racine ?"
 
-#: parsefunc.py:122
+#: parsefunc.py:121
 #, python-format
 msgid "That equals... %s"
 msgstr "Le résultat est ... %s"
 
-#: parsefunc.py:128
+#: parsefunc.py:126
 msgid ""
 "\n"
 "Current list of commands: multiplication, division, addition, square, "
@@ -1075,6 +1046,47 @@ msgstr ""
 "calculator\n"
 "(IMPORTANT : N'AJOUTEZ PAS LES ACCENTS AUX COMMANDES, AUTREMENT CELA NE "
 "FONCTIONNERA PAS) "
+
+#: parsefunc.py:138
+msgid ""
+"Would you like...\n"
+"1 - Calculate a fixed amount of fibonacci numbers.\n"
+"2 - Calculate fibonacci indefinitely."
+msgstr ""
+"1 - Calculer une montant fixe du fibonacci.\n"
+"2 - Calculer fibonacci au infinite"
+
+#: parsefunc.py:140
+msgid "Fixed it is."
+msgstr "J'utilise fixe."
+
+#: parsefunc.py:142
+msgid "How many numbers of fibonacci would you like to calculate?"
+msgstr "Quel est le montant des nombres de fibonacci que tu veux calculer ? "
+
+#: parsefunc.py:145
+msgid "Your fibonacci numbers were..."
+msgstr "Tes nombres de fibonacci a ete..."
+
+#: parsefunc.py:150
+msgid "Looped it is."
+msgstr "J'utilise infinite."
+
+#: parsefunc.py:160 parsefunc.py:173
+msgid "Please enter the FAHRENHEIT temperature: "
+msgstr "Veuillez entrer la température en degré FARENHEIT: "
+
+#: parsefunc.py:167 parsefunc.py:181
+msgid "Please enter the CELSIUS temperature: "
+msgstr "Veuillez entrer la température en degré CELSIUS : "
+
+#: parsefunc.py:185 parsefunc.py:189
+msgid "Please enter the KELVIN temperature: "
+msgstr "Veuillez entrer la température en degré KELVIN : "
+
+#: parsefunc.py:196
+msgid "Invalid response."
+msgstr "Saisie invalide."
 
 #: volInteractive.py:10
 msgid "What length is the side of the cube? "
@@ -1181,6 +1193,35 @@ msgstr ""
 "14 - Pyramide a base pentagonale\n"
 "15 - Pyramide a base hexagonale"
 
+#~ msgid ""
+#~ "OPTIONS:\n"
+#~ "    1 - Farenheit to Celsius\n"
+#~ "    2 - Celsius to Farenheit\n"
+#~ "    3 - Farenheit to Kelvin\n"
+#~ "    4 - Celsius to Kelvin\n"
+#~ "    5 - Kelvin to Celsius\n"
+#~ "    6 - Kelvin to Farenheit\n"
+#~ "Type: "
+#~ msgstr ""
+#~ "OPTIONS : \n"
+#~ "    1 - Fahrenheit en Celsius\n"
+#~ "    2 - Celsius en Fahrenheit\n"
+#~ "    3 - Fahrenheit en Kelvin\n"
+#~ "    4 - Celsius en Kelvin\n"
+#~ "    5 - Kelvin en Celsius\n"
+#~ "    6 - Kelvin en Fahrenheit\n"
+#~ "Saisie : "
+
+#~ msgid ""
+#~ "I can't access either basicfunc.py or func.py. Or maybe both. This file "
+#~ "is necessary for proper function of the Software."
+#~ msgstr ""
+#~ "Impossible d'accéder au fichier basicfunc.py ou func.py. Ou peut-etre les "
+#~ "deux. Ce fichier est nécessaire pour le bon fonctionnement du logiciel."
+
+#~ msgid "Do you really need a calculator for this?"
+#~ msgstr "Vous avez vraiment besoin d'une calculatrice pour ça ?"
+
 #~ msgid "The \" CUBE TWICE \" feature was discontinued."
 #~ msgstr "La fonctionnalité \"CUBE DEUX FOIS\" a été supprimée."
 
@@ -1260,9 +1301,6 @@ msgstr ""
 
 #~ msgid "There may have been details before the word `ERROR!'. Check that."
 #~ msgstr "Peut-être des détails du erreur sont avant le mot `ERREURE ! '."
-
-#~ msgid "Sine it is!"
-#~ msgstr "J'utilise cosine ! "
 
 #~ msgid "Inverse it is!"
 #~ msgstr "J'utilise l'inverse cosine ! "
