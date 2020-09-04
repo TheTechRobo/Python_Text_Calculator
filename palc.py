@@ -11,7 +11,7 @@ OTHER STUFF
 CREATED BY: lewiswatson55
 FORKED BY: TheTechRobo
 CONTRIBUTORS: See contributors.md
-LICENSE: DBAD Clean
+LICENSE: DBAD Clean v.1.2 (found in LICENSE.md)
 """
 import six
 if not six.PY3:
