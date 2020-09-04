@@ -215,13 +215,13 @@ class Temperature:
             cprint.err(_("Invalid response."))
             logging.error("User typed invalid temperature answer %s" % hi)
 class Percentage:
-    def whatIsPercent():
+    def percentage1():
         origin = float(input(_("What is the ORIGINAL NUMBER? ")))
         percent = float(input(_("What is the PERCENTAGE? ")))
         logging.info("Got percentage RN origin %s percent %s" % (origin, percent))
         cprint.info(_("That equals..."))
         cprint.info(whatIsXPercentOf(percent, origin))
-    def getPercentageRN():
+    def percentage2():
         origin = float(input(_("What is the number that would be 100%? ")))
         part = float(input(_("What is the number that you want to convert to percentage (i.e. this number out of the number that would be 100%)? ")))
         logging.info("Got percentage RN origin %s and %s" % (origin, part))
