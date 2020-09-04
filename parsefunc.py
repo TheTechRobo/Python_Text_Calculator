@@ -152,3 +152,56 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             logging.info("About to run looped fibonacci")
             CalculateLoopedFibo()
         logging.info("User ran fibonacci function")
+    class Temperature:
+        pass
+def tempCalc():
+    """
+    Should move to class Temperature later, but im lazy.
+    """
+    hi = int(input(_('''OPTIONS:
+    1 - Farenheit to Celsius
+    2 - Celsius to Farenheit
+    3 - Farenheit to Kelvin
+    4 - Celsius to Kelvin
+    5 - Kelvin to Celsius
+    6 - Kelvin to Farenheit
+Type: ''')))
+    if hi == 1:
+        hello = float(input(_("Please enter the FAHRENHEIT temperature: ")))
+        #howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+        yolo = hello - 32
+        yolo = yolo * 5/9
+        cprint.info(_("That equals...\n%s" % yolo))
+        logging.info("User did F to C with F=%s, result=%s" % (hello, yolo))
+    elif hi == 2:
+        howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+        yolo = howdy * 9/5
+        yolo = yolo + 32
+        cprint.info(_("That equals...\n%s" % yolo))
+        logging.info("User did C to F with C=%s, result=%s" % (howdy, yolo))
+    elif hi == 3:
+        salut = float(input(_("Please enter the FAHRENHEIT temperature: ")))
+        #convert to celsius
+        yolo = salut - 32
+        yolo = yolo * 5/9
+        #convert from celsius to kelvin
+        yolo = yolo + 273.15
+        cprint.info(_("That equals...\n%s" % yolo))
+    elif hi == 4:
+        howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+        yolo = howdy + 273.15 #convert to kelvin
+        cprint.info(_("That equals...\n%s" % yolo))
+    elif hi == 5:
+        ciao = float(input(_("Please enter the KELVIN temperature: ")))
+        yolo = ciao - 273.15 #do the opposite of celsius to kelvin
+        cprint.info(_("That equals...\n%s" % yolo))
+    elif hi == 6:
+        ciao = float(input(_("Please enter the KELVIN temperature: ")))
+        yolo = ciao - 273.15
+        yolo = yolo * 9/5
+        yolo = yolo + 32
+        cprint.info(_("That equals...\n%s" % yolo))
+    # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
+    else:
+        cprint.err(_("Invalid response."))
+        logging.error("User typed invalid temperature answer %s" % hi)
