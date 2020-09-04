@@ -141,11 +141,3 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         logging.info("About to run fibonacci")
         CalculateLoopedFibo()
         logging.info("User ran fibonacci function")
-
-"""
-Will be removed in a future update!
-"""
-uc = misc.vol
-area = misc.area
-fib = misc.fib
-h = misc.h
