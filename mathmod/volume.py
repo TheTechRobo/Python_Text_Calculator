@@ -13,7 +13,6 @@ def vol_cube(a: int) -> 'volume':
     '''
     volume = pow(a, 3)
     logging.info("User ran Cuvolu(m) a=%s answer=%s" % (a, volume))
-    
     return volume
 
 #CUBOID
@@ -28,7 +27,6 @@ def vol_cuboid(l: int, b: int, h: int) -> 'volume':
     '''
     volume = l * b * h
     logging.info("User ran Triangle Pyramid Volume l=%s b=%s h=%s answer=%s" % (l, b, h, volume))
-    
     return volume
 
 #CYLINDER
@@ -41,7 +39,6 @@ def vol_cylinder(r: int, h: int) -> 'volume':
     '''
     volume = pi * pow(r, 2) * h
     logging.info("User ran Triangle Pyramid Volume r=%s h=%s answer=%s" % (r, h, volume))
-    
     return volume
 
 #HOLLOW CYLINDER
@@ -55,7 +52,6 @@ def vol_hollow_cylinder(ro: int, rs: int, h: int) -> 'volume':
     '''
     volume = 2 * pi * (ro + rs) * h
     logging.info("User ran Hollowcylinder Volume ro=%s rs=%s h=%s answer=%s" % (ro, rs, h, volume))
-    
     return volume
 
 #CONE
@@ -68,7 +64,6 @@ def vol_cone(r: int, h: int) -> 'volume':
     '''
     volume = 1 / 3 * pi / pow(r, 2) * h
     logging.info("User ran Conevol r=%s h=%s answer=%s" % (r, h, volume))
-    
     return volume
 
 #SPHERE
@@ -80,7 +75,6 @@ def vol_sphere(r: int) -> 'volume':
     '''
     volume = 4 / 3 * pi * pow(r, 3)
     logging.info("User ran sphere Volume r=%s answer=%s" % (r, volume))
-    
     return volume
 
 #HOLLOW SPHERE
@@ -93,7 +87,6 @@ def vol_hollow_sphere(ro: int, rs: int) -> 'volume':
     '''
     volume = 4 / 3 * pi * (pow(ro, 3) - pow(rs, 3))
     logging.info("User ran Hollowsphere Volume ro=%s rs=%s answer=%s" % (ro, rs, volume))
-    
     return volume
 
 #BASE TRIANGLE PRISM
@@ -106,7 +99,6 @@ def vol_tri_prism(a: int, h: int) -> 'volume':
     '''
     volume = (sqrt(3) / 4 * pow(a, 2)) * h
     logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-    
     return volume
 
 #PRISM BASE PENTAGON
@@ -119,7 +111,6 @@ def vol_penta_prism(a: int, h: int) -> 'volume':
     '''
     volume = (sqrt(3) * pow(a, 2)) * h
     logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
-    
     return volume
 
 #PRISM WITH A HEXAGON BASE
@@ -144,7 +135,6 @@ def vol_sqr_pyramid(a: int, h: int) -> 'volume':
     '''
     volume = (1 / 3 * h) * pow(a, 2)
     logging.info("User ran Square Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-    
     return volume
 
 #PYRAMID WITH A TRIANGULAR BASE
@@ -157,7 +147,6 @@ def vol_tri_pyramid(a: int, h: int) -> 'volume':
     '''
     volume = 1 / 3 * h * (sqrt(3) / 4 * pow(a, 2))
     logging.info("User ran Triangle Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-    
     return volume
 
 #PYRAMID WITH A PENTAGON BASE
@@ -170,7 +159,6 @@ def vol_penta_pyramid(a: int, h: int) -> 'volume':
     '''
     volume = 1 / 3 * h * (sqrt(3) * pow(a, 2))
     logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-    
     return volume
 
 #PYRAMID WITH A HEXAGON BASE
