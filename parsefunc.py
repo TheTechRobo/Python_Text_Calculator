@@ -135,8 +135,8 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
         AreaMain()
     def fib():
-        hi = int(input(_("Would you like...\n1 - Looped Fibonacci\n2 - Calculate a fixed amount of fibonacci numbers.")))
-        if hi[0] == 1:
+        hi = int(input(_("Would you like...\n1 - Calculate a fixed amount of fibonacci numbers.\n2 - Calculate fibonacci indefinitely.")))
+        if hi[0] == 2:
             cprint.info(_("Looped it is."))
             from mathmod.fibonacci import CalculateLoopedFibo
             logging.info("About to run looped fibonacci")
