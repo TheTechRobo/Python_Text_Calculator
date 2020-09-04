@@ -74,13 +74,12 @@ try:
 except Exception as ename:
     logging.info("This is not necessary to be logged, but exception %s occured while installing translations" % ename)
 #import func and basicfunc
-logging.info("Attempting to import func.py and basicfunc.py and parsefunc.py (DEPRECATION WARNING: Later func and basicfunc will not be necessary.)")
+logging.info("Attempting to import func.py and parsefunc.py (DEPRECATION WARNING: Later func and basicfunc will not be necessary.)")
 try:
     from parsefunc import *
 except Exception as e:
     logging.critical("Could not access file parsefunc.py (%s)" % e)
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
-logging.info("Successfully imported func.py")
 try:
     if ignore[0] == "y":
         import mathmod.func as f
@@ -101,12 +100,11 @@ try:
 except Exception as ename:
     logging.info("Errored Running *.main(_) (errid %s)" % ename)
 try:
-    from mathmod.basicfunc import *
     from mathmod.func import *
-except Exception as e:
-    logging.critical("Could Not Access either basicfunc.py or func.py (%s)" % e)
-    cprint.fatal(_("I can't access either basicfunc.py or func.py. Or maybe both. This file is necessary for proper function of the Software."), interrupt=True)
-logging.info("Successfully imported basicfunc.py!")
+except Exception as ename:
+    logging.critical("Could Not Access func.py (%s)" % ename)
+    cprint.fatal(_("I can't access func.py. This file is necessary for proper function of the Software."), interrupt=True)
+logging.info("Successfully imported func.py!")
 cprint.ok(_("Loading...............\n"))
 time.sleep(2)
 def palc():
@@ -120,10 +118,10 @@ def palc():
 #HELP
        if "?" in calc:
            logging.info("User needed help")
-           h()
+           misc.h()
        elif _("help") in calc:
            logging.info("User needed help")
-           h()
+           misc.h()
 #TAX
        elif _("tax") in calc:
             showUserWhatIThink(_("calculate tax"))
@@ -194,14 +192,14 @@ Type: ''')))
 #AREA
        elif _("area") in calc:
             showUserWhatIThink(_("calculate area"))
-            area()
+            misc.area()
        elif "#" in calc:
             showUserWhatIThink(_("calculate area"))
-            area()
+            misc.area()
 #VOLUME
        elif _("vol") in calc:
             showUserWhatIThink(_("use the volume calculator"))
-            uc()
+            misc.vol()
 #CUBE
        elif "{}" in calc:
             showUserWhatIThink(_("cube a number"))
@@ -300,7 +298,7 @@ Type: ''')))
        elif "fib" in calc:
             showUserWhatIThink(_("use the fibonacci calculator"))
             cprint.ok(_("Starting fibonacci sequence. Please wait."))
-            fib()
+            misc.fib()
 #PERCENTAGE
        elif _("percent") in calc: #SOURCE: https://stackoverflow.com/a/5998010/9654083
             showUserWhatIThink(_("use the percentage function"))
