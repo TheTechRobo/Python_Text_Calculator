@@ -313,13 +313,17 @@ Type: ''')))
 #TEMPERATURE
        elif "temperature" in calc:
             showUserWhatIThink(_("use the temperature converter"))
-            tempCalc()
+            Temperature.tempCalc()
 #CONVERSIONS
        elif "conver" in calc:
+            logging.info("use the converter functions")
             showUserWhatIThink(_("use the converter functions"))
             conversion = int(input(_("1 - Convert temperature units\nType: ")))
             if conversion == 1:
-                tempCalc()
+                Temperature.tempCalc()
+            else:
+                cprint.err(_("Not developed yet, but maybe soon! :D"))
+                logging.info("User typed %s into conver functions but Non Existent." % conversion)
 #OTHERWISE
        elif calc == "":
             logging.error("User attempted to type nothing as a command")
