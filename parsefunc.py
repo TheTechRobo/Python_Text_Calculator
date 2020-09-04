@@ -227,3 +227,14 @@ class Percentage:
         logging.info("Got percentage RN origin %s and %s" % (origin, part))
         cprint.info(_("That equals..."))
         cprint.info(findPercentage(part, origin))
+    def chooseOneTwo():
+        chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
+2 - Convert a number to percentage (i.e. how much percent of ___ is ___?).
+Type: ''')))
+        if chosenPercentageCalc == 1:
+            Percentage.percentage1()
+        elif chosenPercentageCalc == 2:
+            Percentage.percentage2()
+        else:
+            cprint.err(_("You didn't type a valid answer. Abort."))
+            logging.info("User did not answer correct percentage interpretation")
