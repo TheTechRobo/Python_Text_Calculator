@@ -1,68 +1,95 @@
 from mathmod.volume import *
 from modules.cprint import cprint
 import logging
-logging.info("Launched volinteractive.")
+logging.info("Launched volInteractive.")
 def main(Comandeer):
     global _
     _ = Comandeer
 
 def cuvol():
     a = float(input(_("What length is the side of the cube? ")))
-    cprint.info(_("The volume is: %s" % vol_cube(a)))
+    volume = vol_cube(a)
+    logging.info("User ran Cuvolu(m) a=%s answer=%s" % (a, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def cuboid():
     b = float(input(_("What length is the breadth of the cuboid? ")))
     h = float(input(_("What length is the height of the cuboid? ")))
     l = float(input(_("What length is the cuboid? ")))
-    cprint.info(_("The volume is: %s" % vol_cuboid(b=b, h=h, l=l)))
+    volume = vol_cuboid(b=b, h=h, l=l)
+    logging.info("User ran Cuboid Volume l=%s b=%s h=%s answer=%s" % (l, b, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def cylindervol():
     r = float(input(_("What is the radius of the cylinder? ")))
-    h = float(input(_("what is the height of the cylinder? ")))
-    cprint.info(_("The volume is: %s" % vol_cylinder(r=r, h=h)))
+    h = float(input(_("What is the height of the cylinder? ")))
+    volume = vol_cylinder(r=r, h=h)
+    logging.info("User ran Cylinder Volume r=%s h=%s answer=%s" % (r, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def hollow_cylinder():
     ro = float(input(_("What is the radius of the hollow space? ")))
     rs = float(input(_("What is the radius of the cylinder? ")))
     h = float(input(_("What is the height of the cylinder? ")))
-    cprint.info(_("The volume is: %s" % vol_hollow_cylinder(ro=ro, rs=rs, h=h)))
+    volume = vol_hollow_cylinder(ro=ro, rs=rs, h=h)
+    logging.info("User ran Hollowcylinder Volume ro=%s rs=%s h=%s answer=%s" % (ro, rs, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def cone():
     r = float(input(_("What is the radius of the cone? ")))
     h = float(input(_("What is the height of the cone? ")))
-    cprint.info(_("The volume is: %s" % vol_cone(r=r, h=h)))
+    volume = vol_cone(r=r, h=h)
+    logging.info("User ran Conevol r=%s h=%s answer=%s" % (r, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def sphere():
     r = float(input(_("What is the radius of the sphere? ")))
-    cprint.info(_("The volume is: %s" % vol_sphere(r)))
-    vol_sphere(r)
+    volume = vol_sphere(r)
+    logging.info("User ran sphere Volume r=%s answer=%s" % (r, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def hollow_sphere():
     ro = float(input(_("What is the radius of the sphere? ")))
     rs = float(input(_("What is the radius of the hollow space? ")))
-    cprint.info(_("The volume is: %s" % vol_hollow_sphere(ro=ro, rs=rs)))
+    volume = vol_hollow_sphere(ro=ro, rs=rs)
+    logging.info("User ran Hollowsphere Volume ro=%s rs=%s answer=%s" % (ro, rs, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def triprism():
     a = float(input(_("What is the length of the side of the base? ")))
     h = float(input(_("What is the height of the prism? ")))
-    cprint.info(_("The volume is: %s" % vol_tri_prism(a=a, h=h)))
+    volume = vol_tri_prism(a=a, h=h)
+    logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def pentprism():
     a = float(input(_("What is the length of the side of the base? ")))
     h = float(input(_("What is the height of the prism? ")))
-    cprint.info(_("The volume is: %s" % vol_penta_prism(a=a, h=h)))
+    volume = vol_penta_prism(a=a, h=h)
+    logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def hexaprism():
     a = float(input(_("What is the length of the side of the hexagon? ")))
     h = float(input(_("What is the height of the prism? ")))
-    cprint.info(_("The volume is: %s" % vol_hexa_prism(a=a, h=h)))
+    volume = vol_hexa_prism(a=a, h=h)
+    logging.info("User ran Hexagon Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def squiramid():
     a = float(input(_("What is the length of the side of the base? ")))
     h = float(input(_("What is the height of the pyramid? ")))
-    cprint.info(_("The volume is: %s" % vol_sqr_pyramid(a=a, h=h)))
+    volume = vol_sqr_pyramid(a=a, h=h)
+    logging.info("User ran Square Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def triramid():
     a = float(input(_("What is the length of the side of the base? ")))
     h = float(input(_("What is the height of the pyramid? ")))
-    cprint.info(_("The volume is: %s" % vol_tri_pyramid(a=a, h=h)))
+    volume = vol_tri_pyramid(a=a, h=h)
+    logging.info("User ran Triangle Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def pentapyr():
     a = float(input(_("What is the length of the side of the base? ")))
     h = float(input(_("What is the height of the pyramid? ")))
-    cprint.info(_("The volume is: %s" % vol_penta_pyramid(a=a, h=h)))
+    volume = vol_penta_pyramid(a=a, h=h)
+    logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 def hexramid():
     a = float(input(_("What is the length of the side of the base? ")))
     h = float(input(_("What is the height of the pyramid? ")))
-    cprint.info(_("The volume is: %s" % vol_hexa_pyramid(a=a, h=h)))
+    volume = vol_hexa_pyramid(a=a, h=h)
+    logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+    cprint.info(_("The volume is: %s" % volume))
 
 def VolMain():
     cprint.info(_('''Options:
