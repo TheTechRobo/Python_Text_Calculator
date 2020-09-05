@@ -5,6 +5,7 @@ CODE CREDITS
 THANKS TO https://simpleit.rocks/python/how-to-translate-a-python-project-with-gettext-the-easy-way/ and https://inventwithpython.com/blog/2014/12/20/translate-your-python-3-program-with-the-gettext-module/ for their gettext guides!
 THANKS TO @ErdoganOnal for their comment on this SO question: https://stackoverflow.com/questions/61621821/any-secure-alternatives-for-this?noredirect=1#comment109002742_61621821 That comment helped with the Press Any Key To Continue function (UPDATE::: That link is now dead, it is in the file FOR CLEARING THE SCREEN AND PRESS ANY KEY TO CONTINUE.md)
 THANKS TO https://stackoverflow.com/questions/33594958/is-it-possible-to-align-a-print-statement-to-the-center-in-python FOR showing how to ALIGN the PRINT STATEMENT
+THANKS TO https://stackoverflow.com/a/13627881/9654083 for saving me MUCH TROUBLE with codefactor's "editing global before intiialization" or whatever
 
 OTHER STUFF
 ===========
