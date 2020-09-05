@@ -212,3 +212,9 @@ def taxCalc():
     else:
         cprint.err(_("You did not type answer. Abort."))
         logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
+def taxOntario(origin):
+    pass
+def modulo(bigger, smaller):
+    pass
+def logo(base, origin):
+    pass
