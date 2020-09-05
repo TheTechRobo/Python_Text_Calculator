@@ -16,7 +16,7 @@ def getNum(): #ask for two numbers and then return to function
     logging.info("Palc got two numbers: %s and %s" % (n1, n2))
     return n1, n2
 
-def multi(): #multiplication
+def multi(n1, n2): #multiplication
     n1 = float(n1)
     n2 = float(n2)
     return (n1 * n2)
