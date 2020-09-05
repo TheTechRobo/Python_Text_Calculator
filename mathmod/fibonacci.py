@@ -1,3 +1,8 @@
+"""
+TODO:
+Remove logging, it goes in ParseFunc.
+"""
+
 #FIBONACCI
 import time
 import logging
