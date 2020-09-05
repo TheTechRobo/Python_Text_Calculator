@@ -6,12 +6,12 @@ Remove logging, it goes in ParseFunc.
 #FIBONACCI
 import time
 import logging
-try:
-    def main(Comandeer):
-        global _
-        _ = Comandeer
-except Exception as ename:
-    logging.info("During the definition of `main(Commandeer)' (in case there's no translations) in fibo, this error occured: %s" % ename)
+def main(Comandeer):
+    """
+    TODO:
+    Remove (the `Press control c to stop' can be put in parsefunc)
+    """
+    globals()['_'] = Commandeer
 
 def CalculateFixedFibo(amount):
     """
