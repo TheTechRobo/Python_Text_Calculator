@@ -3,8 +3,7 @@ from modules.cprint import cprint
 import logging
 logging.info("Launched volInteractive.")
 def main(Comandeer):
-    global _
-    _ = Comandeer
+    globals()['_'] = Commandeer
 
 def cuvol():
     a = float(input(_("What length is the side of the cube? ")))
