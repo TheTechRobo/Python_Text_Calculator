@@ -2,9 +2,8 @@
 Just a small module to call mathmod's functions and then parse the results.
 """
 
-def main(theThing):
-    global _
-    _ = theThing
+def main(Comandeer):
+    globals()['_'] = Commandeer
 
 from mathmod.func import *
 from mathmod.basicfunc import *
