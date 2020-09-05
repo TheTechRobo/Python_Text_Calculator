@@ -32,19 +32,19 @@ except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
-language = input("English or/ou Francais? (do not add accents to letters/n'ajoute pas les accents aux lettres): ").lower()
-if "francais" in language:
+width = os.get_terminal_size().columns
+for i in range(0, width):
+    print("-", sep="", end="", flush=True)
+cprint.info("1 - English // Anglais\n2 - Francais // French").lower()
+while True:
     try:
-        logging.info("Set language to French")
-        gettext.bindtextdomain('base', localedir="locales")
-        lang_translations = gettext.translation('base',localedir='locales', languages=["fr"])
-    except (FileNotFoundError, IOError):
-        logging.fatal("Could not get translations. This is fatal. (%s)" % ename)
-        cprint.fatal("Could not get translation files! Make sure that the `locales' directory exists!\nJe ne peux pas trouver la dossier `locales' ! ", interrupt=True)
-    except Exception as ename:
-        logging.fatal("Could not get translations. (%s)" % ename)
-        cprint.fatal("Could not load translations!\nJe ne peux pas utiliser les traductions ! ")
-elif "english" in language:
+        language = int(input("Type: "))
+    except ValueError as ename:
+        logging.info("ValueError in language select (%s)" % ename)
+        cprint.err("Invalid input // Entree invalide")
+    if language == 1 or language == 2:
+        break
+if language == 1:
     try:
         logging.info("Set language to English")
         gettext.bindtextdomain('base', localedir="locales")
@@ -67,6 +67,17 @@ elif "english" in language:
             logging.info("User ignored error !")
             def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
                 return theEnglishString
+elif language == 2:
+    try:
+        logging.info("Set language to French")
+        gettext.bindtextdomain('base', localedir="locales")
+        lang_translations = gettext.translation('base',localedir='locales', languages=["fr"])
+    except (FileNotFoundError, IOError):
+        logging.fatal("Could not get translations. This is fatal. (%s)" % ename)
+        cprint.fatal("Could not get translation files! Make sure that the `locales' directory exists!\nJe ne peux pas trouver la dossier `locales' ! ", interrupt=True)
+    except Exception as ename:
+        logging.fatal("Could not get translations. (%s)" % ename)
+        cprint.fatal("Could not load translations!\nJe ne peux pas utiliser les traductions ! ")
 else:
     logging.fatal("USER DID NOT SPECIFY A LANGUAGE, ABORT!")
     cprint.fatal("You did not specify a language. Abort.\nTu n'a pas dit une language supporté.", interrupt=True)
