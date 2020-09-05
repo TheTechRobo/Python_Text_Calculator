@@ -1,16 +1,11 @@
 import logging
 from modules.cprint import cprint
+
 def main(Comandeer):
-    global _
-    _ = Comandeer
+    globals()['_'] = Commandeer
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
-def getNum(): #ask for two numbers and then return to function
-    n1 = int(input(_("Please enter the first number: ")))
-    n2 = int(input(_("Please enter the second number: ")))
-    logging.info("Palc got two numbers: %s and %s" % (n1, n2))
-    return n1, n2
 
 def mod(): #modulo
     try:
