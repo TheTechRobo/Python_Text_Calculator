@@ -3,8 +3,7 @@ from modules.cprint import cprint
 import logging
 logging.info("Launched areaInteractive.")
 def main(Comandeer):
-    global _
-    _ = Comandeer
+    globals()['_'] = Commandeer
 
 def equ_triangle():
     a = float(input(_("What length is the side of the triangle? ")))
