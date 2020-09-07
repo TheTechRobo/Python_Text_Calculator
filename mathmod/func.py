@@ -8,6 +8,7 @@ if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
 
 def mod(): #modulo
+    print("DEPRECATION WARNING - will be replced with built in python soon if i can't find a reason not to")
     try:
         bigger = int(input(_("\nType the first number (greater): ")))
         smaller = int(input(_("Type the second number (smaller): ")))
@@ -21,7 +22,7 @@ def mod(): #modulo
         logging.error("ERROR: attempted to modulo numbers %s and %s, but errored code 2." % (number1, number2))
     else:
         cprint.info(_("\nThat equals...\n%s" % (bigger - smaller * int(bigger / smaller))))
-        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (bigger, smaller, (bigger-smaller*int(bigger/smaller))))
+        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (bigger, smaller, (bigger - smaller * int(bigger / smaller))))
         print()
 def base():
     """Will be improved "later"."""
