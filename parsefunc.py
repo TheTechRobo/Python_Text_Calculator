@@ -138,7 +138,7 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         if hi[0] == 1:
             cprint.info(_("Fixed it is."))
             from mathmod.fibonacci import CalculateFixedFibo
-            amount = int(input(_("How many numbers of fibonacci would you like to calculate?")))
+            amount = int(input(_("How many numbers of fibonacci would you like to calculate? ")))
             logging.info("About to run fixed fibonacci (amount=%s)" % amount)
             finalProduct = CalculateFixedFibo(amount)
             cprint.info(_("Your fibonacci numbers were..."))
