@@ -63,6 +63,9 @@ if language == 1:
             logging.info("User ignored error!")
             def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
                 return theEnglishString
+        else:
+            cprint.err("Defaulting to NO because im lazy.")
+            e(1)
     except Exception as ename:
         logging.fatal("Could not get translations. (%s)" % ename)
         cprint.fatal("Could not load translations!\nJe ne peux pas utiliser les traductions ! ")
@@ -72,6 +75,10 @@ if language == 1:
             logging.info("User ignored error !")
             def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
                 return theEnglishString
+       else:
+            cprint.err("Defaulting to NO because im lazy.")
+    else:
+        ignore = None
 elif language == 2:
     try:
         logging.info("Set language to French")
