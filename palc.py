@@ -38,7 +38,7 @@ for i in range(0, width):
     print("-", sep="", end="", flush=True)
 cprint.info("\nLanguage Selection // Language")
 for i in range(0, width):
-    print("-", sep="", end="", flish=True)
+    print("-", sep="", end="", flush=True)
 cprint.info("\n1 - English // Anglais\n2 - Francais // French").lower()
 while True:
     try:
