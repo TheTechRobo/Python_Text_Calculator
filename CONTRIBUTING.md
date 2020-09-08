@@ -1,12 +1,12 @@
 # Contributing
-## Make sure to add your name to [CONTRIBUTORS.md](CONTRIBUTORS.md)!
+## Make sure to add your name to [CONTRIBUTORS.md](CONTRIBUTORS.md) and TEST your code!
 \<insert code style, pr style, etc etc\>
 
 ## Docs
 ### What is each dir for?
-- **Modules**
+- **modules**
 Just some useful modules used by Palc. See [modules/README.md](modules/README.md) for more details.  
-- **MathMod**
+- **mathmod**
 The base of palc. Completely open source under the dbad clean license (like the rest of Palc). Currently working on changing user interaction to parameters and return statements and moving the interactivity to parsefunc.py.  
 - **.github**
 Just some GitHub related stuff.  
