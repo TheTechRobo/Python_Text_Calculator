@@ -46,6 +46,7 @@ while True:
     except ValueError as ename:
         logging.info("ValueError in language select (%s)" % ename)
         cprint.err("Invalid input // Entree invalide")
+        continue
     if language == 1 or language == 2:
         break
 if language == 1:
@@ -59,7 +60,7 @@ if language == 1:
         cprint.info("This is not fatal with English translations, we can ignore it.")
         ignore = input("Ignore? (Y/n) ").lower()
         if ignore[0] == "y": #if user chooses to ignore
-            logging.info("User ignored error !")
+            logging.info("User ignored error!")
             def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
                 return theEnglishString
     except Exception as ename:
