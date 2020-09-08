@@ -39,7 +39,7 @@ for i in range(0, width):
 cprint.info("\nLanguage Selection // Language")
 for i in range(0, width):
     print("-", sep="", end="", flush=True)
-cprint.info("\n1 - English // Anglais\n2 - Francais // French").lower()
+cprint.info("\n1 - English // Anglais\n2 - Francais // French")
 while True:
     try:
         language = int(input("Type: "))
