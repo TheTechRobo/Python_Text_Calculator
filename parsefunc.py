@@ -237,3 +237,10 @@ Type: ''')))
         else:
             cprint.err(_("You didn't type a valid answer. Abort."))
             logging.info("User did not answer correct percentage interpretation")
+if __name__ == "__main__":
+    print("Please don't run this file directly, it can only be used with Palc")
+    try:
+        import runpy
+        runpy.run_path(path_name="palc.py")
+    finally:
+        print("Next time, run palc.py rather than this file.")
