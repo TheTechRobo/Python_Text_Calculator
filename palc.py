@@ -109,6 +109,7 @@ try:
 except Exception as ename:
     logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
     cprint.err(_("Unexpected error!"))
+    raise
 try:
     from mathmod.func import *
 except Exception as ename:
