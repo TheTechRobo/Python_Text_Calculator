@@ -36,6 +36,9 @@ logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelnam
 width = os.get_terminal_size().columns
 for i in range(0, width):
     print("-", sep="", end="", flush=True)
+cprint.info("Language Selection // Language")
+for i in range(0, width):
+    print("-", sep="", end="", flish=True)
 cprint.info("1 - English // Anglais\n2 - Francais // French").lower()
 while True:
     try:
