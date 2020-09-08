@@ -103,6 +103,9 @@ try:
                 main(_)
             except Exception as ename:
                 logging.info("Errored running %s.main(_) (errid %s)" % (module, ename))
+except Exception as ename:
+    logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
+    cprint.err(_("Unexpected error!"))
 try:
     from mathmod.func import *
 except Exception as ename:
