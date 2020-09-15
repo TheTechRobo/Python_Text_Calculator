@@ -20,7 +20,7 @@ def CalculateFixedFibo(amount):
     """
     if amount == 1:
         return [0,]
-    elif amount == 2:
+    if amount == 2:
         return [0,1]
     theList = [0, 1]
     num0 = 0

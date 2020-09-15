@@ -1,7 +1,7 @@
 # python-text-calculator
 # For installation instructions see [INSTALLING.md](INSTALLING.md)
 
-**Please, if you make a pull request add your username to CONTRIBUTORS.md**
+## I cannot emphasize this enough: to contribute, READ [CONTRIBUTING.md](CONTRIBUTING.md) FIRST!!!!
 
 **Todo: when this is merged, switch back to codefactor MASTER**
 
