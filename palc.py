@@ -12,7 +12,7 @@ OTHER STUFF
 CREATED BY: lewiswatson55
 FORKED BY: TheTechRobo
 CONTRIBUTORS: See contributors.md
-LICENSE: DBAD Clean v.1.2 (found in LICENSE.md)
+LICENSE: DBAD Clean v.2.0 (found in LICENSE.md)
 """
 import six
 if not six.PY3:
@@ -25,20 +25,15 @@ try:
     from modules.cprint import cprint #printing in colour
     from modules.clearscreen import clearScreen #clear the screen
     from modules.pressanykey import pressanykey #for the press any key to continue
-    import time
+    from modules.standtextout import standTextOut #for the dash thing
+    import time #self explanatory
     import sys #for misc
-    import os #for misc
     import logging #self explanatory
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
-width = os.get_terminal_size().columns
-for i in range(0, width):
-    print("-", sep="", end="", flush=True)
-cprint.info("Language Selection // Language".center(width))
-for i in range(0, width):
-    print("-", sep="", end="", flush=True)
+standTextOut("Language Selection // Language", print, cprint.info)
 cprint.info("\n1 - English // Anglais\n2 - Francais // French")
 while True:
     try:
@@ -218,7 +213,7 @@ Anything else - Back to menu."))
             cprint.info(cubedNumber ** 3) #Manually cube number
             logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
             print()
-       elif _("cube") in calc: 
+       elif _("cube") in calc:
             misc.showUserWhatIThink(_("cube a number"))
             cubedNumber = int(input(_("\nType the number to be cubed: ")))
             print()
@@ -352,14 +347,7 @@ Anything else - Back to menu."))
 I don't understand your request. Here are the currently supported calculations:
 multiplication, division, subtraction, addition, modulo, square, area, volume, cube, power, root, ord, fibonacci, logarithm, memory, percentage calculator, interest calculator, temperature, and base. Sorry for the inconvenience
 '''))
-width = os.get_terminal_size().columns
-for i in range(0, width):
-    print("-", sep="", end="")
-logging.info("Printed %s dashes" % width)
-cprint.info(_("Welcome to Palc!").center(width))
-for i in range(0, width):
-    print("-", sep="", end="")
-logging.info("Printed %s dashes" % width)
+standTextOut(_("Welcome to Palc!"), print, cprint.info)
 try:
     palc() #run all that code
 except SyntaxError as ename: #easter eggz
@@ -367,34 +355,20 @@ except SyntaxError as ename: #easter eggz
 except KeyboardInterrupt: #if ^C
     logging.info("KeyboardInterrupt")
     cprint.ok(_("\nNote that you CAN type `quit' instead of pressing the interrupt key"))
-    sys.exit()
+    e(0)
 except EOFError: #if ^D
     logging.info("EOFError")
     cprint.ok(_("\nWhy ^D? Why not just type `quit'?"))
-    sys.exit()
+    e(0)
 except (ValueError, TypeError) as ename:
     logging.critical("ValueError or TypeError: %s" % ename)
-    width = os.get_terminal_size().columns
-    for i in range(0, width):
-        print("-", sep="", end="", flush=True)
-    logging.info("Printed %s dashes" % width)
-    cprint.err(_("\aERROR!\a".center(width))) #\a means beep the computer :D
-    for i in range(0, width):
-        print("-", sep="", end="", flush=True)
-    logging.info("Printed %s dashes" % width)
+    standTextOut(_("\aERROR!\a"), print, cprint.err) #\a means beep the computer :D
     cprint.fatal(_("You typed in an invalid integer or float. Or maybe the program needs debugging. Either way, it's a pretty big error."), interrupt=True)
 except SystemExit:
     cprint.ok(_("Looks like you exited."))
     logging.info("Not necessary to be logged, but SystemExit was thrown")
 except Exception as ename:
-    width = os.get_terminal_size().columns
-    for i in range(0, width):
-        print("-", sep="", end="", flush=True)
-    logging.info("Printed %s dashes" % width)
-    cprint.fatal(_("\aUnknown Error!\a".center(width))) #\a makes a beep
-    for i in range(0, width):
-        print("-", sep="", end="", flush=True)
-    logging.info("Printed %s dashes" % width)
+    standTextOut(_("\aUnknown Error!\a"), print, cprint.fatal) #\a makes a beep
     logging.fatal("Unknown error (%s)" % ename)
     cprint.fatal(_("An unknown error occured. Please file an Issue at github.com/thetechrobo/support."))
 finally:
