@@ -39,7 +39,6 @@ cprint.info("1 - English // Anglais\n2 - Francais // French")
 while True:
     try:
         language = int(input("Type: "))
-        print()
     except ValueError as ename:
         logging.info("ValueError in language select (%s)" % ename)
         cprint.err("Invalid input // Entree invalide")
