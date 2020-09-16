@@ -6,24 +6,6 @@ def main(Comandeer):
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
-
-def mod(): #modulo
-    print("DEPRECATION WARNING - will be replced with built in python soon if i can't find a reason not to")
-    try:
-        bigger = int(input(_("\nType the first number (greater): ")))
-        smaller = int(input(_("Type the second number (smaller): ")))
-    except (TypeError, ValueError):
-        cprint.err(_("\nError!"))
-        cprint.err(_("Invalid input (code 1)\n"))
-        logging.error("ERROR: attempted to modulo numbers %s and %s, but errored code 1." % (number1, number2))
-    if(abs(bigger)<abs(smaller)):
-        cprint.err(_("\nError!"))
-        cprint.err(_("The second number entered is greater than the first number (code 2)\n"))
-        logging.error("ERROR: attempted to modulo numbers %s and %s, but errored code 2." % (number1, number2))
-    else:
-        cprint.info(_("\nThat equals...\n%s" % (bigger - smaller * int(bigger / smaller))))
-        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (bigger, smaller, (bigger - smaller * int(bigger / smaller))))
-        print()
 def base():
     """Will be improved "later"."""
     base = int(input('''What base would you like to convert to?
