@@ -35,10 +35,11 @@ except Exception as ename:
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
 standTextOut("Language Selection // Language", print, cprint.info)
-cprint.info("\n1 - English // Anglais\n2 - Francais // French")
+cprint.info("1 - English // Anglais\n2 - Francais // French")
 while True:
     try:
         language = int(input("Type: "))
+        print()
     except ValueError as ename:
         logging.info("ValueError in language select (%s)" % ename)
         cprint.err("Invalid input // Entree invalide")
