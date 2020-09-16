@@ -31,6 +31,7 @@ try:
     import logging #self explanatory
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
+    exit(1)
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
 standTextOut("Language Selection // Language", print, cprint.info)
