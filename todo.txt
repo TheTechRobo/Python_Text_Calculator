@@ -1,2 +1,0 @@
- TODO: Remove exec (is there a better way?), also put the ------- in a function and stuff (with parameterrs for the string to be translated)
-
