@@ -1,2 +1,3 @@
 [bandit]
+targets: *
 skips: B322,B322
