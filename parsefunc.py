@@ -10,8 +10,8 @@ from mathmod.basicfunc import *
 from modules.cprint import cprint
 import logging
 
-class theBasics:
-    def addition():
+class Builtins: 
+    def getInput():
         n1 = input(_("Please enter the first number: "))
         n2 = input(_("Please enter the second number: "))
         try: 
@@ -20,6 +20,13 @@ class theBasics:
         except Exception as ename:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        return (n1, n2)
+
+class theBasics:
+    def addition():
+        n1 = input(_("Please enter the first number: "))
+        n2 = input(_("Please enter the second number: "))
+        n1, n2 = Builtins.getInput()
         try:
             returnedNumber = add(n1, n2)
         except ValueError as ename:
@@ -29,14 +36,7 @@ class theBasics:
         cprint.info(_("The response is...%s"))
         logging.info("Parsed addition with %s as n1, %s as n2, answer = %s" % (n1, n2, returnedNumber))
     def subtraction():
-        n1 = input(_("Please enter the first number: "))
-        n2 = input(_("Please enter the second number: "))
-        try:
-            float(n1)
-            float(n2)
-        except Exception as ename:
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number." % (n1, n2)))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        n1, n2 = Builtins.getInput()
         try:
             returnedNumber = sub(n1, n2)
         except ValueError as ename:
@@ -46,14 +46,7 @@ class theBasics:
         cprint.info(_("The response is...%s"))
         logging.info("Parsed subtraction with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def multiplication():
-        n1 = input(_("Please enter the first number: "))
-        n2 = input(_("Please enter the second number: "))
-        try:
-            float(n1)
-            float(n2)
-        except Exception as ename:
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        n1, n2 = Builtins.getInput()
         try:
             returnedNumber = multi(n1, n2)
         except ValueError as ename:
@@ -63,14 +56,7 @@ class theBasics:
         cprint.info(_("The response is...%s"))
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def division():
-        n1 = input(_("Please enter the first number: "))
-        n2 = input(_("Please enter the second number: "))
-        try:
-            float(n1)
-            float(n2)
-        except Exception as ename:
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        n1, n2 = Builtins.getInput()
         try:
             returnedNumber = multi(n1, n2)
         except ZeroDivisionError:
@@ -81,16 +67,9 @@ class theBasics:
             logging.error("While parsing div(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             raise
         cprint.info(_("The response is...%s"))
-        logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+        logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def mod(): #modulo
-        n1 = int(input(_("\nType the first number: ")))
-        n2 = input(_("Type the second number: ")))
-        try:
-            n1 = float(n1)
-            n2 = float(n2)
-        except (TypeError, ValueError):
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        n1, n2 = Builtins.getInput()
         else:
             result = mod(n1, n2)
             cprint.info(_("\nThat equals...\n%s\n" % result))
