@@ -82,6 +82,19 @@ class theBasics:
             raise
         cprint.info(_("The response is...%s"))
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+    def mod(): #modulo
+        n1 = int(input(_("\nType the first number: ")))
+        n2 = input(_("Type the second number: ")))
+        try:
+            n1 = float(n1)
+            n2 = float(n2)
+        except (TypeError, ValueError):
+            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+        else:
+            result = mod(n1, n2)
+            cprint.info(_("\nThat equals...\n%s\n" % result))
+            logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result))
 class rootsAndTheOtherOne:
     def curoot():
         try:
@@ -152,8 +165,7 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             CalculateLoopedFibo()
         logging.info("User ran fibonacci function")
     def showUserWhatIThink(whatDOyouthink):
-        cprint.ok(_("I think you want me to: "))
-        cprint.ok(whatDOyouthink)
+        cprint.ok(_("I think you want me to: \n%s" % whatDOyouthink))
         isItCorrect = input(_("Is this correct? (Y/n)")).lower()
         if _("y") in isItCorrect:
             logging.info("Palc chose the right calculation (%s) for calc choice that should be shown above." % whatDOyouthink)
