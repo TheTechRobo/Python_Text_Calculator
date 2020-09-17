@@ -6,19 +6,21 @@ if __name__ == "__main__":
 def multi(n1, n2): #multiplication
     n1 = float(n1)
     n2 = float(n2)
-    return (n1 * n2)
+    return n1 * n2
 def div(n1, n2): #division
     n1 = float(n1)
     n2 = float(n2)
-    return (n1 / n2)
+    return n1 / n2
 def sub(n1, n2): #subtraction
     n1 = float(n1)
     n2 = float(n2)
-    return (n1 - n2)
+    return n1 - n2
 def add(n1, n2): #addition
     n1 = float(n1)
     n2 = float(n2)
-    return (n1 + n2)
+    return n1 + n2
+def mod(n1, n2):
+    return n1 % n2
 def cuRoot(x):
     # all credit goes to https://stackoverflow.com/a/28014443/9654083
     if 0 <= x:
@@ -27,6 +29,10 @@ def cuRoot(x):
 def sqRoot(x):
     return x ** 0.5
 def exponent(n1, n2):
+    """
+    param n1: Original number
+    param n2: exponent
+    """
     origin = float(n1)
     ex = float(n2)
-    return (origin ** ex)
+    return origin ** ex
