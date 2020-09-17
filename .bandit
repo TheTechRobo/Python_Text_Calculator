@@ -1,1 +1,2 @@
+[bandit]
 skips: B322,B322
