@@ -43,59 +43,44 @@ while True:
         logging.info("ValueError in language select (%s)" % ename)
         cprint.err("Invalid input // Entree invalide")
         continue
-    if language == 1 or language == 2:
+    if language == 1:
+        lCode = "en"
         break
-if language == 1:
-    try:
-        logging.info("Set language to English")
-        gettext.bindtextdomain('base', localedir="locales")
-        lang_translations = gettext.translation('base', localedir='locales', languages=["en"])
-    except (FileNotFoundError, IOError) as ename:
-        logging.fatal("Could not get translation files. (%s)" % ename)
-        cprint.fatal("Could not get translation files! Make sure that the `locales' directory exists!\nJe ne peux pas trouver la dossier `locales' ! ")
+    elif language == 2:
+        lCode = "fr"
+        break
+if lCode not in ["en", "fr"]:
+    logging.fatal("USER DID NOT SPECIFY A VALID LANGUAGE!")
+    cprint.warn("This language doesn't exist. Did you mean...\nEnglish? // Ce language n'existe pas. Tu peut-etre veux dire ...\nAnglais ? (Y/n) ")
+    if input()[0].lower() == "y":
+        logging.info("Nvm, they meant English.")
+        ignore = "n"
+    else:
+        cprint.fatal("Abort.", interrupt=True)
+try:
+    gettext.bindtextdomain("base", localedir="locales")
+    lang_translations = gettext.translation("base", localedir="locales", languages=[lCode])
+except Exception as ename:
+    logging.fatal("Could not get translations. This is fatal. (%s)" % ename)
+    cprint.fatal("Could not get translations! Make sure that the `locales' directory exists in the current working directory. // Les traductions sont inaccessables ou ne fonctionnes pas !")
+    if lCode == "en":
         cprint.info("This is not fatal with English translations, we can ignore it.")
-        ignore = input("Ignore? (Y/n) ").lower()
-        if ignore[0] == "y": #if user chooses to ignore
+        ignore = input("Ignore? (Y/n): ").lower()
+        if ignore[0] == "n":
+            cprint.fatal("Abort.", interrupt=True)
+        else: #if user chooses to ignore
+            cprint.info("Defaulting to YES.")
             logging.info("User ignored error!")
             def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
                 return theEnglishString
-        else:
-            cprint.err("Defaulting to NO because im lazy.")
-            e(1)
-    except Exception as ename:
-        logging.fatal("Could not get translations. (%s)" % ename)
-        cprint.fatal("Could not load translations!\nJe ne peux pas utiliser les traductions ! ")
-        cprint.info("This is not fatal with English translations, we can ignore it.")
-        ignore = input("Ignore? (Y/n) ").lower()
-        if "y" in ignore: #if user chooses to ignore
-            logging.info("User ignored error !")
-            def _(theEnglishString): #define a function that does nothing except give the value back so that NameErrors dont occur
-                return theEnglishString
-        else:
-            cprint.err("Defaulting to NO because im lazy.")
     else:
-        ignore = "undefined"
-elif language == 2:
-    try:
-        logging.info("Set language to French")
-        gettext.bindtextdomain('base', localedir="locales")
-        lang_translations = gettext.translation('base',localedir='locales', languages=["fr"])
-    except (FileNotFoundError, IOError):
-        logging.fatal("Could not get translations. This is fatal. (%s)" % ename)
-        cprint.fatal("Could not get translation files! Make sure that the `locales' directory exists!\nJe ne peux pas trouver la dossier `locales' ! ", interrupt=True)
-    except Exception as ename:
-        logging.fatal("Could not get translations. (%s)" % ename)
-        cprint.fatal("Could not load translations!\nJe ne peux pas utiliser les traductions ! ")
+        e(1)
 else:
-    logging.fatal("USER DID NOT SPECIFY A LANGUAGE, ABORT!")
-    cprint.fatal("You did not specify a language. Abort.\nTu n'a pas dit une language supporté.", interrupt=True)
-try:
-    lang_translations.install()
-    _ = lang_translations.gettext
-except Exception as ename:
-    logging.info("This is not necessary to be logged, but exception %s occured while installing translations" % ename)
-#import func and basicfunc
-logging.info("Attempting to import func.py and parsefunc.py (DEPRECATION WARNING: Later func and basicfunc will not be necessary.)")
+    ignore = "undefined"
+lang_translations.install()
+_ = lang_translations.gettext #if both of these fail we're screwed anyway, and im NOT adding the ignoring support here
+#import func and parsefunc
+logging.info("Attempting to import func.py and parsefunc.py (DEPRECATION WARNING: Later func will not be necessary.)")
 try:
     from parsefunc import *
 except Exception as e:
@@ -117,7 +102,7 @@ except Exception as ename:
 try:
     from mathmod.func import *
 except Exception as ename:
-    logging.critical("Could Not Access func.py (%s)" % ename)
+    logging.critical("Could not access func.py (%s)" % ename)
     cprint.fatal(_("I can't access func.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py!")
 cprint.ok(_("Loading...............\n"))
