@@ -42,3 +42,12 @@ def exponent(n1, n2):
     """
     origin, ex = confloat(n1, n2)
     return origin ** ex
+def tax(n1, n2):
+    """
+    param n1: Original number
+    param n2: Tax in percentage (without percentage sign)
+    """
+    origin, tax = confloat(n1, n2)
+    usefulTax = (tax / 100) + 1
+    answer = origin + tax
+    return answer
