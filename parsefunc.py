@@ -141,7 +141,13 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             cprint.info(_("Looped it is."))
             from mathmod.fibonacci import CalculateLoopedFibo
             logging.info("About to run looped fibonacci")
-            CalculateLoopedFibo()
+            cprint.ok(_("Press Control-C to stop."))
+            try:
+                CalculateLoopedFibo()
+            except Exception as ename:
+                logging.err("Exception %s in looped fibonacci" % ename)
+                cprint.err(_("An error occured."))
+            except KeyboardInterrupt:
         logging.info("User ran fibonacci function")
     def showUserWhatIThink(whatDOyouthink):
         cprint.ok(_("I think you want me to: \n%s" % whatDOyouthink))
