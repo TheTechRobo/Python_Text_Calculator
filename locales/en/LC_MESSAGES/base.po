@@ -190,7 +190,7 @@ msgstr ""
 
 #: mathmod/fibonacci.py:59
 msgid "An error occured."
-msgstr ""
+msgstr "Une erreur s'est produite."
 
 #: mathmod/func.py:15
 msgid "I think you want me to: "
