@@ -234,36 +234,36 @@ Type: ''')))
             logging.info("User did not answer correct percentage interpretation")
 class Tax:
     def taxCalc():
-    cprint.info(_('''1 - Ontario Sales Tax
+        cprint.info(_('''1 - Ontario Sales Tax
 2 - Quebec Sales Tax
 3 - Yukon, Northwest Territories, Nunavut, and Alberta Sales Tax
 4 - BC / Manitoba Sales Tax
 5 - New Brunswick / Nova Scotia / Newfoundland / PEI Sales Tax
 6 - Saskatchewan Sales Tax
 7 - Custom Tax'''))
-    whatPlace = int(input(_("Choose one: ")))
-    if whatPlace == 1:
-        percent = 13.0
-    elif whatPlace == 2:
-        percent = 14.975
-    elif whatPlace == 3:
-        percent = 5.0
-    elif whatPlace == 4:
-        percent = 12.0
-    elif whatPlace == 5:
-        percent = 15.0
-    elif whatPlace == 6:
-        percent = 11.0
-    elif whatPlace == 7:
-        percent = float(input(_("Please enter the tax percentage without the percent sign: ")))
-    else:
-        cprint.err(_("You did not type answer. Abort."))
-        logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
-        return
-    originPrice = float(input(_("What is the original price (before tax)? ")))
-    result = tax(originPrice, percent)
-    logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
-    cprint.info(_("After tax, the price is: \n%s" % result))
+        whatPlace = int(input(_("Choose one: ")))
+        if whatPlace == 1:
+            percent = 13.0
+        elif whatPlace == 2:
+            percent = 14.975
+        elif whatPlace == 3:
+            percent = 5.0
+        elif whatPlace == 4:
+            percent = 12.0
+        elif whatPlace == 5:
+            percent = 15.0
+        elif whatPlace == 6:
+            percent = 11.0
+        elif whatPlace == 7:
+            percent = float(input(_("Please enter the tax percentage without the percent sign: ")))
+        else:
+            cprint.err(_("You did not type answer. Abort."))
+            logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
+            return
+        originPrice = float(input(_("What is the original price (before tax)? ")))
+        result = tax(originPrice, percent)
+        logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
+        cprint.info(_("After tax, the price is: \n%s" % result))
 if __name__ == "__main__":
     print("Please don't run this file directly, it can only be used with Palc")
     try:
