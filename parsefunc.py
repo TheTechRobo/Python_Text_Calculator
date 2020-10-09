@@ -72,7 +72,7 @@ class theBasics:
         n1, n2 = Builtins.getInput()
         result = mod(n1, n2)
         cprint.info(_("\nThat equals...\n%s\n" % result))
-        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result))
+        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
 class rootsAndTheOtherOne:
     def curoot():
         try:
@@ -146,7 +146,6 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             except Exception as ename:
                 logging.err("Exception %s in looped fibonacci" % ename)
                 cprint.err(_("An error occured."))
-            except KeyboardInterrupt:
         logging.info("User ran fibonacci function")
     def showUserWhatIThink(whatDOyouthink):
         cprint.ok(_("I think you want me to: \n%s" % whatDOyouthink))

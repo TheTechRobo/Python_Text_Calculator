@@ -190,10 +190,5 @@ def taxCalc():
     else:
         cprint.err(_("You did not type answer. Abort."))
         logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
-class tax(origin, percentage):
-    """
-    How this will work:
-    Percentage param. will divide by 100 and add 1, so if percent is 13 it will get 0.13 + 1.0 = 1.13, and multiply the origin by that. Easy peasy. Will be done "later" (R)
-    """
 def log(base, origin):
     pass
