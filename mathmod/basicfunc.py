@@ -51,3 +51,5 @@ def tax(n1, n2):
     usefulTax = (tax / 100) + 1
     answer = origin + tax
     return answer
+def log(origin, type):
+    pass

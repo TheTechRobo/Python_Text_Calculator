@@ -190,5 +190,3 @@ def taxCalc():
     else:
         cprint.err(_("You did not type answer. Abort."))
         logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
-def log(base, origin):
-    pass
