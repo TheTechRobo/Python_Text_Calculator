@@ -275,7 +275,7 @@ Anything else - Back to menu."))
 #LOGARITHM
        elif _("log") in calc:
            misc.showUserWhatIThink(_("use the logarithm function"))
-           log()
+           logarithm()
 #MEMORY
        elif "mem" in calc:
             misc.showUserWhatIThink(_("use the memory function"))
