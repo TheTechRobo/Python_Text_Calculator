@@ -46,28 +46,19 @@ Type: ''')))
         printThis = "=" +hex(result)
         logging.info("User hexed number %s, getting a result of %s" % (result, printThis))
         cprint.info(printThis)
-def log(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
+
+def log(n1, e):
+    """
+    parameter n1: Original number
+    parameter e: Use False if you want base 10 logarithm; True for e (natural).
+    """
     import math
-    while True:
-        base = input(_("What base would you like to use? \nCurrently supported: 10 (base 10), e (natural)"))
-        if base == "10":
-            cprint.info(_("Using base 10"))
-            number = int(input(_("What is the number? ")))
-            cprint.info(_("That equals:"))
-            cprint.info(math.log10(number))
-            logging.info("User used base 10 logarithm with number %s, getting a result of %s" % (number, (math.log10(number))))
-            break
-        elif base.lower() == "e":
-            cprint.info(_("Using natural logarithm"))
-            number = int(input(_("What is the number? ")))
-            cprint.info("That equals...")
-            cprint.info(math.log(number))
-            logging.info("User used natural logarithm with number %s, getting a result of %s" % (number, (math.log(number))))
-            break
-        else:
-            cprint.err(_("The logarithm you typed is not available."))
-            cprint.ok(_("Try again."))
-            logging.info("User attempted to use a logarithm that is unavailable.")
+    n1 = float(n1)
+    if e:
+        return math.log(n1)
+    if not e:
+        return math.log10(n1)
+
 def remember():
     cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
     toRemember = float(input(_("\nPlease enter the number to be saved: ")))
