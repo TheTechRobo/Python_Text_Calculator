@@ -264,6 +264,23 @@ class Tax:
         result = tax(originPrice, percent)
         logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
         cprint.info(_("After tax, the price is: \n%s" % result))
+
+def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
+    while True:
+        base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
+        number = float(input(_("What is the number? ")))
+        if base[0] == "1":
+            result = log(number, False)
+            break
+        elif base[0] == "2":
+            result = log(number, True)
+            break
+        else:
+            cprint.err(_("The logarithm you typed is not available."))
+            cprint.ok(_("Try again."))
+            logging.info("User attempted to use a logarithm that is unavailable.")
+    logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
+        
 if __name__ == "__main__":
     print("Please don't run this file directly, it can only be used with Palc")
     try:
