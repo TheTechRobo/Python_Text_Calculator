@@ -88,11 +88,12 @@ except Exception as e:
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 try:
     if ignore[0] == "y":
-        modules = ['parsefunc', 'mathmod.func', 'areaInteractive', 'volInteractive', 'mathmod.fibonacci']
+        modules = ['parsefunc', 'mathmod.func', 'areaInteractive', 'volInteractive']
         for module in modules:
             try:
-                exec("from %s import main")
-                main(_)
+                import importlib
+                importlib.import_module(module).main(_)
+                del importlib
             except Exception as ename:
                 logging.info("Errored running %s.main(_) (errid %s)" % (module, ename))
 except Exception as ename:
@@ -105,7 +106,7 @@ except Exception as ename:
     logging.critical("Could not access func.py (%s)" % ename)
     cprint.fatal(_("I can't access func.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py!")
-cprint.ok(_("Loading...............\n"))
+cprint.ok(_("Loading...\n"))
 time.sleep(2)
 def palc():
     while True:
