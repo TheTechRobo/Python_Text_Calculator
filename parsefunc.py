@@ -167,11 +167,15 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
 class Temperature:
     def tempCalc():
-        message = "OPTIONS:\n    1 - Farenheit to Celsius\n    2 - Celsius to Farenheit\n    Farenheit to Kelvin\n    Celsius to Kelvin\n    Kelvin to Celsius\n    Kelvin to Farenheit\nType: "
-        hi = int(input(_(message)))
+        #message = "OPTIONS:\n    1 - Farenheit to Celsius\n    2 - Celsius to Farenheit\n    Farenheit to Kelvin\n    Celsius to Kelvin\n    Kelvin to Celsius\n    Kelvin to Farenheit\nType: "
+        message = """What is the original temperature unit? 
+    1 - Farenheit
+    2 - Celsius
+    3 - Kelvin
+    4 - Rankine
+                                       \033[A\033[A\033[A\033[A\033[A"""
         if hi == 1:
             hello = float(input(_("Please enter the FAHRENHEIT temperature: ")))
-            #howdy = float(input(_("Please enter the CELSIUS temperature: ")))
             yolo = hello - 32
             yolo = yolo * 5/9
             cprint.info(_("That equals...\n%s" % yolo))
