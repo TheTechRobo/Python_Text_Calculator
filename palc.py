@@ -32,6 +32,11 @@ try:
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
     exit(1)
+try: 
+    import colorama
+    colorama.init()
+except (ImportError, ModuleNotFoundError):
+    print("I've detected you don't have colorama package installed. It's suggested, if you're on Windows, to install this package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary for all other operating systems.")
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
 standTextOut("Language Selection // Language", print, cprint.info)
