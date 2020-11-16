@@ -168,41 +168,40 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
 class Temperature:
     def tempCalc():
         #message = "OPTIONS:\n    1 - Farenheit to Celsius\n    2 - Celsius to Farenheit\n    Farenheit to Kelvin\n    Celsius to Kelvin\n    Kelvin to Celsius\n    Kelvin to Farenheit\nType: "
-        message = """What is the original temperature unit? 
+        message = """What is the %s temperature unit? 
     1 - Farenheit
     2 - Celsius
     3 - Kelvin
     4 - Rankine
                                        \033[A\033[A\033[A\033[A\033[A"""
-        if hi == 1:
-            hello = float(input(_("Please enter the FAHRENHEIT temperature: ")))
+        source = int(input(_(message % "source")))
+        origin = float(input(_("Please enter the original temperature...")))
+        destination = int(input(_(message % "destination")))
+        if source == 1 and destination == 2:
             yolo = hello - 32
             yolo = yolo * 5/9
             cprint.info(_("That equals...\n%s" % yolo))
             logging.info("User did F to C with F=%s, result=%s" % (hello, yolo))
-        elif hi == 2:
-            howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+        elif source == 2 and destination == 1:
             yolo = howdy * 9/5
             yolo = yolo + 32
             cprint.info(_("That equals...\n%s" % yolo))
             logging.info("User did C to F with C=%s, result=%s" % (howdy, yolo))
-        elif hi == 3:
-            salut = float(input(_("Please enter the FAHRENHEIT temperature: ")))
+        elif source == 1 and destination == 3:
             #convert to celsius
             yolo = salut - 32
             yolo = yolo * 5/9
             #convert from celsius to kelvin
             yolo = yolo + 273.15
             cprint.info(_("That equals...\n%s" % yolo))
-        elif hi == 4:
-            howdy = float(input(_("Please enter the CELSIUS temperature: ")))
+        elif source == 2 and destination == 3:
             yolo = howdy + 273.15 #convert to kelvin
             cprint.info(_("That equals...\n%s" % yolo))
-        elif hi == 5:
+        elif source == 3 and destination == 2:
             ciao = float(input(_("Please enter the KELVIN temperature: ")))
             yolo = ciao - 273.15 #do the opposite of celsius to kelvin
             cprint.info(_("That equals...\n%s" % yolo))
-        elif hi == 6:
+        elif source == 3 and destination == 1:
             ciao = float(input(_("Please enter the KELVIN temperature: ")))
             yolo = ciao - 273.15
             yolo = yolo * 9/5
@@ -210,8 +209,8 @@ class Temperature:
             cprint.info(_("That equals...\n%s" % yolo))
         # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
         else:
-            cprint.err(_("Invalid response."))
-            logging.error("User typed invalid temperature answer %s" % hi)
+            cprint.err(_("Invalid response.\nIf you chose Rankine, it's because it's not currently supported."))
+            logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
 class Percentage:
     def percentage1():
         origin = float(input(_("What is the ORIGINAL NUMBER? ")))
