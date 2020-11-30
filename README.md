@@ -16,12 +16,12 @@ I always make my forked repositories better — and this one is no exception!
 Thanks for visiting!
 
 # Recommended packages
-It's suggested, if you're on Windows, to install `colorama` package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary for all other operating systems. 
+It's suggested, if you're on Windows, to install `colorama` package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary (but doesn't harm anything) for all other operating systems. 
 
 **Note that ittussaromYno3 is me (TheTechRobo) on my MacBook Air.**  
 **And Retals is me on my [Elive](https://elivecd.org) PCs**  
 **Ittussarom is me on some other [Elive](https://elivecd.org) PCs**  
-**TheTechRobo (without the stick-man) is me on some -- have you guessed it? -- other [Elive](https://elivecd.org) PCs**
+**TheTechRobo (without the stick-man) is me on some -- have you guessed it? -- other [Elive](https://elivecd.org) PCs** (or maybe my Chromebook)
 
 
 PLEASE, leave feature requests in the [Issues section](https://github.com/thetechrobo/python-text-calculator/issues), even if you know my email.
