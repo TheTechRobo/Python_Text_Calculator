@@ -5,7 +5,9 @@
 
 [![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/master)
 
-This is a Python script I forked when I wanted to learn math in Python.
+Have you ever looked for a complete, simple calculator? Well here you go!
+
+This is a Python script named "Palc" I forked when I wanted to learn math in Python. There is almost no code left from the original (mainly because i've added and rewritten so much) but I'm still crediting the original developer - see [lewiswatson55's repo](https://github.com/lewiswatson55/Python_Text_Calculator/edit/master/README.md) for the original code.
 
 Learning this has been very interesting and educational. 
 
