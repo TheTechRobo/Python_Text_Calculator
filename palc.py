@@ -112,7 +112,7 @@ except Exception as ename:
     logging.critical("Could not access func.py (%s)" % ename)
     cprint.fatal(_("I can't access func.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py!")
-time.sleep(2)
+time.sleep(1.5)
 def palc():
     while True:
        pressanykey(_("Press any key to continue..."))
