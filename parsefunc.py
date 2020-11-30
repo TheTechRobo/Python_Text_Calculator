@@ -173,10 +173,11 @@ class Temperature:
     2 - Celsius
     3 - Kelvin
     4 - Rankine
-                                       \033[A\033[A\033[A\033[A\033[A"""
+                                                   \033[A\033[A\033[A\033[A\033[A"""
         source = int(input(_(message % "source")))
         origin = float(input(_("Please enter the original temperature...")))
         destination = int(input(_(message % "destination")))
+        print("                  ")
         if source == 1 and destination == 2:
             yolo = origin - 32
             yolo = yolo * 5/9
@@ -201,7 +202,7 @@ class Temperature:
         else:
             cprint.err(_("Invalid response.\nIf you chose Rankine, it's because it's not currently supported."))
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
-        cprint.info(_("That equals...\n%s" % yolo))
+        cprint.info(_("That equals... \n%s                       " % yolo))
         logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
 class Percentage:
     def percentage1():
