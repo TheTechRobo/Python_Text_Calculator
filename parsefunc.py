@@ -178,35 +178,27 @@ class Temperature:
         origin = float(input(_("Please enter the original temperature...")))
         destination = int(input(_(message % "destination")))
         if source == 1 and destination == 2:
-            yolo = hello - 32
+            yolo = origin - 32
             yolo = yolo * 5/9
-            cprint.info(_("That equals...\n%s" % yolo))
-            logging.info("User did F to C with F=%s, result=%s" % (hello, yolo))
         elif source == 2 and destination == 1:
-            yolo = howdy * 9/5
+            yolo = origin * 9/5
             yolo = yolo + 32
-            cprint.info(_("That equals...\n%s" % yolo))
-            logging.info("User did C to F with C=%s, result=%s" % (howdy, yolo))
         elif source == 1 and destination == 3:
             #convert to celsius
-            yolo = salut - 32
+            yolo = origin - 32
             yolo = yolo * 5/9
             #convert from celsius to kelvin
             yolo = yolo + 273.15
-            cprint.info(_("That equals...\n%s" % yolo))
         elif source == 2 and destination == 3:
-            yolo = howdy + 273.15 #convert to kelvin
-            cprint.info(_("That equals...\n%s" % yolo))
+            yolo = origin + 273.15 #convert to kelvin
         elif source == 3 and destination == 2:
-            ciao = float(input(_("Please enter the KELVIN temperature: ")))
-            yolo = ciao - 273.15 #do the opposite of celsius to kelvin
-            cprint.info(_("That equals...\n%s" % yolo))
+            yolo = origin - 273.15 #do the opposite of celsius to kelvin
         elif source == 3 and destination == 1:
-            ciao = float(input(_("Please enter the KELVIN temperature: ")))
-            yolo = ciao - 273.15
+            yolo = origin - 273.15
             yolo = yolo * 9/5
             yolo = yolo + 32
-            cprint.info(_("That equals...\n%s" % yolo))
+        cprint.info(_("That equals...\n%s" % yolo))
+        logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
         # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
         else:
             cprint.err(_("Invalid response.\nIf you chose Rankine, it's because it's not currently supported."))
