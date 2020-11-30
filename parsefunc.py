@@ -197,12 +197,12 @@ class Temperature:
             yolo = origin - 273.15
             yolo = yolo * 9/5
             yolo = yolo + 32
-        cprint.info(_("That equals...\n%s" % yolo))
-        logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
         # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
         else:
             cprint.err(_("Invalid response.\nIf you chose Rankine, it's because it's not currently supported."))
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
+        cprint.info(_("That equals...\n%s" % yolo))
+        logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
 class Percentage:
     def percentage1():
         origin = float(input(_("What is the ORIGINAL NUMBER? ")))
