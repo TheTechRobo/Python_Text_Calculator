@@ -82,6 +82,7 @@ except Exception as ename:
         e(1)
 else:
     ignore = "undefined"
+cprint.ok(_("Loading Palc files...\n"))
 lang_translations.install()
 _ = lang_translations.gettext #if both of these fail we're screwed anyway, and im NOT adding the ignoring support here
 #import func and parsefunc
@@ -111,7 +112,6 @@ except Exception as ename:
     logging.critical("Could not access func.py (%s)" % ename)
     cprint.fatal(_("I can't access func.py. This file is necessary for proper function of the Software."), interrupt=True)
 logging.info("Successfully imported func.py!")
-cprint.ok(_("Loading...\n"))
 time.sleep(2)
 def palc():
     while True:
