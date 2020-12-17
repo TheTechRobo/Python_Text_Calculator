@@ -77,7 +77,6 @@ def whatIsXPercentOf(x, whole):
     """
     if whole == 0:
         raise ValueError("Invalid input (0).")
-        return #not sure if this is necessary but hey better safe than sorry
     return (x * whole) / 100.0
 def findPercentage(part, whole):
     """
@@ -87,7 +86,6 @@ def findPercentage(part, whole):
     """
     if whole == 0:
         raise ValueError("Invalid input (0).")
-        return #not sure if this is necessary but hey better safe than sorry
     return 100 * float(part) / float(whole)
 
 def calculateInterest(units, rate, origin):
