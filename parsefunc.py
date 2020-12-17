@@ -323,7 +323,6 @@ Type: ''')))
 
 class Memory:
     """the two memory functions will be moved here "later" but not right now."""
-    pass
 
 def readMyMemory():
     cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
