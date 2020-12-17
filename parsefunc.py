@@ -220,7 +220,7 @@ class Percentage:
         try:
             cprint.info(mathmod.findPercentage(part, origin))
         except ValueError:
-            cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0.")
+            cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
     def chooseOneTwo():
         chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
 2 - Convert a number to percentage (i.e. how much percent of ___ is ___?).
