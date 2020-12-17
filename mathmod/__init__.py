@@ -99,3 +99,7 @@ def calculateInterest(units, rate, origin):
     inRealNumbers = percentage(whole=origin, x=rate)
     result = origin + (inRealNumbers * howMany)
     return result
+class tax:
+    pass
+class temperature:
+    pass
