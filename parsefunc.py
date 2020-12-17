@@ -6,6 +6,7 @@ def main(Comandeer):
     globals()['_'] = Commandeer
 
 from mathmod import *
+import mathmod
 from modules.cprint import cprint
 import logging
 
