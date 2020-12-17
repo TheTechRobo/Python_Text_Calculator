@@ -32,7 +32,7 @@ class theBasics:
             logging.error("While parsing add(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
-        cprint.info(_("The response is...%s"))
+        cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed addition with %s as n1, %s as n2, answer = %s" % (n1, n2, returnedNumber))
     def subtraction():
         n1, n2 = Builtins.getInput()
@@ -42,7 +42,7 @@ class theBasics:
             logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
-        cprint.info(_("The response is...%s"))
+        cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed subtraction with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def multiplication():
         n1, n2 = Builtins.getInput()
@@ -52,7 +52,7 @@ class theBasics:
             logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
-        cprint.info(_("The response is...%s"))
+        cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def division():
         n1, n2 = Builtins.getInput()
@@ -65,7 +65,7 @@ class theBasics:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing div(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             raise
-        cprint.info(_("The response is...%s"))
+        cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def mod(): #modulo
         n1, n2 = Builtins.getInput()
