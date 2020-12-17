@@ -84,3 +84,12 @@ def findPercentage(part, whole):
         raise ValueError("Invalid input (0).")
         return #not sure if this is necessary but hey better safe than sorry
     return 100 * float(part) / float(whole)
+
+"""def calculateInterest_RenameLater(origin, rate, units):
+    '''
+    units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
+    rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
+    origin: Original number.
+    '''
+    inRealNumbers = percentage(whole=origin, percent=rate)
+"""
