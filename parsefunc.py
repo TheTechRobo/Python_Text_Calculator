@@ -228,6 +228,7 @@ Type: ''')))
         else:
             cprint.err(_("You didn't type a valid answer. Abort."))
             logging.info("User did not answer correct percentage interpretation")
+
 class Tax:
     def taxCalc():
         cprint.info(_('''1 - Ontario Sales Tax
@@ -276,7 +277,48 @@ def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarit
             cprint.ok(_("Try again."))
             logging.info("User attempted to use a logarithm that is unavailable.")
     logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
-        
+
+def base():
+    """Will be improved "later"."""
+    base = int(input('''What base would you like to convert to?
+Available: 2 (binary) 8 (octo) 10 (decimal (normal)) 16 (hex)
+Type 2, 8, 10, or 16: '''))
+    if base == 2:
+        origin = int(input(_("Type the original number: "))) #bin() the number
+        printThis = "=" +str(bin(origin))
+        logging.info("User binaried number %s, getting a result of %s" % (origin, printThis))
+        cprint.info(printThis)
+    elif base == 8:
+            result = int(input(_("Type the original number: "))) #oct() the number
+            printThis = "=" +str(oct(result))
+            logging.info("User oct'ed number %s, getting a result of %s" % (result, printThis))
+            cprint.info(printThis)
+    elif base == 10:
+        base = int(input(_('''Converting from a base to decimal (normal).
+Example bases:
+2 - Binary
+8 - Oct
+16 - Hexadecimal
+Or, type 1 for ord.
+Type: ''')))
+        if base == 1:
+            base2Print = "ord"
+        else:
+            base2Print = "base " + base
+        original = int(input(_("Please enter the number to be converted from %s: " % base2Print)))
+        if base == 1:
+            eureka = chr(original)
+        else:
+            eureka = int(original, base)
+        logging.info("User int'ed number %s from %s, getting a result of %s" % (original, base2Print, eureka))
+        cprint.info(_("That equals...\n%s" % eureka))
+        cprint.ok(_("TIP: If you got no answer, it might be that it was a Unicode character that it can't render. E.g. \\x06 would just be a blank space, like so: \x06"))
+    elif base == 16:
+        result = int(input(_("Type the original number: "))) #ask for original number
+        printThis = "=" +hex(result)
+        logging.info("User hexed number %s, getting a result of %s" % (result, printThis))
+        cprint.info(printThis)
+
 if __name__ == "__main__":
     print("Please don't run this file directly, it can only be used with Palc")
     try:
