@@ -23,8 +23,6 @@ class Builtins:
 
 class theBasics:
     def addition():
-        n1 = input(_("Please enter the first number: "))
-        n2 = input(_("Please enter the second number: "))
         n1, n2 = Builtins.getInput()
         try:
             returnedNumber = mathmod.addition(n1, n2)
