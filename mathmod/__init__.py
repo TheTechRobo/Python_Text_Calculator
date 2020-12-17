@@ -16,19 +16,19 @@ def confloat(n1, n2):
     n2 = float(n2)
     return (n1, n2)
 
-def multi(n1, n2): #multiplication
+def multiplication(n1, n2): #multiplication
     n1, n2 = confloat(n1, n2)
     return n1 * n2
-def div(n1, n2): #division
+def division(n1, n2): #division
     n1, n2 = confloat(n1, n2)
     return n1 / n2
-def sub(n1, n2): #subtraction
+def subtraction(n1, n2): #subtraction
     n1, n2 = confloat(n1, n2)
     return n1 - n2
-def add(n1, n2): #addition
+def addition(n1, n2): #addition
     n1, n2 = confloat(n1, n2)
     return n1 + n2
-def mod(n1, n2):
+def modulo(n1, n2):
     n1, n2 = confloat(n1, n2)
     return n1 % n2
 def cuRoot(x):
