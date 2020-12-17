@@ -7,26 +7,6 @@ def main(Comandeer):
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
 
-def whatIsXPercentOf(x, whole):
-    """
-    whole = ORIGINAL NUMBER
-    x = percent
-    This finds x percent of whole.
-    """
-    if whole == 0:
-        raise ValueError("Invalid input (0).")
-        return #not sure if this is necessary but hey better safe than sorry
-    return (x * whole) / 100.0
-def findPercentage(part, whole):
-    """
-    whole = number that would be 100%
-    part = number that you want to convert to percentage (i.e. this number out of the number that would be 100%)
-    This converts `whole' to be 100%, and finds what percentage `part' is out of 100%. Yes its confusing. Bear with me.
-    """
-    if whole == 0:
-        raise ValueError("Invalid input (0).")
-        return #not sure if this is necessary but hey better safe than sorry
-    return 100 * float(part)/float(whole)
 def calculateInterest():
     while True: 
         origin = int(input(_("What is the original number? ")))
