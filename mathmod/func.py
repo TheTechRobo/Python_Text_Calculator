@@ -25,7 +25,7 @@ def readMyMemory():
             logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
     except Exception as e:
         logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
-        cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file?"))
+        cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? Do you have the correct permissions?"))
 def whatIsXPercentOf(x, whole):
     """
     whole = ORIGINAL NUMBER
