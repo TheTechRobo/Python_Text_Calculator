@@ -5,7 +5,6 @@ Just a small module to call mathmod's functions and then parse the results.
 def main(Comandeer):
     globals()['_'] = Commandeer
 
-from mathmod import *
 import mathmod
 from modules.cprint import cprint
 import logging
