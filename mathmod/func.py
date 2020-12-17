@@ -7,25 +7,6 @@ def main(Comandeer):
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
 
-def remember():
-    cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
-    toRemember = float(input(_("\nPlease enter the number to be saved: ")))
-    slot = str(int(input(_("What slot would you like to use? (Hint: you can use any integer you want as long as you remember it)\nType: "))))
-    toRemember = str(toRemember)
-    memory = open(slot, "w+")
-    memory.write(toRemember)
-    logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
-def readMyMemory():
-    cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
-    try:
-        slot = str(int(input(_("What slot number did you use? "))))
-        with open(slot, "r") as memory:
-            theMem = memory.read()
-            cprint.info(_("Number: %s" % theMem))
-            logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
-    except Exception as e:
-        logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
-        cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? Do you have the correct permissions?"))
 def whatIsXPercentOf(x, whole):
     """
     whole = ORIGINAL NUMBER
