@@ -28,7 +28,7 @@ class theBasics:
         n2 = input(_("Please enter the second number: "))
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = add(n1, n2)
+            returnedNumber = addition(n1, n2)
         except ValueError as ename:
             logging.error("While parsing add(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -38,7 +38,7 @@ class theBasics:
     def subtraction():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = sub(n1, n2)
+            returnedNumber = subtraction(n1, n2)
         except ValueError as ename:
             logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -48,7 +48,7 @@ class theBasics:
     def multiplication():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = multi(n1, n2)
+            returnedNumber = multiplication(n1, n2)
         except ValueError as ename:
             logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -58,7 +58,7 @@ class theBasics:
     def division():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = multi(n1, n2)
+            returnedNumber = division(n1, n2)
         except ZeroDivisionError:
             logging.error("User decided to divide by zero.")
             raise SyntaxError("yes, because dividing %s cookie(s) for %s friend(s) makes sense" % (n1, n2))
