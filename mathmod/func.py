@@ -7,18 +7,6 @@ def main(Comandeer):
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
 
-def log(n1, e):
-    """
-    parameter n1: Original number
-    parameter e: Use False if you want base 10 logarithm; True for e (natural).
-    """
-    import math
-    n1 = float(n1)
-    if e:
-        return math.log(n1)
-    if not e:
-        return math.log10(n1)
-
 def remember():
     cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
     toRemember = float(input(_("\nPlease enter the number to be saved: ")))
