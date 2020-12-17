@@ -19,6 +19,7 @@ if not six.PY3:
     print("You are using a currently unsupported version of Python. Your mileage may vary.")
 
 # IMPORTS
+print("Loading Palc modules...")
 try:
     import gettext #to translate Palc
     from sys import exit as e #for exiting
@@ -82,7 +83,7 @@ except Exception as ename:
         e(1)
 else:
     ignore = "undefined"
-cprint.ok(_("Loading Palc files...\n"))
+cprint.ok("Loading Palc localisation files...\n")
 lang_translations.install()
 _ = lang_translations.gettext #if both of these fail we're screwed anyway, and im NOT adding the ignoring support here
 #import func and parsefunc
