@@ -51,5 +51,15 @@ def tax(n1, n2):
     usefulTax = (tax / 100) + 1
     answer = origin + tax
     return answer
-def log(origin, type):
-    pass
+
+def log(n1, e=True):
+    """
+    parameter n1: Original number
+    parameter e: Use False if you want base 10 logarithm; True for e (natural). Defaults to natural.
+    """
+    import math
+    n1 = float(n1)
+    if e:
+        return math.log(n1)
+    if not e:
+        return math.log10(n1)
