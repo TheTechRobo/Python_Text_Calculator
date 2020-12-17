@@ -90,11 +90,12 @@ def findPercentage(part, whole):
         return #not sure if this is necessary but hey better safe than sorry
     return 100 * float(part) / float(whole)
 
-"""def calculateInterest_RenameLater(origin, rate, units):
+def calculateInterest(units, rate, origin):
     '''
     units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
     rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
     origin: Original number.
     '''
-    inRealNumbers = percentage(whole=origin, percent=rate)
-"""
+    inRealNumbers = percentage(whole=origin, x=rate)
+    result = origin + (inRealNumbers * howMany)
+    return result
