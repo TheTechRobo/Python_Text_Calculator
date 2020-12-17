@@ -1,4 +1,9 @@
-# This file is for basic functions and small functions that would be in func.py but are too small to fit.
+"""
+For area, import mathmod.area
+For volume, mathmod.volume
+For fibonacci, mathmod.fibonacci
+These could be included in mathmod at any time, without warning.
+"""
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
