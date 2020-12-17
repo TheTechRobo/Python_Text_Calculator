@@ -14,8 +14,8 @@ def whatIsXPercentOf(x, whole):
     This finds x percent of whole.
     """
     if whole == 0:
-        logging.error("User typed 0 as whole")
-        return (_("Please do not type in a zero as the whole."))
+        raise ValueError("Invalid input (0).")
+        return #not sure if this is necessary but hey better safe than sorry
     return (x * whole) / 100.0
 def findPercentage(part, whole):
     """
@@ -24,8 +24,8 @@ def findPercentage(part, whole):
     This converts `whole' to be 100%, and finds what percentage `part' is out of 100%. Yes its confusing. Bear with me.
     """
     if whole == 0:
-        logging.error("User typed whole zero")
-        return (_("Please do not type in a zero as the whole."))
+        raise ValueError("Invalid input (0).")
+        return #not sure if this is necessary but hey better safe than sorry
     return 100 * float(part)/float(whole)
 def calculateInterest():
     while True: 
