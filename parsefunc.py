@@ -210,13 +210,19 @@ class Percentage:
         percent = float(input(_("What is the PERCENTAGE? ")))
         logging.info("Got percentage RN origin %s percent %s" % (origin, percent))
         cprint.info(_("That equals..."))
-        cprint.info(whatIsXPercentOf(percent, origin))
+        try:
+            cprint.info(whatIsXPercentOf(percent, origin))
+        except ValueError:
+            cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
     def percentage2():
         origin = float(input(_("What is the number that would be 100%? ")))
         part = float(input(_("What is the number that you want to convert to percentage (i.e. this number out of the number that would be 100%)? ")))
         logging.info("Got percentage RN origin %s and %s" % (origin, part))
         cprint.info(_("That equals..."))
-        cprint.info(findPercentage(part, origin))
+        try:
+            cprint.info(findPercentage(part, origin))
+        except ValueError:
+            cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0.")
     def chooseOneTwo():
         chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
 2 - Convert a number to percentage (i.e. how much percent of ___ is ___?).
