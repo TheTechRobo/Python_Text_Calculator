@@ -19,7 +19,7 @@ if not six.PY3:
     print("You are using a currently unsupported version of Python. Your mileage may vary.")
 
 # IMPORTS
-print("Loading Palc modules...")
+print("Loading initial Palc files...")
 try:
     import gettext #to translate Palc
     from sys import exit as e #for exiting
@@ -83,7 +83,7 @@ except Exception as ename:
         e(1)
 else:
     ignore = "undefined"
-cprint.ok("Loading Palc localisation files...\n")
+cprint.ok("Loading Palc files...\n")
 lang_translations.install()
 _ = lang_translations.gettext #if both of these fail we're screwed anyway, and im NOT adding the ignoring support here
 #import func and parsefunc
@@ -95,7 +95,7 @@ except Exception as e:
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 try:
     if ignore[0] == "y":
-        modules = ['parsefunc', 'mathmod.func', 'areaInteractive', 'volInteractive']
+        modules = ['parsefunc', 'areaInteractive', 'volInteractive']
         for module in modules:
             try:
                 import importlib
@@ -107,12 +107,6 @@ except Exception as ename:
     logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
     cprint.err(_("Unexpected error!"))
     raise
-try:
-    from mathmod.func import *
-except Exception as ename:
-    logging.critical("Could not access func.py (%s)" % ename)
-    cprint.fatal(_("I can't access func.py. This file is necessary for proper function of the Software."), interrupt=True)
-logging.info("Successfully imported func.py!")
 time.sleep(1.5)
 def palc():
     while True:
