@@ -229,13 +229,13 @@ Anything else - Back to menu."))
 #MULTIPLICATION
        elif "*" in calc:
             misc.showUserWhatIThink(_("multiply a number"))
-            multi()
+            theBasics.multiplication()
        elif "x" in calc:
             misc.showUserWhatIThink(_("multiply a number"))
-            multi()
+            theBasics.multiplication()
        elif "multi" in calc:
             misc.showUserWhatIThink(_("multiply a number"))
-            multi()
+            theBasics.multiplication()
 #CUBE TWICE
        elif "{2}" in calc:
             cprint.err(_("The \"cube twice\" feature was discontinued as it was pointless. Sorry for the inconvenience."))
