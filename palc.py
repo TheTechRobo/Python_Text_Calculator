@@ -271,7 +271,7 @@ Anything else - Back to menu."))
 #NUMBER SYSTEMS
        elif "base" in calc:
             misc.showUserWhatIThink(_("convert number systems"))
-            Base.base()
+            base()
 #ORD
        elif "ord" in calc:
            misc.showUserWhatIThink(_("ord a character"))
