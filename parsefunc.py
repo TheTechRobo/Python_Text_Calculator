@@ -28,7 +28,7 @@ class theBasics:
         n2 = input(_("Please enter the second number: "))
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = addition(n1, n2)
+            returnedNumber = mathmod.addition(n1, n2)
         except ValueError as ename:
             logging.error("While parsing add(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -38,7 +38,7 @@ class theBasics:
     def subtraction():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = subtraction(n1, n2)
+            returnedNumber = mathmod.subtraction(n1, n2)
         except ValueError as ename:
             logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -48,7 +48,7 @@ class theBasics:
     def multiplication():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = multiplication(n1, n2)
+            returnedNumber = mathmod.multiplication(n1, n2)
         except ValueError as ename:
             logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -58,7 +58,7 @@ class theBasics:
     def division():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = division(n1, n2)
+            returnedNumber = mathmod.division(n1, n2)
         except ZeroDivisionError:
             logging.error("User decided to divide by zero.")
             raise SyntaxError("yes, because dividing %s cookie(s) for %s friend(s) makes sense" % (n1, n2))
@@ -70,7 +70,7 @@ class theBasics:
         logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def mod(): #modulo
         n1, n2 = Builtins.getInput()
-        result = mod(n1, n2)
+        result = mathmod.modulo(n1, n2)
         cprint.info(_("\nThat equals...\n%s\n" % result))
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
 class rootsAndTheOtherOne:
@@ -81,7 +81,7 @@ class rootsAndTheOtherOne:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
         try:
-            nothernumber = cuRoot(number)
+            nothernumber = mathmod.cuRoot(number)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
@@ -98,7 +98,7 @@ class rootsAndTheOtherOne:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)" % (origin, ex)))
         try:
-            returnedNumber = exponent(origin, ex)
+            returnedNumber = mathmod.exponent(origin, ex)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
@@ -107,7 +107,7 @@ class rootsAndTheOtherOne:
         logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
     def sqroot():
         num = float(input(_("Number to be rooted?")))
-        returnedNumber = sqRoot(num)
+        returnedNumber = mathmod.sqRoot(num)
         cprint.info(_("That equals... %s" % returnedNumber))
         logging.info("user sqrooted number %s" % (returnedNumber))
 
@@ -167,7 +167,6 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
 class Temperature:
     def tempCalc():
-        #message = "OPTIONS:\n    1 - Farenheit to Celsius\n    2 - Celsius to Farenheit\n    Farenheit to Kelvin\n    Celsius to Kelvin\n    Kelvin to Celsius\n    Kelvin to Farenheit\nType: "
         message = """What is the %s temperature unit? 
     1 - Farenheit
     2 - Celsius
@@ -211,7 +210,7 @@ class Percentage:
         logging.info("Got percentage RN origin %s percent %s" % (origin, percent))
         cprint.info(_("That equals..."))
         try:
-            cprint.info(whatIsXPercentOf(percent, origin))
+            cprint.info(mathmod.whatIsXPercentOf(percent, origin))
         except ValueError:
             cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
     def percentage2():
@@ -220,7 +219,7 @@ class Percentage:
         logging.info("Got percentage RN origin %s and %s" % (origin, part))
         cprint.info(_("That equals..."))
         try:
-            cprint.info(findPercentage(part, origin))
+            cprint.info(mathmod.findPercentage(part, origin))
         except ValueError:
             cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0.")
     def chooseOneTwo():
@@ -360,7 +359,7 @@ It was up to you to type the correct amount in the rate question.
 We have no idea what the rate represented: it could have been that rate per century for all we know.
 This calculator wasn't programmed with the ability to track time.
 So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-        number = calculateInterest(units, rate, origin)
+        number = mathmod.calculateInterest(units, rate, origin)
         logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
         cprint.info(_("The answer is: \n%s" % number))
         doItAgain = input(_("Would you like to do it again (Y/n)? "))
