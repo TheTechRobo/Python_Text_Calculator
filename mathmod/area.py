@@ -112,7 +112,7 @@ Takes 'b' As The Base And 'h' As The Height.
     :param h: int
     :return: area
     '''
-    a = _f(a)
+    h = _f(a)
     b = _f(b)
     area = b * h
     return area
