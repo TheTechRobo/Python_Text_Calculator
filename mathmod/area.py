@@ -7,7 +7,7 @@ _f = float
 # Triangles
 
 #Equilateral Triangle
-def equtri(a: int) -> 'area':
+def area_equilateral_triangle(a: int) -> 'area':
     '''
     This Function Is For Equilateral Triangle's Area Calculation.
     Takes 'a' As Side Of The Triangle.
@@ -19,7 +19,7 @@ def equtri(a: int) -> 'area':
     return area
 
 #Right Angle Triangle
-def righttri(b: int, h: int) -> 'area':
+def area_right_triangle(b: int, h: int) -> 'area':
     '''
     This Function Is For Right Angled Triangle's Area Calculation.
     Takes 'h' As Height & 'b' As The Base Of The Right Angled Triangle.
@@ -34,7 +34,7 @@ def righttri(b: int, h: int) -> 'area':
     return area
 
 #Acute Triangle
-def actri(a: int, b: int, c: int) -> 'area':
+def area_acute_triangle(a: int, b: int, c: int) -> 'area':
     '''
     This Function Is For Acute Angled Triangle's Area Calculation.
     Takes 'a','b','c' As Length Of Side.
@@ -54,7 +54,7 @@ def actri(a: int, b: int, c: int) -> 'area':
     return area
 
 #Obtuse Triangle
-def obtri(a: int, b: int, c: int) -> 'area':
+def area_obtuse_triangle(a: int, b: int, c: int) -> 'area':
     '''
         This Function Is For Obtuse Angled Triangle's Area Calculation.
         Takes 'a','b','c' As Length Of Side.
@@ -225,3 +225,37 @@ def ellipse(a: int, b: int != 1) -> 'area':
     b = _f(b)
     area = pi * a * b
     return area
+
+#backwards compatibility
+def righttri(b, h):
+    '''
+    This function will be deprecated in Palc v.0.11-stable.
+    See `area_right_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme will be deprecated in Palc v.0.11-stable.")
+    result = area_right_triangle(b=b, h=h)
+    return result
+def equtri(a):
+    '''
+    This function will be deprecated in Palc v.0.11-stable.
+    See `area_equilateral_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme will be deprecated in Palc v.0.11-stable.")
+    result = area_right_triangle(a)
+    return result
+def actri(a, b, c):
+    '''
+    This function will be deprecated in Palc v.0.11-stable.
+    See `area_acute_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme will be deprecated in Palc v.0.11-stable.")
+    result = area_acute_triangle(a=a, b=b, c=c)
+    return result
+def obtri(a, b, c):
+    '''
+    This function will be deprecated in Palc v.0.11-stable.
+    See `area_acute_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme will be deprecated in Palc v.0.11-stable.")
+    result = area_obtuse_triangle(a=a, b=b, c=c)
+    return result
