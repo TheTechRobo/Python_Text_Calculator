@@ -153,7 +153,7 @@ def area_trapezium(a: int, b: int, h: int) -> 'area':
 # Circles
 
 #Full Circle
-def circle(r: int) -> 'area':
+def area_circle(r: int) -> 'area':
     '''
     This Function Is For Circle's Area Calculation.
     Takes 'r' As The Radius Of The Circle.
@@ -166,7 +166,7 @@ def circle(r: int) -> 'area':
     return area
 
 #Semicircle
-def semicircle(r: int) -> 'area':
+def area_semicircle(r: int) -> 'area':
     """
     This Function Is For Semicircle's Area Calculation.
     Takes 'r' As The Radius Of The semicircle.
@@ -179,7 +179,7 @@ def semicircle(r: int) -> 'area':
     return area
 
 #Circular sector
-def cirsector(r: int, a: int) -> 'area':
+def area_circular_sector(r: int, a: int) -> 'area':
     """
     This Function Is For Circular Sector's Area Calculation.
     Takes 'r' As The Radius Of The Circular Sector.
@@ -196,7 +196,7 @@ def cirsector(r: int, a: int) -> 'area':
     return area
 
 #Ring
-def ring(ro: int, rs: int != 1) -> 'area':
+def area_ring(ro: int, rs: int != 1) -> 'area':
     """
     This Function Is For Circular Ring's Area Calculation.
     Takes 'ro'(Radius Of The Outer Circle),
@@ -212,7 +212,7 @@ def ring(ro: int, rs: int != 1) -> 'area':
     return area
 
 #Ellipse
-def ellipse(a: int, b: int != 1) -> 'area':
+def area_ellipse(a: int, b: int != 1) -> 'area':
     """
     This Function Is For Ellipse's Area Calculation.
     Takes 'a' and 'b' As The Length Of Major And Minor Axis, Respectively.
@@ -298,4 +298,44 @@ def trapezium(a, b, h):
     '''
     print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
     result = area_trapezium(a=a, b=b, h=h)
+    return result
+def circle(r):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_circle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_circle(r)
+    return result
+def semicircle(r):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_semicircle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_semicircle(r)
+    return result
+def cirsector(r, a):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_circular_sector' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_circular_sector(r=r, a=a)
+    return result
+def ring(ro, rs):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_ring' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_ring(ro=ro, rs=rs)
+    return result
+def ellipse(a, b):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_ring' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_ellipse(a=a, b=b)
     return result
