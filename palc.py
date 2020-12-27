@@ -357,7 +357,7 @@ except SystemExit:
 except Exception as ename:
     standTextOut(_("\aUnknown Error!\a"), print, cprint.fatal) #\a makes a beep
     logging.fatal("Unknown error (%s)" % ename)
-    cprint.fatal(_("An unknown error occured. Please file an Issue at github.com/thetechrobo/support."))
+    cprint.fatal(_("An unknown error occured. Please file an Issue at github.com/thetechrobo/python-text-calculator/issues."))
 finally:
     logging.info("Program finished.")
 #EOF
