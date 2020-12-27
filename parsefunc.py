@@ -112,7 +112,7 @@ class misc:
     def h():
         cprint.info(_('''
 Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
-Bugs? Head on over to https://github.com/thetechrobo/support/
+Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/
 To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         '''))
     def vol():
@@ -153,7 +153,7 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             cprint.info(_("Try different wording. Or, if you want that calculation choice to be made right, file a ticket."))
             if _("y") in input(_("Would you like to file a ticket? (Y/n)\nType: ")).lower(): 
                 import webbrowser
-                webbrowser.open("http://github.com/thetechrobo/support/issues/new")
+                webbrowser.open("http://github.com/thetechrobo/python-text-calculator/issues/new")
                 logging.info("User chose to file a ticket because they didn't want Palc to %s" % whatDOyouthink)
                 input(_("Press ENTER to continue..."))
                 cprint.info(_("Proceeding with the function I thought it was."))
