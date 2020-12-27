@@ -11,7 +11,7 @@ def clearScreen():
         print(esc + '[2J' + esc + '[0;0H')
 
 def clearScreenOld():
-    """This will work most of the time. Tries three times to clear the screen."""
+    """This will NOT work on windows unless you have colorama package. Tries three times to clear the screen."""
     print(chr(27)+'[2j') #first attempt at clearing the screen w/ ansi escape codes
     print('\033c')#second attempt at clearing the screen w/ ansi escape codes
     print('\x1bc')#third attempt at clearing the screen w/ ansi escape codes

@@ -13,3 +13,13 @@ def standTextOut(string, printMechanismDash=print, printMechanismString=print):
     printMechanismDash(dashes)
     printMechanismString(string.center(width))
     printMechanismDash(dashes)
+
+def standTextOut_Return(string):
+    """
+    Will return the finished string so you can output it the way you want.
+    """
+    width = os.get_terminal_size().columns
+    result = "-" * width
+    result = (result + "\n" + string.center(width))
+    result = (result + "\n" + ("-" * width))
+    return result

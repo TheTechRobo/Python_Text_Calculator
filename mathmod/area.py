@@ -7,7 +7,7 @@ _f = float
 # Triangles
 
 #Equilateral Triangle
-def equtri(a: int) -> 'area':
+def area_equilateral_triangle(a: int) -> 'area':
     '''
     This Function Is For Equilateral Triangle's Area Calculation.
     Takes 'a' As Side Of The Triangle.
@@ -19,7 +19,7 @@ def equtri(a: int) -> 'area':
     return area
 
 #Right Angle Triangle
-def righttri(b: int, h: int) -> 'area':
+def area_right_triangle(b: int, h: int) -> 'area':
     '''
     This Function Is For Right Angled Triangle's Area Calculation.
     Takes 'h' As Height & 'b' As The Base Of The Right Angled Triangle.
@@ -34,7 +34,7 @@ def righttri(b: int, h: int) -> 'area':
     return area
 
 #Acute Triangle
-def actri(a: int, b: int, c: int) -> 'area':
+def area_acute_triangle(a: int, b: int, c: int) -> 'area':
     '''
     This Function Is For Acute Angled Triangle's Area Calculation.
     Takes 'a','b','c' As Length Of Side.
@@ -54,7 +54,7 @@ def actri(a: int, b: int, c: int) -> 'area':
     return area
 
 #Obtuse Triangle
-def obtri(a: int, b: int, c: int) -> 'area':
+def area_obtuse_triangle(a: int, b: int, c: int) -> 'area':
     '''
         This Function Is For Obtuse Angled Triangle's Area Calculation.
         Takes 'a','b','c' As Length Of Side.
@@ -75,7 +75,7 @@ def obtri(a: int, b: int, c: int) -> 'area':
 # Quadrilaterals
 
 #Square
-def sq(a: int) -> 'area':
+def area_square(a: int) -> 'area':
     '''
     This Function Is For Square's Area Calculation.
     Takes 'a' As Length Of The Side.
@@ -88,7 +88,7 @@ def sq(a: int) -> 'area':
     return area
 
 #Rectangle
-def rectangle(l: int, b: int) -> 'area':
+def area_rectangle(l: int, b: int) -> 'area':
     '''
        This Function Is For Rectangle's Area Calculation.
        Takes 'a' As Length Of The Side.
@@ -103,10 +103,10 @@ def rectangle(l: int, b: int) -> 'area':
     return area
 
 #Parallelogram
-def parallelogram(b: int, h: int) -> 'area':
+def area_parallelogram(b: int, h: int) -> 'area':
     '''
     This Function Is For Parallelogram's Area Calculation.
-Takes 'b' As The Base And 'h' As The Height.
+    Takes 'b' As The Base And 'h' As The Height.
     And Returns The Area.
     :param b: int
     :param h: int
@@ -118,7 +118,7 @@ Takes 'b' As The Base And 'h' As The Height.
     return area
 
 #Rhombus
-def rhombus(do: int, ds: int) -> 'area':
+def area_rhombus(do: int, ds: int) -> 'area':
     '''
     This Function Is For Rhombus's Area Calculation.
     Takes 'do' As The First Diagonal And 'ds' As The Second Diagonal.
@@ -133,7 +133,7 @@ def rhombus(do: int, ds: int) -> 'area':
     return area
 
 #Trapezium
-def trapezium(a: int, b: int, h: int) -> 'area':
+def area_trapezium(a: int, b: int, h: int) -> 'area':
     '''
     This Function Is For Trapezium's Area Calculation.
     Takes 'a' and 'b' as the length of the parallel sides and 'h' as rhe height.
@@ -153,7 +153,7 @@ def trapezium(a: int, b: int, h: int) -> 'area':
 # Circles
 
 #Full Circle
-def circle(r: int) -> 'area':
+def area_circle(r: int) -> 'area':
     '''
     This Function Is For Circle's Area Calculation.
     Takes 'r' As The Radius Of The Circle.
@@ -166,7 +166,7 @@ def circle(r: int) -> 'area':
     return area
 
 #Semicircle
-def semicircle(r: int) -> 'area':
+def area_semicircle(r: int) -> 'area':
     """
     This Function Is For Semicircle's Area Calculation.
     Takes 'r' As The Radius Of The semicircle.
@@ -179,7 +179,7 @@ def semicircle(r: int) -> 'area':
     return area
 
 #Circular sector
-def cirsector(r: int, a: int) -> 'area':
+def area_circular_sector(r: int, a: int) -> 'area':
     """
     This Function Is For Circular Sector's Area Calculation.
     Takes 'r' As The Radius Of The Circular Sector.
@@ -196,7 +196,7 @@ def cirsector(r: int, a: int) -> 'area':
     return area
 
 #Ring
-def ring(ro: int, rs: int != 1) -> 'area':
+def area_ring(ro: int, rs: int != 1) -> 'area':
     """
     This Function Is For Circular Ring's Area Calculation.
     Takes 'ro'(Radius Of The Outer Circle),
@@ -212,7 +212,7 @@ def ring(ro: int, rs: int != 1) -> 'area':
     return area
 
 #Ellipse
-def ellipse(a: int, b: int != 1) -> 'area':
+def area_ellipse(a: int, b: int != 1) -> 'area':
     """
     This Function Is For Ellipse's Area Calculation.
     Takes 'a' and 'b' As The Length Of Major And Minor Axis, Respectively.
@@ -225,3 +225,117 @@ def ellipse(a: int, b: int != 1) -> 'area':
     b = _f(b)
     area = pi * a * b
     return area
+
+#backwards compatibility
+def righttri(b, h):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_right_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_right_triangle(b=b, h=h)
+    return result
+def equtri(a):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_equilateral_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_right_triangle(a)
+    return result
+def actri(a, b, c):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_acute_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_acute_triangle(a=a, b=b, c=c)
+    return result
+def obtri(a, b, c):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_obtuse_triangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_obtuse_triangle(a=a, b=b, c=c)
+    return result
+def sq(a):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_square' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_square(a)
+    return result
+def rectangle(l, b):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_rectangle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_rectangle(l=l, b=b)
+    return result
+def parallelogram(b, h):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_parallelogram' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_parallelogram(b=b, h=h)
+    return result
+def rhombus(do, ds):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_rhombus' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_rhombus(do=do, ds=ds)
+    return result
+def trapezium(a, b, h):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_trapezium' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_trapezium(a=a, b=b, h=h)
+    return result
+def circle(r):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_circle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_circle(r)
+    return result
+def semicircle(r):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_semicircle' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_semicircle(r)
+    return result
+def cirsector(r, a):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_circular_sector' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_circular_sector(r=r, a=a)
+    return result
+def ring(ro, rs):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_ring' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_ring(ro=ro, rs=rs)
+    return result
+def ellipse(a, b):
+    '''
+    This function will be removed in Palc v.0.11-stable.
+    See `area_ring' for documentation.
+    '''
+    print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
+    result = area_ellipse(a=a, b=b)
+    return result
