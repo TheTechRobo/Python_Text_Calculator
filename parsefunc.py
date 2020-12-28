@@ -414,7 +414,7 @@ class Area:
         from mathmod.area import parallelogram as para
         b = float(input(_("What is the length of the base? ")))
         h = float(input(_("What is the height of the shape? ")))
-            area = para(b, h)
+        area = para(b, h)
         logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
         cprint.info(_("The area is: %s" % area))
     def rhombus():
