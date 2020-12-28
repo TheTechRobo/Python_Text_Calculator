@@ -428,14 +428,14 @@ class Area:
         from mathmod.area import trapezium as trapezi
         a = float(input(_("What is the length of the 1st set of parallel sides? ")))
         b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
-            h = float(input(_("What is the height of the trapezium? ")))
+        h = float(input(_("What is the height of the trapezium? ")))
         area = trapezi(a, b, h)
-            logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
+        logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
         cprint.info(_("The area is: %s" % area))
     def circle():
         from mathmod.area import circle as circl
-                r = float(input(_("What is the radius of the circle? ")))
-            area = circl(r)
+        r = float(input(_("What is the radius of the circle? ")))
+        area = circl(r)
         logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
         cprint.info(_("The area is: %s" % area))
     def semicircle():
