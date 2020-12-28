@@ -241,7 +241,7 @@ def equtri(a):
     See `area_equilateral_triangle' for documentation.
     '''
     print("MATHMOD: WARNING: This naming scheme is deprecated and will be removed in Palc v.0.11-stable.")
-    result = area_right_triangle(a)
+    result = area_equilateral_triangle(a)
     return result
 def actri(a, b, c):
     '''
