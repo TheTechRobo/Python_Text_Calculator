@@ -492,46 +492,46 @@ class Area:
                 cprint.err(_("I was too lazy to change 7."))
                 logging.info("Lazy 7")
             elif choice == 1:
-                equ_triangle()
+                Area.equ_triangle()
                 break
             elif choice == 2:
-                right_triangle()
+                Area.right_triangle()
                 break
             elif choice == 3:
-                acute_triangle()
+                Area.acute_triangle()
                 break
             elif choice == 4:
-                obtuse_triangle()
+                Area.obtuse_triangle()
                 break
             elif choice == 5:
-                square()
+                Area.square()
                 break
             elif choice == 6:
-                rectangle()
+                Area.rectangle()
                 break
             elif choice == 8:
-                parallelogram()
+                Area.parallelogram()
                 break
             elif choice == 9:
-                rhombus()
+                Area.rhombus()
                 break
             elif choice == 10:
-                trapezium()
+                Area.trapezium()
                 break
             elif choice == 11:
-                circle()
+                Area.circle()
                 break
             elif choice == 12:
-                semicircle()
+                Area.semicircle()
                 break
             elif choice == 13:
-                sector()
+                Area.sector()
                 break
             elif choice == 14:
-                ring() #my precious!
+                Area.ring() #my precious!
                 break
             elif choice == 15:
-                ellipse()
+                Area.ellipse()
                 break
 
 class Volume:
