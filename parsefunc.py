@@ -367,6 +367,11 @@ So, with that out of the way, type the amount we should multiply the interest by
             cprint.ok(_("Going back..."))
             return
 
+class Area:
+    pass
+class Volume:
+    pass
+
 if __name__ == "__main__":
     print("Please don't run this file directly, it can only be used with Palc")
     try:
