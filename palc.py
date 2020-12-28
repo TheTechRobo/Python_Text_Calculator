@@ -12,7 +12,7 @@ OTHER STUFF
 CREATED BY: lewiswatson55
 FORKED BY: TheTechRobo
 CONTRIBUTORS: See contributors.md
-LICENSE: DBAD Clean v.2.0 (found in LICENSE.md)
+LICENSE: GPL 3.0 (see LICENSE)
 """
 import six
 if not six.PY3:
@@ -87,7 +87,7 @@ cprint.ok("Loading Palc files...\n")
 lang_translations.install()
 _ = lang_translations.gettext #if both of these fail we're screwed anyway, and im NOT adding the ignoring support here
 #import func and parsefunc
-logging.info("Attempting to import func.py and parsefunc.py (DEPRECATION WARNING: Later func will not be necessary.)")
+logging.info("Attempting to import parsefunc.py..")
 try:
     from parsefunc import *
 except Exception as e:
