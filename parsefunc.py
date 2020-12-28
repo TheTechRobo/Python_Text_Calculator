@@ -369,20 +369,20 @@ So, with that out of the way, type the amount we should multiply the interest by
 
 class Area:
     def equ_triangle():
-        from mathmod.area import equtri
+        from mathmod.area import area_equilateral_triangle as equtri
         a = float(input(_("What length is the side of the triangle? ")))
         area = equtri(a)
         cprint.info(_("The area is: %s" % area))
         logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
     def right_triangle():
-        from mathmod.area import righttri
+        from mathmod.area import area_right_triangle as righttri
         b = float(input(_("What length is the base of the triangle? ")))
         h = float(input(_("What length is the height of the triangle? ")))
         area = righttri(b=b, h=h)
         logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
         cprint.info(_("The area is: %s" % area))
     def acute_triangle():
-        from mathmod.area import actri
+        from mathmod.area import area_acute_triangle as actri
         a = float(input(_("What is the length of the first side? ")))
         b = float(input(_("what is the length of the second side? ")))
         c = float(input(_("What is the length of the third side? ")))
@@ -390,7 +390,7 @@ class Area:
         logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
         cprint.info(_("The area is: %s" % area))
     def obtuse_triangle():
-        from mathmod.area import obtri
+        from mathmod.area import area_obtuse_triangle as obtri
         a = float(input(_("What is the length of the first side? ")))
         b = float(input(_("What is the length of the second side? ")))
         c = float(input(_("What is the length of the third side? ")))
@@ -398,34 +398,34 @@ class Area:
         logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
         cprint.info(_("The area is: %s" % area))
     def square():
-        from mathmod.area import sq
+        from mathmod.area import area_square as sq
         a = float(input(_("What is the length of the side of the square? ")))
         area = sq(a)
         logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
         cprint.info(_("The area is: %s" % area))
     def rectangle():
-        from mathmod.area import rectangle as rec
+        from mathmod.area import area_rectangle as rec
         l = float(input(_("What is the length of the rectangle? ")))
         b = float(input(_("What is the height of the rectangle? ")))
         area = rec(l, b)
         logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
         cprint.info(_("The area is: %s" % area))
     def parallelogram():
-        from mathmod.area import parallelogram as para
+        from mathmod.area import area_parallelogram as para
         b = float(input(_("What is the length of the base? ")))
         h = float(input(_("What is the height of the shape? ")))
         area = para(b, h)
         logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
         cprint.info(_("The area is: %s" % area))
     def rhombus():
-        from mathmod.area import rhombus as rhombu
+        from mathmod.area import area_rhombus as rhombu
         do = float(input(_("What is the length of the first diagonal? ")))
         ds = float(input(_("What is the length of the 2nd diagonal? ")))
         area = rhombu(do, ds)
         logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
         cprint.info(_("The area is: %s" % area))
     def trapezium():
-        from mathmod.area import trapezium as trapezi
+        from mathmod.area import area_trapezium as trapezi
         a = float(input(_("What is the length of the 1st set of parallel sides? ")))
         b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
         h = float(input(_("What is the height of the trapezium? ")))
@@ -433,33 +433,33 @@ class Area:
         logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
         cprint.info(_("The area is: %s" % area))
     def circle():
-        from mathmod.area import circle as circl
+        from mathmod.area import area_circle as circl
         r = float(input(_("What is the radius of the circle? ")))
         area = circl(r)
         logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
         cprint.info(_("The area is: %s" % area))
     def semicircle():
-        from mathmod.area import semicircle as semi
+        from mathmod.area import area_semicircle as semi
         r = float(input(_("What is the radius of the semicircle? ")))
         area = semi(r)
         logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
         cprint.info(_("The area is: %s" % area))
     def sector():
-        from mathmod.area import cirsector
+        from mathmod.area import area_circular_sector as cirsector
         r = float(input(_("What is the radius of the circular sector? ")))
         a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
         area = cirsector(r, a)
         logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
         cprint.info(_("The area is: %s" % area))
     def ring():
-        from mathmod.area import ring as myprecious
+        from mathmod.area import area_ring as myprecious
         ro = float(input(_("What is the radius of the outer circle? ")))
         rs = float(input(_("What is the radius of the inner circle? ")))
         area = myprecious(ro, rs)
         logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
         cprint.info(_("The area is: %s" % area))
     def ellipse():
-        from mathmod.area import ellipse as el
+        from mathmod.area import area_ellipse as el
         a = float(input(_("What is the length of the major axis? ")))
         b = float(input(_("What is the length of the minor axis? ")))
         area = el(a, b)
