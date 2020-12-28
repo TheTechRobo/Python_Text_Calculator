@@ -1,1 +1,0 @@
-So you essentially have a String Variable, and Everytime you click a Button it runs varname = varname + "number", then when User presses an Operator Button it converts it to a float and so on
