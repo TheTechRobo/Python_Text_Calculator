@@ -99,3 +99,39 @@ class Misc:
         inRealNumbers = percentage(whole=origin, x=rate)
         result = origin + (inRealNumbers * howMany)
         return result
+    def calcuateTemperature(origin, source, destination):
+        """
+        origin: Original Number
+        source: 
+          - 1 for Farenheit
+          - 2 for Celsius
+          - 3 for Kelvin
+          - 4 for Rankine
+        destination: 
+          - 1 for Farenheit
+          - 2 for Celsius
+          - 3 for Kelvin
+          - 4 for Rankine
+        It would start at 0 but it would require some code changes in parsefunc so whatever. \__(^_^)__/
+        """
+        if source == 1 and destination == 2:
+            result = origin - 32
+            result = result * 5/9
+        elif source == 2 and destination == 1:
+            yolo = origin * 9/5
+            yolo = yolo + 32
+        elif source == 1 and destination == 3:
+            #convert to celsius
+            yolo = origin - 32
+            yolo = yolo * 5/9
+            #convert from celsius to kelvin
+            yolo = yolo + 273.15
+        elif source == 2 and destination == 3:
+            yolo = origin + 273.15 #convert to kelvin
+        elif source == 3 and destination == 2:
+            yolo = origin - 273.15 #do the opposite of celsius to kelvin
+        elif source == 3 and destination == 1:
+            yolo = origin - 273.15
+            yolo = yolo * 9/5
+            yolo = yolo + 32
+        # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
