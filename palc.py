@@ -125,7 +125,7 @@ def palc():
            misc.h()
 #TAX
        elif _("tax") in calc:
-            misc.misc.showUserWhatIThink(_("calculate tax"))
+            misc.showUserWhatIThink(_("calculate tax"))
             Tax.taxCalc()
 #SQUARE
        elif _("sq") in calc:
