@@ -25,7 +25,7 @@ class theBasics:
     def addition():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = mathmod.addition(n1, n2)
+            returnedNumber = mathmod.Arithmetic.addition(n1, n2)
         except ValueError as ename:
             logging.error("While parsing add(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -35,7 +35,7 @@ class theBasics:
     def subtraction():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = mathmod.subtraction(n1, n2)
+            returnedNumber = mathmod.Arithmetic.subtraction(n1, n2)
         except ValueError as ename:
             logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -45,7 +45,7 @@ class theBasics:
     def multiplication():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = mathmod.multiplication(n1, n2)
+            returnedNumber = mathmod.Arithmetic.multiplication(n1, n2)
         except ValueError as ename:
             logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
@@ -55,7 +55,7 @@ class theBasics:
     def division():
         n1, n2 = Builtins.getInput()
         try:
-            returnedNumber = mathmod.division(n1, n2)
+            returnedNumber = mathmod.Arithmetic.division(n1, n2)
         except ZeroDivisionError:
             logging.error("User decided to divide by zero.")
             raise SyntaxError("yes, because dividing %s cookie(s) for %s friend(s) makes sense" % (n1, n2))
@@ -78,7 +78,7 @@ class rootsAndTheOtherOne:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
         try:
-            nothernumber = mathmod.cuRoot(number)
+            nothernumber = mathmod.RootsAndExponents.cuRoot(number)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
@@ -95,7 +95,7 @@ class rootsAndTheOtherOne:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)" % (origin, ex)))
         try:
-            returnedNumber = mathmod.exponent(origin, ex)
+            returnedNumber = mathmod.RootsAndExponents.exponent(origin, ex)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
@@ -104,7 +104,7 @@ class rootsAndTheOtherOne:
         logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
     def sqroot():
         num = float(input(_("Number to be rooted?")))
-        returnedNumber = mathmod.sqRoot(num)
+        returnedNumber = mathmod.RootsAndExponents.sqRoot(num)
         cprint.info(_("That equals... %s" % returnedNumber))
         logging.info("user sqrooted number %s" % (returnedNumber))
 
@@ -175,7 +175,7 @@ class Temperature:
         destination = int(input(_(message % "destination")))
         print("                  ")
         try:
-            yolo = mathmod.calculateTemperature(origin=origin, source=source, destination=destination)
+            yolo = mathmod.Misc.calculateTemperature(origin=origin, source=source, destination=destination)
         except ValueError:
             cprint.err(_("Invalid input(s).\nIf you chose Rankine, it's because it's not currently supported."))
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
@@ -188,7 +188,7 @@ class Percentage:
         logging.info("Got percentage RN origin %s percent %s" % (origin, percent))
         cprint.info(_("That equals..."))
         try:
-            cprint.info(mathmod.whatIsXPercentOf(percent, origin))
+            cprint.info(mathmod.Misc.whatIsXPercentOf(percent, origin))
         except ValueError:
             cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
     def percentage2():
@@ -197,7 +197,7 @@ class Percentage:
         logging.info("Got percentage RN origin %s and %s" % (origin, part))
         cprint.info(_("That equals..."))
         try:
-            cprint.info(mathmod.findPercentage(part, origin))
+            cprint.info(mathmod.Misc.findPercentage(part, origin))
         except ValueError:
             cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
     def chooseOneTwo():
@@ -241,7 +241,7 @@ class Tax:
             logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
             return
         originPrice = float(input(_("What is the original price (before tax)? ")))
-        result = tax(originPrice, percent)
+        result = mathmod.Misc.tax(originPrice, percent)
         logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
         cprint.info(_("After tax, the price is: \n%s" % result))
 
@@ -250,10 +250,10 @@ def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarit
         base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
         number = float(input(_("What is the number? ")))
         if base[0] == "1":
-            result = log(number, False)
+            result = mathmod.Misc.log(number, False)
             break
         elif base[0] == "2":
-            result = log(number, True)
+            result = mathmod.Misc.log(number, True)
             break
         else:
             cprint.err(_("The logarithm you typed is not available."))
