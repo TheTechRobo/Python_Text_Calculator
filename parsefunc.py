@@ -174,7 +174,8 @@ class Temperature:
         origin = float(input(_("Please enter the original temperature...")))
         destination = int(input(_(message % "destination")))
         print("                  ")
-        yolo = mathmod.calculateTemperature(origin=origin, source=source, destination=destination)
+        try:
+            yolo = mathmod.calculateTemperature(origin=origin, source=source, destination=destination)
         except ValueError:
             cprint.err(_("Invalid input(s).\nIf you chose Rankine, it's because it's not currently supported."))
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
