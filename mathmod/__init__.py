@@ -133,10 +133,25 @@ class Misc:
             yolo = origin + 273.15 #convert to kelvin
         elif source == 3 and destination == 2:
             yolo = origin - 273.15 #do the opposite of celsius to kelvin
-        elif source == 3 and destination == 1:
+        elif source == 3 and destination == 1: #kelvin to farenheit
             yolo = origin - 273.15
             yolo = yolo * 9/5
             yolo = yolo + 32
+        elif source == 4 and destination == 1: #rankine to farenheit
+            yolo = origin - 459.67
+        elif source == 4 and destination == 2: #rankine to celsius
+            yolo = (origin - 491.67) * 5/9
+        elif source == 4 and destination == 3: #rankine to kelvin
+            yolo = origin * 5/9
+        elif source == 1 and destination == 4: #farenheit to rankine
+            yolo = origin + 459.67
+        elif source == 2 and destination == 4: #celsius to rankine
+            yolo = origin * 9/5 + 491.67
+        elif source == 3 and destination == 4: #kelvin to rankine
+            yolo = origin * 1.8
+        #elif source == destination: 
+            #raise ValueError("bruh moment.")
+            #pass
         # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
         elif source == 4:
             raise ValueError("MATHMOD: Rankine is not implemented.")
