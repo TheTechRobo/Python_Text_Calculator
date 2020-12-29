@@ -114,9 +114,12 @@ class Misc:
           - 4 for Rankine
         It would start at 0 but it would require some code changes in parsefunc so whatever. \__(^_^)__/
         """
+        origin = float(origin)
+        source = int(source)
+        destination = int(destination)
         if source == 1 and destination == 2:
-            result = origin - 32
-            result = result * 5/9
+            yolo = origin - 32
+            yolo = yolo * 5/9
         elif source == 2 and destination == 1:
             yolo = origin * 9/5
             yolo = yolo + 32
@@ -135,3 +138,10 @@ class Misc:
             yolo = yolo * 9/5
             yolo = yolo + 32
         # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
+        elif source == 4:
+            raise ValueError("MATHMOD: Rankine is not implemented.")
+        elif destination == 4:
+            raise ValueError("MATHMOD: Rankine is not implemented.")
+        else:
+            raise ValueError("MATHMOD: Invalid input(s).")
+        return yolo
