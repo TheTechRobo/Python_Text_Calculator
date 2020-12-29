@@ -99,7 +99,7 @@ class Misc:
         inRealNumbers = percentage(whole=origin, x=rate)
         result = origin + (inRealNumbers * howMany)
         return result
-    def calcuateTemperature(origin, source, destination):
+    def calcluateTemperature(origin, source, destination):
         """
         origin: Original Number
         source: 
