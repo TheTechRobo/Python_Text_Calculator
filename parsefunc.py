@@ -174,29 +174,9 @@ class Temperature:
         origin = float(input(_("Please enter the original temperature...")))
         destination = int(input(_(message % "destination")))
         print("                  ")
-        if source == 1 and destination == 2:
-            yolo = origin - 32
-            yolo = yolo * 5/9
-        elif source == 2 and destination == 1:
-            yolo = origin * 9/5
-            yolo = yolo + 32
-        elif source == 1 and destination == 3:
-            #convert to celsius
-            yolo = origin - 32
-            yolo = yolo * 5/9
-            #convert from celsius to kelvin
-            yolo = yolo + 273.15
-        elif source == 2 and destination == 3:
-            yolo = origin + 273.15 #convert to kelvin
-        elif source == 3 and destination == 2:
-            yolo = origin - 273.15 #do the opposite of celsius to kelvin
-        elif source == 3 and destination == 1:
-            yolo = origin - 273.15
-            yolo = yolo * 9/5
-            yolo = yolo + 32
-        # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
-        else:
-            cprint.err(_("Invalid response.\nIf you chose Rankine, it's because it's not currently supported."))
+        yolo = mathmod.calculateTemperature(origin=origin, source=source, destination=destination)
+        except ValueError:
+            cprint.err(_("Invalid input(s).\nIf you chose Rankine, it's because it's not currently supported."))
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
         cprint.info(_("That equals... \n%s                       " % yolo))
         logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
