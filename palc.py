@@ -172,7 +172,7 @@ def palc():
 Anything else - Back to menu."))
             pOrMod = input(_("Type: "))
             if pOrMod == "1":
-                mod()
+                theBasics.mod()
             elif pOrMod == "2":
                 Percentage.chooseOneTwo()
             else:
@@ -180,7 +180,7 @@ Anything else - Back to menu."))
                 logging.info("going back.")
        elif "mod" in calc:
             misc.showUserWhatIThink(_("find the remainder of two numbers after division"))
-            mod()
+            theBasics.mod()
 #AREA
        elif _("area") in calc:
             misc.showUserWhatIThink(_("calculate area"))
