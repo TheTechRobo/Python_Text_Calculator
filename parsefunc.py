@@ -122,8 +122,8 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
         Area.AreaMain()
     def fib():
-        hi = int(input(_("Would you like...\n    1 - Calculate a fixed amount of fibonacci numbers.\n    2 - Calculate fibonacci indefinitely.\nType: ")))
-        if hi[0] == 1:
+        hi = input(_("Would you like...\n    1 - Calculate a fixed amount of fibonacci numbers.\n    2 - Calculate fibonacci indefinitely.\nType: "))
+        if hi[0] == "1":
             cprint.info(_("Fixed it is."))
             from mathmod.fibonacci import CalculateFixedFibo
             amount = int(input(_("How many numbers of fibonacci would you like to calculate? ")))
