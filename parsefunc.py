@@ -177,7 +177,7 @@ class Temperature:
         try:
             yolo = mathmod.Misc.calculateTemperature(origin=origin, source=source, destination=destination)
         except ValueError:
-            cprint.err(_("Invalid input(s).\nIf you chose Rankine, it's because it's not currently supported."))
+            cprint.err(_("Invalid input(s)."))
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
         cprint.info(_("That equals... \n%s                       " % yolo))
         logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
