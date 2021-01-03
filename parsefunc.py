@@ -570,14 +570,14 @@ class Volume:
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the prism? ")))
         volume = vol_tri_prism(a=a, h=h)
-        logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume)
+        logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
         cprint.info(_("The volume is: %s") % volume)
     def pentprism():
         from mathmod.volume import vol_penta_prism
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the prism? ")))
         volume = vol_penta_prism(a=a, h=h)
-        logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume)
+        logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
         cprint.info(_("The volume is: %s") % volume)
     def hexaprism():
         from mathmod.volume import vol_hexa_prism
