@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2021-01-03 09:52-0500\n"
-"PO-Revision-Date: 2021-01-03 09:54-0500\n"
+"POT-Creation-Date: 2021-01-03 10:00-0500\n"
+"PO-Revision-Date: 2021-01-03 10:01-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -472,11 +472,11 @@ msgid "The answer is... %s"
 msgstr "Le résultat est ... %s"
 
 #: parsefunc.py:89
-msgid "Original number?"
+msgid "Enter the original number: "
 msgstr "Saisissez le nombre d'origine : "
 
 #: parsefunc.py:90
-msgid "Exponent? "
+msgid "Enter the exponent: "
 msgstr "Saisissez l'exposant : "
 
 #: parsefunc.py:96
@@ -613,7 +613,7 @@ msgstr "source"
 
 #: parsefunc.py:174
 msgid "Please enter the original temperature..."
-msgstr "Veuillez entrer la température originale ... "
+msgstr "Veuillez entrer la température originale ..."
 
 #: parsefunc.py:175
 msgid "destination"
@@ -621,7 +621,7 @@ msgstr "déstination"
 
 #: parsefunc.py:180
 msgid "Invalid input(s)."
-msgstr "Saisie invalide (code 1)\n"
+msgstr "Saisie(s) invalide(s)."
 
 #: parsefunc.py:182
 #, python-format
@@ -1153,6 +1153,12 @@ msgstr ""
 "13 - Pyramide a base triangulaire\n"
 "14 - Pyramide a base pentagonale\n"
 "15 - Pyramide a base hexagonale"
+
+#~ msgid "Original number?"
+#~ msgstr "Saisissez le nombre d'origine : "
+
+#~ msgid "Exponent? "
+#~ msgstr "Saisissez l'exposant : "
 
 #, fuzzy
 #~| msgid ""

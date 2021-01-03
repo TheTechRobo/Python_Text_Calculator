@@ -18,7 +18,7 @@ class Builtins:
             float(n2)
         except Exception as ename:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+            raise ValueError(_("ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)") % (n1, n2))
         return (n1, n2)
 
 class theBasics:
@@ -76,7 +76,7 @@ class rootsAndTheOtherOne:
             number = float(input(_("Number to be rooted? ")))
         except Exception as ename:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)" % (n1, n2)))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)") % (n1, n2))
         try:
             nothernumber = mathmod.RootsAndExponents.cuRoot(number)
         except ValueError as ename:
@@ -86,14 +86,14 @@ class rootsAndTheOtherOne:
         logging.info("Parsed curoot(%s) to get %s..." % (number, nothernumber))
         cprint.info(_("The answer is... %s") % nothernumber)
     def powerful():
-        origin = input(_("Original number?"))
-        ex = input(_("Exponent? "))
+        origin = input(_("Enter the original number: "))
+        ex = input(_("Enter the exponent: "))
         try:
             float(origin)
             float(ex)
         except Exception as ename:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)" % (origin, ex)))
+            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)") % (origin, ex))
         try:
             returnedNumber = mathmod.RootsAndExponents.exponent(origin, ex)
         except ValueError as ename:
@@ -170,7 +170,7 @@ class Temperature:
     3 - Kelvin
     4 - Rankine
                                                    \033[A\033[A\033[A\033[A\033[A"""
-        source = int(input(_(message % "source")))
+        source = int(input(_(message) % "source"))
         origin = float(input(_("Please enter the original temperature...")))
         destination = int(input(_(message % "destination")))
         print("                  ")
