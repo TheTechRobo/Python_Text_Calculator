@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
 "POT-Creation-Date: 2021-01-03 10:27-0500\n"
-"PO-Revision-Date: 2021-01-03 10:27-0500\n"
+"PO-Revision-Date: 2021-01-03 10:30-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -240,7 +240,7 @@ msgid ""
 "The result is: \n"
 "%s"
 msgstr ""
-"L'aire est : \n"
+"La résultat est : \n"
 "%s"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
@@ -441,7 +441,7 @@ msgstr ""
 #: parsefunc.py:33 parsefunc.py:43 parsefunc.py:53 parsefunc.py:66
 #, python-format
 msgid "The response is...%s"
-msgstr "L'aire est...%s"
+msgstr "La résultat est...%s"
 
 #: parsefunc.py:71
 #, python-format
