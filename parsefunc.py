@@ -253,15 +253,19 @@ def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarit
         number = float(input(_("What is the number? ")))
         if base[0] == "1":
             result = mathmod.Misc.log(number, False)
+            cprint.info(_("The result is... %s") % result)
             break
         elif base[0] == "2":
             result = mathmod.Misc.log(number, True)
+            cprint.info(_("The result is... %s") % result)
             break
         else:
             cprint.err(_("The logarithm you typed is not available."))
             cprint.ok(_("Try again."))
             logging.info("User attempted to use a logarithm that is unavailable.")
-    logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
+            doNotLog = True
+    if not doNotLog:
+        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
 
 def base():
     """Will be improved "later"."""
