@@ -2,7 +2,7 @@ input("This file is for setting up Mathmod ONLY. It does NOT set up palc.\nPress
 
 from setuptools import setup
 
-with open("README.md", "r") as file:
+with open("README_MATHMOD.md", "r") as file:
     long_desc = file.read()
 
 setup(
