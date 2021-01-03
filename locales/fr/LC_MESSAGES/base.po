@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2021-01-03 10:00-0500\n"
-"PO-Revision-Date: 2021-01-03 10:01-0500\n"
+"POT-Creation-Date: 2021-01-03 10:27-0500\n"
+"PO-Revision-Date: 2021-01-03 10:27-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -607,10 +607,6 @@ msgstr "Ok, utilisation de la fonction initialement détectée."
 msgid "Defaulting to yes."
 msgstr "Par défaut à oui."
 
-#: parsefunc.py:173
-msgid "source"
-msgstr "source"
-
 #: parsefunc.py:174
 msgid "Please enter the original temperature..."
 msgstr "Veuillez entrer la température originale ..."
@@ -1153,6 +1149,9 @@ msgstr ""
 "13 - Pyramide a base triangulaire\n"
 "14 - Pyramide a base pentagonale\n"
 "15 - Pyramide a base hexagonale"
+
+#~ msgid "source"
+#~ msgstr "source"
 
 #~ msgid "Original number?"
 #~ msgstr "Saisissez le nombre d'origine : "
