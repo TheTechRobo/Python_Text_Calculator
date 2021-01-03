@@ -67,7 +67,7 @@ class theBasics:
         logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def mod(): #modulo
         n1, n2 = Builtins.getInput()
-        result = mathmod.modulo(n1, n2)
+        result = mathmod.Misc.modulo(n1, n2)
         cprint.info(_("\nThat equals...\n%s\n") % result)
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
 class rootsAndTheOtherOne:
