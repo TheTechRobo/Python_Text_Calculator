@@ -143,6 +143,8 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
             except Exception as ename:
                 logging.err("Exception %s in looped fibonacci" % ename)
                 cprint.err(_("An error occured."))
+            except KeyboardInterrupt:
+                logging.info("Exited fibonacci loop.")
         logging.info("User ran fibonacci function")
     def showUserWhatIThink(whatDOyouthink):
         cprint.ok(_("I think you want me to: \n%s") % whatDOyouthink)
