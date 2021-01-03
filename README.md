@@ -7,7 +7,7 @@
 
 Have you ever looked for a complete, simple calculator? Well here you go!
 
-This is a Python script named "Palc" I forked when I wanted to learn math in Python. There is almost no code left from the original (mainly because i've added and rewritten so much) but I'm still crediting the original developer - see [lewiswatson55's repo](https://github.com/lewiswatson55/Python_Text_Calculator/) for the original code.
+This is a Python script named "Palc" I forked when I wanted to learn math in Python. (UPDATE: And now that you can use it as a module it's even better!) There is almost no code left from the original (mainly because i've added and rewritten so much) but I'm still going to credit the original developer - see [lewiswatson55's repo](https://github.com/lewiswatson55/Python_Text_Calculator/) for the original code.
 
 Learning this has been very interesting and educational. 
 
@@ -15,18 +15,19 @@ I always make my forked repositories better — and this one is no exception!
 
 Thanks for visiting!
 
+# Recommended packages
+It's suggested, if you're on Windows, to install `colorama` package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary (but doesn't harm anything) for all other operating systems. 
+
 **Note that ittussaromYno3 is me (TheTechRobo) on my MacBook Air.**  
 **And Retals is me on my [Elive](https://elivecd.org) PCs**  
 **Ittussarom is me on some other [Elive](https://elivecd.org) PCs**  
-**TheTechRobo (without the stick-man) is me on some -- have you guessed it? -- other [Elive](https://elivecd.org) PCs**
+**TheTechRobo (without the stick-man) is me on some -- have you guessed it? -- other [Elive](https://elivecd.org) PCs** (or maybe my Chromebook)
 
-
-PLEASE, leave feature requests in the [Issues section](https://github.com/thetechrobo/python-text-calculator/issues), even if you know my email.
-
-Bug reports and questions belong at my [Support repo](https://github.com/thetechrobo/support)
+PLEASE, leave feature requests and bug reports and stuff in the [Issues section](https://github.com/thetechrobo/python-text-calculator/issues), even if you know my email.
 
 **The only time you should ever use my email is if you need to contact me personally.** Even though it sounds obvious. Thank you for your cooperation -- I get too much spam :wink:
 
+**And that's about it.**
 
 ###### Current Release: v.0.9.2-stable
-###### Current Preview: v.0.10-gamma.4, please test!
+###### Current Preview: v.0.10-rc.0
