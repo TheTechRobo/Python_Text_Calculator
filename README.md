@@ -29,5 +29,5 @@ PLEASE, leave feature requests and bug reports and stuff in the [Issues section]
 
 **And that's about it.**
 
-###### Current Release: v.0.9.2-stable
-###### Current Preview: v.0.10-rc.0
+###### Current Release: v.0.10-stable
+###### Current Preview: There are none as of now. Please test the current release.
