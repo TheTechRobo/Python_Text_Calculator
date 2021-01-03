@@ -58,7 +58,7 @@ class theBasics:
             returnedNumber = mathmod.Arithmetic.division(n1, n2)
         except ZeroDivisionError:
             logging.error("User decided to divide by zero.")
-            raise SyntaxError("yes, because dividing %s cookie(s) for %s friend(s) makes sense" % (n1, n2))
+            raise SyntaxError("yes, because dividing %s cookie(s) for %s friend(s) makes sense") % (n1, n2)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing div(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
@@ -68,7 +68,7 @@ class theBasics:
     def mod(): #modulo
         n1, n2 = Builtins.getInput()
         result = mathmod.modulo(n1, n2)
-        cprint.info(_("\nThat equals...\n%s\n" % result))
+        cprint.info(_("\nThat equals...\n%s\n") % result)
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
 class rootsAndTheOtherOne:
     def curoot():
@@ -105,7 +105,7 @@ class rootsAndTheOtherOne:
     def sqroot():
         num = float(input(_("Number to be rooted?")))
         returnedNumber = mathmod.RootsAndExponents.sqRoot(num)
-        cprint.info(_("That equals... %s" % returnedNumber))
+        cprint.info(_("That equals... %s") % returnedNumber)
         logging.info("user sqrooted number %s" % (returnedNumber))
 
 class misc:
@@ -145,7 +145,7 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
                 cprint.err(_("An error occured."))
         logging.info("User ran fibonacci function")
     def showUserWhatIThink(whatDOyouthink):
-        cprint.ok(_("I think you want me to: \n%s" % whatDOyouthink))
+        cprint.ok(_("I think you want me to: \n%s") % whatDOyouthink)
         isItCorrect = input(_("Is this correct? (Y/n)")).lower()
         if _("y") in isItCorrect:
             logging.info("Palc chose the right calculation (%s) for calc choice that should be shown above." % whatDOyouthink)
@@ -529,14 +529,14 @@ class Volume:
         l = float(input(_("What length is the cuboid? ")))
         volume = vol_cuboid(b=b, h=h, l=l)
         logging.info("User ran Cuboid Volume l=%s b=%s h=%s answer=%s" % (l, b, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def cylindervol():
         from mathmod.volume import vol_cylinder
         r = float(input(_("What is the radius of the cylinder? ")))
         h = float(input(_("What is the height of the cylinder? ")))
         volume = vol_cylinder(r=r, h=h)
         logging.info("User ran Cylinder Volume r=%s h=%s answer=%s" % (r, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def hollow_cylinder():
         from mathmod.volume import vol_hollow_cylinder
         ro = float(input(_("What is the radius of the hollow space? ")))
@@ -544,76 +544,76 @@ class Volume:
         h = float(input(_("What is the height of the cylinder? ")))
         volume = vol_hollow_cylinder(ro=ro, rs=rs, h=h)
         logging.info("User ran Hollowcylinder Volume ro=%s rs=%s h=%s answer=%s" % (ro, rs, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def cone():
         from mathmod.volume import vol_cone
         r = float(input(_("What is the radius of the cone? ")))
         h = float(input(_("What is the height of the cone? ")))
         volume = vol_cone(r=r, h=h)
         logging.info("User ran Conevol r=%s h=%s answer=%s" % (r, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def sphere():
         from mathmod.volume import vol_sphere
         r = float(input(_("What is the radius of the sphere? ")))
         volume = vol_sphere(r)
         logging.info("User ran sphere Volume r=%s answer=%s" % (r, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def hollow_sphere():
         from mathmod.volume import vol_hollow_sphere
         ro = float(input(_("What is the radius of the sphere? ")))
         rs = float(input(_("What is the radius of the hollow space? ")))
         volume = vol_hollow_sphere(ro=ro, rs=rs)
         logging.info("User ran Hollowsphere Volume ro=%s rs=%s answer=%s" % (ro, rs, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def triprism():
         from mathmod.volume import vol_tri_prism
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the prism? ")))
         volume = vol_tri_prism(a=a, h=h)
-        logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s") % (a, h, volume)
+        cprint.info(_("The volume is: %s") % volume)
     def pentprism():
         from mathmod.volume import vol_penta_prism
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the prism? ")))
         volume = vol_penta_prism(a=a, h=h)
-        logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s") % (a, h, volume)
+        cprint.info(_("The volume is: %s") % volume)
     def hexaprism():
         from mathmod.volume import vol_hexa_prism
         a = float(input(_("What is the length of the side of the hexagon? ")))
         h = float(input(_("What is the height of the prism? ")))
         volume = vol_hexa_prism(a=a, h=h)
         logging.info("User ran Hexagon Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def squiramid():
         from mathmod.volume import vol_sqr_pyramid
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the pyramid? ")))
         volume = vol_sqr_pyramid(a=a, h=h)
         logging.info("User ran Square Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def triramid():
         from mathmod.volume import vol_tri_pyramid
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the pyramid? ")))
         volume = vol_tri_pyramid(a=a, h=h)
         logging.info("User ran Triangle Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def pentapyr():
         from mathmod.volume import vol_penta_pyramid
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the pyramid? ")))
         volume = vol_penta_pyramid(a=a, h=h)
         logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
     def hexramid():
         from mathmod.volume import vol_hexa_pyramid
         a = float(input(_("What is the length of the side of the base? ")))
         h = float(input(_("What is the height of the pyramid? ")))
         volume = vol_hexa_pyramid(a=a, h=h)
         logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s" % volume))
+        cprint.info(_("The volume is: %s") % volume)
 
     def VolMain():
         cprint.info(_('''Options:
