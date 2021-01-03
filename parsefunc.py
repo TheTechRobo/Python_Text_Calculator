@@ -345,7 +345,7 @@ It was up to you to type the correct amount in the rate question.
 We have no idea what the rate represented: it could have been that rate per century for all we know.
 This calculator wasn't programmed with the ability to track time.
 So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-        number = mathmod.calculateInterest(units, rate, origin)
+        number = mathmod.Misc.calculateInterest(units, rate, origin)
         logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
         cprint.info(_("The answer is: \n%s" % number))
         doItAgain = input(_("Would you like to do it again (Y/n)? "))
