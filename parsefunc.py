@@ -254,10 +254,12 @@ def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarit
         if base[0] == "1":
             result = mathmod.Misc.log(number, False)
             cprint.info(_("The result is... %s") % result)
+            doNotLog = False
             break
         elif base[0] == "2":
             result = mathmod.Misc.log(number, True)
             cprint.info(_("The result is... %s") % result)
+            doNotLog = False
             break
         else:
             cprint.err(_("The logarithm you typed is not available."))
