@@ -13,3 +13,4 @@ __pycache__/
 build/
 dist/
 eggs/
+*.egg_info/
