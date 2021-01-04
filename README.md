@@ -4,6 +4,10 @@
 ## I cannot emphasize this enough: to contribute, READ [CONTRIBUTING.md](CONTRIBUTING.md) FIRST!!!!
 
 [![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/master)
+![Small Repo Size](https://img.shields.io/github/repo-size/thetechrobo/python-text-calculator?label=small%20size%3A) 
+[![Latest stable release](https://img.shields.io/github/v/release/TheTechRobo/python-text-calculator?label=latest%20stable%20release)](https://github.com/thetechrobo/python-text-calculator/releases)
+![Commit activity](https://img.shields.io/github/commit-activity/m/thetechrobo/python-text-calculator)
+![Last commit](https://img.shields.io/github/last-commit/thetechrobo/python-text-calculator)
 
 Have you ever looked for a complete, simple calculator? Well here you go!
 
@@ -28,6 +32,3 @@ PLEASE, leave feature requests and bug reports and stuff in the [Issues section]
 **The only time you should ever use my email is if you need to contact me personally.** Even though it sounds obvious. Thank you for your cooperation -- I get too much spam :wink:
 
 **And that's about it.**
-
-###### Current Release: v.0.10-stable
-###### Current Preview: There are none as of now. Please test the current release.
