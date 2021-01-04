@@ -107,7 +107,7 @@ except Exception as ename:
     logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
     cprint.err(_("Unexpected error!"))
     raise
-time.sleep(1.5)
+time.sleep(1)
 def palc():
     while True:
        pressanykey(_("Press any key to continue..."))
