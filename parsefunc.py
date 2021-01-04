@@ -286,6 +286,7 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
     except Exception as ename:
         cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
                      "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
+        logging.info("ERROR during base conversion! %s" % ename)
         return
     cprint.info(_("The result is... %s") % result)
     logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
