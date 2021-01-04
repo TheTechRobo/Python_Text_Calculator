@@ -11,4 +11,4 @@ Created by me. Again, self explanatory.
 Created by EVasseure. Printing in colour.
 
 -  `pythonradix.py `  
-Base conversion. Work in progress, in PR #18.
+Base conversion. Work in progress.
