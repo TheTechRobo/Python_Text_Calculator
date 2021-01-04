@@ -315,27 +315,19 @@ def remember():
     memory.write(toRemember)
     logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
 
-def calculateInterest():
-    while True: 
-        origin = int(input(_("What is the original number? ")))
-        rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
-        print()
-        units = int(input(_('''How many units of time would you like to calculate? 
+def calculateInterest(): 
+    origin = int(input(_("What is the original number? ")))
+    rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
+    print()
+    units = int(input(_('''How many units of time would you like to calculate? 
 Essentially, one unit of time could be one month, or one decade. It all depends on what you typed in the rate of interest question: it could be per year, per decade...we didn't ask.
 It was up to you to type the correct amount in the rate question.
 We have no idea what the rate represented: it could have been that rate per century for all we know.
 This calculator wasn't programmed with the ability to track time.
 So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-        number = mathmod.Misc.calculateInterest(units, rate, origin)
-        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
-        cprint.info(_("The answer is: \n%s" % number))
-        doItAgain = input(_("Would you like to do it again (Y/n)? "))
-        doItAgain = doItAgain.lower()
-        if doItAgain[0] == _("y"):
-            pass
-        else:
-            cprint.ok(_("Going back..."))
-            return
+    number = mathmod.Misc.calculateInterest(units, rate, origin)
+    logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
+    cprint.info(_("The answer is: \n%s" % number))
 
 class Area:
     def equ_triangle():
@@ -596,13 +588,6 @@ class Volume:
         volume = vol_penta_pyramid(a=a, h=h)
         logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
         cprint.info(_("The volume is: %s") % volume)
-    def hexramid():
-        from mathmod.volume import vol_hexa_pyramid
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the pyramid? ")))
-        volume = vol_hexa_pyramid(a=a, h=h)
-        logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
 
     def VolMain():
         cprint.info(_('''Options:
@@ -669,7 +654,12 @@ class Volume:
                 Volume.pentapyr()
                 break
             elif choice == 15:
-                Volume.hexramid()
+                from mathmod.volume import vol_hexa_pyramid
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the pyramid? ")))
+                volume = vol_hexa_pyramid(a=a, h=h)
+                logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+                cprint.info(_("The volume is: %s") % volume)
                 break
 
 if __name__ == "__main__":
