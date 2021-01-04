@@ -270,46 +270,26 @@ def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarit
         logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
 
 def base():
-    """Will be improved "later"."""
-    base = int(input('''What base would you like to convert to?
-Available: 2 (binary) 8 (octo) 10 (decimal (normal)) 16 (hex)
-Type 2, 8, 10, or 16: '''))
-    if base == 2:
-        origin = int(input(_("Type the original number: "))) #bin() the number
-        printThis = "=" +str(bin(origin))
-        logging.info("User binaried number %s, getting a result of %s" % (origin, printThis))
-        cprint.info(printThis)
-    elif base == 8:
-            result = int(input(_("Type the original number: "))) #oct() the number
-            printThis = "=" +str(oct(result))
-            logging.info("User oct'ed number %s, getting a result of %s" % (result, printThis))
-            cprint.info(printThis)
-    elif base == 10:
-        base = int(input(_('''Converting from a base to decimal (normal).
-Example bases:
-2 - Binary
-8 - Oct
-16 - Hexadecimal
-Or, type 1 for ord.
-Type: ''')))
-        if base == 1:
-            base2Print = "ord"
-        else:
-            base2Print = "base " + base
-        original = int(input(_("Please enter the number to be converted from %s: " % base2Print)))
-        if base == 1:
-            eureka = chr(original)
-        else:
-            eureka = int(original, base)
-        logging.info("User int'ed number %s from %s, getting a result of %s" % (original, base2Print, eureka))
-        cprint.info(_("That equals...\n%s" % eureka))
-        cprint.ok(_("TIP: If you got no answer, it might be that it was a Unicode character that it can't render. E.g. \\x06 would just be a blank space, like so: \x06"))
-    elif base == 16:
-        result = int(input(_("Type the original number: "))) #ask for original number
-        printThis = "=" +hex(result)
-        logging.info("User hexed number %s, getting a result of %s" % (result, printThis))
-        cprint.info(printThis)
-
+    cprint.info(_("Please wait a moment."))
+    from modules.pythonradix import Converter
+    cprint.info(_("Please enter the original base.\n\
+HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 16 is hex."))
+    originalBase = int(input(_("Enter your choice: ")))
+    cprint.info(_("Please enter the destination base.\n\
+Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
+    destinationBase = int(input(_("Enter your choice: ")))
+    cprint.ok(_("Please wait a moment."), end="")
+    converter = Converter(originalBase, destinationBase)
+    number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
+    try:
+        result = converter.convert(number)
+    except Exception as ename:
+        cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
+                     "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
+        return
+    cprint.info(_("The result is... %s") % result)
+    logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
+    
 class Memory:
     """the two memory functions will be moved here "later" but not right now."""
 
