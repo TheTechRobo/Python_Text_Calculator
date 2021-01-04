@@ -278,7 +278,7 @@ HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 1
     cprint.info(_("Please enter the destination base.\n\
 Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
     destinationBase = int(input(_("Enter your choice: ")))
-    cprint.ok(_("Please wait a moment.", end=""))
+    cprint.ok(_("Please wait a moment."), end="")
     converter = Converter(originalBase, destinationBase)
     number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
     try:
