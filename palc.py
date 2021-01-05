@@ -106,7 +106,6 @@ except Exception as e:
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 try:
     if ignore[0] == "y":
-        modules = ['parsefunc', 'areaInteractive', 'volInteractive']
         from parsefunc import main
         main(_)
 except Exception as ename:
