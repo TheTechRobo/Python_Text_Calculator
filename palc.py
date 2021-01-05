@@ -282,9 +282,9 @@ Anything else - Back to menu."))
             misc.showUserWhatIThink(_("use the memory function"))
             memOrRecall = input(_("Would you like to set the memory or recall? (set / recall)\nType: "))
             if _("set") in memOrRecall.lower():
-                remember()
+                Memory.remember()
             elif _("recall") in memOrRecall.lower():
-                readMyMemory()
+                Memory.readMyMemory()
             else:
                 cprint.err(_("You did not type an answer.\nAbort."))
                 logging.error("User didn't type an answer in MEM function (typed %s)" % memOrRecall)
