@@ -420,22 +420,20 @@ class Area:
         area = myprecious(ro, rs)
         logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
         cprint.info(_("The area is: %s" % area))
-    def ellipse():
-        
-    choices = { #readability
-    "EQUILATERAL TRIANGLE" = 1
-    "RIGHT ANGLE TRIANGLE" = 2
-    "ACUTE TRIANGLE" = 3
-    "OBTUSE TRIANGLE" = 4
-    "SQUARE" = 5
-    "RECTANGLE" = 6
-    "EVIL" = 7
-    "PAARALLELOGRAM" = 8
-    "RHOMBUS" = 9
-    "TRAPEZIUM" = 10
-    "CIRCLE" = 11
-    "SEMICIRCLE" = 12
-    "CIRCULAR SECTOR" = 13
+    class Choices: #readability
+        EQUILATERAL TRIANGLE = 1
+        RIGHT ANGLE TRIANGLE = 2
+        ACUTE TRIANGLE = 3
+        OBTUSE TRIANGLE = 4
+        SQUARE = 5
+        RECTANGLE = 6
+        EVIL = 7
+        PARALLELOGRAM = 8
+        RHOMBUS = 9
+        TRAPEZIUM = 10
+        CIRCLE = 11
+        SEMICIRCLE = 12
+        CIRCULAR SECTOR = 13
     "RING" = 14
     "ELLIPSE" = 15
     }
@@ -490,7 +488,7 @@ class Area:
                 Area.sector()
             elif choice == 14:
                 Area.ring() #my precious!
-            elif choice == 15:
+            elif choice == Area.choices["ELLIPSE"]:
                 from mathmod.area import area_ellipse as el
                 a = float(input(_("What is the length of the major axis? ")))
                 b = float(input(_("What is the length of the minor axis? ")))
