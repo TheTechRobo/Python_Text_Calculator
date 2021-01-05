@@ -164,6 +164,80 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         else:
             cprint.info(_("Defaulting to yes."))
             logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
+    def readMyMemory():
+        cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
+        try:
+            slot = str(int(input(_("What slot number did you use? "))))
+            with open(slot, "r") as memory:
+                theMem = memory.read()
+                cprint.info(_("Number: %s" % theMem))
+                logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
+        except Exception as e:
+            logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
+            cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? "
+            "Do you have the correct permissions?"))
+    def remember():
+        cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
+        toRemember = float(input(_("\nPlease enter the number to be saved: ")))
+        slot = str(int(input(_("What slot would you like to use? (Hint: you can use any integer you want as long as you remember it)\nType: "))))
+        toRemember = str(toRemember)
+        memory = open(slot, "w+")
+        memory.write(toRemember)
+        logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
+    def calculateInterest(): 
+        origin = int(input(_("What is the original number? ")))
+        rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
+        print()
+        units = int(input(_('''How many units of time would you like to calculate? 
+Essentially, one unit of time could be one month, or one decade. It all depends on what you typed in the rate of interest question: it could be per year, per decade...we didn't ask.
+It was up to you to type the correct amount in the rate question.
+We have no idea what the rate represented: it could have been that rate per century for all we know.
+This calculator wasn't programmed with the ability to track time.
+So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
+        number = mathmod.Misc.calculateInterest(units, rate, origin)
+        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
+        cprint.info(_("The answer is: \n%s" % number))
+    def base():
+        cprint.info(_("Please wait a moment."))
+        from modules.pythonradix import Converter
+        cprint.info(_("Please enter the original base.\n\
+HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 16 is hex."))
+        originalBase = int(input(_("Enter your choice: ")))
+        cprint.info(_("Please enter the destination base.\n\
+Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
+        destinationBase = int(input(_("Enter your choice: ")))
+        cprint.ok(_("Please wait a moment."), end="")
+        converter = Converter(originalBase, destinationBase)
+        number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
+        try:
+            result = converter.convert(number)
+        except Exception as ename:
+            cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
+                        "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
+            logging.info("ERROR during base conversion! %s" % ename)
+            return
+        cprint.info(_("The result is... %s") % result)
+        logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
+    def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
+        base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
+        number = float(input(_("What is the number? ")))
+        if base[0] == "1":
+            result = mathmod.Misc.log(number, False)
+            cprint.info(_("The result is... %s") % result)
+            doNotLog = False
+            break
+        elif base[0] == "2":
+            result = mathmod.Misc.log(number, True)
+            cprint.info(_("The result is... %s") % result)
+            doNotLog = False
+            break
+        else:
+            cprint.err(_("The logarithm you typed is not available."))
+            cprint.ok(_("Try again."))
+            logging.info("User attempted to use a logarithm that is unavailable.")
+            doNotLog = True
+    if not doNotLog:
+        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
 class Temperature:
     def tempCalc():
         message = """What is the %s temperature unit? 
@@ -246,86 +320,6 @@ class Tax:
         result = mathmod.Misc.tax(originPrice, percent)
         logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
         cprint.info(_("After tax, the price is: \n%s" % result))
-
-def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
-    while True:
-        base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
-        number = float(input(_("What is the number? ")))
-        if base[0] == "1":
-            result = mathmod.Misc.log(number, False)
-            cprint.info(_("The result is... %s") % result)
-            doNotLog = False
-            break
-        elif base[0] == "2":
-            result = mathmod.Misc.log(number, True)
-            cprint.info(_("The result is... %s") % result)
-            doNotLog = False
-            break
-        else:
-            cprint.err(_("The logarithm you typed is not available."))
-            cprint.ok(_("Try again."))
-            logging.info("User attempted to use a logarithm that is unavailable.")
-            doNotLog = True
-    if not doNotLog:
-        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
-
-def base():
-    cprint.info(_("Please wait a moment."))
-    from modules.pythonradix import Converter
-    cprint.info(_("Please enter the original base.\n\
-HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 16 is hex."))
-    originalBase = int(input(_("Enter your choice: ")))
-    cprint.info(_("Please enter the destination base.\n\
-Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
-    destinationBase = int(input(_("Enter your choice: ")))
-    cprint.ok(_("Please wait a moment."), end="")
-    converter = Converter(originalBase, destinationBase)
-    number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
-    try:
-        result = converter.convert(number)
-    except Exception as ename:
-        cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
-                     "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
-        logging.info("ERROR during base conversion! %s" % ename)
-        return
-    cprint.info(_("The result is... %s") % result)
-    logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
-    
-class Memory:
-    def readMyMemory():
-        cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
-        try:
-            slot = str(int(input(_("What slot number did you use? "))))
-            with open(slot, "r") as memory:
-                theMem = memory.read()
-                cprint.info(_("Number: %s" % theMem))
-                logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
-        except Exception as e:
-            logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
-            cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? "
-            "Do you have the correct permissions?"))
-        def remember():
-            cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
-            toRemember = float(input(_("\nPlease enter the number to be saved: ")))
-            slot = str(int(input(_("What slot would you like to use? (Hint: you can use any integer you want as long as you remember it)\nType: "))))
-            toRemember = str(toRemember)
-            memory = open(slot, "w+")
-            memory.write(toRemember)
-            logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
-
-def calculateInterest(): 
-    origin = int(input(_("What is the original number? ")))
-    rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
-    print()
-    units = int(input(_('''How many units of time would you like to calculate? 
-Essentially, one unit of time could be one month, or one decade. It all depends on what you typed in the rate of interest question: it could be per year, per decade...we didn't ask.
-It was up to you to type the correct amount in the rate question.
-We have no idea what the rate represented: it could have been that rate per century for all we know.
-This calculator wasn't programmed with the ability to track time.
-So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-    number = mathmod.Misc.calculateInterest(units, rate, origin)
-    logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
-    cprint.info(_("The answer is: \n%s" % number))
 
 class Area:
     class choices: #readability

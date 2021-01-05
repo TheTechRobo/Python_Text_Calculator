@@ -266,7 +266,7 @@ Anything else - Back to menu."))
 #NUMBER SYSTEMS
        elif "base" in calc:
             misc.showUserWhatIThink(_("convert number systems"))
-            base()
+            misc.base()
 #ORD
        elif "ord" in calc:
            misc.showUserWhatIThink(_("ord a character"))
@@ -276,15 +276,15 @@ Anything else - Back to menu."))
 #LOGARITHM
        elif _("log") in calc:
            misc.showUserWhatIThink(_("use the logarithm function"))
-           logarithm()
+           misc.logarithm()
 #MEMORY
        elif "mem" in calc:
             misc.showUserWhatIThink(_("use the memory function"))
             memOrRecall = input(_("Would you like to set the memory or recall? (set / recall)\nType: "))
             if _("set") in memOrRecall.lower():
-                Memory.remember()
+                misc.remember()
             elif _("recall") in memOrRecall.lower():
-                Memory.readMyMemory()
+                misc.readMyMemory()
             else:
                 cprint.err(_("You did not type an answer.\nAbort."))
                 logging.error("User didn't type an answer in MEM function (typed %s)" % memOrRecall)
@@ -300,7 +300,7 @@ Anything else - Back to menu."))
 #INTEREST
        elif _("interest") in calc:
             misc.showUserWhatIThink(_("use the interest calculator"))
-            calculateInterest()
+            misc.calculateInterest()
 #TEMPERATURE
        elif "temperature" in calc:
             misc.showUserWhatIThink(_("use the temperature converter"))
