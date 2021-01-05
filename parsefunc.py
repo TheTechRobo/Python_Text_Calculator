@@ -421,12 +421,7 @@ class Area:
         logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
         cprint.info(_("The area is: %s" % area))
     def ellipse():
-        from mathmod.area import area_ellipse as el
-        a = float(input(_("What is the length of the major axis? ")))
-        b = float(input(_("What is the length of the minor axis? ")))
-        area = el(a, b)
-        logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
-        cprint.info(_("The area is: %s" % area))
+        
     choices = { #readability
     "EQUILATERAL TRIANGLE" = 1
     "RIGHT ANGLE TRIANGLE" = 2
@@ -471,45 +466,38 @@ class Area:
                 logging.info("Lazy 7")
             elif choice == 1:
                 Area.equ_triangle()
-                break
             elif choice == 2:
                 Area.right_triangle()
-                break
             elif choice == 3:
                 Area.acute_triangle()
-                break
             elif choice == 4:
                 Area.obtuse_triangle()
-                break
             elif choice == 5:
                 Area.square()
-                break
             elif choice == 6:
                 Area.rectangle()
-                break
             elif choice == 8:
                 Area.parallelogram()
-                break
             elif choice == 9:
                 Area.rhombus()
-                break
             elif choice == 10:
                 Area.trapezium()
-                break
             elif choice == 11:
                 Area.circle()
-                break
             elif choice == 12:
                 Area.semicircle()
-                break
             elif choice == 13:
                 Area.sector()
-                break
             elif choice == 14:
                 Area.ring() #my precious!
-                break
             elif choice == 15:
-                Area.ellipse()
+                from mathmod.area import area_ellipse as el
+                a = float(input(_("What is the length of the major axis? ")))
+                b = float(input(_("What is the length of the minor axis? ")))
+                area = el(a, b)
+                logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
+            if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
+                cprint.info(_("The volume is: %s") % volume)
                 break
 
 class Volume:
@@ -639,9 +627,9 @@ class Volume:
                 h = float(input(_("What is the height of the pyramid? ")))
                 volume = vol_hexa_pyramid(a=a, h=h)
                 logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
-            cprint.info(_("The volume is: %s") % volume)
-            break
+            if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
+                cprint.info(_("The volume is: %s") % volume)
+                break
 
 if __name__ == "__main__":
     print("Please don't run this file directly, it can only be used with Palc")
