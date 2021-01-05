@@ -225,19 +225,18 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
             result = mathmod.Misc.log(number, False)
             cprint.info(_("The result is... %s") % result)
             doNotLog = False
-            break
         elif base[0] == "2":
             result = mathmod.Misc.log(number, True)
             cprint.info(_("The result is... %s") % result)
             doNotLog = False
-            break
         else:
             cprint.err(_("The logarithm you typed is not available."))
             cprint.ok(_("Try again."))
             logging.info("User attempted to use a logarithm that is unavailable.")
             doNotLog = True
-    if not doNotLog:
-        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
+    if doNotLog:
+        return
+    logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
 class Temperature:
     def tempCalc():
         message = """What is the %s temperature unit? 
