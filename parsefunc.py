@@ -427,7 +427,23 @@ class Area:
         area = el(a, b)
         logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
         cprint.info(_("The area is: %s" % area))
-
+    choices = { #readability
+    "EQUILATERAL TRIANGLE" = 1
+    "RIGHT ANGLE TRIANGLE" = 2
+    "ACUTE TRIANGLE" = 3
+    "OBTUSE TRIANGLE" = 4
+    "SQUARE" = 5
+    "RECTANGLE" = 6
+    "EVIL" = 7
+    "PAARALLELOGRAM" = 8
+    "RHOMBUS" = 9
+    "TRAPEZIUM" = 10
+    "CIRCLE" = 11
+    "SEMICIRCLE" = 12
+    "CIRCULAR SECTOR" = 13
+    "RING" = 14
+    "ELLIPSE" = 15
+    }
     def AreaMain():
         cprint.info(_('''Options:
 1 - Equilateral triangle
