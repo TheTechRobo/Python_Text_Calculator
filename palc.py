@@ -170,6 +170,10 @@ def palc():
        elif "plus" in calc:
             misc.showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
+        elif lCode == "fr":
+            if "ajoute" in calc:
+                misc.showUserWhatIThink(_("add two numbers"))
+                theBasics.addition()
 #MODULO
        elif "%" in calc:
             print(_("1 - Find the remainder of two numbers after division\n\
