@@ -96,13 +96,10 @@ except Exception as e:
 try:
     if ignore[0] == "y":
         modules = ['parsefunc', 'areaInteractive', 'volInteractive']
-        for module in modules:
-            try:
-                import importlib
-                importlib.import_module(module).main(_)
-                del importlib
-            except Exception as ename:
-                logging.info("Errored running %s.main(_) (errid %s)" % (module, ename))
+        from parsefunc import main
+        main(_)
+        except Exception as ename:
+            logging.info("Errored running %s.main(_) (errid %s)" % (module, ename))
 except Exception as ename:
     logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
     cprint.err(_("Unexpected error!"))
