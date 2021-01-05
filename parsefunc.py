@@ -346,8 +346,7 @@ class Area:
         CIRCULAR_SECTOR = 13
         RING = 14
         ELLIPSE = 15
-    def AreaMain():
-        cprint.info(_('''Options:
+    selectionMessage = '''Options:
 1 - Equilateral triangle
 2 - Right angle triangle
 3 - Acute triangle
@@ -361,7 +360,9 @@ class Area:
 12 - Semicircle
 13 - Circular sector
 14 - Ring
-15 - Ellipse'''))
+15 - Ellipse'''
+    def AreaMain():
+        cprint.info(_(Area.selectionMessage))
         while True:
             try:
                 choice = int(input(_("Please type one: ")))
@@ -459,6 +460,21 @@ class Area:
                 break
 
 class Volume:
+    selectionMessage = '''Options:
+1 - Cube
+2 - Cuboid
+3 - Cylinder
+4 - Hollow cylinder
+5 - Cone
+6 - Sphere
+8 - Hollow sphere
+9 - Triangular prism
+10 - Pentagonal prism
+11 - Hexagonal prism
+12 - Square-based pyramid
+13 - Triangular pyramid
+14 - Pentagon-based pyramid
+15 - Hexagon-based pyramid'''
     class choices: #readability
         CUBE = 1
         CUBOID = 2
@@ -476,21 +492,7 @@ class Volume:
         PENTAGON_BASED_PYRAMID = 14
         HEXAGON_BASED_PYRAMID = 15
     def VolMain():
-        cprint.info(_('''Options:
-1 - Cube
-2 - Cuboid
-3 - Cylinder
-4 - Hollow cylinder
-5 - Cone
-6 - Sphere
-8 - Hollow sphere
-9 - Triangular prism
-10 - Pentagonal prism
-11 - Hexagonal prism
-12 - Square-based pyramid
-13 - Triangular pyramid
-14 - Pentagon-based pyramid
-15 - Hexagon-based pyramid'''))
+        cprint.info(_(Volume.selectionMessage))
         while True:
             try:
                 choice = int(input(_("Please type one: ")))

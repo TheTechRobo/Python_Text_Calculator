@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2021-01-04 20:37-0500\n"
-"PO-Revision-Date: 2021-01-04 20:37-0500\n"
+"POT-Creation-Date: 2021-01-04 21:36-0500\n"
+"PO-Revision-Date: 2021-01-04 21:36-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -892,115 +892,7 @@ msgstr ""
 "Le résultat est :\n"
 "%s"
 
-#: parsefunc.py:335
-msgid "What length is the side of the triangle? "
-msgstr "Longueur du côté du triangle ? "
-
-#: parsefunc.py:337 parsefunc.py:345 parsefunc.py:353 parsefunc.py:361
-#: parsefunc.py:367 parsefunc.py:374 parsefunc.py:381 parsefunc.py:388
-#: parsefunc.py:396 parsefunc.py:402 parsefunc.py:408 parsefunc.py:415
-#: parsefunc.py:422 parsefunc.py:429
-#, python-format
-msgid "The area is: %s"
-msgstr "L'aire est : %s"
-
-#: parsefunc.py:341
-msgid "What length is the base of the triangle? "
-msgstr "Longueur de la base du triangle ? "
-
-#: parsefunc.py:342
-msgid "What length is the height of the triangle? "
-msgstr "Hauteur du triangle ? "
-
-#: parsefunc.py:348 parsefunc.py:356
-msgid "What is the length of the first side? "
-msgstr "Longueur du premier côté ? "
-
-#: parsefunc.py:349
-msgid "what is the length of the second side? "
-msgstr "longueur du second côté ? "
-
-#: parsefunc.py:350 parsefunc.py:358
-msgid "What is the length of the third side? "
-msgstr "Longueur du troisième côté ? "
-
-#: parsefunc.py:357
-msgid "What is the length of the second side? "
-msgstr "Quel est le longueur du second côté ? "
-
-#: parsefunc.py:364
-msgid "What is the length of the side of the square? "
-msgstr "Longueur du côté du carré ? "
-
-#: parsefunc.py:370
-msgid "What is the length of the rectangle? "
-msgstr "Longueur du rectangle ? "
-
-#: parsefunc.py:371
-msgid "What is the height of the rectangle? "
-msgstr "Hauteur du rectangle ? "
-
-#: parsefunc.py:377
-msgid "What is the length of the base? "
-msgstr "Longueur de la base ? "
-
-#: parsefunc.py:378
-msgid "What is the height of the shape? "
-msgstr "Hauteur de la forme ? "
-
-#: parsefunc.py:384
-msgid "What is the length of the first diagonal? "
-msgstr "Longueur de la première diagonale ? "
-
-#: parsefunc.py:385
-msgid "What is the length of the 2nd diagonal? "
-msgstr "Longueur de la seconde diagonale ? "
-
-#: parsefunc.py:391
-msgid "What is the length of the 1st set of parallel sides? "
-msgstr "Longueur de la première paire de côtés parallèles ? "
-
-#: parsefunc.py:392
-msgid "What is the length of the 2nd set of parallel sides? "
-msgstr "Longueur de la seconde paire de côtés parallèles ? "
-
-#: parsefunc.py:393
-msgid "What is the height of the trapezium? "
-msgstr "Hauteur du trapèze ? "
-
-#: parsefunc.py:399
-msgid "What is the radius of the circle? "
-msgstr "Rayon du cercle ? "
-
-#: parsefunc.py:405
-msgid "What is the radius of the semicircle? "
-msgstr "Rayon du demi-cercle ? "
-
-#: parsefunc.py:411
-msgid "What is the radius of the circular sector? "
-msgstr "Rayon du secteur circulaire ? "
-
-#: parsefunc.py:412
-msgid "What is the angle of the circular sector *in degrees*? "
-msgstr "Quel est l'angle du secteur circulaire *en degrés* ? "
-
-#: parsefunc.py:418
-msgid "What is the radius of the outer circle? "
-msgstr "Rayon du cercle extérieur ? "
-
-#: parsefunc.py:419
-msgid "What is the radius of the inner circle? "
-msgstr "Rayon du cercle intérieur ? "
-
-#: parsefunc.py:425
-msgid "What is the length of the major axis? "
-msgstr "Longueur de l'axe principal ? "
-
-#: parsefunc.py:426
-msgid "What is the length of the minor axis? "
-msgstr "Longueur de l'axe secondaire ? "
-
-#: parsefunc.py:448
+#: parsefunc.py:350
 msgid ""
 "Options:\n"
 "1 - Equilateral triangle\n"
@@ -1034,19 +926,124 @@ msgstr ""
 "14 - Anneau\n"
 "15 - Ellipse"
 
-#: parsefunc.py:465 parsefunc.py:551
+#: parsefunc.py:367 parsefunc.py:496
 msgid "Please type one: "
 msgstr "Choisissez une option : "
 
-#: parsefunc.py:467
+#: parsefunc.py:369
 msgid "Please type an integer"
 msgstr "Merci d'entrer un nombre entier"
 
-#: parsefunc.py:470
+#: parsefunc.py:372
 msgid "I was too lazy to change 7."
 msgstr "J’étais trop paresseux pour changer 7."
 
-#: parsefunc.py:534
+#: parsefunc.py:376
+msgid "What length is the side of the triangle? "
+msgstr "Longueur du côté du triangle ? "
+
+#: parsefunc.py:381
+msgid "What length is the base of the triangle? "
+msgstr "Longueur de la base du triangle ? "
+
+#: parsefunc.py:382
+msgid "What length is the height of the triangle? "
+msgstr "Hauteur du triangle ? "
+
+#: parsefunc.py:387 parsefunc.py:394
+msgid "What is the length of the first side? "
+msgstr "Longueur du premier côté ? "
+
+#: parsefunc.py:388
+msgid "what is the length of the second side? "
+msgstr "longueur du second côté ? "
+
+#: parsefunc.py:389 parsefunc.py:396
+msgid "What is the length of the third side? "
+msgstr "Longueur du troisième côté ? "
+
+#: parsefunc.py:395
+msgid "What is the length of the second side? "
+msgstr "Quel est le longueur du second côté ? "
+
+#: parsefunc.py:401
+msgid "What is the length of the side of the square? "
+msgstr "Longueur du côté du carré ? "
+
+#: parsefunc.py:406
+msgid "What is the length of the rectangle? "
+msgstr "Longueur du rectangle ? "
+
+#: parsefunc.py:407
+msgid "What is the height of the rectangle? "
+msgstr "Hauteur du rectangle ? "
+
+#: parsefunc.py:412
+msgid "What is the length of the base? "
+msgstr "Longueur de la base ? "
+
+#: parsefunc.py:413
+msgid "What is the height of the shape? "
+msgstr "Hauteur de la forme ? "
+
+#: parsefunc.py:418
+msgid "What is the length of the first diagonal? "
+msgstr "Longueur de la première diagonale ? "
+
+#: parsefunc.py:419
+msgid "What is the length of the 2nd diagonal? "
+msgstr "Longueur de la seconde diagonale ? "
+
+#: parsefunc.py:424
+msgid "What is the length of the 1st set of parallel sides? "
+msgstr "Longueur de la première paire de côtés parallèles ? "
+
+#: parsefunc.py:425
+msgid "What is the length of the 2nd set of parallel sides? "
+msgstr "Longueur de la seconde paire de côtés parallèles ? "
+
+#: parsefunc.py:426
+msgid "What is the height of the trapezium? "
+msgstr "Hauteur du trapèze ? "
+
+#: parsefunc.py:431
+msgid "What is the radius of the circle? "
+msgstr "Rayon du cercle ? "
+
+#: parsefunc.py:436
+msgid "What is the radius of the semicircle? "
+msgstr "Rayon du demi-cercle ? "
+
+#: parsefunc.py:441
+msgid "What is the radius of the circular sector? "
+msgstr "Rayon du secteur circulaire ? "
+
+#: parsefunc.py:442
+msgid "What is the angle of the circular sector *in degrees*? "
+msgstr "Quel est l'angle du secteur circulaire *en degrés* ? "
+
+#: parsefunc.py:447
+msgid "What is the radius of the outer circle? "
+msgstr "Rayon du cercle extérieur ? "
+
+#: parsefunc.py:448
+msgid "What is the radius of the inner circle? "
+msgstr "Rayon du cercle intérieur ? "
+
+#: parsefunc.py:453
+msgid "What is the length of the major axis? "
+msgstr "Longueur de l'axe principal ? "
+
+#: parsefunc.py:454
+msgid "What is the length of the minor axis? "
+msgstr "Longueur de l'axe secondaire ? "
+
+#: parsefunc.py:458
+#, python-format
+msgid "The area is: %s"
+msgstr "L'aire est : %s"
+
+#: parsefunc.py:479
 msgid ""
 "Options:\n"
 "1 - Cube\n"
@@ -1080,64 +1077,64 @@ msgstr ""
 "14 - Pyramide a base pentagonale\n"
 "15 - Pyramide a base hexagonale"
 
-#: parsefunc.py:560
+#: parsefunc.py:505
 msgid "What length is the side of the cube? "
 msgstr "Quelle est le longueur de l'arrête du cube ? "
 
-#: parsefunc.py:565
+#: parsefunc.py:510
 msgid "What length is the breadth of the cuboid? "
 msgstr "Largeur du parallélépipède rectangle ? "
 
-#: parsefunc.py:566
+#: parsefunc.py:511
 msgid "What length is the height of the cuboid? "
 msgstr "Hauteur du parallélépipède rectangle ? "
 
-#: parsefunc.py:567
+#: parsefunc.py:512
 msgid "What length is the cuboid? "
 msgstr "Longueur du parallélépipède rectangle ? "
 
-#: parsefunc.py:572 parsefunc.py:579
+#: parsefunc.py:517 parsefunc.py:524
 msgid "What is the radius of the cylinder? "
 msgstr "Rayon du cylindre ? "
 
-#: parsefunc.py:573 parsefunc.py:580
+#: parsefunc.py:518 parsefunc.py:525
 msgid "What is the height of the cylinder? "
 msgstr "Hauteur du cylindre ? "
 
-#: parsefunc.py:578 parsefunc.py:597
+#: parsefunc.py:523 parsefunc.py:542
 msgid "What is the radius of the hollow space? "
 msgstr "Rayon de l'espace creux ? "
 
-#: parsefunc.py:585
+#: parsefunc.py:530
 msgid "What is the radius of the cone? "
 msgstr "Rayon du cône ? "
 
-#: parsefunc.py:586
+#: parsefunc.py:531
 msgid "What is the height of the cone? "
 msgstr "Hauteur du cône ? "
 
-#: parsefunc.py:591 parsefunc.py:596
+#: parsefunc.py:536 parsefunc.py:541
 msgid "What is the radius of the sphere? "
 msgstr "Rayon de la sphère ? "
 
-#: parsefunc.py:602 parsefunc.py:608 parsefunc.py:620 parsefunc.py:626
-#: parsefunc.py:632 parsefunc.py:638
+#: parsefunc.py:547 parsefunc.py:553 parsefunc.py:565 parsefunc.py:571
+#: parsefunc.py:577 parsefunc.py:583
 msgid "What is the length of the side of the base? "
 msgstr "Longueur du côté de la base ? "
 
-#: parsefunc.py:603 parsefunc.py:609 parsefunc.py:615
+#: parsefunc.py:548 parsefunc.py:554 parsefunc.py:560
 msgid "What is the height of the prism? "
 msgstr "Hauteur du prisme ? "
 
-#: parsefunc.py:614
+#: parsefunc.py:559
 msgid "What is the length of the side of the hexagon? "
 msgstr "Longueur du côté de l'hexagone ? "
 
-#: parsefunc.py:621 parsefunc.py:627 parsefunc.py:633 parsefunc.py:639
+#: parsefunc.py:566 parsefunc.py:572 parsefunc.py:578 parsefunc.py:584
 msgid "What is the height of the pyramid? "
 msgstr "Hauteur de la pyramide ? "
 
-#: parsefunc.py:643
+#: parsefunc.py:588
 #, python-format
 msgid "The volume is: %s"
 msgstr "Le volume est : %s"

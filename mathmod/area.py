@@ -175,7 +175,7 @@ def area_semicircle(r: int) -> 'area':
     :return: area
     """
     r = _f(r)
-    area = 1 / 2 * (circle(r))
+    area = 1 / 2 * (area_circle(r))
     return area
 
 #Circular sector
