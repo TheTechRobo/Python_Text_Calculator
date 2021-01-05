@@ -234,8 +234,8 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
             cprint.ok(_("Try again."))
             logging.info("User attempted to use a logarithm that is unavailable.")
             doNotLog = True
-    if doNotLog:
-        return
+        if doNotLog:
+            return
     logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
 class Temperature:
     def tempCalc():
