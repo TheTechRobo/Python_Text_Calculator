@@ -455,7 +455,7 @@ class Area:
                 area = el(a, b)
                 logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
             if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
-                cprint.info(_("The area is: %s") % volume)
+                cprint.info(_("The area is: %s") % area)
                 break
 
 class Volume:
