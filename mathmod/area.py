@@ -112,8 +112,8 @@ def area_parallelogram(b: int, h: int) -> 'area':
     :param h: int
     :return: area
     '''
-    h = _f(a)
     b = _f(b)
+    h = _f(h)
     area = b * h
     return area
 
