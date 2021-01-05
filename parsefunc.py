@@ -330,96 +330,6 @@ So, with that out of the way, type the amount we should multiply the interest by
     cprint.info(_("The answer is: \n%s" % number))
 
 class Area:
-    def equ_triangle():
-        from mathmod.area import area_equilateral_triangle as equtri
-        a = float(input(_("What length is the side of the triangle? ")))
-        area = equtri(a)
-        cprint.info(_("The area is: %s" % area))
-        logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
-    def right_triangle():
-        from mathmod.area import area_right_triangle as righttri
-        b = float(input(_("What length is the base of the triangle? ")))
-        h = float(input(_("What length is the height of the triangle? ")))
-        area = righttri(b=b, h=h)
-        logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
-        cprint.info(_("The area is: %s" % area))
-    def acute_triangle():
-        from mathmod.area import area_acute_triangle as actri
-        a = float(input(_("What is the length of the first side? ")))
-        b = float(input(_("what is the length of the second side? ")))
-        c = float(input(_("What is the length of the third side? ")))
-        area = actri(a, b, c)
-        logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
-        cprint.info(_("The area is: %s" % area))
-    def obtuse_triangle():
-        from mathmod.area import area_obtuse_triangle as obtri
-        a = float(input(_("What is the length of the first side? ")))
-        b = float(input(_("What is the length of the second side? ")))
-        c = float(input(_("What is the length of the third side? ")))
-        area = obtri(a, b, c)
-        logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
-        cprint.info(_("The area is: %s" % area))
-    def square():
-        from mathmod.area import area_square as sq
-        a = float(input(_("What is the length of the side of the square? ")))
-        area = sq(a)
-        logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
-        cprint.info(_("The area is: %s" % area))
-    def rectangle():
-        from mathmod.area import area_rectangle as rec
-        l = float(input(_("What is the length of the rectangle? ")))
-        b = float(input(_("What is the height of the rectangle? ")))
-        area = rec(l, b)
-        logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
-        cprint.info(_("The area is: %s" % area))
-    def parallelogram():
-        from mathmod.area import area_parallelogram as para
-        b = float(input(_("What is the length of the base? ")))
-        h = float(input(_("What is the height of the shape? ")))
-        area = para(b, h)
-        logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
-        cprint.info(_("The area is: %s" % area))
-    def rhombus():
-        from mathmod.area import area_rhombus as rhombu
-        do = float(input(_("What is the length of the first diagonal? ")))
-        ds = float(input(_("What is the length of the 2nd diagonal? ")))
-        area = rhombu(do, ds)
-        logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
-        cprint.info(_("The area is: %s" % area))
-    def trapezium():
-        from mathmod.area import area_trapezium as trapezi
-        a = float(input(_("What is the length of the 1st set of parallel sides? ")))
-        b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
-        h = float(input(_("What is the height of the trapezium? ")))
-        area = trapezi(a, b, h)
-        logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
-        cprint.info(_("The area is: %s" % area))
-    def circle():
-        from mathmod.area import area_circle as circl
-        r = float(input(_("What is the radius of the circle? ")))
-        area = circl(r)
-        logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
-        cprint.info(_("The area is: %s" % area))
-    def semicircle():
-        from mathmod.area import area_semicircle as semi
-        r = float(input(_("What is the radius of the semicircle? ")))
-        area = semi(r)
-        logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
-        cprint.info(_("The area is: %s" % area))
-    def sector():
-        from mathmod.area import area_circular_sector as cirsector
-        r = float(input(_("What is the radius of the circular sector? ")))
-        a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
-        area = cirsector(r, a)
-        logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
-        cprint.info(_("The area is: %s" % area))
-    def ring():
-        from mathmod.area import area_ring as myprecious
-        ro = float(input(_("What is the radius of the outer circle? ")))
-        rs = float(input(_("What is the radius of the inner circle? ")))
-        area = myprecious(ro, rs)
-        logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
-        cprint.info(_("The area is: %s" % area))
     class choices: #readability
         EQUILATERAL_TRIANGLE = 1
         RIGHT_ANGLE_TRIANGLE = 2
@@ -462,31 +372,82 @@ class Area:
                 cprint.err(_("I was too lazy to change 7."))
                 logging.info("Lazy 7")
             elif choice == Area.choices.EQUILATERAL_TRIANGLE:
-                Area.equ_triangle()
+                from mathmod.area import area_equilateral_triangle as equtri
+                a = float(input(_("What length is the side of the triangle? ")))
+                area = equtri(a)
+                logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
             elif choice == Area.choices.RIGHT_ANGLE_TRIANGLE:
-                Area.right_triangle()
+                from mathmod.area import area_right_triangle as righttri
+                b = float(input(_("What length is the base of the triangle? ")))
+                h = float(input(_("What length is the height of the triangle? ")))
+                area = righttri(b=b, h=h)
+                logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
             elif choice == Area.choices.ACUTE_TRIANGLE:
-                Area.acute_triangle()
+                from mathmod.area import area_acute_triangle as actri
+                a = float(input(_("What is the length of the first side? ")))
+                b = float(input(_("what is the length of the second side? ")))
+                c = float(input(_("What is the length of the third side? ")))
+                area = actri(a, b, c)
+                logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area)) 
             elif choice == Area.choices.OBTUSE_TRIANGLE:
-                Area.obtuse_triangle()
+                from mathmod.area import area_obtuse_triangle as obtri
+                a = float(input(_("What is the length of the first side? ")))
+                b = float(input(_("What is the length of the second side? ")))
+                c = float(input(_("What is the length of the third side? ")))
+                area = obtri(a, b, c)
+                logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
             elif choice == Area.choices.SQUARE:
-                Area.square()
+                from mathmod.area import area_square as sq
+                a = float(input(_("What is the length of the side of the square? ")))
+                area = sq(a)
+                logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
             elif choice == Area.choices.RECTANGLE:
-                Area.rectangle()
+                from mathmod.area import area_rectangle as rec
+                l = float(input(_("What is the length of the rectangle? ")))
+                b = float(input(_("What is the height of the rectangle? ")))
+                area = rec(l, b)
+                logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
             elif choice == Area.choices.PARALLELOGRAM:
-                Area.parallelogram()
+                from mathmod.area import area_parallelogram as para
+                b = float(input(_("What is the length of the base? ")))
+                h = float(input(_("What is the height of the shape? ")))
+                area = para(b, h)
+        logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
             elif choice == Area.choices.RHOMBUS:
-                Area.rhombus()
+                from mathmod.area import area_rhombus as rhombu
+                do = float(input(_("What is the length of the first diagonal? ")))
+                ds = float(input(_("What is the length of the 2nd diagonal? ")))
+                area = rhombu(do, ds)
+                logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
             elif choice == Area.choices.TRAPEZIUM:
-                Area.trapezium()
+                from mathmod.area import area_trapezium as trapezi
+                a = float(input(_("What is the length of the 1st set of parallel sides? ")))
+                b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
+                h = float(input(_("What is the height of the trapezium? ")))
+                area = trapezi(a, b, h)
+                logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
             elif choice == Area.choices.CIRCLE:
-                Area.circle()
+                from mathmod.area import area_circle as circl
+                r = float(input(_("What is the radius of the circle? ")))
+                area = circl(r)
+                logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
             elif choice == Area.choices.SEMICIRCLE:
-                Area.semicircle()
+                from mathmod.area import area_semicircle as semi
+                r = float(input(_("What is the radius of the semicircle? ")))
+                area = semi(r)
+                logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
             elif choice == Area.choices.CIRCULAR_SECTOR:
-                Area.sector()
-            elif choice == Area.choices.RING:
-                Area.ring() #my precious!
+                from mathmod.area import area_circular_sector as cirsector
+                r = float(input(_("What is the radius of the circular sector? ")))
+                a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
+                area = cirsector(r, a)
+                logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
+            elif choice == Area.choices.RING: #my precious!
+                from mathmod.area import area_ring as myprecious
+                ro = float(input(_("What is the radius of the outer circle? ")))
+                rs = float(input(_("What is the radius of the inner circle? ")))
+                area = myprecious(ro, rs)
+                logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
             elif choice == Area.choices.ELLIPSE:
                 from mathmod.area import area_ellipse as el
                 a = float(input(_("What is the length of the major axis? ")))
@@ -494,7 +455,7 @@ class Area:
                 area = el(a, b)
                 logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
             if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
-                cprint.info(_("The volume is: %s") % volume)
+                cprint.info(_("The area is: %s") % volume)
                 break
 
 class Volume:
