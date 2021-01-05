@@ -12,7 +12,7 @@ def get_locales_data():
     return locales_data
 
 a = Analysis(['palc.py'],
-             pathex=['~/python-text-calculator'],
+             pathex=['/home/thetechrobo/python-text-calculator'],
              binaries=[],
              datas=get_locales_data(),
              hiddenimports=[],
@@ -27,19 +27,15 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           [],
-          exclude_binaries=True,
           name='palc',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
+          upx_exclude=[],
+          runtime_tmpdir=None,
           console=True )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               upx_exclude=[],
-               name='palc')
