@@ -18,9 +18,20 @@ import six
 if not six.PY3:
     print("You are using a currently unsupported version of Python. Your mileage may vary.")
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # IMPORTS
 print("Loading initial Palc files...")
 try:
+    import os.path
     import gettext #to translate Palc
     from sys import exit as e #for exiting
     from modules.cprint import cprint #printing in colour
@@ -65,7 +76,7 @@ if lCode not in ["en", "fr"]:
         cprint.fatal("Abort.", interrupt=True)
 try:
     gettext.bindtextdomain("base", localedir="locales")
-    lang_translations = gettext.translation("base", localedir="locales", languages=[lCode])
+    lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[lCode])
 except Exception as ename:
     logging.fatal("Could not get translations. This is fatal. (%s)" % ename)
     cprint.fatal("Could not get translations! Make sure that the `locales' directory exists in the current working directory. // Les traductions sont inaccessables ou ne fonctionnes pas !")
@@ -95,11 +106,8 @@ except Exception as e:
     cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 try:
     if ignore[0] == "y":
-        modules = ['parsefunc', 'areaInteractive', 'volInteractive']
         from parsefunc import main
         main(_)
-        except Exception as ename:
-            logging.info("Errored running %s.main(_) (errid %s)" % (module, ename))
 except Exception as ename:
     logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
     cprint.err(_("Unexpected error!"))
