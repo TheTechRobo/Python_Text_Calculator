@@ -434,8 +434,8 @@ class Area:
         CIRCLE = 11
         SEMICIRCLE = 12
         CIRCULAR SECTOR = 13
-    "RING" = 14
-    "ELLIPSE" = 15
+        RING = 14
+        ELLIPSE = 15
     }
     def AreaMain():
         cprint.info(_('''Options:
@@ -488,7 +488,7 @@ class Area:
                 Area.sector()
             elif choice == 14:
                 Area.ring() #my precious!
-            elif choice == Area.choices["ELLIPSE"]:
+            elif choice == Area.choices.ELLIPSE:
                 from mathmod.area import area_ellipse as el
                 a = float(input(_("What is the length of the major axis? ")))
                 b = float(input(_("What is the length of the minor axis? ")))
