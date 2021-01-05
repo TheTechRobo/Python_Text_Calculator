@@ -112,8 +112,8 @@ def area_parallelogram(b: int, h: int) -> 'area':
     :param h: int
     :return: area
     '''
-    h = _f(a)
     b = _f(b)
+    h = _f(h)
     area = b * h
     return area
 
@@ -175,7 +175,7 @@ def area_semicircle(r: int) -> 'area':
     :return: area
     """
     r = _f(r)
-    area = 1 / 2 * (circle(r))
+    area = 1 / 2 * (area_circle(r))
     return area
 
 #Circular sector

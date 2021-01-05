@@ -164,6 +164,79 @@ To contribute: go to https://github.com/thetechrobo/python-text-calculator/
         else:
             cprint.info(_("Defaulting to yes."))
             logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
+    def readMyMemory():
+        cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
+        try:
+            slot = str(int(input(_("What slot number did you use? "))))
+            with open(slot, "r") as memory:
+                theMem = memory.read()
+                cprint.info(_("Number: %s" % theMem))
+                logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
+        except Exception as e:
+            logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
+            cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? "
+            "Do you have the correct permissions?"))
+    def remember():
+        cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
+        toRemember = float(input(_("\nPlease enter the number to be saved: ")))
+        slot = str(int(input(_("What slot would you like to use? (Hint: you can use any integer you want as long as you remember it)\nType: "))))
+        toRemember = str(toRemember)
+        memory = open(slot, "w+")
+        memory.write(toRemember)
+        logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
+    def calculateInterest(): 
+        origin = int(input(_("What is the original number? ")))
+        rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
+        print()
+        units = int(input(_('''How many units of time would you like to calculate? 
+Essentially, one unit of time could be one month, or one decade. It all depends on what you typed in the rate of interest question: it could be per year, per decade...we didn't ask.
+It was up to you to type the correct amount in the rate question.
+We have no idea what the rate represented: it could have been that rate per century for all we know.
+This calculator wasn't programmed with the ability to track time.
+So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
+        number = mathmod.Misc.calculateInterest(units, rate, origin)
+        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
+        cprint.info(_("The answer is: \n%s" % number))
+    def base():
+        cprint.info(_("Please wait a moment."))
+        from modules.pythonradix import Converter
+        cprint.info(_("Please enter the original base.\n\
+HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 16 is hex."))
+        originalBase = int(input(_("Enter your choice: ")))
+        cprint.info(_("Please enter the destination base.\n\
+Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
+        destinationBase = int(input(_("Enter your choice: ")))
+        cprint.ok(_("Please wait a moment."), end="")
+        converter = Converter(originalBase, destinationBase)
+        number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
+        try:
+            result = converter.convert(number)
+        except Exception as ename:
+            cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
+                        "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
+            logging.info("ERROR during base conversion! %s" % ename)
+            return
+        cprint.info(_("The result is... %s") % result)
+        logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
+    def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
+        base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
+        number = float(input(_("What is the number? ")))
+        if base[0] == "1":
+            result = mathmod.Misc.log(number, False)
+            cprint.info(_("The result is... %s") % result)
+            doNotLog = False
+        elif base[0] == "2":
+            result = mathmod.Misc.log(number, True)
+            cprint.info(_("The result is... %s") % result)
+            doNotLog = False
+        else:
+            cprint.err(_("The logarithm you typed is not available."))
+            cprint.ok(_("Try again."))
+            logging.info("User attempted to use a logarithm that is unavailable.")
+            doNotLog = True
+        if doNotLog:
+            return
+        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
 class Temperature:
     def tempCalc():
         message = """What is the %s temperature unit? 
@@ -247,197 +320,24 @@ class Tax:
         logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
         cprint.info(_("After tax, the price is: \n%s" % result))
 
-def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
-    while True:
-        base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
-        number = float(input(_("What is the number? ")))
-        if base[0] == "1":
-            result = mathmod.Misc.log(number, False)
-            cprint.info(_("The result is... %s") % result)
-            doNotLog = False
-            break
-        elif base[0] == "2":
-            result = mathmod.Misc.log(number, True)
-            cprint.info(_("The result is... %s") % result)
-            doNotLog = False
-            break
-        else:
-            cprint.err(_("The logarithm you typed is not available."))
-            cprint.ok(_("Try again."))
-            logging.info("User attempted to use a logarithm that is unavailable.")
-            doNotLog = True
-    if not doNotLog:
-        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
-
-def base():
-    cprint.info(_("Please wait a moment."))
-    from modules.pythonradix import Converter
-    cprint.info(_("Please enter the original base.\n\
-HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 16 is hex."))
-    originalBase = int(input(_("Enter your choice: ")))
-    cprint.info(_("Please enter the destination base.\n\
-Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
-    destinationBase = int(input(_("Enter your choice: ")))
-    cprint.ok(_("Please wait a moment."), end="")
-    converter = Converter(originalBase, destinationBase)
-    number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
-    try:
-        result = converter.convert(number)
-    except Exception as ename:
-        cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
-                     "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
-        logging.info("ERROR during base conversion! %s" % ename)
-        return
-    cprint.info(_("The result is... %s") % result)
-    logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
-    
-class Memory:
-    """the two memory functions will be moved here "later" but not right now."""
-
-def readMyMemory():
-    cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
-    try:
-        slot = str(int(input(_("What slot number did you use? "))))
-        with open(slot, "r") as memory:
-            theMem = memory.read()
-            cprint.info(_("Number: %s" % theMem))
-            logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
-    except Exception as e:
-        logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
-        cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? "
-        "Do you have the correct permissions?"))
-def remember():
-    cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
-    toRemember = float(input(_("\nPlease enter the number to be saved: ")))
-    slot = str(int(input(_("What slot would you like to use? (Hint: you can use any integer you want as long as you remember it)\nType: "))))
-    toRemember = str(toRemember)
-    memory = open(slot, "w+")
-    memory.write(toRemember)
-    logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
-
-def calculateInterest():
-    while True: 
-        origin = int(input(_("What is the original number? ")))
-        rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
-        print()
-        units = int(input(_('''How many units of time would you like to calculate? 
-Essentially, one unit of time could be one month, or one decade. It all depends on what you typed in the rate of interest question: it could be per year, per decade...we didn't ask.
-It was up to you to type the correct amount in the rate question.
-We have no idea what the rate represented: it could have been that rate per century for all we know.
-This calculator wasn't programmed with the ability to track time.
-So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-        number = mathmod.Misc.calculateInterest(units, rate, origin)
-        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
-        cprint.info(_("The answer is: \n%s" % number))
-        doItAgain = input(_("Would you like to do it again (Y/n)? "))
-        doItAgain = doItAgain.lower()
-        if doItAgain[0] == _("y"):
-            pass
-        else:
-            cprint.ok(_("Going back..."))
-            return
-
 class Area:
-    def equ_triangle():
-        from mathmod.area import area_equilateral_triangle as equtri
-        a = float(input(_("What length is the side of the triangle? ")))
-        area = equtri(a)
-        cprint.info(_("The area is: %s" % area))
-        logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
-    def right_triangle():
-        from mathmod.area import area_right_triangle as righttri
-        b = float(input(_("What length is the base of the triangle? ")))
-        h = float(input(_("What length is the height of the triangle? ")))
-        area = righttri(b=b, h=h)
-        logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
-        cprint.info(_("The area is: %s" % area))
-    def acute_triangle():
-        from mathmod.area import area_acute_triangle as actri
-        a = float(input(_("What is the length of the first side? ")))
-        b = float(input(_("what is the length of the second side? ")))
-        c = float(input(_("What is the length of the third side? ")))
-        area = actri(a, b, c)
-        logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
-        cprint.info(_("The area is: %s" % area))
-    def obtuse_triangle():
-        from mathmod.area import area_obtuse_triangle as obtri
-        a = float(input(_("What is the length of the first side? ")))
-        b = float(input(_("What is the length of the second side? ")))
-        c = float(input(_("What is the length of the third side? ")))
-        area = obtri(a, b, c)
-        logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
-        cprint.info(_("The area is: %s" % area))
-    def square():
-        from mathmod.area import area_square as sq
-        a = float(input(_("What is the length of the side of the square? ")))
-        area = sq(a)
-        logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
-        cprint.info(_("The area is: %s" % area))
-    def rectangle():
-        from mathmod.area import area_rectangle as rec
-        l = float(input(_("What is the length of the rectangle? ")))
-        b = float(input(_("What is the height of the rectangle? ")))
-        area = rec(l, b)
-        logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
-        cprint.info(_("The area is: %s" % area))
-    def parallelogram():
-        from mathmod.area import area_parallelogram as para
-        b = float(input(_("What is the length of the base? ")))
-        h = float(input(_("What is the height of the shape? ")))
-        area = para(b, h)
-        logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
-        cprint.info(_("The area is: %s" % area))
-    def rhombus():
-        from mathmod.area import area_rhombus as rhombu
-        do = float(input(_("What is the length of the first diagonal? ")))
-        ds = float(input(_("What is the length of the 2nd diagonal? ")))
-        area = rhombu(do, ds)
-        logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
-        cprint.info(_("The area is: %s" % area))
-    def trapezium():
-        from mathmod.area import area_trapezium as trapezi
-        a = float(input(_("What is the length of the 1st set of parallel sides? ")))
-        b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
-        h = float(input(_("What is the height of the trapezium? ")))
-        area = trapezi(a, b, h)
-        logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
-        cprint.info(_("The area is: %s" % area))
-    def circle():
-        from mathmod.area import area_circle as circl
-        r = float(input(_("What is the radius of the circle? ")))
-        area = circl(r)
-        logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
-        cprint.info(_("The area is: %s" % area))
-    def semicircle():
-        from mathmod.area import area_semicircle as semi
-        r = float(input(_("What is the radius of the semicircle? ")))
-        area = semi(r)
-        logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
-        cprint.info(_("The area is: %s" % area))
-    def sector():
-        from mathmod.area import area_circular_sector as cirsector
-        r = float(input(_("What is the radius of the circular sector? ")))
-        a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
-        area = cirsector(r, a)
-        logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
-        cprint.info(_("The area is: %s" % area))
-    def ring():
-        from mathmod.area import area_ring as myprecious
-        ro = float(input(_("What is the radius of the outer circle? ")))
-        rs = float(input(_("What is the radius of the inner circle? ")))
-        area = myprecious(ro, rs)
-        logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
-        cprint.info(_("The area is: %s" % area))
-    def ellipse():
-        from mathmod.area import area_ellipse as el
-        a = float(input(_("What is the length of the major axis? ")))
-        b = float(input(_("What is the length of the minor axis? ")))
-        area = el(a, b)
-        logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
-        cprint.info(_("The area is: %s" % area))
-
-    def AreaMain():
-        cprint.info(_('''Options:
+    class choices: #readability
+        EQUILATERAL_TRIANGLE = 1
+        RIGHT_ANGLE_TRIANGLE = 2
+        ACUTE_TRIANGLE = 3
+        OBTUSE_TRIANGLE = 4
+        SQUARE = 5
+        RECTANGLE = 6
+        EVIL = 7
+        PARALLELOGRAM = 8
+        RHOMBUS = 9
+        TRAPEZIUM = 10
+        CIRCLE = 11
+        SEMICIRCLE = 12
+        CIRCULAR_SECTOR = 13
+        RING = 14
+        ELLIPSE = 15
+    selectionMessage = '''Options:
 1 - Equilateral triangle
 2 - Right angle triangle
 3 - Acute triangle
@@ -451,161 +351,108 @@ class Area:
 12 - Semicircle
 13 - Circular sector
 14 - Ring
-15 - Ellipse'''))
+15 - Ellipse'''
+    def AreaMain():
+        cprint.info(_(Area.selectionMessage))
         while True:
             try:
                 choice = int(input(_("Please type one: ")))
             except (ValueError, TypeError):
                 cprint.err(_("Please type an integer"))
                 logging.error("User did ValueError // TypeError while inputting areaInteractive choice")
-            if choice == 7:
+            if choice == Area.choices.EVIL:
                 cprint.err(_("I was too lazy to change 7."))
                 logging.info("Lazy 7")
-            elif choice == 1:
-                Area.equ_triangle()
-                break
-            elif choice == 2:
-                Area.right_triangle()
-                break
-            elif choice == 3:
-                Area.acute_triangle()
-                break
-            elif choice == 4:
-                Area.obtuse_triangle()
-                break
-            elif choice == 5:
-                Area.square()
-                break
-            elif choice == 6:
-                Area.rectangle()
-                break
-            elif choice == 8:
-                Area.parallelogram()
-                break
-            elif choice == 9:
-                Area.rhombus()
-                break
-            elif choice == 10:
-                Area.trapezium()
-                break
-            elif choice == 11:
-                Area.circle()
-                break
-            elif choice == 12:
-                Area.semicircle()
-                break
-            elif choice == 13:
-                Area.sector()
-                break
-            elif choice == 14:
-                Area.ring() #my precious!
-                break
-            elif choice == 15:
-                Area.ellipse()
+                area = "NULL"
+            elif choice == Area.choices.EQUILATERAL_TRIANGLE:
+                from mathmod.area import area_equilateral_triangle as equtri
+                a = float(input(_("What length is the side of the triangle? ")))
+                area = equtri(a)
+                logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
+            elif choice == Area.choices.RIGHT_ANGLE_TRIANGLE:
+                from mathmod.area import area_right_triangle as righttri
+                b = float(input(_("What length is the base of the triangle? ")))
+                h = float(input(_("What length is the height of the triangle? ")))
+                area = righttri(b=b, h=h)
+                logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
+            elif choice == Area.choices.ACUTE_TRIANGLE:
+                from mathmod.area import area_acute_triangle as actri
+                a = float(input(_("What is the length of the first side? ")))
+                b = float(input(_("what is the length of the second side? ")))
+                c = float(input(_("What is the length of the third side? ")))
+                area = actri(a, b, c)
+                logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area)) 
+            elif choice == Area.choices.OBTUSE_TRIANGLE:
+                from mathmod.area import area_obtuse_triangle as obtri
+                a = float(input(_("What is the length of the first side? ")))
+                b = float(input(_("What is the length of the second side? ")))
+                c = float(input(_("What is the length of the third side? ")))
+                area = obtri(a, b, c)
+                logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
+            elif choice == Area.choices.SQUARE:
+                from mathmod.area import area_square as sq
+                a = float(input(_("What is the length of the side of the square? ")))
+                area = sq(a)
+                logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
+            elif choice == Area.choices.RECTANGLE:
+                from mathmod.area import area_rectangle as rec
+                l = float(input(_("What is the length of the rectangle? ")))
+                b = float(input(_("What is the height of the rectangle? ")))
+                area = rec(l, b)
+                logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
+            elif choice == Area.choices.PARALLELOGRAM:
+                from mathmod.area import area_parallelogram as para
+                b = float(input(_("What is the length of the base? ")))
+                h = float(input(_("What is the height of the shape? ")))
+                area = para(b, h)
+                logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
+            elif choice == Area.choices.RHOMBUS:
+                from mathmod.area import area_rhombus as rhombu
+                do = float(input(_("What is the length of the first diagonal? ")))
+                ds = float(input(_("What is the length of the 2nd diagonal? ")))
+                area = rhombu(do, ds)
+                logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
+            elif choice == Area.choices.TRAPEZIUM:
+                from mathmod.area import area_trapezium as trapezi
+                a = float(input(_("What is the length of the 1st set of parallel sides? ")))
+                b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
+                h = float(input(_("What is the height of the trapezium? ")))
+                area = trapezi(a, b, h)
+                logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
+            elif choice == Area.choices.CIRCLE:
+                from mathmod.area import area_circle as circl
+                r = float(input(_("What is the radius of the circle? ")))
+                area = circl(r)
+                logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
+            elif choice == Area.choices.SEMICIRCLE:
+                from mathmod.area import area_semicircle as semi
+                r = float(input(_("What is the radius of the semicircle? ")))
+                area = semi(r)
+                logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
+            elif choice == Area.choices.CIRCULAR_SECTOR:
+                from mathmod.area import area_circular_sector as cirsector
+                r = float(input(_("What is the radius of the circular sector? ")))
+                a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
+                area = cirsector(r, a)
+                logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
+            elif choice == Area.choices.RING: #my precious!
+                from mathmod.area import area_ring as myprecious
+                ro = float(input(_("What is the radius of the outer circle? ")))
+                rs = float(input(_("What is the radius of the inner circle? ")))
+                area = myprecious(ro, rs)
+                logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
+            elif choice == Area.choices.ELLIPSE:
+                from mathmod.area import area_ellipse as el
+                a = float(input(_("What is the length of the major axis? ")))
+                b = float(input(_("What is the length of the minor axis? ")))
+                area = el(a, b)
+                logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
+            if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
+                cprint.info(_("The area is: %s") % area)
                 break
 
 class Volume:
-    def cuvol():
-        from mathmod.volume import vol_cube
-        a = float(input(_("What length is the side of the cube? ")))
-        volume = vol_cube(a)
-        logging.info("User ran Cuvolu(m) a=%s answer=%s" % (a, volume))
-        cprint.info(_("The volume is: %s" % volume))
-    def cuboid():
-        from mathmod.volume import vol_cuboid
-        b = float(input(_("What length is the breadth of the cuboid? ")))
-        h = float(input(_("What length is the height of the cuboid? ")))
-        l = float(input(_("What length is the cuboid? ")))
-        volume = vol_cuboid(b=b, h=h, l=l)
-        logging.info("User ran Cuboid Volume l=%s b=%s h=%s answer=%s" % (l, b, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def cylindervol():
-        from mathmod.volume import vol_cylinder
-        r = float(input(_("What is the radius of the cylinder? ")))
-        h = float(input(_("What is the height of the cylinder? ")))
-        volume = vol_cylinder(r=r, h=h)
-        logging.info("User ran Cylinder Volume r=%s h=%s answer=%s" % (r, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def hollow_cylinder():
-        from mathmod.volume import vol_hollow_cylinder
-        ro = float(input(_("What is the radius of the hollow space? ")))
-        rs = float(input(_("What is the radius of the cylinder? ")))
-        h = float(input(_("What is the height of the cylinder? ")))
-        volume = vol_hollow_cylinder(ro=ro, rs=rs, h=h)
-        logging.info("User ran Hollowcylinder Volume ro=%s rs=%s h=%s answer=%s" % (ro, rs, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def cone():
-        from mathmod.volume import vol_cone
-        r = float(input(_("What is the radius of the cone? ")))
-        h = float(input(_("What is the height of the cone? ")))
-        volume = vol_cone(r=r, h=h)
-        logging.info("User ran Conevol r=%s h=%s answer=%s" % (r, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def sphere():
-        from mathmod.volume import vol_sphere
-        r = float(input(_("What is the radius of the sphere? ")))
-        volume = vol_sphere(r)
-        logging.info("User ran sphere Volume r=%s answer=%s" % (r, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def hollow_sphere():
-        from mathmod.volume import vol_hollow_sphere
-        ro = float(input(_("What is the radius of the sphere? ")))
-        rs = float(input(_("What is the radius of the hollow space? ")))
-        volume = vol_hollow_sphere(ro=ro, rs=rs)
-        logging.info("User ran Hollowsphere Volume ro=%s rs=%s answer=%s" % (ro, rs, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def triprism():
-        from mathmod.volume import vol_tri_prism
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the prism? ")))
-        volume = vol_tri_prism(a=a, h=h)
-        logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def pentprism():
-        from mathmod.volume import vol_penta_prism
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the prism? ")))
-        volume = vol_penta_prism(a=a, h=h)
-        logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def hexaprism():
-        from mathmod.volume import vol_hexa_prism
-        a = float(input(_("What is the length of the side of the hexagon? ")))
-        h = float(input(_("What is the height of the prism? ")))
-        volume = vol_hexa_prism(a=a, h=h)
-        logging.info("User ran Hexagon Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def squiramid():
-        from mathmod.volume import vol_sqr_pyramid
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the pyramid? ")))
-        volume = vol_sqr_pyramid(a=a, h=h)
-        logging.info("User ran Square Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def triramid():
-        from mathmod.volume import vol_tri_pyramid
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the pyramid? ")))
-        volume = vol_tri_pyramid(a=a, h=h)
-        logging.info("User ran Triangle Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def pentapyr():
-        from mathmod.volume import vol_penta_pyramid
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the pyramid? ")))
-        volume = vol_penta_pyramid(a=a, h=h)
-        logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-    def hexramid():
-        from mathmod.volume import vol_hexa_pyramid
-        a = float(input(_("What is the length of the side of the base? ")))
-        h = float(input(_("What is the height of the pyramid? ")))
-        volume = vol_hexa_pyramid(a=a, h=h)
-        logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-        cprint.info(_("The volume is: %s") % volume)
-
-    def VolMain():
-        cprint.info(_('''Options:
+    selectionMessage = '''Options:
 1 - Cube
 2 - Cuboid
 3 - Cylinder
@@ -619,57 +466,121 @@ class Volume:
 12 - Square-based pyramid
 13 - Triangular pyramid
 14 - Pentagon-based pyramid
-15 - Hexagon-based pyramid'''))
+15 - Hexagon-based pyramid'''
+    class choices: #readability
+        CUBE = 1
+        CUBOID = 2
+        CYLINDER = 3
+        HOLLOW_CYLINDER= 4
+        CONE = 5
+        SPHERE = 6
+        EVIL = 7
+        HOLLOW_SPHERE = 8
+        TRIANGULAR_PRISM = 9
+        PENTAGONAL_PRISM = 10
+        HEXAGONAL_PRISM = 11
+        SQUARE_BASED_PYRAMID = 12
+        TRIANGULAR_PYRAMID = 13
+        PENTAGON_BASED_PYRAMID = 14
+        HEXAGON_BASED_PYRAMID = 15
+    def VolMain():
+        cprint.info(_(Volume.selectionMessage))
         while True:
             try:
                 choice = int(input(_("Please type one: ")))
             except (ValueError, TypeError) as ename:
                 cprint.err("Please type an integer")
                 logging.error("User did a ValueError or TypeError while inputting choice in volinteractive (%s)" % ename)
-            if choice == 7:
+            if choice == Volume.choices.EVIL:
                 cprint.ok("Sorry, that was not an option. >:)")
                 logging.info(">:) choice 7")
-            elif choice == 1:
-                Volume.cuvol()
-                break
-            elif choice == 2:
-                Volume.cuboid()
-                break
-            elif choice == 3:
-                Volume.cylindervol()
-                break
-            elif choice == 4:
-                Volume.hollow_cylinder()
-                break
-            elif choice == 5:
-                Volume.cone()
-                break
-            elif choice == 6:
-                Volume.sphere()
-                break
-            elif choice == 8:
-                Volume.hollow_sphere()
-                break
-            elif choice == 9:
-                Volume.triprism()
-                break
-            elif choice == 10:
-                Volume.pentprism()
-                break
-            elif choice == 11:
-                Volume.hexaprism()
-                break
-            elif choice == 12:
-                Volume.squiramid()
-                break
-            elif choice == 13:
-                Volume.triramid()
-                break
-            elif choice == 14:
-                Volume.pentapyr()
-                break
-            elif choice == 15:
-                Volume.hexramid()
+                volume = "NULL"
+            elif choice == Volume.choices.CUBE:
+                from mathmod.volume import vol_cube
+                a = float(input(_("What length is the side of the cube? ")))
+                volume = vol_cube(a)
+                logging.info("User ran Cuvolu(m) a=%s answer=%s" % (a, volume))
+            elif choice == Volume.choices.CUBOID:
+                from mathmod.volume import vol_cuboid
+                b = float(input(_("What length is the breadth of the cuboid? ")))
+                h = float(input(_("What length is the height of the cuboid? ")))
+                l = float(input(_("What length is the cuboid? ")))
+                volume = vol_cuboid(b=b, h=h, l=l)
+                logging.info("User ran Cuboid Volume l=%s b=%s h=%s answer=%s" % (l, b, h, volume))
+            elif choice == Volume.choices.CYLINDER:
+                from mathmod.volume import vol_cylinder
+                r = float(input(_("What is the radius of the cylinder? ")))
+                h = float(input(_("What is the height of the cylinder? ")))
+                volume = vol_cylinder(r=r, h=h)
+                logging.info("User ran Cylinder Volume r=%s h=%s answer=%s" % (r, h, volume))
+            elif choice == Volume.choices.HOLLOW_CYLINDER:
+                from mathmod.volume import vol_hollow_cylinder
+                ro = float(input(_("What is the radius of the hollow space? ")))
+                rs = float(input(_("What is the radius of the cylinder? ")))
+                h = float(input(_("What is the height of the cylinder? ")))
+                volume = vol_hollow_cylinder(ro=ro, rs=rs, h=h)
+                logging.info("User ran Hollowcylinder Volume ro=%s rs=%s h=%s answer=%s" % (ro, rs, h, volume))
+            elif choice == Volume.choices.CONE:
+                from mathmod.volume import vol_cone
+                r = float(input(_("What is the radius of the cone? ")))
+                h = float(input(_("What is the height of the cone? ")))
+                volume = vol_cone(r=r, h=h)
+                logging.info("User ran Conevol r=%s h=%s answer=%s" % (r, h, volume))
+            elif choice == Volume.choices.SPHERE:
+                from mathmod.volume import vol_sphere
+                r = float(input(_("What is the radius of the sphere? ")))
+                volume = vol_sphere(r)
+                logging.info("User ran sphere Volume r=%s answer=%s" % (r, volume))
+            elif choice == Volume.choices.HOLLOW_SPHERE:
+                from mathmod.volume import vol_hollow_sphere
+                ro = float(input(_("What is the radius of the sphere? ")))
+                rs = float(input(_("What is the radius of the hollow space? ")))
+                volume = vol_hollow_sphere(ro=ro, rs=rs)
+                logging.info("User ran Hollowsphere Volume ro=%s rs=%s answer=%s" % (ro, rs, volume))
+            elif choice == Volume.choices.TRIANGULAR_PRISM:
+                from mathmod.volume import vol_tri_prism
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the prism? ")))
+                volume = vol_tri_prism(a=a, h=h)
+                logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
+            elif choice == Volume.choices.PENTAGONAL_PRISM:
+                from mathmod.volume import vol_penta_prism
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the prism? ")))
+                volume = vol_penta_prism(a=a, h=h)
+                logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
+            elif choice == Volume.choices.HEXAGONAL_PRISM:
+                from mathmod.volume import vol_hexa_prism
+                a = float(input(_("What is the length of the side of the hexagon? ")))
+                h = float(input(_("What is the height of the prism? ")))
+                volume = vol_hexa_prism(a=a, h=h)
+                logging.info("User ran Hexagon Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
+            elif choice == Volume.choices.SQUARE_BASED_PYRAMID:
+                from mathmod.volume import vol_sqr_pyramid
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the pyramid? ")))
+                volume = vol_sqr_pyramid(a=a, h=h)
+                logging.info("User ran Square Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+            elif choice == Volume.choices.TRIANGULAR_PYRAMID:
+                from mathmod.volume import vol_tri_pyramid
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the pyramid? ")))
+                volume = vol_tri_pyramid(a=a, h=h)
+                logging.info("User ran Triangle Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+            elif choice == Volume.choices.PENTAGON_BASED_PYRAMID:
+                from mathmod.volume import vol_penta_pyramid
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the pyramid? ")))
+                volume = vol_penta_pyramid(a=a, h=h)
+                logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+            elif choice == Volume.choices.HEXAGON_BASED_PYRAMID:
+                from mathmod.volume import vol_hexa_pyramid
+                a = float(input(_("What is the length of the side of the base? ")))
+                h = float(input(_("What is the height of the pyramid? ")))
+                volume = vol_hexa_pyramid(a=a, h=h)
+                logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
+            if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
+                cprint.info(_("The volume is: %s") % volume)
                 break
 
 if __name__ == "__main__":

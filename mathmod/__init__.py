@@ -153,10 +153,6 @@ class Misc:
             #raise ValueError("bruh moment.")
             #pass
         # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
-        elif source == 4:
-            raise ValueError("MATHMOD: Rankine is not implemented.")
-        elif destination == 4:
-            raise ValueError("MATHMOD: Rankine is not implemented.")
         else:
             raise ValueError("MATHMOD: Invalid input(s).")
         return yolo
