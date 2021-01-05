@@ -420,7 +420,7 @@ class Area:
         area = myprecious(ro, rs)
         logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
         cprint.info(_("The area is: %s" % area))
-    class Choices: #readability
+    class choices: #readability
         EQUILATERAL TRIANGLE = 1
         RIGHT ANGLE TRIANGLE = 2
         ACUTE TRIANGLE = 3
@@ -499,7 +499,7 @@ class Area:
                 break
 
 class Volume:
-    choices = { #readability
+    class choices = { #readability
     "CUBE" = 1
     "CUBOID" = 2
     "CYLINDER" = 3
