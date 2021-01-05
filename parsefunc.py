@@ -412,7 +412,7 @@ class Area:
                 b = float(input(_("What is the length of the base? ")))
                 h = float(input(_("What is the height of the shape? ")))
                 area = para(b, h)
-        logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
+                logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
             elif choice == Area.choices.RHOMBUS:
                 from mathmod.area import area_rhombus as rhombu
                 do = float(input(_("What is the length of the first diagonal? ")))
