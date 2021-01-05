@@ -503,6 +503,7 @@ class Volume:
             if choice == Volume.choices.EVIL:
                 cprint.ok("Sorry, that was not an option. >:)")
                 logging.info(">:) choice 7")
+                volume = "NULL"
             elif choice == Volume.choices.CUBE:
                 from mathmod.volume import vol_cube
                 a = float(input(_("What length is the side of the cube? ")))
