@@ -372,6 +372,7 @@ class Area:
             if choice == Area.choices.EVIL:
                 cprint.err(_("I was too lazy to change 7."))
                 logging.info("Lazy 7")
+                area = "NULL"
             elif choice == Area.choices.EQUILATERAL_TRIANGLE:
                 from mathmod.area import area_equilateral_triangle as equtri
                 a = float(input(_("What length is the side of the triangle? ")))
