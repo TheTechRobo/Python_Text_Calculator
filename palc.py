@@ -335,8 +335,9 @@ Anything else - Back to menu."))
                 cprint.err(_("Not developed yet, but maybe soon! :D"))
                 logging.info("User typed %s into conver functions but Non Existent." % conversion)
        elif "raise" in calc:
-           exception = input("DEV ONLY - Which exception would you like to raise?")
-           exec("raise %s" % exception)
+           cprint.info(_("This feature has been disabled due to security reasons."))
+           #exception = input("DEV ONLY - Which exception would you like to raise?")
+           #exec("raise %s" % exception)
 #OTHERWISE
        elif calc == "":
             logging.error("User attempted to type nothing as a command")
