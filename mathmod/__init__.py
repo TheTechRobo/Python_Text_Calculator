@@ -164,9 +164,11 @@ class Misc:
         Thanks to TutorialsPoint (https://www.tutorialspoint.com/How-to-append-elements-in-Python-tuple) for showing how to append to a tuple.
         Thanks to StackOverflow for showing that I should use a tuple rather than a list. (https://stackoverflow.com/questions/1708510/list-vs-tuple-when-to-use-each)
         """
+        import random
         result = list()
         for i in range(0, numberOfTimes):
             c = random.choice(choices)
             result.append( (str(c) + " ") )
         resultAsTuple = tuple(result)
+        del random, result #the garbage won't do
         return resultAsTuple
