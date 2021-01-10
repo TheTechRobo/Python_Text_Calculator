@@ -216,6 +216,10 @@ Anything else - Back to menu."))
             cprint.info(cubedNumber ** 3) #Manually cube number
             logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
             print()
+#SPINNER
+       elif _("spin") in calc:
+            misc.showUserWhatIThink(_("spin a spinner"))
+            misc.spinner()
 #EXIT
        elif _("quit") in calc:
             misc.showUserWhatIThink(_("quit"))
