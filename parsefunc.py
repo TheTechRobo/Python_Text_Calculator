@@ -240,7 +240,9 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
     def spinner():
         choices = input(_("Please enter your choices separated by spaces. Example: First part of spinner, SecondPartOfSpinner, 3, 4, 5, 6, The End\nType: ")).strip().split()
         times = int(input(_("How many times to conduct the spinner? ")))
-        mathmod.Misc.Spinner(times, choices)
+        output = mathmod.Misc.Spinner(times, choices)
+        cprint.ok(_("Your results were...\n%s") % output)
+        logging.info("Spinner: choices %s, times %s, output %s" % (choices, times, output))
 class Temperature:
     def tempCalc():
         message = """What is the %s temperature unit? 
