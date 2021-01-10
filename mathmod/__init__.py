@@ -157,16 +157,16 @@ class Misc:
             raise ValueError("MATHMOD: Invalid input(s).")
         return yolo
     def Spinner(numberOfTimes, choiceSelection):
-    """
-    param numberOfTimes: Amount of times to conduct the spinner.
-    param choiceSelection: A list of the choices. Should be in this format: ["choice1", "choice2", "etc"].
-    Returns a TUPLE of the results.
-    Thanks to TutorialsPoint (https://www.tutorialspoint.com/How-to-append-elements-in-Python-tuple) for showing how to append to a tuple.
-    Thanks to StackOverflow for showing that I should use a tuple rather than a list. (https://stackoverflow.com/questions/1708510/list-vs-tuple-when-to-use-each)
-    """
-    result = list()
-    for i in range(0, numberOfTimes):
-        c = random.choice(choices)
-        result.append( (str(c) + " ") )
-    resultAsTuple = tuple(result)
-    return resultAsTuple
+        """
+        param numberOfTimes: Amount of times to conduct the spinner.
+        param choiceSelection: A list of the choices. Should be in this format: ["choice1", "choice2", "etc"].
+        Returns a TUPLE of the results.
+        Thanks to TutorialsPoint (https://www.tutorialspoint.com/How-to-append-elements-in-Python-tuple) for showing how to append to a tuple.
+        Thanks to StackOverflow for showing that I should use a tuple rather than a list. (https://stackoverflow.com/questions/1708510/list-vs-tuple-when-to-use-each)
+        """
+        result = list()
+        for i in range(0, numberOfTimes):
+            c = random.choice(choices)
+            result.append( (str(c) + " ") )
+        resultAsTuple = tuple(result)
+        return resultAsTuple

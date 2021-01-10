@@ -103,7 +103,7 @@ try:
     from parsefunc import *
 except Exception as e:
     logging.critical("Could not access file parsefunc.py (%s)" % e)
-    cprint.fatal(_("I can't access the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
+    cprint.fatal(_("I can't load the file parsefunc.py. This file is necessary for proper function of the Software."), interrupt=True)
 try:
     if ignore[0] == "y":
         from parsefunc import main
@@ -170,7 +170,7 @@ def palc():
        elif "plus" in calc:
             misc.showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
-        elif lCode == "fr":
+       elif lCode == "fr":
             if "ajoute" in calc:
                 misc.showUserWhatIThink(_("add two numbers"))
                 theBasics.addition()
