@@ -237,6 +237,12 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
         if doNotLog:
             return
         logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
+    def spinner():
+        choices = input(_("Please enter your choices separated by commas. Example: First part of spinner, SecondPartOfSpinner, 3, 4, 5, 6, The End\nType: ")).strip().split(", ") #https://www.w3schools.com/python/ref_string_split.asp
+        times = int(input(_("How many times to conduct the spinner? ")))
+        output = mathmod.Misc.Spinner(times, choices)
+        cprint.ok(_("Your results were...\n%s") % output)
+        logging.info("Spinner: choices %s, times %s, output %s" % (choices, times, output))
 class Temperature:
     def tempCalc():
         message = """What is the %s temperature unit? 
