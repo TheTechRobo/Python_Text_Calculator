@@ -167,7 +167,7 @@ class Misc:
         import random
         result = list()
         for i in range(0, numberOfTimes):
-            c = random.choice(choices)
+            c = random.choice(choiceSelection)
             result.append( (str(c) + " ") )
         resultAsTuple = tuple(result)
         del random, result #the garbage won't do
