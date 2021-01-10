@@ -39,13 +39,12 @@ def area_acute_triangle(a: int, b: int, c: int) -> 'area':
     This Function Is For Acute Angled Triangle's Area Calculation.
     Takes 'a','b','c' As Length Of Side.
     And Divides The Sum Of The Three Integers By 2.
-    And Returns The(approx) Area.
+    And returns the (approx) Area.
     :param a: int
     :param b: int
     :param c: int
     :return: area
     '''
-    
     a = _f(a)
     b = _f(b)
     c = _f(c)
@@ -59,7 +58,7 @@ def area_obtuse_triangle(a: int, b: int, c: int) -> 'area':
         This Function Is For Obtuse Angled Triangle's Area Calculation.
         Takes 'a','b','c' As Length Of Side.
         And Divides The Sum Of The Three Integers By 2.
-        And Returns The(approx) Area.
+        And Returns The (approx) Area.
         :param a: int
         :param b: int
         :param c: int
