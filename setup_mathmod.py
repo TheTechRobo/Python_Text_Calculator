@@ -7,7 +7,7 @@ with open("README_MATHMOD.md", "r") as file:
 
 setup(
     name='mathmod',
-    version='0.10',
+    version='0.10.2',
     description='yet another Python math module',
     long_description=long_desc,
     license='GNU GPL 3.0',
