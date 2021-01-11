@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2021-01-09 20:32-0500\n"
-"PO-Revision-Date: 2021-01-09 20:35-0500\n"
+"POT-Creation-Date: 2021-01-11 08:58-0500\n"
+"PO-Revision-Date: 2021-01-11 09:00-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -27,11 +27,11 @@ msgstr ""
 msgid "Unexpected error!"
 msgstr "Une erreur est survenue !"
 
-#: palc.py:118
+#: palc.py:119
 msgid "Press any key to continue..."
 msgstr "Appuyer sur une touche pour continuer…"
 
-#: palc.py:121
+#: palc.py:122
 msgid ""
 "What calculation do you wish to do? (Type `?' for a list of commands)\n"
 "Type: "
@@ -41,68 +41,68 @@ msgstr ""
 "Saisie : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:128
+#: palc.py:129
 msgid "help"
 msgstr "aide"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:132
+#: palc.py:133
 msgid "tax"
 msgstr "taxe"
 
-#: palc.py:133
+#: palc.py:134
 msgid "calculate tax"
 msgstr "calculer une taxe"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:136
+#: palc.py:137
 msgid "sq"
 msgstr "carre"
 
-#: palc.py:137 palc.py:142
+#: palc.py:138 palc.py:143
 msgid "square a number"
 msgstr "élever un nombre au carré"
 
-#: palc.py:138 palc.py:143
+#: palc.py:139 palc.py:144
 msgid "Number to square? "
 msgstr "Nombre à mettre au carré? "
 
-#: palc.py:148 palc.py:151
+#: palc.py:149 palc.py:152
 msgid "divide a number"
 msgstr "diviser un nombre"
 
-#: palc.py:150
+#: palc.py:151
 msgid "div"
 msgstr "div"
 
-#: palc.py:155 palc.py:158 palc.py:161
+#: palc.py:156 palc.py:159 palc.py:162
 msgid "subtract a number from a number"
 msgstr "soustraire un nombre par un nombre"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:157
+#: palc.py:158
 msgid "sub"
 msgstr "sous"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
 # This one's the same as the other because I have no idea what it should be other than "soustraire".
-#: palc.py:160
+#: palc.py:161
 msgid "min"
 msgstr "sous"
 
-#: palc.py:165 palc.py:168 palc.py:171 palc.py:175
+#: palc.py:166 palc.py:169 palc.py:172 palc.py:176
 msgid "add two numbers"
 msgstr "additionne deux nombres"
 
-#: palc.py:167
+#: palc.py:168
 msgid "add"
 msgstr "ajoute"
 
-#: palc.py:170
+#: palc.py:171
 msgid "plus"
 msgstr "plus"
 
-#: palc.py:179
+#: palc.py:180
 msgid ""
 "1 - Find the remainder of two numbers after division\n"
 "2 - Use the percentage calculator.\n"
@@ -112,47 +112,47 @@ msgstr ""
 "2 - Utiliser la calculatrice pourcentage\n"
 "Autre chose - Retour au menu."
 
-#: palc.py:182
+#: palc.py:183
 msgid "Type: "
 msgstr "Saisissez : "
 
 # Old source text:
 # Going back...
-#: palc.py:188
+#: palc.py:189
 msgid "going back."
 msgstr "retour au menu..."
 
-#: palc.py:190
+#: palc.py:191
 msgid "mod"
 msgstr "mod"
 
-#: palc.py:191
+#: palc.py:192
 msgid "find the remainder of two numbers after division"
 msgstr "trouver le reste de deux numéros après la division"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:194
+#: palc.py:195
 msgid "area"
 msgstr "aire"
 
-#: palc.py:195 palc.py:198
+#: palc.py:196 palc.py:199
 msgid "calculate area"
 msgstr "calculer une aire"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:201
+#: palc.py:202
 msgid "vol"
 msgstr "vol"
 
-#: palc.py:202
+#: palc.py:203
 msgid "use the volume calculator"
 msgstr "utiliser la calculatrice volume"
 
-#: palc.py:206 palc.py:213
+#: palc.py:207 palc.py:214
 msgid "cube a number"
 msgstr "élever un nombre au cube"
 
-#: palc.py:207 palc.py:214
+#: palc.py:208 palc.py:215
 msgid ""
 "\n"
 "Type the number to be cubed: "
@@ -161,59 +161,59 @@ msgstr ""
 "Saisissez le nombre à mettre au cube : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:212 palc.py:268
+#: palc.py:213 palc.py:269
 msgid "cube"
 msgstr "cube"
 
-#: palc.py:220
+#: palc.py:221
 msgid "spin"
 msgstr "tourner"
 
-#: palc.py:221 palc.py:224 palc.py:227
+#: palc.py:222 palc.py:225 palc.py:228
 msgid "spin a spinner"
 msgstr "tourner un fileur"
 
-#: palc.py:223
+#: palc.py:224
 msgid "spinner"
 msgstr "fileur"
 
-#: palc.py:226
+#: palc.py:227
 msgid "roulette"
 msgstr "roulette"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:230 palc.py:231
+#: palc.py:231 palc.py:232
 msgid "quit"
 msgstr "quitter"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:234 palc.py:235
+#: palc.py:235 palc.py:236
 msgid "exit"
 msgstr "quitter"
 
 # This is a translated if statement. DO NOT add accents, and keep a key word inside.
-#: palc.py:239
+#: palc.py:240
 msgid "power"
 msgstr "elever"
 
-#: palc.py:240 palc.py:243 palc.py:246
+#: palc.py:241 palc.py:244 palc.py:247
 msgid "use the exponent function"
 msgstr "utiliser la fonction exposant"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:242
+#: palc.py:243
 msgid "ex"
 msgstr "ex"
 
-#: palc.py:250 palc.py:253 palc.py:256
+#: palc.py:251 palc.py:254 palc.py:257
 msgid "multiply a number"
 msgstr "multiplier un nombre"
 
-#: palc.py:255
+#: palc.py:256
 msgid "multi"
 msgstr "multi"
 
-#: palc.py:260
+#: palc.py:261
 msgid ""
 "The \"cube twice\" feature was discontinued as it was pointless. Sorry for "
 "the inconvenience."
@@ -221,15 +221,15 @@ msgstr ""
 "La fonction << cube deux fois >> a été supprimé car c'est bête. Désolé."
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:263
+#: palc.py:264
 msgid "root"
 msgstr "racine"
 
-#: palc.py:264
+#: palc.py:265
 msgid "use the root function (opposite of exponents)"
 msgstr "utiliser la fonction racine (opposé d'exposant)"
 
-#: palc.py:265
+#: palc.py:266
 msgid ""
 "Square root or cube root? (square/cube)\n"
 "Type: "
@@ -238,22 +238,22 @@ msgstr ""
 "Saisie : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:266
+#: palc.py:267
 msgid "square"
 msgstr "carre"
 
-#: palc.py:271
+#: palc.py:272
 msgid ""
 "Currently I don't support the root you chose. Hopefully this will change :D"
 msgstr ""
 "Pour le moment je ne supporte pas la racine que vous voulez. J'espère que ça "
 "va changer :D"
 
-#: palc.py:275
+#: palc.py:276
 msgid "use the equals function (completely useless)"
 msgstr "utiliser la fonction égale (complètement inutile)"
 
-#: palc.py:276
+#: palc.py:277
 msgid ""
 "\n"
 "Type in a number: "
@@ -261,42 +261,42 @@ msgstr ""
 "\n"
 "Saisissez un nombre : "
 
-#: palc.py:278
+#: palc.py:279
 msgid "=42 -- the answer to life, the universe, and everything"
 msgstr ""
 "=42 -- la réponse de la grande question sur la vie, l'univers et le reste"
 
-#: palc.py:281
+#: palc.py:282
 msgid "Calculating..."
 msgstr "Calculation en progres..."
 
-#: palc.py:283
+#: palc.py:284
 msgid "ERROR: Too big of a number, timed out!"
 msgstr "ERREURE : Trop grand, il prend trop du temps !"
 
 # This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
-#: palc.py:286
+#: palc.py:287
 msgid "base"
 msgstr "base"
 
-#: palc.py:287
+#: palc.py:288
 msgid "convert number systems"
 msgstr "convertir les systèmes de bases numérique"
 
 # This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
-#: palc.py:290
+#: palc.py:291
 msgid "ord"
 msgstr "ord"
 
-#: palc.py:291
+#: palc.py:292
 msgid "ord a character"
 msgstr "\"ord\" un caractère"
 
-#: palc.py:292
+#: palc.py:293
 msgid "Type in the character to ord: "
 msgstr "Saisissez le caractère à 'ord' : "
 
-#: palc.py:294
+#: palc.py:295
 #, python-format
 msgid ""
 "The result is: \n"
@@ -306,24 +306,24 @@ msgstr ""
 "%s"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:296
+#: palc.py:297
 msgid "log"
 msgstr "log"
 
-#: palc.py:297
+#: palc.py:298
 msgid "use the logarithm function"
 msgstr "utiliser la fonction logarithme"
 
 # This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
-#: palc.py:300
+#: palc.py:301
 msgid "mem"
 msgstr "mem"
 
-#: palc.py:301
+#: palc.py:302
 msgid "use the memory function"
 msgstr "utiliser la fonction mémoire"
 
-#: palc.py:302
+#: palc.py:303
 msgid ""
 "Would you like to set the memory or recall? (set / recall)\n"
 "Type: "
@@ -333,69 +333,69 @@ msgstr ""
 "Saisie : "
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:303
+#: palc.py:304
 msgid "set"
 msgstr "ecrire"
 
 # This is a translated if statement. DO NOT ADD ACCENTS (as some people dont add them), and make sure to keep a key word inside.
-#: palc.py:305
+#: palc.py:306
 msgid "recall"
 msgstr "lire"
 
-#: palc.py:308
+#: palc.py:309
 msgid ""
 "You did not type an answer.\n"
 "Abort."
 msgstr "Vous n'avez pas saisi une réponse valide. Annulation."
 
 # This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
-#: palc.py:311
+#: palc.py:312
 msgid "fib"
 msgstr "fib"
 
-#: palc.py:312
+#: palc.py:313
 msgid "use the fibonacci calculator"
 msgstr "utiliser la fonction fibonacci"
 
-#: palc.py:313
+#: palc.py:314
 msgid "Starting fibonacci sequence. Please wait."
 msgstr "Démarrage de la séquence Fibonacci. Veuillez patienter."
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:316
+#: palc.py:317
 msgid "percent"
 msgstr "pourcent"
 
-#: palc.py:317
+#: palc.py:318
 msgid "use the percentage function"
 msgstr "utiliser la fonction pourcentage"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#: palc.py:320
+#: palc.py:321
 msgid "interest"
 msgstr "interet"
 
-#: palc.py:321
+#: palc.py:322
 msgid "use the interest calculator"
 msgstr "utiliser le calculateur d'intérêt"
 
-#: palc.py:324
+#: palc.py:325
 msgid "temperature"
 msgstr "temperature"
 
-#: palc.py:325
+#: palc.py:326
 msgid "use the temperature converter"
 msgstr "utiliser le convertisseur de température"
 
-#: palc.py:328
+#: palc.py:329
 msgid "conver"
 msgstr "conver"
 
-#: palc.py:330
+#: palc.py:331
 msgid "use the converter functions"
 msgstr "utiliser les convertisseurs"
 
-#: palc.py:331
+#: palc.py:332
 msgid ""
 "1 - Convert temperature units\n"
 "2 - Convert bits and bytes and kilobytes and mebibytes and stuff\n"
@@ -405,23 +405,27 @@ msgstr ""
 "2 - Convertir les unités de stockage d'ordi\n"
 "Tapez ton réponse : "
 
-#: palc.py:335
+#: palc.py:336
 msgid "Not developed yet, but maybe soon! :D"
 msgstr "Pas developpe, mais peut-etre une jour... :D"
 
-#: palc.py:343
+#: palc.py:339
+msgid "This feature has been disabled due to security reasons."
+msgstr "Ce partie de Palc est supprimé pour des raisons sécuritaire."
+
+#: palc.py:345
 msgid "I can't heeeeaaaarrrrrr yooooouuuuuuuu"
 msgstr "Je ne peux pas enteeeeennnnndre toiiiiiii"
 
-#: palc.py:346
+#: palc.py:348
 msgid "You speak quietly"
 msgstr "Tu parles doux"
 
-#: palc.py:349
+#: palc.py:351
 msgid "I can't heeeaaaarrrrr youuuuuuuu"
 msgstr "Je ne peux pas enteeeeennnnndre toiiiiiii"
 
-#: palc.py:352
+#: palc.py:354
 msgid ""
 "\n"
 "I don't understand your request. Here are the currently supported "
@@ -441,11 +445,11 @@ msgstr ""
 "(IMPORTANT : N'AJOUTEZ PAS LES ACCENTS AUX COMMANDES, AUTREMENT CELA NE "
 "FONCTIONNERA PAS)\n"
 
-#: palc.py:356
+#: palc.py:358
 msgid "Welcome to Palc!"
 msgstr "Bienvenue dans Palc !"
 
-#: palc.py:363
+#: palc.py:365
 msgid ""
 "\n"
 "Note that you CAN type `quit' instead of pressing the interrupt key"
@@ -453,19 +457,21 @@ msgstr ""
 "\n"
 "Vous pouvez saisir `quitter' plutôt que ^C... "
 
-#: palc.py:367
+#: palc.py:369
 msgid ""
 "\n"
-"Why ^D? Why not just type `quit'?"
+"Either you pressed Ctrl+D, or your batch script for Palc ended prematurely. "
+"Next time, try  `quit'."
 msgstr ""
 "\n"
-"Pourquoi ^D ? Pourquoi pas juste `quitter' ?"
+"Peut-être tu as poussé ^D, ou ton scripte pour Palc est fini avant que Palc "
+"est fini. La prochaine fois, essayer `quitter'."
 
-#: palc.py:371
+#: palc.py:373
 msgid "\aERROR!\a"
 msgstr "\aERREUR !\a"
 
-#: palc.py:372
+#: palc.py:374
 msgid ""
 "You typed in an invalid integer or float. Or maybe the program needs "
 "debugging. Either way, it's a pretty big error."
@@ -473,15 +479,15 @@ msgstr ""
 "Soit vous avez entré un nombre invalide, soit le logiciel a besoin d'être "
 "débogué. En tout cas, il s'agit d'une une erreur importante."
 
-#: palc.py:374
+#: palc.py:376
 msgid "Looks like you exited."
 msgstr "Vous quittez Palc."
 
-#: palc.py:377
+#: palc.py:379
 msgid "\aUnknown Error!\a"
 msgstr "\aErreur inconnue !\a"
 
-#: palc.py:379
+#: palc.py:381
 msgid ""
 "An unknown error occured. Please file an Issue at github.com/thetechrobo/"
 "python-text-calculator/issues."
@@ -1173,6 +1179,13 @@ msgstr "Hauteur de la pyramide ? "
 #, python-format
 msgid "The volume is: %s"
 msgstr "Le volume est : %s"
+
+#~ msgid ""
+#~ "\n"
+#~ "Why ^D? Why not just type `quit'?"
+#~ msgstr ""
+#~ "\n"
+#~ "Pourquoi ^D ? Pourquoi pas juste `quitter' ?"
 
 #~ msgid ""
 #~ "Options:\n"

@@ -366,7 +366,7 @@ except KeyboardInterrupt: #if ^C
     e(0)
 except EOFError: #if ^D
     logging.info("EOFError")
-    cprint.ok(_("\nWhy ^D? Why not just type `quit'?"))
+    cprint.ok(_("\nEither you pressed Ctrl+D, or your batch script for Palc ended prematurely. Next time, try  `quit'."))
     e(0)
 except (ValueError, TypeError) as ename:
     logging.critical("ValueError or TypeError: %s" % ename)
