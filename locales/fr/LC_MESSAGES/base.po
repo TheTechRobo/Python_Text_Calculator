@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc\n"
-"POT-Creation-Date: 2021-01-09 20:32-0500\n"
-"PO-Revision-Date: 2021-01-09 20:35-0500\n"
+"POT-Creation-Date: 2021-01-11 17:12-0500\n"
+"PO-Revision-Date: 2021-01-11 17:27-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -13,6 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: _\n"
+"X-Poedit-Flags-xgettext: --add-comments=\"TO TRANSLATORS:\"\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: palc.py:106
@@ -409,19 +410,23 @@ msgstr ""
 msgid "Not developed yet, but maybe soon! :D"
 msgstr "Pas developpe, mais peut-etre une jour... :D"
 
-#: palc.py:343
+#: palc.py:338
+msgid "This feature has been disabled due to security reasons."
+msgstr ""
+
+#: palc.py:344
 msgid "I can't heeeeaaaarrrrrr yooooouuuuuuuu"
 msgstr "Je ne peux pas enteeeeennnnndre toiiiiiii"
 
-#: palc.py:346
+#: palc.py:347
 msgid "You speak quietly"
 msgstr "Tu parles doux"
 
-#: palc.py:349
+#: palc.py:350
 msgid "I can't heeeaaaarrrrr youuuuuuuu"
 msgstr "Je ne peux pas enteeeeennnnndre toiiiiiii"
 
-#: palc.py:352
+#: palc.py:353
 msgid ""
 "\n"
 "I don't understand your request. Here are the currently supported "
@@ -441,11 +446,11 @@ msgstr ""
 "(IMPORTANT : N'AJOUTEZ PAS LES ACCENTS AUX COMMANDES, AUTREMENT CELA NE "
 "FONCTIONNERA PAS)\n"
 
-#: palc.py:356
+#: palc.py:357
 msgid "Welcome to Palc!"
 msgstr "Bienvenue dans Palc !"
 
-#: palc.py:363
+#: palc.py:364
 msgid ""
 "\n"
 "Note that you CAN type `quit' instead of pressing the interrupt key"
@@ -453,7 +458,7 @@ msgstr ""
 "\n"
 "Vous pouvez saisir `quitter' plutôt que ^C... "
 
-#: palc.py:367
+#: palc.py:368
 msgid ""
 "\n"
 "Why ^D? Why not just type `quit'?"
@@ -461,11 +466,11 @@ msgstr ""
 "\n"
 "Pourquoi ^D ? Pourquoi pas juste `quitter' ?"
 
-#: palc.py:371
+#: palc.py:372
 msgid "\aERROR!\a"
 msgstr "\aERREUR !\a"
 
-#: palc.py:372
+#: palc.py:373
 msgid ""
 "You typed in an invalid integer or float. Or maybe the program needs "
 "debugging. Either way, it's a pretty big error."
@@ -473,15 +478,15 @@ msgstr ""
 "Soit vous avez entré un nombre invalide, soit le logiciel a besoin d'être "
 "débogué. En tout cas, il s'agit d'une une erreur importante."
 
-#: palc.py:374
+#: palc.py:375
 msgid "Looks like you exited."
 msgstr "Vous quittez Palc."
 
-#: palc.py:377
+#: palc.py:378
 msgid "\aUnknown Error!\a"
 msgstr "\aErreur inconnue !\a"
 
-#: palc.py:379
+#: palc.py:380
 msgid ""
 "An unknown error occured. Please file an Issue at github.com/thetechrobo/"
 "python-text-calculator/issues."
