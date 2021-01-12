@@ -118,6 +118,8 @@ def palc():
        if sys.stdin.isatty(): #https://stackoverflow.com/questions/13442574/how-do-i-determine-if-sys-stdin-is-redirected-from-a-file-vs-piped-from-another
            pressanykey(_("Press any key to continue..."))
            clearScreen()
+       else:
+           time.sleep(1)
 #CALCULATION CHOICE
        calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
        logging.info("Got calc choice %s" % calc)
