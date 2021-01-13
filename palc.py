@@ -14,9 +14,12 @@ FORKED BY: TheTechRobo
 CONTRIBUTORS: See contributors.md
 LICENSE: GPL 3.0 (see LICENSE)
 """
-import six
-if not six.PY3:
-    print("You are using a currently unsupported version of Python. Your mileage may vary.")
+try:
+    import six
+    if not six.PY3:
+        print("You are using a currently unsupported version of Python. Your mileage may vary.")
+except (ImportError, ModuleNotFoundError):
+    print("Can't find what version of Python you're running. Your mileage may vary.")
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
