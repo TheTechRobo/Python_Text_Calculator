@@ -20,7 +20,7 @@ Readme updates.
 Support for volume and area calculation.
 
 - maloncard  
- add modulo to help text, fix spaces/tab error 
+add modulo to help text, fix spaces/tab error 
 
 ### Created a PR on lewiswatson55/Python_Text_Calculator but was not merged
 View list [here](https://github.com/lewiswatson55/Python_Text_Calculator/pulls?q=is%3Aunmerged+)
