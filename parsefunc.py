@@ -110,16 +110,16 @@ class rootsAndTheOtherOne:
 
 class misc:
     def h():
-        cprint.info(_('''
-Current list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, "ord'ing", and convert bases (aka number systems). Type quit to quit.
-Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/
-To contribute: go to https://github.com/thetechrobo/python-text-calculator/
-        '''))
+        cprint.info(_("\nCurrent list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, "
+                      "tax calculator, spinner, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, \"ord'ing\", and convert "
+                      "bases (aka number systems). Type quit to quit."
+                      "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues"
+                      "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"))
     def vol():
-        logging.warning("User ran `volume.py'. Log is barely tested for area and volume.")
+        logging.warning("User ran `volume.py'.")
         Volume.VolMain()
     def area():
-        logging.warning("User ran `area.py'. Log is barely tested for area and volume.")
+        logging.warning("User ran `area.py'.")
         Area.AreaMain()
     def fib():
         hi = input(_("Would you like...\n    1 - Calculate a fixed amount of fibonacci numbers.\n    2 - Calculate fibonacci indefinitely.\nType: "))
