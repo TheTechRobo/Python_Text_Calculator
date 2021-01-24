@@ -5,7 +5,7 @@
 
 ## I cannot emphasize this enough: to contribute, READ [CONTRIBUTING.md](CONTRIBUTING.md) FIRST!!!!
 
-[![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/master)
+[![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/0.10)
 [![Latest stable release](https://img.shields.io/github/v/release/TheTechRobo/python-text-calculator?label=latest%20stable%20release)](https://github.com/thetechrobo/python-text-calculator/releases)
 ![Commit activity](https://img.shields.io/github/commit-activity/m/thetechrobo/python-text-calculator)
 ![Last commit](https://img.shields.io/github/last-commit/thetechrobo/python-text-calculator)
