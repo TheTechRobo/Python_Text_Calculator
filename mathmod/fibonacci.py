@@ -1,13 +1,16 @@
 from __future__ import print_function #so that it doesnt quit with invalid syntax; we need to tell the user.
 #FIBONACCI
 import sys, time
-if sys.version_info < (3,4):
-    raise ImportError(
-    "You are running Mathmod 0.11 on Python 2 or Python < 3.4. Mathmod 0.11 and up is no longer compatible with Python 2.x, and somehow you still got this version installed."
-    "\nSorry about that; it should not have happened. Make sure you have pip >= 9.0 to avoid this kind of issue, as well as setuptools >= 24.2 (pip install pip setuptools --upgrade --user)\n"
-    "\nYou have two options.\n 1 - Upgrade to Python 3.4 or higher. \n 2 - Install Mathmod 0.10.2 or earlier (pip install mathmod<0.11). "
-    "\nThanks for using Mathmod, and sorry for the inconvenience."
-    )
+
+if sys.version_info[:2] < (3, 3): #https://stackoverflow.com/a/35467658/9654083
+    old_print = print
+    def print(*args, **kwargs):
+        flush = kwargs.pop('flush', False)
+        old_print(*args, **kwargs)
+        if flush:
+            file = kwargs.get('file', sys.stdout)
+            # Why might file=None? IDK, but it works for print(i, file=None)
+            file.flush() if file is not None else sys.stdout.flush()
 
 def CalculateFixedFibo(amount):
     """

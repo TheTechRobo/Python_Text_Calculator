@@ -1,3 +1,4 @@
+from __future__ import print_function
 from math import sqrt, pi
 
 if __name__ == "__main__":
@@ -7,7 +8,7 @@ _f = float
 # Triangles
 
 #Equilateral Triangle
-def area_equilateral_triangle(a: int) -> 'area':
+def area_equilateral_triangle(a):
     '''
     This Function Is For Equilateral Triangle's Area Calculation.
     Takes 'a' As Side Of The Triangle.
@@ -19,7 +20,7 @@ def area_equilateral_triangle(a: int) -> 'area':
     return area
 
 #Right Angle Triangle
-def area_right_triangle(b: int, h: int) -> 'area':
+def area_right_triangle(b, h):
     '''
     This Function Is For Right Angled Triangle's Area Calculation.
     Takes 'h' As Height & 'b' As The Base Of The Right Angled Triangle.
@@ -34,7 +35,7 @@ def area_right_triangle(b: int, h: int) -> 'area':
     return area
 
 #Acute Triangle
-def area_acute_triangle(a: int, b: int, c: int) -> 'area':
+def area_acute_triangle(a, b, c):
     '''
     This Function Is For Acute Angled Triangle's Area Calculation.
     Takes 'a','b','c' As Length Of Side.
@@ -53,7 +54,7 @@ def area_acute_triangle(a: int, b: int, c: int) -> 'area':
     return area
 
 #Obtuse Triangle
-def area_obtuse_triangle(a: int, b: int, c: int) -> 'area':
+def area_obtuse_triangle(a, b, c):
     '''
         This Function Is For Obtuse Angled Triangle's Area Calculation.
         Takes 'a','b','c' As Length Of Side.
@@ -74,7 +75,7 @@ def area_obtuse_triangle(a: int, b: int, c: int) -> 'area':
 # Quadrilaterals
 
 #Square
-def area_square(a: int) -> 'area':
+def area_square(a):
     '''
     This Function Is For Square's Area Calculation.
     Takes 'a' As Length Of The Side.
@@ -87,7 +88,7 @@ def area_square(a: int) -> 'area':
     return area
 
 #Rectangle
-def area_rectangle(l: int, b: int) -> 'area':
+def area_rectangle(l, b):
     '''
        This Function Is For Rectangle's Area Calculation.
        Takes 'a' As Length Of The Side.
@@ -102,7 +103,7 @@ def area_rectangle(l: int, b: int) -> 'area':
     return area
 
 #Parallelogram
-def area_parallelogram(b: int, h: int) -> 'area':
+def area_parallelogram(b, h):
     '''
     This Function Is For Parallelogram's Area Calculation.
     Takes 'b' As The Base And 'h' As The Height.
@@ -117,14 +118,14 @@ def area_parallelogram(b: int, h: int) -> 'area':
     return area
 
 #Rhombus
-def area_rhombus(do: int, ds: int) -> 'area':
+def area_rhombus(do, ds):
     '''
     This Function Is For Rhombus's Area Calculation.
     Takes 'do' As The First Diagonal And 'ds' As The Second Diagonal.
     And Returns The Area.
     :param do: int
     :param ds: int
-    :return:
+    :return: area
     '''
     do = _f(do)
     ds = _f(ds)
@@ -132,14 +133,14 @@ def area_rhombus(do: int, ds: int) -> 'area':
     return area
 
 #Trapezium
-def area_trapezium(a: int, b: int, h: int) -> 'area':
+def area_trapezium(a, b, h):
     '''
     This Function Is For Trapezium's Area Calculation.
     Takes 'a' and 'b' as the length of the parallel sides and 'h' as rhe height.
     And Returns The Area.
-    :param a: int
-    :param b: int
-    :param h: int
+    :param a: float
+    :param b: float
+    :param h: float
     :return: area
     '''
     a = _f(a)
@@ -152,12 +153,12 @@ def area_trapezium(a: int, b: int, h: int) -> 'area':
 # Circles
 
 #Full Circle
-def area_circle(r: int) -> 'area':
+def area_circle(r):
     '''
     This Function Is For Circle's Area Calculation.
     Takes 'r' As The Radius Of The Circle.
     And Returns The Area.
-    :param r:
+    :param r:float
     :return: area
     '''
     r = _f(r)
@@ -165,12 +166,12 @@ def area_circle(r: int) -> 'area':
     return area
 
 #Semicircle
-def area_semicircle(r: int) -> 'area':
+def area_semicircle(r):
     """
     This Function Is For Semicircle's Area Calculation.
     Takes 'r' As The Radius Of The semicircle.
     And Returns The Area.
-    :param r: int
+    :param r: float
     :return: area
     """
     r = _f(r)
@@ -178,7 +179,7 @@ def area_semicircle(r: int) -> 'area':
     return area
 
 #Circular sector
-def area_circular_sector(r: int, a: int) -> 'area':
+def area_circular_sector(r,a):
     """
     This Function Is For Circular Sector's Area Calculation.
     Takes 'r' As The Radius Of The Circular Sector.
@@ -195,14 +196,14 @@ def area_circular_sector(r: int, a: int) -> 'area':
     return area
 
 #Ring
-def area_ring(ro: int, rs: int != 1) -> 'area':
+def area_ring(ro, rs):
     """
     This Function Is For Circular Ring's Area Calculation.
     Takes 'ro'(Radius Of The Outer Circle),
     'rs'(Radius Of The Inner Circle) As The Radii Of The Circular Ring.
     And Returns The Area.
     :param ro: int
-    :param rs: int
+    :param rs: int != 1
     :return: area
     """
     ro = _f(ro)
@@ -211,7 +212,7 @@ def area_ring(ro: int, rs: int != 1) -> 'area':
     return area
 
 #Ellipse
-def area_ellipse(a: int, b: int != 1) -> 'area':
+def area_ellipse(a, b):
     """
     This Function Is For Ellipse's Area Calculation.
     Takes 'a' and 'b' As The Length Of Major And Minor Axis, Respectively.

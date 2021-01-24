@@ -4,7 +4,7 @@ if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
 # Contains Volume Calculating Functions
 #CUBE
-def vol_cube(a: int) -> 'volume':
+def vol_cube(a):
     '''
     Takes 'a' as the side of the cube. Returns the volume
     :param a: int
@@ -15,7 +15,7 @@ def vol_cube(a: int) -> 'volume':
     return volume
 
 #CUBOID
-def vol_cuboid(l: int, b: int, h: int) -> 'volume':
+def vol_cuboid(l, b, h):
     '''
     Takes 'l','b', and 'h' as length, breadth, and height, respectively.
     Returns the volume.
@@ -31,7 +31,7 @@ def vol_cuboid(l: int, b: int, h: int) -> 'volume':
     return volume
 
 #CYLINDER
-def vol_cylinder(r: int, h: int) -> 'volume':
+def vol_cylinder(r, h):
     '''
     Takes 'r' and 'h' as radius and height, respectively. Returns the volume.
     :param r: int
@@ -44,7 +44,7 @@ def vol_cylinder(r: int, h: int) -> 'volume':
     return volume
 
 #HOLLOW CYLINDER
-def vol_hollow_cylinder(ro: int, rs: int, h: int) -> 'volume':
+def vol_hollow_cylinder(ro, rs, h):
     '''
     Takes 'ro', 'rs', and 'h' as radius of the hollow space, radius of the cylinder, and height of the cylinder, respectively. Returns the volume.
     :param ro: int
@@ -59,7 +59,7 @@ def vol_hollow_cylinder(ro: int, rs: int, h: int) -> 'volume':
     return volume
 
 #CONE
-def vol_cone(r: int, h: int) -> 'volume':
+def vol_cone(r, h):
     '''
     Takes 'r' and 'h' as the radius and height of the cone, respectively. Returns the volume.
     :param r: int
@@ -72,7 +72,7 @@ def vol_cone(r: int, h: int) -> 'volume':
     return volume
 
 #SPHERE
-def vol_sphere(r: int) -> 'volume':
+def vol_sphere(r):
     '''
     Takes 'r' as the radius of the sphere. Returns the volume.
     :param r: int
@@ -83,7 +83,7 @@ def vol_sphere(r: int) -> 'volume':
     return volume
 
 #HOLLOW SPHERE
-def vol_hollow_sphere(ro: int, rs: int) -> 'volume':
+def vol_hollow_sphere(ro, rs):
     '''
     Takes 'ro' and 'rs' as the full radius of the sphere, and radius of the hollow space of the sphere, respectively. Returns the volume.
     :param ro: int
@@ -96,7 +96,7 @@ def vol_hollow_sphere(ro: int, rs: int) -> 'volume':
     return volume
 
 #BASE TRIANGLE PRISM
-def vol_tri_prism(a: int, h: int) -> 'volume':
+def vol_tri_prism(a, h):
     '''
     Takes 'a' and 'h' as the legnth of the side of the triangular base, and height of the prism, respectively. Returns the volume.
     :param a: int
@@ -109,7 +109,7 @@ def vol_tri_prism(a: int, h: int) -> 'volume':
     return volume
 
 #PRISM BASE PENTAGON
-def vol_penta_prism(a: int, h: int) -> 'volume':
+def vol_penta_prism(a, h):
     '''
     Takes 'a' and 'h' as the length of the side of the pentagon base, and height of the prism, respectively. Returns the volume.
     :param a: int
@@ -122,7 +122,7 @@ def vol_penta_prism(a: int, h: int) -> 'volume':
     return volume
 
 #PRISM WITH A HEXAGON BASE
-def vol_hexa_prism(a: int, h: int) -> 'volume':
+def vol_hexa_prism(a, h):
     '''
     Takes 'a' and 'h' as the length of the side of the hexagon, and height of the prism, respectively. Returns the volume.
     :param a: int
@@ -135,7 +135,7 @@ def vol_hexa_prism(a: int, h: int) -> 'volume':
     return volume
 
 #PYRAMID WITH A SQUARE BASE
-def vol_sqr_pyramid(a: int, h: int) -> 'volume':
+def vol_sqr_pyramid(a, h):
     '''
     Takes 'a' and 'h' as the length of the side of the square base, and height of the pyramid, respectively. Returns the volume.
     :param a: int
@@ -148,7 +148,7 @@ def vol_sqr_pyramid(a: int, h: int) -> 'volume':
     return volume
 
 #PYRAMID WITH A TRIANGULAR BASE
-def vol_tri_pyramid(a: int, h: int) -> 'volume':
+def vol_tri_pyramid(a, h):
     '''
     Takes 'a' and 'h' as the length of the side of the triangle base, and height of the pyramid, respectively. Returns the volume.
     :param a: int
@@ -161,7 +161,7 @@ def vol_tri_pyramid(a: int, h: int) -> 'volume':
     return volume
 
 #PYRAMID WITH A PENTAGON BASE
-def vol_penta_pyramid(a: int, h: int) -> 'volume':
+def vol_penta_pyramid(a, h):
     '''
     Takes 'a' and 'h' as the length of the side of the pentagon base, and height of the pyramid, respectively. Returns the volume.
     :param a: int
@@ -174,7 +174,7 @@ def vol_penta_pyramid(a: int, h: int) -> 'volume':
     return volume
 
 #PYRAMID WITH A HEXAGON BASE
-def vol_hexa_pyramid(a: int, h: int) -> 'volume':
+def vol_hexa_pyramid(a, h):
     '''
     Takes 'a' and 'h' as the length of the side of the hexagon base, and height of the pyramid, respectively. Returns the volume.
     :param a: int
