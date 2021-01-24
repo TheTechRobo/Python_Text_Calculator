@@ -28,7 +28,7 @@ if sys.version_info < (3, 4):
 
     error = """
 Mathmod 0.11+ supports Python 3.4 and above.
-When using earlier versions of Python, please install Mathmod 0.10 which may get updated occasionally for severe bug fixes.
+When using earlier versions of Python, please install Mathmod 0.10.3 or higher which may get updated occasionally for severe bug fixes. 0.10.2 and earlier do not support python 2.
 Python {py} detected.
 {pip}
 """.format(py=sys.version_info, pip=pip_message )
