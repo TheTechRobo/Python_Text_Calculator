@@ -47,7 +47,7 @@ try:
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
     exit(1)
-try: 
+try:
     import colorama
     colorama.init()
 except (ImportError, ModuleNotFoundError):
@@ -113,7 +113,7 @@ try:
         main(_)
 except Exception as ename:
     logging.info("Exception doing the if ignore[0] == \"y\" bit (%s)" % ename)
-    cprint.err(_("Unexpected error!"))
+    cprint.err(_("Unexpected error! See below for details."))
     raise
 time.sleep(1)
 def palc():
