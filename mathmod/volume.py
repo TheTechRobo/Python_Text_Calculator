@@ -1,3 +1,4 @@
+from __future__ import division
 from math import pi, sqrt
 _f = float
 if __name__ == "__main__":

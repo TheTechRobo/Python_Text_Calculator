@@ -1,3 +1,4 @@
+from __future__ import division
 from __future__ import print_function #we need to tell the user if they are using python 2.
 """
 For area, import mathmod.area
