@@ -13,7 +13,7 @@ if sys.version_info < (3,4):
     raise ImportError(
     "You are running Mathmod 0.11 on Python 2 or Python < 3.4. Mathmod 0.11 and up is no longer compatible with Python 2.x, and somehow you still got this version installed."
     "\nSorry about that; it should not have happened. Make sure you have pip >= 9.0 to avoid this kind of issue, as well as setuptools >= 24.2 (pip install pip setuptools --upgrade --user)\n"
-    "\nYou have two options.\n 1 - Upgrade to Python 3.4 or higher. \n 2 - Install Mathmod 0.10.2 or earlier (pip install mathmod<0.11). "
+    "\nYou have two options.\n 1 - Upgrade to Python 3.4 or higher. \n 2 - Install Mathmod 0.10.3 or later in the series of 0.10 (pip install mathmod<0.11). "
     "\nThanks for using Mathmod, and sorry for the inconvenience."
     )
 
