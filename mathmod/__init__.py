@@ -9,7 +9,6 @@ These could be included in mathmod at any time. They'd be in classes.
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
-
 def confloat(n1, n2):
     """
     Used internally. Should not be used.
