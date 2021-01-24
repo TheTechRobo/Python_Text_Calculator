@@ -55,13 +55,13 @@ except (ImportError, ModuleNotFoundError):
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
 standTextOut("Language Selection // Language", print, cprint.info)
-cprint.info("1 - English // Anglais\n2 - Francais // French")
+cprint.info("1 - English // Anglais\n2 - Français // French")
 while True:
     try:
         language = int(input("Type: "))
     except ValueError as ename:
         logging.info("ValueError in language select (%s)" % ename)
-        cprint.err("Invalid input // Entree invalide")
+        cprint.err("Invalid input // Entrée invalide")
         continue
     if language == 1:
         lCode = "en"
@@ -71,7 +71,7 @@ while True:
         break
 if lCode not in ["en", "fr"]:
     logging.fatal("USER DID NOT SPECIFY A VALID LANGUAGE!")
-    cprint.warn("This language doesn't exist. Did you mean...\nEnglish? // Ce language n'existe pas. Tu peut-etre veux dire ...\nAnglais ? (Y/n) ")
+    cprint.warn("This language doesn't exist. Did you mean...\nEnglish? // Ce language n'existe pas. Tu peut-être veux dire ...\nAnglais ? (Y/n) ")
     if input()[0].lower() == "y":
         logging.info("Nvm, they meant English.")
         ignore = "n"
