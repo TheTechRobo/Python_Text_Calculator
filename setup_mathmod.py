@@ -16,6 +16,7 @@ setup(
     author_email='thetechrobo@outlook.com',
     keywords=['math', 'easy', 'thetechrobo'],
     url='https://github.com/TheTechRobo/python-text-calculator',
+    python_requires='>=3.4',
     
     classifiers=[
         'Development Status :: 3 - Alpha',
