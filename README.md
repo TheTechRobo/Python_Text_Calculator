@@ -1,7 +1,7 @@
-# python-text-calculator
+# python-text-calculator 0.10.x
 # For installation instructions see [INSTALLING.md](INSTALLING.md)
 
-NOTE: In Mathmod 0.11, area.py syntax will change and Mathmod will not be compatible with python versions earlier than 3.4.
+## NOTE: PALC DOES NOT WORK WITH PYTHON 2 AS OF NOW! IT IS JUST MATHMOD THAT WORKS. THIS MAY CHANGE IN THE FUTURE.
 
 ## I cannot emphasize this enough: to contribute, READ [CONTRIBUTING.md](CONTRIBUTING.md) FIRST!!!!
 
