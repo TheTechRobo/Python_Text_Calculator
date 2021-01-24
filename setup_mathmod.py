@@ -1,4 +1,9 @@
-input("This file is for setting up Mathmod ONLY. It does NOT set up palc.\nPress ENTER to continue, or Ctrl+C to end.")
+try:
+    raw_input
+except:
+    raw_input = input
+
+raw_input("This file is for setting up Mathmod ONLY. It does NOT set up palc.\nPress ENTER to continue, or Ctrl+C to end.")
 
 from setuptools import setup
 
