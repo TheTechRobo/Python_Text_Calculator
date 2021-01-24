@@ -3,7 +3,6 @@ _f = float
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
 # Contains Volume Calculating Functions
-
 #CUBE
 def vol_cube(a: int) -> 'volume':
     '''

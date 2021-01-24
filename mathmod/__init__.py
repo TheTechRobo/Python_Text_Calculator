@@ -1,3 +1,4 @@
+from __future__ import print_function #we need to tell the user if they are using python 2.
 """
 For area, import mathmod.area
 For volume, mathmod.volume
@@ -7,7 +8,6 @@ These could be included in mathmod at any time. They'd be in classes.
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
-
 import sys
 if sys.version_info < (3,4):
     raise ImportError(
