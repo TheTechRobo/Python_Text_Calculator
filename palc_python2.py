@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 u"""
 PALC INFO
 CODE CREDITS
@@ -51,11 +52,11 @@ except Exception, ename:
 try:
     import colorama
     colorama.init() #will fix bugs on CMD
-except (ImportError, ModuleNotFoundError):
+except ImportError:
     print u"I've detected you don't have colorama package installed. It's suggested, if you're on Windows, to install this package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary for all other operating systems."
 logging.basicConfig(filename=u"palc.log", level=logging.DEBUG, format=u'%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt=u'%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
-standTextOut(u"Language Selection // Language", print, cprint.info)
+standTextOut(u"Language Selection // Language", sys.stdout.write, cprint.info)
 cprint.info(u"1 - English // Anglais\n2 - Français // French")
 while True:
     try:
@@ -358,7 +359,7 @@ Anything else - Back to menu.")
 I don't understand your request. Here are the currently supported calculations:
 multiplication, division, subtraction, addition, modulo, square, area, volume, cube, power, root, ord, fibonacci, logarithm, memory, percentage calculator, interest calculator, temperature, and base. Sorry for the inconvenience
 '''))
-standTextOut(_(u"Welcome to Palc!"), print, cprint.info)
+standTextOut(_(u"Welcome to Palc!"), sys.stdout.write, cprint.info)
 try:
     palc() #run all that code
 except SyntaxError, ename: #easter eggz
@@ -373,13 +374,13 @@ except EOFError: #if ^D
     e(0)
 except (ValueError, TypeError), ename:
     logging.critical(u"ValueError or TypeError: %s" % ename)
-    standTextOut(_(u"\aERROR!\a"), print, cprint.err) #\a means beep the computer :D
+    standTextOut(_(u"\aERROR!\a"), sys.stdout.write, cprint.err) #\a means beep the computer :D
     cprint.fatal(_(u"You typed in an invalid integer or float. Or maybe the program needs debugging. Either way, it's a pretty big error."), interrupt=True)
 except SystemExit:
     cprint.ok(_(u"Looks like you exited."))
     logging.info(u"Not necessary to be logged, but SystemExit was thrown")
 except Exception, ename:
-    standTextOut(_(u"\aUnknown Error!\a"), print, cprint.fatal) #\a makes a beep
+    standTextOut(_(u"\aUnknown Error!\a"), sys.stdout.write, cprint.fatal) #\a makes a beep
     logging.fatal(u"Unknown error (%s)" % ename)
     cprint.fatal(_(u"An unknown error occured. Please file an Issue at github.com/thetechrobo/python-text-calculator/issues."))
 finally:

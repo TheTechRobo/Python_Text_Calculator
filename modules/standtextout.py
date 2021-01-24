@@ -1,4 +1,18 @@
+from __future__ import print_function
 import os
+if not hasattr(os, 'get_terminal_size'):
+    def get_terminal_size():
+        try:
+            stty_size = subprocess.check_output(
+                ['stty', 'size'],
+                stderr=subprocess.PIPE,
+            ).decode('utf-8')
+            lines_str, columns_str = stty_size.split()
+            return (int(columns_str), int(lines_str))
+        except Exception:
+            return (80, 24)
+
+    os.get_terminal_size = get_terminal_size
 
 def standTextOut(string, printMechanismDash=print, printMechanismString=print):
     """
@@ -8,7 +22,10 @@ def standTextOut(string, printMechanismDash=print, printMechanismString=print):
     param printMechanismString: how it will output the string that is sandwidched in between the dashes. Defaults to print.
         ***READ THE ABOVE IMPORTANT NOTICE (of printMechanismDash)!!!***
     """
-    width = os.get_terminal_size().columns
+    try: #python3
+        width = os.get_terminal_size().columns
+    except Exception:
+        width = os.get_terminal_size()[0]
     dashes = "-" * width
     printMechanismDash(dashes)
     printMechanismString(string.center(width))
@@ -18,7 +35,10 @@ def standTextOut_Return(string):
     """
     Will return the finished string so you can output it the way you want.
     """
-    width = os.get_terminal_size().columns
+    try: #python3
+        width = os.get_terminal_size().columns
+    except Exception:
+        width = os.get_terminal_size()[0]
     result = "-" * width
     result = (result + "\n" + string.center(width))
     result = (result + "\n" + ("-" * width))
