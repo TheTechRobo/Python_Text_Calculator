@@ -29,10 +29,12 @@ except Exception:
     import sys
     if sys.version_info < (3,):
         print("Could not access python-future and am on Python 2; won't continue. Try installing the module 'future' (pip install future).")
+
 try:
     raw_input
+    input = raw_input
 except Exception:
-    raw_input = input
+    pass
 try:
     import six
     if not six.PY3:
