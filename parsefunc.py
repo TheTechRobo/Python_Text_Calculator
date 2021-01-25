@@ -9,6 +9,11 @@ import mathmod
 from modules.cprint import cprint
 import logging
 
+try:
+    raw_input
+except Exception:
+    raw_input = input
+
 class Builtins: 
     def getInput():
         n1 = input(_("Please enter the first number: "))

@@ -19,12 +19,20 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import unicode_literals
-from builtins import str
-from builtins import int
-from builtins import input
-from future import standard_library
-standard_library.install_aliases()
-
+try:
+    from builtins import str
+    from builtins import int
+    from builtins import input
+    from future import standard_library
+    standard_library.install_aliases()
+except Exception:
+    import sys
+    if sys.version_info < (3,):
+        print("Could not access python-future and am on Python 2; won't continue. Try installing the module 'future' (pip install future).")
+try:
+    raw_input
+except Exception:
+    raw_input = input
 try:
     import six
     if not six.PY3:
