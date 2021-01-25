@@ -141,7 +141,7 @@ class misc(object):
                       "tax calculator, spinner, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, \"ord'ing\", and convert "
                       "bases (aka number systems). Type quit to quit."
                       "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues"
-                      "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"))
+                      "To contribute: go to https://github.com/thetechrobo/python-text-calculator/").decode('utf-8'))
     @staticmethod
     def vol():
         logging.warning("User ran `volume.py'.")
