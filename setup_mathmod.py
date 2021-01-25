@@ -12,7 +12,7 @@ with open("README_MATHMOD.md", "r") as file:
 
 setup(
     name='mathmod',
-    version='0.10.2',
+    version='0.10.4',
     description='yet another Python math module',
     long_description=long_desc,
     license='GNU GPL 3.0',
@@ -25,7 +25,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'Programming Language :: Python :: 3'
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 2'
     ],
     project_urls={
