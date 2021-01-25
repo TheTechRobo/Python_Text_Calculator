@@ -27,6 +27,7 @@ except Exception:
     raw_input = input
 
 class Builtins(object): 
+    @staticmethod
     def getInput():
         n1 = input(_("Please enter the first number: "))
         n2 = input(_("Please enter the second number: "))
@@ -39,6 +40,7 @@ class Builtins(object):
         return (n1, n2)
 
 class theBasics(object):
+    @staticmethod
     def addition():
         n1, n2 = Builtins.getInput()
         try:
@@ -49,6 +51,7 @@ class theBasics(object):
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed addition with %s as n1, %s as n2, answer = %s" % (n1, n2, returnedNumber))
+    @staticmethod
     def subtraction():
         n1, n2 = Builtins.getInput()
         try:
@@ -59,6 +62,7 @@ class theBasics(object):
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed subtraction with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+    @staticmethod
     def multiplication():
         n1, n2 = Builtins.getInput()
         try:
@@ -69,6 +73,7 @@ class theBasics(object):
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+    @staticmethod
     def division():
         n1, n2 = Builtins.getInput()
         try:
@@ -82,12 +87,14 @@ class theBasics(object):
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+    @staticmethod
     def mod(): #modulo
         n1, n2 = Builtins.getInput()
         result = mathmod.Misc.modulo(n1, n2)
         cprint.info(_("\nThat equals...\n%s\n") % result)
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
 class rootsAndTheOtherOne(object):
+    @staticmethod
     def curoot():
         try:
             number = float(input(_("Number to be rooted? ")))
@@ -102,6 +109,7 @@ class rootsAndTheOtherOne(object):
             raise
         logging.info("Parsed curoot(%s) to get %s..." % (number, nothernumber))
         cprint.info(_("The answer is... %s") % nothernumber)
+    @staticmethod
     def powerful():
         origin = input(_("Enter the original number: "))
         ex = input(_("Enter the exponent: "))
@@ -119,6 +127,7 @@ class rootsAndTheOtherOne(object):
             raise
         cprint.info(_("The answer is... %s") % returnedNumber)
         logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
+    @staticmethod
     def sqroot():
         num = float(input(_("Number to be rooted?")))
         returnedNumber = mathmod.RootsAndExponents.sqRoot(num)
@@ -133,12 +142,15 @@ class misc(object):
                       "bases (aka number systems). Type quit to quit."
                       "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues"
                       "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"))
+    @staticmethod
     def vol():
         logging.warning("User ran `volume.py'.")
         Volume.VolMain()
+    @staticmethod
     def area():
         logging.warning("User ran `area.py'.")
         Area.AreaMain()
+    @staticmethod
     def fib():
         hi = input(_("Would you like...\n    1 - Calculate a fixed amount of fibonacci numbers.\n    2 - Calculate fibonacci indefinitely.\nType: "))
         if hi[0] == "1":
@@ -183,6 +195,7 @@ class misc(object):
         else:
             cprint.info(_("Defaulting to yes."))
             logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
+    @staticmethod
     def readMyMemory():
         cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
         try:
@@ -195,6 +208,7 @@ class misc(object):
             logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
             cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? "
             "Do you have the correct permissions?"))
+    @staticmethod
     def remember():
         cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
         toRemember = float(input(_("\nPlease enter the number to be saved: ")))
@@ -203,6 +217,7 @@ class misc(object):
         memory = open(slot, "w+")
         memory.write(toRemember)
         logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
+    @staticmethod
     def calculateInterest(): 
         origin = int(input(_("What is the original number? ")))
         rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
@@ -216,6 +231,7 @@ So, with that out of the way, type the amount we should multiply the interest by
         number = mathmod.Misc.calculateInterest(units, rate, origin)
         logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
         cprint.info(_("The answer is: \n%s" % number))
+    @staticmethod
     def base():
         cprint.info(_("Please wait a moment."))
         from modules.pythonradix import Converter
@@ -237,6 +253,7 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
             return
         cprint.info(_("The result is... %s") % result)
         logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
+    @staticmethod
     def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
         base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
         number = float(input(_("What is the number? ")))
@@ -256,6 +273,7 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
         if doNotLog:
             return
         logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
+    @staticmethod
     def spinner():
         choices = input(_("Please enter your choices separated by commas. Example: First part of spinner, SecondPartOfSpinner, 3, 4, 5, 6, The End\nType: ")).strip().split(", ") #https://www.w3schools.com/python/ref_string_split.asp
         times = int(input(_("How many times to conduct the spinner? ")))
@@ -263,6 +281,7 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
         cprint.ok(_("Your results were...\n%s") % output)
         logging.info("Spinner: choices %s, times %s, output %s" % (choices, times, output))
 class Temperature(object):
+    @staticmethod
     def tempCalc():
         message = """What is the %s temperature unit? 
     1 - Farenheit
@@ -282,6 +301,7 @@ class Temperature(object):
         cprint.info(_("That equals... \n%s                       ") % yolo)
         logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
 class Percentage(object):
+    @staticmethod
     def percentage1():
         origin = float(input(_("What is the ORIGINAL NUMBER? ")))
         percent = float(input(_("What is the PERCENTAGE? ")))
@@ -291,6 +311,7 @@ class Percentage(object):
             cprint.info(mathmod.Misc.whatIsXPercentOf(percent, origin))
         except ValueError:
             cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
+    @staticmethod
     def percentage2():
         origin = float(input(_("What is the number that would be 100%? ")))
         part = float(input(_("What is the number that you want to convert to percentage (i.e. this number out of the number that would be 100%)? ")))
@@ -300,6 +321,7 @@ class Percentage(object):
             cprint.info(mathmod.Misc.findPercentage(part, origin))
         except ValueError:
             cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
+    @staticmethod
     def chooseOneTwo():
         chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
 2 - Convert a number to percentage (i.e. how much percent of ___ is ___?).
@@ -313,6 +335,7 @@ Type: ''')))
             logging.info("User did not answer correct percentage interpretation")
 
 class Tax(object):
+    @staticmethod
     def taxCalc():
         cprint.info(_('''1 - Ontario Sales Tax
 2 - Quebec Sales Tax
@@ -377,6 +400,7 @@ class Area(object):
 13 - Circular sector
 14 - Ring
 15 - Ellipse'''
+    @staticmethod
     def AreaMain():
         cprint.info(_(Area.selectionMessage))
         while True:
@@ -508,6 +532,7 @@ class Volume(object):
         TRIANGULAR_PYRAMID = 13
         PENTAGON_BASED_PYRAMID = 14
         HEXAGON_BASED_PYRAMID = 15
+    @staticmethod
     def VolMain():
         cprint.info(_(Volume.selectionMessage))
         while True:

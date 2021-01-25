@@ -163,7 +163,7 @@ def palc():
 #TAX
        elif _("tax") in calc:
             misc.showUserWhatIThink(_("calculate tax"))
-            Tax.taxCalc()
+            Tax().taxCalc()
 #SQUARE
        elif _("sq") in calc:
             misc.showUserWhatIThink(_("square a number"))
@@ -185,7 +185,7 @@ def palc():
 #SUBTRACTION
        elif "-" in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
-            theBasics.subtraction()()
+            theBasics.subtraction()
        elif _("sub") in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()

@@ -18,28 +18,35 @@ def confloat(n1, n2):
     return (n1, n2)
 
 class Arithmetic:
+    @staticmethod
     def multiplication(n1, n2): #multiplication
         n1, n2 = confloat(n1, n2)
         return n1 * n2
+    @staticmethod
     def division(n1, n2): #division
         n1, n2 = confloat(n1, n2)
         return n1 / n2
+    @staticmethod
     def subtraction(n1, n2): #subtraction
         n1, n2 = confloat(n1, n2)
         return n1 - n2
+    @staticmethod
     def addition(n1, n2): #addition
         n1, n2 = confloat(n1, n2)
         return n1 + n2
 class ExponentsAndRoots:
+    @staticmethod
     def cuRoot(x):
         # all credit goes to https://stackoverflow.com/a/28014443/9654083
         x = float(x)
         if 0 <= x:
             return x ** (1./3.)
         return - (-x) ** (1./3.)
+    @staticmethod
     def sqRoot(x):
         x = float(x)
         return x ** 0.5
+    @staticmethod
     def exponent(n1, n2):
         """
         param n1: Original number
@@ -48,9 +55,11 @@ class ExponentsAndRoots:
         origin, ex = confloat(n1, n2)
         return origin ** ex
 class Misc:
+    @staticmethod
     def modulo(n1, n2):
         n1, n2 = confloat(n1, n2)
         return n1 % n2
+    @staticmethod
     def tax(n1, n2):
         """
         param n1: Original number
@@ -60,6 +69,7 @@ class Misc:
         usefulTax = (tax / 100) + 1
         answer = origin + tax
         return answer
+    @staticmethod
     def log(n1, e=True):
         """
         parameter n1: Original number
@@ -72,6 +82,7 @@ class Misc:
         if not e:
             return math.log10(n1)
 
+    @staticmethod
     def whatIsXPercentOf(x, whole):
         """
         whole = ORIGINAL NUMBER
@@ -81,6 +92,7 @@ class Misc:
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return (x * whole) / 100.0
+    @staticmethod
     def findPercentage(part, whole):
         """
         whole = number that would be 100%
@@ -91,6 +103,7 @@ class Misc:
             raise ValueError("Invalid input (0).")
         return 100 * float(part) / float(whole)
 
+    @staticmethod
     def calculateInterest(units, rate, origin):
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
@@ -100,6 +113,7 @@ class Misc:
         inRealNumbers = percentage(whole=origin, x=rate)
         result = origin + (inRealNumbers * howMany)
         return result
+    @staticmethod
     def calculateTemperature(origin, source, destination):
         """
         origin: Original Number
@@ -157,6 +171,7 @@ class Misc:
         else:
             raise ValueError("MATHMOD: Invalid input(s).")
         return yolo
+    @staticmethod
     def Spinner(numberOfTimes, choiceSelection):
         """
         param numberOfTimes: Amount of times to conduct the spinner.
