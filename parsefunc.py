@@ -1,7 +1,19 @@
+# coding: utf-8
 """
 Just a small module to call mathmod's functions and then parse the results.
 """
+from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import unicode_literals
 
+from builtins import open
+from builtins import str
+from builtins import int
+from builtins import input
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
 def main(Comandeer):
     globals()['_'] = Commandeer
 
@@ -14,7 +26,7 @@ try:
 except Exception:
     raw_input = input
 
-class Builtins: 
+class Builtins(object): 
     def getInput():
         n1 = input(_("Please enter the first number: "))
         n2 = input(_("Please enter the second number: "))
@@ -26,7 +38,7 @@ class Builtins:
             raise ValueError(_("ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)") % (n1, n2))
         return (n1, n2)
 
-class theBasics:
+class theBasics(object):
     def addition():
         n1, n2 = Builtins.getInput()
         try:
@@ -75,7 +87,7 @@ class theBasics:
         result = mathmod.Misc.modulo(n1, n2)
         cprint.info(_("\nThat equals...\n%s\n") % result)
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
-class rootsAndTheOtherOne:
+class rootsAndTheOtherOne(object):
     def curoot():
         try:
             number = float(input(_("Number to be rooted? ")))
@@ -113,7 +125,8 @@ class rootsAndTheOtherOne:
         cprint.info(_("That equals... %s") % returnedNumber)
         logging.info("user sqrooted number %s" % (returnedNumber))
 
-class misc:
+class misc(object):
+    @staticmethod
     def h():
         cprint.info(_("\nCurrent list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, "
                       "tax calculator, spinner, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, \"ord'ing\", and convert "
@@ -249,7 +262,7 @@ Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
         output = mathmod.Misc.Spinner(times, choices)
         cprint.ok(_("Your results were...\n%s") % output)
         logging.info("Spinner: choices %s, times %s, output %s" % (choices, times, output))
-class Temperature:
+class Temperature(object):
     def tempCalc():
         message = """What is the %s temperature unit? 
     1 - Farenheit
@@ -268,7 +281,7 @@ class Temperature:
             logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
         cprint.info(_("That equals... \n%s                       ") % yolo)
         logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
-class Percentage:
+class Percentage(object):
     def percentage1():
         origin = float(input(_("What is the ORIGINAL NUMBER? ")))
         percent = float(input(_("What is the PERCENTAGE? ")))
@@ -299,7 +312,7 @@ Type: ''')))
             cprint.err(_("You didn't type a valid answer. Abort."))
             logging.info("User did not answer correct percentage interpretation")
 
-class Tax:
+class Tax(object):
     def taxCalc():
         cprint.info(_('''1 - Ontario Sales Tax
 2 - Quebec Sales Tax
@@ -332,8 +345,8 @@ class Tax:
         logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
         cprint.info(_("After tax, the price is: \n%s" % result))
 
-class Area:
-    class choices: #readability
+class Area(object):
+    class choices(object): #readability
         EQUILATERAL_TRIANGLE = 1
         RIGHT_ANGLE_TRIANGLE = 2
         ACUTE_TRIANGLE = 3
@@ -463,7 +476,7 @@ class Area:
                 cprint.info(_("The area is: %s") % area)
                 break
 
-class Volume:
+class Volume(object):
     selectionMessage = '''Options:
 1 - Cube
 2 - Cuboid
@@ -479,7 +492,7 @@ class Volume:
 13 - Triangular pyramid
 14 - Pentagon-based pyramid
 15 - Hexagon-based pyramid'''
-    class choices: #readability
+    class choices(object): #readability
         CUBE = 1
         CUBOID = 2
         CYLINDER = 3
