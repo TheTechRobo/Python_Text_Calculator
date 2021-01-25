@@ -1,5 +1,6 @@
 from __future__ import print_function
 import os
+import sys
 if not hasattr(os, 'get_terminal_size'):
     def get_terminal_size():
         try:
@@ -13,6 +14,16 @@ if not hasattr(os, 'get_terminal_size'):
             return (80, 24)
 
     os.get_terminal_size = get_terminal_size
+
+if sys.version_info[:2] < (3, 3):
+    old_print = print
+    def print(*args, **kwargs):
+        flush = kwargs.pop('flush', False)
+        old_print(*args, **kwargs)
+        if flush:
+            file = kwargs.get('file', sys.stdout)
+            # Why might file=None? IDK, but it works for print(i, file=None)
+            file.flush() if file is not None else sys.stdout.flush()
 
 def standTextOut(string, printMechanismDash=print, printMechanismString=print):
     """

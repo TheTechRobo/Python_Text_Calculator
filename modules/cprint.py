@@ -10,6 +10,15 @@
 from __future__ import print_function, unicode_literals
 import sys
 
+if sys.version_info[:2] < (3, 3):
+    old_print = print
+    def print(*args, **kwargs):
+        flush = kwargs.pop('flush', False)
+        old_print(*args, **kwargs)
+        if flush:
+            file = kwargs.get('file', sys.stdout)
+            # Why might file=None? IDK, but it works for print(i, file=None)
+            file.flush() if file is not None else sys.stdout.flush()
 
 class cprint(object):
 

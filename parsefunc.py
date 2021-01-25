@@ -146,6 +146,7 @@ class misc:
             except KeyboardInterrupt:
                 logging.info("Exited fibonacci loop.")
         logging.info("User ran fibonacci function")
+    @staticmethod
     def showUserWhatIThink(whatDOyouthink):
         cprint.ok(_("I think you want me to: \n%s") % whatDOyouthink)
         isItCorrect = input(_("Is this correct? (Y/n)")).lower()

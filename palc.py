@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 PALC INFO
 CODE CREDITS
@@ -14,6 +15,16 @@ FORKED BY: TheTechRobo
 CONTRIBUTORS: See contributors.md
 LICENSE: GPL 3.0 (see LICENSE)
 """
+from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import unicode_literals
+from builtins import str
+from builtins import int
+from builtins import input
+from future import standard_library
+standard_library.install_aliases()
+
 try:
     import six
     if not six.PY3:
@@ -44,13 +55,23 @@ try:
     import time #self explanatory
     import sys #for misc
     import logging #self explanatory
+
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
     exit(1)
+if sys.version_info[:2] < (3, 3):
+    old_print = print
+    def print(*args, **kwargs):
+        flush = kwargs.pop('flush', False)
+        old_print(*args, **kwargs)
+        if flush:
+            file = kwargs.get('file', sys.stdout)
+            # Why might file=None? IDK, but it works for print(i, file=None)
+            file.flush() if file is not None else sys.stdout.flush()
 try:
     import colorama
     colorama.init() #will fix bugs on CMD
-except (ImportError, ModuleNotFoundError):
+except (ImportError):
     print("I've detected you don't have colorama package installed. It's suggested, if you're on Windows, to install this package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary for all other operating systems.")
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s %(message)s. Logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging, thanks for this website www.programcreek.com/python/example/136/logging.basicConfig for a few great examples!
 #ask for language
@@ -165,7 +186,7 @@ def palc():
             theBasics.subtraction()
 #ADDITION
        elif "+" in calc:
-            misc.showUserWhatIThink(_("add two numbers"))
+            misc().showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
        elif _("add") in calc:
             misc.showUserWhatIThink(_("add two numbers"))
@@ -358,7 +379,8 @@ I don't understand your request. Here are the currently supported calculations:
 multiplication, division, subtraction, addition, modulo, square, area, volume, cube, power, root, ord, fibonacci, logarithm, memory, percentage calculator, interest calculator, temperature, and base. Sorry for the inconvenience
 '''))
 standTextOut(_("Welcome to Palc!"), print, cprint.info)
-try:
+palc()
+"""try:
     palc() #run all that code
 except SyntaxError as ename: #easter eggz
     raise #raise exact same exception
@@ -384,3 +406,4 @@ except Exception as ename:
 finally:
     logging.info("Program finished.")
 #EOF
+"""
