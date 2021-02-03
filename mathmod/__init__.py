@@ -106,7 +106,7 @@ class Misc:
         origin: Original number.
         '''
         inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
-        result = origin + (inRealNumbers * howMany)
+        result = origin + (inRealNumbers * units)
         return result
     def calculateTemperature(origin, source, destination):
         """
