@@ -109,12 +109,13 @@ class rootsAndTheOtherOne:
         logging.info("user sqrooted number %s" % (returnedNumber))
 
 class misc:
-    def h():
-        cprint.info(_("\nCurrent list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, "
+    hText = (_("\nCurrent list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, "
                       "tax calculator, spinner, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, \"ord'ing\", and convert "
-                      "bases (aka number systems). Type quit to quit."
-                      "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues"
+                      "bases (aka number systems). Type quit to quit.\n"
+                      "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues\n"
                       "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"))
+    def h():
+        cprint.info(_(misc.hText))
     def vol():
         logging.warning("User ran `volume.py'.")
         Volume.VolMain()

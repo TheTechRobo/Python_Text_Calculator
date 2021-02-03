@@ -156,7 +156,7 @@ def palc():
 #SUBTRACTION
        elif "-" in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
-            theBasics.subtraction()()
+            theBasics.subtraction()
        elif _("sub") in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()
@@ -355,8 +355,9 @@ Anything else - Back to menu."))
             logging.error("User typed an invalid command (%s)" % calc)
             cprint.err(_('''
 I don't understand your request. Here are the currently supported calculations:
-multiplication, division, subtraction, addition, modulo, square, area, volume, cube, power, root, ord, fibonacci, logarithm, memory, percentage calculator, interest calculator, temperature, and base. Sorry for the inconvenience
-'''))
+%s
+Sorry for the inconvenience
+''') % misc.hText)
 standTextOut(_("Welcome to Palc!"), print, cprint.info)
 try:
     palc() #run all that code
