@@ -110,8 +110,8 @@ class Misc:
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
         origin: Original number.
         '''
-        inRealNumbers = percentage(whole=origin, x=rate)
-        result = origin + (inRealNumbers * howMany)
+        inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
+        result = origin + (inRealNumbers * units)
         return result
     @staticmethod
     def calculateTemperature(origin, source, destination):
