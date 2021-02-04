@@ -12,7 +12,7 @@ with open("README_MATHMOD.md", "r") as file:
 
 setup(
     name='mathmod',
-    version='0.10.4',
+    version='0.10.4.2',
     description='yet another Python math module',
     long_description=long_desc,
     license='GNU GPL 3.0',
@@ -21,7 +21,7 @@ setup(
     author_email='thetechrobo@outlook.com',
     keywords=['math', 'easy', 'thetechrobo'],
     url='https://github.com/TheTechRobo/python-text-calculator',
-    
+
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
