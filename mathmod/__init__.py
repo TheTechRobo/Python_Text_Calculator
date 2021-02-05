@@ -121,7 +121,7 @@ class Misc:
         import warnings
         warnings.warn("Warning: This old function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
         return result
-        def calculateTemperature(origin, source, destination):
+    def calculateTemperature(origin, source, destination):
         """
         origin: Original Number
         source: 
