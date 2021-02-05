@@ -195,9 +195,11 @@ It was up to you to type the correct amount in the rate question.
 We have no idea what the rate represented: it could have been that rate per century for all we know.
 This calculator wasn't programmed with the ability to track time.
 So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-        number = mathmod.Misc.calculateInterest(units, rate, origin)
-        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s" % (origin, rate, units, number))
-        cprint.info(_("The answer is: \n%s" % number))
+        number = mathmod.Misc.getInterest(units, rate, origin)["total"]
+        interest = mathmod.Misc.getInterest(units, rate, origin)["interest"]
+        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s, interest %s " % (origin, rate, units, number, interest))
+        cprint.info(_("The interest is: \n%s") % interest)
+        cprint.info(_("The total price is: \n%s") % number)
     def base():
         cprint.info(_("Please wait a moment."))
         from modules.pythonradix import Converter
