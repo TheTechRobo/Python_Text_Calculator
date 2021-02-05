@@ -98,16 +98,34 @@ class Misc:
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return 100 * float(part) / float(whole)
-
-    def calculateInterest(units, rate, origin):
+    def getInterest(units, rate, origin):
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
         origin: Original number.
         '''
         inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
-        result = origin + (inRealNumbers * units)
-        return result
+        interest = inRealNumbers * units
+        result = origin + interest
+        if oldFormat:
+            import warnings
+            warnings.warn("Warning: This one-return feature is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
+            return result
+        return {"interest": interest, "total": result}
+    def calculateInterest(units, rate, origin, oldFormat=True):
+        '''
+        units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
+        rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
+        origin: Original number.
+        '''
+        inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
+        interest = inRealNumbers * units
+        result = origin + interest
+        if oldFormat:
+            import warnings
+            warnings.warn("Warning: This old function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
+            return result
+        return {"interest": interest, "total": result}
     def calculateTemperature(origin, source, destination):
         """
         origin: Original Number
