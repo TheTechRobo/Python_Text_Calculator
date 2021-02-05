@@ -108,7 +108,7 @@ class Misc:
         interest = inRealNumbers * units
         result = origin + interest
         return {"interest": interest, "total": result}
-    def calculateInterest(units, rate, origin, oldFormat):
+    def calculateInterest(units, rate, origin):
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
