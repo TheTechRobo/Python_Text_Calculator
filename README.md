@@ -14,7 +14,7 @@ note: the commit activity badge is very flaky, do not report that it says invali
 
 Have you ever looked for a complete, simple calculator? Well here you go!
 
-This is a Python script named "Palc" I forked when I wanted to learn math in Python. (UPDATE: And now that you can use it as a module it's even better!) There is almost no code left from the original (mainly because i've added and rewritten so much) but I'm still going to credit the original developer - see [lewiswatson55's repo](https://github.com/lewiswatson55/Python_Text_Calculator/) for the original code.
+This is a Python script named "Palc" I forked when I wanted to learn math in Python. (UPDATE: And now that you can use it as a module it's even better!) There is almost no code left from the original (mainly because i've added and rewritten so much) but Palc would've been WAY different without the original author - see [lewiswatson55's repo](https://github.com/lewiswatson55/Python_Text_Calculator/) for the original code.
 
 Learning this has been very interesting and educational. 
 
