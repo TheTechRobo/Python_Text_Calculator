@@ -14,4 +14,4 @@ Created by EVasseure. Printing in colour. License: MIT
 Base conversion. Created by multiple people. License: MIT
 
 - `standtextout.py `  
-Stands text out with dashes over and under the text. License: Apache2.0
+Stands text out with dashes over and under the text. created by me. License: Apache2.0
