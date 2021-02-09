@@ -26,9 +26,24 @@ def confloat(n1, n2):
     return (n1, n2)
 
 class Arithmetic:
-    def multiplication(n1, n2): #multiplication
-        n1, n2 = confloat(n1, n2)
-        return n1 * n2
+    def multiplication(n1, n2=None): #multiplication
+        """
+        n1: *ITERABLE* of numbers to multiply.
+        n2: **DEPRECATED** Backwards compatibility
+        """
+        try:
+            iter(n1)
+        except TypeError:
+            warnings.warn("Oops! You're using deprecated code. Please see the new documentation.")
+            n1, n2 = confloat(n1, n2)
+            return n1 * n2
+        if n2 is None:
+            warnings.warn("Oops! You're using deprecated code.Please see the new documentation.")
+            n1,n2 = confloat(n1,n2)
+            return n1 * n2
+        result = n1[0]
+        for number in n1[1:]:
+            result = result * number
     def division(n1, n2): #division
         n1, n2 = confloat(n1, n2)
         return n1 / n2
