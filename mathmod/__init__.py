@@ -45,7 +45,7 @@ class Arithmetic:
             item = _confloat(item)
             nums.append(item)
         result = nums[0]
-        for number in args[1:]:
+        for number in nums[1:]:
             result = result / number
         return result
     def subtraction(*args): #subtraction
@@ -54,7 +54,7 @@ class Arithmetic:
             item = _confloat(item)
             nums.append(item)
         result = nums[0]
-        for number in args[1:]:
+        for number in nums[1:]:
             result = result - number
         return result
     def addition(*args): #addition
@@ -63,7 +63,7 @@ class Arithmetic:
             item = _confloat(item)
             nums.append(item)
         result = nums[0]
-        for number in args[1:]:
+        for number in nums[1:]:
             result = result + number
         return result
 class ExponentsAndRoots:
