@@ -1,4 +1,5 @@
 from __future__ import print_function #we need to tell the user if they are using python 2.
+import warnings
 """
 For area, import mathmod.area
 For volume, mathmod.volume
@@ -17,7 +18,7 @@ if sys.version_info < (3,4):
     "\nThanks for using Mathmod, and sorry for the inconvenience."
     )
 
-def confloat(n1, n2):
+def confloat(n1,n2):
     """
     Used internally. Should not be used.
     """
@@ -25,19 +26,74 @@ def confloat(n1, n2):
     n2 = float(n2)
     return (n1, n2)
 
+def _confloat(item):
+    return float(item)
+
 class Arithmetic:
-    def multiplication(n1, n2): #multiplication
-        n1, n2 = confloat(n1, n2)
-        return n1 * n2
-    def division(n1, n2): #division
-        n1, n2 = confloat(n1, n2)
-        return n1 / n2
-    def subtraction(n1, n2): #subtraction
-        n1, n2 = confloat(n1, n2)
-        return n1 - n2
-    def addition(n1, n2): #addition
-        n1, n2 = confloat(n1, n2)
-        return n1 + n2
+    def multiplication(*args, n1=None,n2=None): #multiplication
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 * n2
+        nums = []
+        for item in args:
+            item = _confloat(item)
+            nums.append(item)
+        result = nums[0]
+        for number in nums[1:]: #https://stackoverflow.com/a/34384791/9654083
+            result = result * number
+        return result
+    def division(*args, n1=None,n2=None): #division
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 / n2
+        nums = []
+        for item in args:
+            item = _confloat(item)
+            nums.append(item)
+        result = nums[0]
+        for number in nums[1:]:
+            result = result / number
+        return result
+    def subtraction(*args,n1=None,n2=None): #subtraction
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 - n2
+        nums = []
+        for item in args:
+            item = _confloat(item)
+            nums.append(item)
+        result = nums[0]
+        for number in nums[1:]:
+            result = result - number
+        return result
+    def addition(*args,n1=None,n2=None): #addition
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 * n2
+        nums = []
+        for item in args:
+            item = _confloat(item)
+            nums.append(item)
+        result = nums[0]
+        for number in nums[1:]:
+            result = result + number
+        return result
 class ExponentsAndRoots:
     def cuRoot(x):
         # all credit goes to https://stackoverflow.com/a/28014443/9654083
@@ -56,15 +112,20 @@ class ExponentsAndRoots:
         origin, ex = confloat(n1, n2)
         return origin ** ex
 class Misc:
-    def modulo(n1, n2):
+    def modulo(n1,n2):
         n1, n2 = confloat(n1, n2)
         return n1 % n2
-    def tax(n1, n2):
+    def tax(n1, tax=None, n2=None):
         """
         param n1: Original number
-        param n2: Tax in percentage (without percentage sign)
+        param tax: Tax in percentage (without percentage sign)
+        param n2: Deprecated symlink to tax
         """
-        origin, tax = confloat(n1, n2)
+        if n2 is None:
+            origin, tax = confloat(n1, tax)
+        else:
+            warnings.warn("You are using an old API that will be deprecated; please check Mathmod's new docs.")
+            origin, tax = confloat(n1, n2)
         usefulTax = (tax / 100) + 1
         answer = origin + tax
         return answer
@@ -118,7 +179,6 @@ class Misc:
         inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
         interest = inRealNumbers * units
         result = origin + interest
-        import warnings
         warnings.warn("Warning: This old function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
         return result
     def calculateTemperature(origin, source, destination):

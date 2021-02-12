@@ -11,65 +11,71 @@ import logging
 
 class Builtins: 
     def getInput():
-        n1 = input(_("Please enter the first number: "))
-        n2 = input(_("Please enter the second number: "))
-        try: 
-            float(n1)
-            float(n2)
-        except Exception as ename:
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the two numbers was not a number. (Dump: n1=%s, n2=%s)") % (n1, n2))
-        return (n1, n2)
+        nums = []
+        num = float(input(_("Please enter the first number: ")))
+        nums.append(num)
+        while True:
+            num = input(_("Please enter the next number; a blank line will confirm your numbers: "))
+            if num == "":
+                break
+            try: 
+                num = float(num)
+            except Exception as ename:
+                cprint.err(_("ERRID 3: %s is not a number.") % num)
+                logging.error("ERRID3: The number given was not a number. (Dump: %s)" % num)
+            nums.append(num)
+        return nums
 
 class theBasics:
     def addition():
-        n1, n2 = Builtins.getInput()
+        nums = Builtins.getInput()
         try:
-            returnedNumber = mathmod.Arithmetic.addition(n1, n2)
+            returnedNumber = mathmod.Arithmetic.addition(*nums)
         except ValueError as ename:
-            logging.error("While parsing add(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            logging.error("While parsing add(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed addition with %s as n1, %s as n2, answer = %s" % (n1, n2, returnedNumber))
+        logging.info("Parsed addition with nums as %s, answer = %s" % (nums, returnedNumber))
     def subtraction():
-        n1, n2 = Builtins.getInput()
+        nums = Builtins.getInput()
         try:
-            returnedNumber = mathmod.Arithmetic.subtraction(n1, n2)
+            returnedNumber = mathmod.Arithmetic.subtraction(*nums)
         except ValueError as ename:
-            logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            logging.error("While parsing sub(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed subtraction with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+        logging.info("Parsed subtraction with %s as nums, answer as %s" % (nums, returnedNumber))
     def multiplication():
-        n1, n2 = Builtins.getInput()
+        nums = Builtins.getInput()
         try:
-            returnedNumber = mathmod.Arithmetic.multiplication(n1, n2)
+            returnedNumber = mathmod.Arithmetic.multiplication(*nums)
         except ValueError as ename:
-            logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            logging.error("While parsing multi(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed multiplication with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+        logging.info("Parsed multiplication with %s as nums, answer as %s" % (nums, returnedNumber))
     def division():
-        n1, n2 = Builtins.getInput()
+        nums = Builtins.getInput()
         try:
-            returnedNumber = mathmod.Arithmetic.division(n1, n2)
+            returnedNumber = mathmod.Arithmetic.division(*nums)
         except ZeroDivisionError:
-            logging.error("User decided to divide by zero.")
-            raise SyntaxError("yes, because dividing %s cookie(s) for %s friend(s) makes sense") % (n1, n2)
+            logging.error("User decided to divide by zero. (nums: %s)" % nums)
+            raise SyntaxError("yes, because diving by 0 makes sense") % (nums)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
-            logging.error("While parsing div(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            logging.error("While parsing div(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+        logging.info("Parsed division with %s as nums, answer as %s" % (nums, returnedNumber))
     def mod(): #modulo
-        n1, n2 = Builtins.getInput()
-        result = mathmod.Misc.modulo(n1, n2)
+        n1 = float(input(_("Please enter the first number: ")))
+        n2 = float(input(_("Please enter the second number: ")))
+        result = mathmod.Misc.modulo(n1,n2)
         cprint.info(_("\nThat equals...\n%s\n") % result)
-        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
+        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (n1,n2,result))
 class rootsAndTheOtherOne:
     def curoot():
         try:
