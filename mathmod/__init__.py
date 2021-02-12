@@ -30,7 +30,14 @@ def _confloat(item):
     return float(item)
 
 class Arithmetic:
-    def multiplication(*args): #multiplication
+    def multiplication(*args, n1=None,n2=None): #multiplication
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 * n2
         nums = []
         for item in args:
             item = _confloat(item)
@@ -39,7 +46,14 @@ class Arithmetic:
         for number in nums[1:]: #https://stackoverflow.com/a/34384791/9654083
             result = result * number
         return result
-    def division(*args): #division
+    def division(*args, n1=None,n2=None): #division
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 / n2
         nums = []
         for item in args:
             item = _confloat(item)
@@ -48,7 +62,14 @@ class Arithmetic:
         for number in nums[1:]:
             result = result / number
         return result
-    def subtraction(*args): #subtraction
+    def subtraction(*args,n1=None,n2=None): #subtraction
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 - n2
         nums = []
         for item in args:
             item = _confloat(item)
@@ -57,7 +78,14 @@ class Arithmetic:
         for number in nums[1:]:
             result = result - number
         return result
-    def addition(*args): #addition
+    def addition(*args,n1=None,n2=None): #addition
+        """
+        please do not use n1 or n2 anymore, they're deprecated.
+        """
+        if n1 is not None or n2 is not None:
+            n1,n2 = confloat(n1,n2)
+            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            return n1 * n2
         nums = []
         for item in args:
             item = _confloat(item)
