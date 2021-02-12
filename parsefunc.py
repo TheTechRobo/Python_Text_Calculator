@@ -32,7 +32,7 @@ class theBasics:
         try:
             returnedNumber = mathmod.Arithmetic.addition(*nums)
         except ValueError as ename:
-            logging.error("While parsing add(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "n2": nums, "error": ename})
+            logging.error("While parsing add(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
@@ -42,7 +42,7 @@ class theBasics:
         try:
             returnedNumber = mathmod.Arithmetic.subtraction(*nums)
         except ValueError as ename:
-            logging.error("While parsing sub(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "n2": nums, "error": ename})
+            logging.error("While parsing sub(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
@@ -52,7 +52,7 @@ class theBasics:
         try:
             returnedNumber = mathmod.Arithmetic.multiplication(*nums)
         except ValueError as ename:
-            logging.error("While parsing multi(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "n2": nums, "error": ename})
+            logging.error("While parsing multi(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             cprint.info(_("An exception was raised!\nValueError\n"))
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
@@ -62,17 +62,18 @@ class theBasics:
         try:
             returnedNumber = mathmod.Arithmetic.division(*nums)
         except ZeroDivisionError:
-            logging.error("User decided to divide by zero.")
+            logging.error("User decided to divide by zero. (nums: %s)" % nums)
             raise SyntaxError("yes, because diving by 0 makes sense") % (nums)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
-            logging.error("While parsing div(%(n1)s, %(n2)s), a ValueError was thrown. (%(error)s)" % {"n1": n1, "n2": n2, "error": ename})
+            logging.error("While parsing div(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
         logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
     def mod(): #modulo
-        n1, n2 = Builtins.getInput()
-        result = mathmod.Misc.modulo(n1, n2)
+        n1 = float(input(_("Please enter the first number: ")))
+        n2 = float(input(_("Please enter the second number: ")))
+        result = mathmod.Misc.modulo(n1,n2)
         cprint.info(_("\nThat equals...\n%s\n") % result)
         logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
 class rootsAndTheOtherOne:
