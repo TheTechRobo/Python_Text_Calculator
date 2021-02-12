@@ -69,13 +69,13 @@ class theBasics:
             logging.error("While parsing div(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
             raise
         cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed division with %s as n1, %s as n2, answer as %s" % (n1, n2, returnedNumber))
+        logging.info("Parsed division with %s as nums, answer as %s" % (nums, returnedNumber))
     def mod(): #modulo
         n1 = float(input(_("Please enter the first number: ")))
         n2 = float(input(_("Please enter the second number: ")))
         result = mathmod.Misc.modulo(n1,n2)
         cprint.info(_("\nThat equals...\n%s\n") % result)
-        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % result)
+        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (n1,n2,result))
 class rootsAndTheOtherOne:
     def curoot():
         try:
