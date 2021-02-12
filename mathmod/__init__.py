@@ -121,9 +121,10 @@ class Misc:
         param tax: Tax in percentage (without percentage sign)
         param n2: Deprecated symlink to tax
         """
-        if tax is not None:
+        if n2 is None:
             origin, tax = confloat(n1, tax)
         else:
+            warnings.warn("You are using an old API that will be deprecated; please check Mathmod's new docs.")
             origin, tax = confloat(n1, n2)
         usefulTax = (tax / 100) + 1
         answer = origin + tax
