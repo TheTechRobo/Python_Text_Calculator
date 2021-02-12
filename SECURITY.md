@@ -15,6 +15,8 @@ currently being supported with security updates.
 
 If you find a security vulnerability, **please** DM me on Discord (I'm TheTechRobo#7420). There is currently no other way; hopefully this will change in the future!
 
+Do not file an issue or the exploit will probably be abused.
+
 I check my Discord multiple times per day, so I will definitely see your tip.
 
 **If your vulnerability is accepted**, expect it to show up in the _Security_ tab once it is fixed.
