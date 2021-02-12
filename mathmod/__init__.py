@@ -115,12 +115,16 @@ class Misc:
     def modulo(n1,n2):
         n1, n2 = confloat(n1, n2)
         return n1 % n2
-    def tax(n1, tax):
+    def tax(n1, tax=None, n2=None):
         """
         param n1: Original number
-        param n2: Tax in percentage (without percentage sign)
+        param tax: Tax in percentage (without percentage sign)
+        param n2: Deprecated symlink to tax
         """
-        origin, tax = confloat(n1, tax)
+        if tax is not None:
+            origin, tax = confloat(n1, tax)
+        else:
+            origin, tax = confloat(n1, n2)
         usefulTax = (tax / 100) + 1
         answer = origin + tax
         return answer
