@@ -119,7 +119,8 @@ class misc:
                       "tax calculator, spinner, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, \"ord'ing\", and convert "
                       "bases (aka number systems). Type quit to quit.\n"
                       "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues\n"
-                      "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"))
+                      "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"
+                      "\nBlack Lives Matter! For more info, go to blacklivesmatter.com."))
     def h():
         cprint.info(_(misc.hText))
     def vol():
