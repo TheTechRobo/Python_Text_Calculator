@@ -339,8 +339,6 @@ Anything else - Back to menu."))
                 logging.info("User typed %s into conver functions but Non Existent." % conversion)
        elif "raise" in calc:
            cprint.info(_("This feature has been disabled due to security reasons."))
-           #exception = input("DEV ONLY - Which exception would you like to raise?")
-           #exec("raise %s" % exception)
 #OTHERWISE
        elif calc == "":
             logging.error("User attempted to type nothing as a command")
@@ -348,16 +346,13 @@ Anything else - Back to menu."))
        elif calc == " ":
             logging.error("user said nothing")
             cprint.err(_("You speak quietly"))
-       elif calc is None:
-            logging.error("User attempted to type nothing as a command")
-            cprint.err(_("I can't heeeaaaarrrrr youuuuuuuu"))
        else:
             logging.error("User typed an invalid command (%s)" % calc)
-            cprint.err(_('''
-I don't understand your request. Here are the currently supported calculations:
-%s
-Sorry for the inconvenience
-''') % misc.hText)
+            cprint.err(_("\n"
+                "I don't understand your request. Here are the currently supported calculations:\n"
+                "%s\n"
+                "Sorry for the inconvenience\n"
+            ) % misc.hText)
 standTextOut(_("Welcome to Palc!"), print, cprint.info)
 try:
     palc() #run all that code
