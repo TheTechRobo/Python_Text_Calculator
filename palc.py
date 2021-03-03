@@ -124,10 +124,7 @@ def palc():
    logging.info("Got calc choice %s" % calc)
    calc = calc.lower() #make variable "calc" lowercase
 #HELP
-   if "?" in calc:
-       logging.info("User needed help")
-       misc.h()
-   elif _("help") in calc:
+   if "?" in calc or _("help") in calc:
        logging.info("User needed help")
        misc.h()
 #TAX
@@ -135,41 +132,21 @@ def palc():
         misc.showUserWhatIThink(_("calculate tax"))
         Tax.taxCalc()
 #SQUARE
-   elif _("sq") in calc:
+   elif _("sq") in calc or "[]" in calc:
         misc.showUserWhatIThink(_("square a number"))
         n = int(input(_("Number to square? ")))
         cprint.info(n * n)
         logging.info("User squared number %s got result %s" % (n, (n * n)))
-   elif "[]" in calc:
-        misc.showUserWhatIThink(_("square a number"))
-        n = int(input(_("Number to square? ")))
-        logging.info("User squared number %s got result %s" % (n, (n * n)))
-        cprint.info(n * n)
 #DIVISION
-   elif "/" in calc:
-        misc.showUserWhatIThink(_("divide a number"))
-        theBasics.division()
-   elif _("div") in calc:
+   elif "/" in calc or _("div") in calc:
         misc.showUserWhatIThink(_("divide a number"))
         theBasics.division()
 #SUBTRACTION
-   elif "-" in calc:
-        misc.showUserWhatIThink(_("subtract a number from a number"))
-        theBasics.subtraction()
-   elif _("sub") in calc:
-        misc.showUserWhatIThink(_("subtract a number from a number"))
-        theBasics.subtraction()
-   elif _("min") in calc:
+   elif "-" in calc or _("sub") in calc or _("min") in calc:
         misc.showUserWhatIThink(_("subtract a number from a number"))
         theBasics.subtraction()
 #ADDITION
-   elif "+" in calc:
-        misc.showUserWhatIThink(_("add two numbers"))
-        theBasics.addition()
-   elif _("add") in calc:
-        misc.showUserWhatIThink(_("add two numbers"))
-        theBasics.addition()
-   elif _("plus") in calc:
+   elif "+" in calc or _("add") in calc or _("plus") in calc:
         misc.showUserWhatIThink(_("add two numbers"))
         theBasics.addition()
    elif lCode == "fr":
@@ -193,10 +170,7 @@ Anything else - Back to menu."))
         misc.showUserWhatIThink(_("find the remainder of two numbers after division"))
         theBasics.mod()
 #AREA
-   elif _("area") in calc:
-        misc.showUserWhatIThink(_("calculate area"))
-        misc.area()
-   elif "#" in calc:
+   elif _("area") in calc or "#" in calc:
         misc.showUserWhatIThink(_("calculate area"))
         misc.area()
 #VOLUME
@@ -204,14 +178,7 @@ Anything else - Back to menu."))
         misc.showUserWhatIThink(_("use the volume calculator"))
         misc.vol()
 #CUBE
-   elif "{}" in calc:
-        misc.showUserWhatIThink(_("cube a number"))
-        cubedNumber = int(input(_("\nType the number to be cubed: ")))
-        print()
-        cprint.info(cubedNumber ** 3) #Manually cube number
-        logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
-        print()
-   elif _("cube") in calc:
+   elif "{}" in calc or _("cube") in calc:
         misc.showUserWhatIThink(_("cube a number"))
         cubedNumber = int(input(_("\nType the number to be cubed: ")))
         print()
@@ -219,23 +186,13 @@ Anything else - Back to menu."))
         logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
         print()
 #SPINNER
-   elif _("spin") in calc:
-        misc.showUserWhatIThink(_("spin a spinner"))
-        misc.spinner()
-   elif _("spinner") in calc:
-        misc.showUserWhatIThink(_("spin a spinner"))
-        misc.spinner()
-   elif _("roulette") in calc:
+   elif _("spin") in calc or _("spinner") in calc or _("roulette") in calc:
         misc.showUserWhatIThink(_("spin a spinner"))
         misc.spinner()
 #EXIT
-   elif _("quit") in calc:
+   elif _("quit") in calc or _("exit") in calc:
         misc.showUserWhatIThink(_("quit"))
         logging.info("User exited using `quit' command")
-        e()
-   elif _("exit") in calc:
-        misc.showUserWhatIThink(_("exit"))
-        logging.info("User exited using `exit' command")
         e()
 #EXPONENTS
    elif _("power") in calc or _("ex") in calc:
@@ -245,13 +202,7 @@ Anything else - Back to menu."))
         misc.showUserWhatIThink(_("use the exponent function"))
         rootsAndTheOtherOne.powerful()
 #MULTIPLICATION
-   elif "*" in calc:
-        misc.showUserWhatIThink(_("multiply a number"))
-        theBasics.multiplication()
-   elif "x" in calc:
-        misc.showUserWhatIThink(_("multiply a number"))
-        theBasics.multiplication()
-   elif _("multi") in calc:
+   elif "*" in calc or "x" in calc or _("multi") in calc:
         misc.showUserWhatIThink(_("multiply a number"))
         theBasics.multiplication()
 #CUBE TWICE
@@ -269,18 +220,6 @@ Anything else - Back to menu."))
         else:
             cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :D"))
             logging.error("User used non-existent root (%s)" % root)
-#EASTER EGG!
-   elif "=" in calc:
-        misc.showUserWhatIThink(_("use the equals function (completely useless)"))
-        number = int(input(_("\nType in a number: ")))
-        if number == 42:
-            cprint.info(_("=42 -- the answer to life, the universe, and everything"))
-            logging.info("User got the easter egg")
-        else:
-            cprint.info(_("Calculating..."))
-            time.sleep(3)
-            cprint.err(_("ERROR: Too big of a number, timed out!"))
-            logging.info("User used the `=' feature for number %s" % number)
 #NUMBER SYSTEMS
    elif _("base") in calc:
         misc.showUserWhatIThink(_("convert number systems"))
@@ -336,6 +275,18 @@ Anything else - Back to menu."))
 #OLD
    elif "raise" in calc:
        cprint.info(_("This feature has been disabled due to security reasons."))
+#EASTER EGG!
+   elif "=" in calc:
+        misc.showUserWhatIThink(_("use the e a s t e r e g g"))
+        number = int(input(_("\nType in a number: ")))
+        if number == 42:
+            cprint.info(_("=42 -- the answer to life, the universe, and everything"))
+            logging.info("User got the easter egg")
+        else:
+            cprint.info(_("Calculating..."))
+            time.sleep(3)
+            cprint.err(_("ERROR: Too big of a number, timed out!"))
+            logging.info("User used the `=' feature for number %s" % number)
 #OTHERWISE
    elif calc == "":
        logging.error("User attempted to type nothing as a command")
