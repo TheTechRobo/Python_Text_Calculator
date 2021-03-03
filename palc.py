@@ -117,245 +117,243 @@ except Exception as ename:
     raise
 time.sleep(1)
 def palc():
-    while True:
-       pressanykey(_("Press any key to continue..."))
-       clearScreen()
+   pressanykey(_("Press any key to continue..."))
+   clearScreen()
 #CALCULATION CHOICE
-       calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
-       logging.info("Got calc choice %s" % calc)
-       calc = calc.lower() #make variable "calc" lowercase
+   calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
+   logging.info("Got calc choice %s" % calc)
+   calc = calc.lower() #make variable "calc" lowercase
 #HELP
-       if "?" in calc:
-           logging.info("User needed help")
-           misc.h()
-       elif _("help") in calc:
-           logging.info("User needed help")
-           misc.h()
+   if "?" in calc:
+       logging.info("User needed help")
+       misc.h()
+   elif _("help") in calc:
+       logging.info("User needed help")
+       misc.h()
 #TAX
-       elif _("tax") in calc:
-            misc.showUserWhatIThink(_("calculate tax"))
-            Tax.taxCalc()
+   elif _("tax") in calc:
+        misc.showUserWhatIThink(_("calculate tax"))
+        Tax.taxCalc()
 #SQUARE
-       elif _("sq") in calc:
-            misc.showUserWhatIThink(_("square a number"))
-            n = int(input(_("Number to square? ")))
-            cprint.info(n * n)
-            logging.info("User squared number %s got result %s" % (n, (n * n)))
-       elif "[]" in calc:
-            misc.showUserWhatIThink(_("square a number"))
-            n = int(input(_("Number to square? ")))
-            logging.info("User squared number %s got result %s" % (n, (n * n)))
-            cprint.info(n * n)
+   elif _("sq") in calc:
+        misc.showUserWhatIThink(_("square a number"))
+        n = int(input(_("Number to square? ")))
+        cprint.info(n * n)
+        logging.info("User squared number %s got result %s" % (n, (n * n)))
+   elif "[]" in calc:
+        misc.showUserWhatIThink(_("square a number"))
+        n = int(input(_("Number to square? ")))
+        logging.info("User squared number %s got result %s" % (n, (n * n)))
+        cprint.info(n * n)
 #DIVISION
-       elif "/" in calc:
-            misc.showUserWhatIThink(_("divide a number"))
-            theBasics.division()
-       elif _("div") in calc:
-            misc.showUserWhatIThink(_("divide a number"))
-            theBasics.division()
+   elif "/" in calc:
+        misc.showUserWhatIThink(_("divide a number"))
+        theBasics.division()
+   elif _("div") in calc:
+        misc.showUserWhatIThink(_("divide a number"))
+        theBasics.division()
 #SUBTRACTION
-       elif "-" in calc:
-            misc.showUserWhatIThink(_("subtract a number from a number"))
-            theBasics.subtraction()
-       elif _("sub") in calc:
-            misc.showUserWhatIThink(_("subtract a number from a number"))
-            theBasics.subtraction()
-       elif _("min") in calc:
-            misc.showUserWhatIThink(_("subtract a number from a number"))
-            theBasics.subtraction()
+   elif "-" in calc:
+        misc.showUserWhatIThink(_("subtract a number from a number"))
+        theBasics.subtraction()
+   elif _("sub") in calc:
+        misc.showUserWhatIThink(_("subtract a number from a number"))
+        theBasics.subtraction()
+   elif _("min") in calc:
+        misc.showUserWhatIThink(_("subtract a number from a number"))
+        theBasics.subtraction()
 #ADDITION
-       elif "+" in calc:
+   elif "+" in calc:
+        misc.showUserWhatIThink(_("add two numbers"))
+        theBasics.addition()
+   elif _("add") in calc:
+        misc.showUserWhatIThink(_("add two numbers"))
+        theBasics.addition()
+   elif _("plus") in calc:
+        misc.showUserWhatIThink(_("add two numbers"))
+        theBasics.addition()
+   elif lCode == "fr":
+        if "ajoute" in calc:
             misc.showUserWhatIThink(_("add two numbers"))
             theBasics.addition()
-       elif _("add") in calc:
-            misc.showUserWhatIThink(_("add two numbers"))
-            theBasics.addition()
-       elif _("plus") in calc:
-            misc.showUserWhatIThink(_("add two numbers"))
-            theBasics.addition()
-       elif lCode == "fr":
-            if "ajoute" in calc:
-                misc.showUserWhatIThink(_("add two numbers"))
-                theBasics.addition()
 #MODULO
-       elif "%" in calc:
-            print(_("1 - Find the remainder of two numbers after division\n\
+   elif "%" in calc:
+        print(_("1 - Find the remainder of two numbers after division\n\
 2 - Use the percentage calculator.\n\
 Anything else - Back to menu."))
-            pOrMod = input(_("Type: "))
-            if pOrMod == "1":
-                theBasics.mod()
-            elif pOrMod == "2":
-                Percentage.chooseOneTwo()
-            else:
-                cprint.info(_("going back."))
-                logging.info("going back.")
-       elif _("mod") in calc:
-            misc.showUserWhatIThink(_("find the remainder of two numbers after division"))
+        pOrMod = input(_("Type: "))
+        if pOrMod == "1":
             theBasics.mod()
-#AREA
-       elif _("area") in calc:
-            misc.showUserWhatIThink(_("calculate area"))
-            misc.area()
-       elif "#" in calc:
-            misc.showUserWhatIThink(_("calculate area"))
-            misc.area()
-#VOLUME
-       elif _("vol") in calc:
-            misc.showUserWhatIThink(_("use the volume calculator"))
-            misc.vol()
-#CUBE
-       elif "{}" in calc:
-            misc.showUserWhatIThink(_("cube a number"))
-            cubedNumber = int(input(_("\nType the number to be cubed: ")))
-            print()
-            cprint.info(cubedNumber ** 3) #Manually cube number
-            logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
-            print()
-       elif _("cube") in calc:
-            misc.showUserWhatIThink(_("cube a number"))
-            cubedNumber = int(input(_("\nType the number to be cubed: ")))
-            print()
-            cprint.info(cubedNumber ** 3) #Manually cube number
-            logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
-            print()
-#SPINNER
-       elif _("spin") in calc:
-            misc.showUserWhatIThink(_("spin a spinner"))
-            misc.spinner()
-       elif _("spinner") in calc:
-            misc.showUserWhatIThink(_("spin a spinner"))
-            misc.spinner()
-       elif _("roulette") in calc:
-            misc.showUserWhatIThink(_("spin a spinner"))
-            misc.spinner()
-#EXIT
-       elif _("quit") in calc:
-            misc.showUserWhatIThink(_("quit"))
-            logging.info("User exited using `quit' command")
-            e()
-       elif _("exit") in calc:
-            misc.showUserWhatIThink(_("exit"))
-            logging.info("User exited using `exit' command")
-            e()
-#EXPONENTS
-       elif _("power") in calc:
-            misc.showUserWhatIThink(_("use the exponent function"))
-            rootsAndTheOtherOne.powerful()
-       elif _("ex") in calc:
-            misc.showUserWhatIThink(_("use the exponent function"))
-            rootsAndTheOtherOne.powerful()
-       elif "^" in calc: #IDEA SOURCE: 3N4N's (first) Pull Request on the original repo
-            misc.showUserWhatIThink(_("use the exponent function"))
-            rootsAndTheOtherOne.powerful()
-#MULTIPLICATION
-       elif "*" in calc:
-            misc.showUserWhatIThink(_("multiply a number"))
-            theBasics.multiplication()
-       elif "x" in calc:
-            misc.showUserWhatIThink(_("multiply a number"))
-            theBasics.multiplication()
-       elif _("multi") in calc:
-            misc.showUserWhatIThink(_("multiply a number"))
-            theBasics.multiplication()
-#CUBE TWICE
-       elif "{2}" in calc:
-            cprint.err(_("The \"cube twice\" feature was discontinued as it was pointless. Sorry for the inconvenience."))
-            logging.error("User attempted to use cube twice function but it's gone")
-#ROOTS
-       elif _("root") in calc:
-            misc.showUserWhatIThink(_("use the root function (opposite of exponents)"))
-            root = input(_("Square root or cube root? (square/cube)\nType: ")).lower()
-            if _("square") in root:
-                rootsAndTheOtherOne.sqroot()
-            elif _("cube") in root:
-                rootsAndTheOtherOne.curoot()
-            else:
-                cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :D"))
-                logging.error("User used non-existent root (%s)" % root)
-#EASTER EGG!
-       elif "=" in calc:
-            misc.showUserWhatIThink(_("use the equals function (completely useless)"))
-            number = int(input(_("\nType in a number: ")))
-            if number == 42:
-                cprint.info(_("=42 -- the answer to life, the universe, and everything"))
-                logging.info("User got the easter egg")
-            else:
-                cprint.info(_("Calculating..."))
-                time.sleep(3)
-                cprint.err(_("ERROR: Too big of a number, timed out!"))
-                logging.info("User used the `=' feature for number %s" % number)
-#NUMBER SYSTEMS
-       elif _("base") in calc:
-            misc.showUserWhatIThink(_("convert number systems"))
-            misc.base()
-#ORD
-       elif _("ord") in calc:
-           misc.showUserWhatIThink(_("ord a character"))
-           result = str(ord(input(_("Type in the character to ord: "))))
-           logging.info("User ord'ed to get result %s" % result)
-           cprint.info(_("The result is: \n%s" % result))
-#LOGARITHM
-       elif _("log") in calc:
-           misc.showUserWhatIThink(_("use the logarithm function"))
-           misc.logarithm()
-#MEMORY
-       elif _("mem") in calc:
-            misc.showUserWhatIThink(_("use the memory function"))
-            memOrRecall = input(_("Would you like to set the memory or recall? (set / recall)\nType: "))
-            if _("set") in memOrRecall.lower():
-                misc.remember()
-            elif _("recall") in memOrRecall.lower():
-                misc.readMyMemory()
-            else:
-                cprint.err(_("You did not type an answer.\nAbort."))
-                logging.error("User didn't type an answer in MEM function (typed %s)" % memOrRecall)
-#FIBONACCI
-       elif _("fib") in calc:
-            misc.showUserWhatIThink(_("use the fibonacci calculator"))
-            cprint.ok(_("Starting fibonacci sequence. Please wait."))
-            misc.fib()
-#PERCENTAGE
-       elif _("percent") in calc: #SOURCE: https://stackoverflow.com/a/5998010/9654083
-            misc.showUserWhatIThink(_("use the percentage function"))
+        elif pOrMod == "2":
             Percentage.chooseOneTwo()
+        else:
+            cprint.info(_("going back."))
+            logging.info("going back. (%s)" % pOrMod)
+   elif _("mod") in calc:
+        misc.showUserWhatIThink(_("find the remainder of two numbers after division"))
+        theBasics.mod()
+#AREA
+   elif _("area") in calc:
+        misc.showUserWhatIThink(_("calculate area"))
+        misc.area()
+   elif "#" in calc:
+        misc.showUserWhatIThink(_("calculate area"))
+        misc.area()
+#VOLUME
+   elif _("vol") in calc:
+        misc.showUserWhatIThink(_("use the volume calculator"))
+        misc.vol()
+#CUBE
+   elif "{}" in calc:
+        misc.showUserWhatIThink(_("cube a number"))
+        cubedNumber = int(input(_("\nType the number to be cubed: ")))
+        print()
+        cprint.info(cubedNumber ** 3) #Manually cube number
+        logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
+        print()
+   elif _("cube") in calc:
+        misc.showUserWhatIThink(_("cube a number"))
+        cubedNumber = int(input(_("\nType the number to be cubed: ")))
+        print()
+        cprint.info(cubedNumber ** 3) #Manually cube number
+        logging.info("User cubed number %s got result %s" % (cubedNumber, (cubedNumber ** 3)))
+        print()
+#SPINNER
+   elif _("spin") in calc:
+        misc.showUserWhatIThink(_("spin a spinner"))
+        misc.spinner()
+   elif _("spinner") in calc:
+        misc.showUserWhatIThink(_("spin a spinner"))
+        misc.spinner()
+   elif _("roulette") in calc:
+        misc.showUserWhatIThink(_("spin a spinner"))
+        misc.spinner()
+#EXIT
+   elif _("quit") in calc:
+        misc.showUserWhatIThink(_("quit"))
+        logging.info("User exited using `quit' command")
+        e()
+   elif _("exit") in calc:
+        misc.showUserWhatIThink(_("exit"))
+        logging.info("User exited using `exit' command")
+        e()
+#EXPONENTS
+   elif _("power") in calc or _("ex") in calc:
+        misc.showUserWhatIThink(_("use the exponent function"))
+        rootsAndTheOtherOne.powerful()
+   elif "^" in calc: #IDEA SOURCE: 3N4N's (first) Pull Request on the original repo
+        misc.showUserWhatIThink(_("use the exponent function"))
+        rootsAndTheOtherOne.powerful()
+#MULTIPLICATION
+   elif "*" in calc:
+        misc.showUserWhatIThink(_("multiply a number"))
+        theBasics.multiplication()
+   elif "x" in calc:
+        misc.showUserWhatIThink(_("multiply a number"))
+        theBasics.multiplication()
+   elif _("multi") in calc:
+        misc.showUserWhatIThink(_("multiply a number"))
+        theBasics.multiplication()
+#CUBE TWICE
+   elif "{2}" in calc:
+        cprint.err(_("The \"cube twice\" feature was discontinued as it was pointless. Sorry for the inconvenience."))
+        logging.error("User attempted to use cube twice function but it's gone")
+#ROOTS
+   elif _("root") in calc:
+        misc.showUserWhatIThink(_("use the root function (opposite of exponents)"))
+        root = input(_("Square root or cube root? (square/cube)\nType: ")).lower()
+        if _("square") in root:
+            rootsAndTheOtherOne.sqroot()
+        elif _("cube") in root:
+            rootsAndTheOtherOne.curoot()
+        else:
+            cprint.err(_("Currently I don't support the root you chose. Hopefully this will change :D"))
+            logging.error("User used non-existent root (%s)" % root)
+#EASTER EGG!
+   elif "=" in calc:
+        misc.showUserWhatIThink(_("use the equals function (completely useless)"))
+        number = int(input(_("\nType in a number: ")))
+        if number == 42:
+            cprint.info(_("=42 -- the answer to life, the universe, and everything"))
+            logging.info("User got the easter egg")
+        else:
+            cprint.info(_("Calculating..."))
+            time.sleep(3)
+            cprint.err(_("ERROR: Too big of a number, timed out!"))
+            logging.info("User used the `=' feature for number %s" % number)
+#NUMBER SYSTEMS
+   elif _("base") in calc:
+        misc.showUserWhatIThink(_("convert number systems"))
+        misc.base()
+#ORD
+   elif _("ord") in calc:
+       misc.showUserWhatIThink(_("ord a character"))
+       result = str(ord(input(_("Type in the character to ord: "))))
+       logging.info("User ord'ed to get result %s" % result)
+       cprint.info(_("The result is: \n%s" % result))
+#LOGARITHM
+   elif _("log") in calc:
+       misc.showUserWhatIThink(_("use the logarithm function"))
+       misc.logarithm()
+#MEMORY
+   elif _("mem") in calc:
+        misc.showUserWhatIThink(_("use the memory function"))
+        memOrRecall = input(_("Would you like to set the memory or recall? (set / recall)\nType: "))
+        if _("set") in memOrRecall.lower():
+            misc.remember()
+        elif _("recall") in memOrRecall.lower():
+            misc.readMyMemory()
+        else:
+            cprint.err(_("You did not type an answer.\nAbort."))
+            logging.error("User didn't type an answer in MEM function (typed %s)" % memOrRecall)
+#FIBONACCI
+   elif _("fib") in calc:
+        misc.showUserWhatIThink(_("use the fibonacci calculator"))
+        cprint.ok(_("Starting fibonacci sequence. Please wait."))
+        misc.fib()
+#PERCENTAGE
+   elif _("percent") in calc: #SOURCE: https://stackoverflow.com/a/5998010/9654083
+        misc.showUserWhatIThink(_("use the percentage function"))
+        Percentage.chooseOneTwo()
 #INTEREST
-       elif _("interest") in calc:
-            misc.showUserWhatIThink(_("use the interest calculator"))
-            misc.calculateInterest()
+   elif _("interest") in calc:
+        misc.showUserWhatIThink(_("use the interest calculator"))
+        misc.calculateInterest()
 #TEMPERATURE
-       elif _("temperature") in calc:
-            misc.showUserWhatIThink(_("use the temperature converter"))
-            Temperature.tempCalc()
+   elif _("temperature") in calc:
+        misc.showUserWhatIThink(_("use the temperature converter"))
+        Temperature.tempCalc()
 #CONVERSIONS
-       elif _("conver") in calc:
-            logging.info("use the converter functions")
-            misc.showUserWhatIThink(_("use the converter functions"))
-            conversion = int(input(_("1 - Convert temperature units\n2 - Convert bits and bytes and kilobytes and mebibytes and stuff\nType: ")))
-            if conversion == 1:
-                Temperature.tempCalc()
-            else:
-                cprint.err(_("Not developed yet, but maybe soon! :D"))
-                logging.info("User typed %s into conver functions but Non Existent." % conversion)
-       elif "raise" in calc:
-           cprint.info(_("This feature has been disabled due to security reasons."))
+   elif _("conver") in calc:
+        logging.info("use the converter functions")
+        misc.showUserWhatIThink(_("use the converter functions"))
+        conversion = int(input(_("1 - Convert temperature units\n2 - Convert bits and bytes and kilobytes and mebibytes and stuff\nType: ")))
+        if conversion == 1:
+            Temperature.tempCalc()
+        else:
+            cprint.err(_("Not developed yet, but maybe soon! :D"))
+            logging.info("User typed %s into conver functions but Non Existent." % conversion)
+#OLD
+   elif "raise" in calc:
+       cprint.info(_("This feature has been disabled due to security reasons."))
 #OTHERWISE
-       elif calc == "":
-            logging.error("User attempted to type nothing as a command")
-            cprint.err(_("I can't heeeeaaaarrrrrr yooooouuuuuuuu"))
-       elif calc == " ":
-            logging.error("user said nothing")
-            cprint.err(_("You speak quietly"))
-       else:
-            logging.error("User typed an invalid command (%s)" % calc)
-            cprint.err(_("\n"
+   elif calc == "":
+       logging.error("User attempted to type nothing as a command")
+       cprint.err(_("I can't heeeeaaaarrrrrr yooooouuuuuuuu"))
+   elif calc == " ":
+        logging.error("user said nothing")
+        cprint.err(_("You speak quietly"))
+   else:
+        logging.error("User typed an invalid command (%s)" % calc)
+        cprint.err(_("\n"
                 "I don't understand your request. Here are the currently supported calculations:\n"
                 "%s\n"
                 "Sorry for the inconvenience\n"
             ) % misc.hText)
 standTextOut(_("Welcome to Palc!"), print, cprint.info)
 try:
-    palc() #run all that code
+    while True:
+        palc() #run all that code
 except SyntaxError as ename: #easter eggz
     raise #raise exact same exception
 except KeyboardInterrupt: #if ^C
