@@ -22,7 +22,8 @@ except (ImportError, ModuleNotFoundError):
     print("Can't find what version of Python you're running. Your mileage may vary.")
 
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+    """ Get absolute path to resource, works for dev and for PyInstaller (https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
+"""
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
@@ -117,8 +118,11 @@ except Exception as ename:
     raise
 time.sleep(1)
 def palc():
-   pressanykey(_("Press any key to continue..."))
-   clearScreen()
+   if sys.stdin.isatty(): #https://stackoverflow.com/questions/13442574/how-do-i-determine-if-sys-stdin-is-redirected-from-a-file-vs-piped-from-another
+       pressanykey(_("Press any key to continue..."))
+       clearScreen()
+   else:
+       time.sleep(1)
 #CALCULATION CHOICE
    calc = input(_("What calculation do you wish to do? (Type `?' for a list of commands)\nType: "))
    logging.info("Got calc choice %s" % calc)
@@ -313,7 +317,9 @@ except KeyboardInterrupt: #if ^C
     e(0)
 except EOFError: #if ^D
     logging.info("EOFError")
-    cprint.ok(_("\nWhy ^D? Why not just type `quit'?"))
+    cprint.ok(_("Either you pressed Ctrl+D, or your batch script for Palc ended prematurely.\n"
+                "Next time, try  `quit'."
+    ))
     e(0)
 except (ValueError, TypeError) as ename:
     logging.critical("ValueError or TypeError: %s" % ename)
