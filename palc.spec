@@ -2,7 +2,7 @@
 
 block_cipher = None
 
-def get_locales_data():
+def get_locales_data(): #(https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
     locales_data = []
     for locale in os.listdir(os.path.join('./locales')):
         locales_data.append((
