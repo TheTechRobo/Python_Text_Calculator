@@ -19,7 +19,7 @@ try:
     if not six.PY3:
         print("You are using a currently unsupported version of Python. Your mileage may vary.")
 except (ImportError, ModuleNotFoundError):
-    print("Can't find what version of Python you're running. Your mileage may vary.")
+    print("Can't find what version of Python you're running. If you're not running Python 3, Palc may not work right.")
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller (https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
@@ -48,6 +48,10 @@ try:
 except Exception as ename:
     print("Errid 0: Could not load required modules! (%s)" % ename)
     exit(1)
+try:  #TODO CLEAN UP THE TRY'S!
+    ModuleNotFoundError
+except NameError:
+    ModuleNotFoundError = ImportError #fixes small bugs.
 try:
     import colorama
     colorama.init() #will fix bugs on CMD
