@@ -1,7 +1,7 @@
 test:
 	python3 mathmod/__init__.py #syntax check
 	echo Mathmod works\!
-	local palc_input = "1
+	palc_input="1
 +
 y
 1
@@ -13,7 +13,7 @@ y
 "
         echo -e "DBG: $palc_input"
 	echo -e "$palc_input" > engadd.txt
-	local palc_input_fr = "1
+	palc_input_fr="1
 +
 y
 1
