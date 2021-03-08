@@ -7,7 +7,7 @@ NOTE: In Mathmod 0.11, area.py syntax will change and Mathmod will not be compat
 
 [![CodeFactor Grade](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/badge/master)](https://www.codefactor.io/repository/github/thetechrobo/python-text-calculator/overview/master)
 [![Latest stable release](https://img.shields.io/github/v/release/TheTechRobo/python-text-calculator?label=latest%20stable%20release)](https://github.com/thetechrobo/python-text-calculator/releases)
-![Commit activity](https://img.shields.io/github/commit-activity/m/thetechrobo/python-text-calculator)
+![Commit activity](https://img.shields.io/github/commit-activity/m/thetechrobo/python-text-calculator?label=commit%20activity%20this%20month)
 ![Last commit](https://img.shields.io/github/last-commit/thetechrobo/python-text-calculator)
 
 note: the commit activity badge is very flaky, do not report that it says invalid! you may report on the others though. thanks :) 
