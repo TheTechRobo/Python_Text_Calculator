@@ -125,15 +125,18 @@ def palc():
        if "?" in calc:
            logging.info("User needed help")
            misc.h()
-       elif _("help") in calc: #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       elif _("help") in calc: 
            logging.info("User needed help")
            misc.h()
 #TAX
-       elif _("tax") in calc: #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       elif _("tax") in calc: 
             misc.showUserWhatIThink(_("calculate tax"))
             Tax.taxCalc()
 #SQUARE
-       elif _("sq") in calc: #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+        #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       elif _("sq") in calc:
             misc.showUserWhatIThink(_("square a number"))
             n = int(input(_("Number to square? ")))
             cprint.info(n * n)
@@ -147,17 +150,20 @@ def palc():
        elif "/" in calc:
             misc.showUserWhatIThink(_("divide a number"))
             theBasics.division()
-       elif _("div") in calc: #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       elif _("div") in calc: 
             misc.showUserWhatIThink(_("divide a number"))
             theBasics.division()
 #SUBTRACTION
        elif "-" in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()()
-       elif _("sub") in calc: #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+        #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       elif _("sub") in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()
-       elif _("min") in calc: #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       #FOR TRANSLATORS: This is a translated if statement. Dont add accents. Use a key part of the word e.g. sub instead of subtract instead of the full word if possible.
+       elif _("min") in calc:
             misc.showUserWhatIThink(_("subtract a number from a number"))
             theBasics.subtraction()
 #ADDITION
