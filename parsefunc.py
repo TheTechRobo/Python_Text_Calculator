@@ -84,7 +84,7 @@ class rootsAndTheOtherOne:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)") % (n1, n2))
         try:
-            nothernumber = mathmod.RootsAndExponents.cuRoot(number)
+            nothernumber = mathmod.ExponentsAndRoots.cuRoot(number)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
@@ -101,7 +101,7 @@ class rootsAndTheOtherOne:
             cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
             raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)") % (origin, ex))
         try:
-            returnedNumber = mathmod.RootsAndExponents.exponent(origin, ex)
+            returnedNumber = mathmod.ExponentsAndRoots.exponent(origin, ex)
         except ValueError as ename:
             cprint.err(_("An exception was raised!\nValueError\n"))
             logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
@@ -110,7 +110,7 @@ class rootsAndTheOtherOne:
         logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
     def sqroot():
         num = float(input(_("Number to be rooted?")))
-        returnedNumber = mathmod.RootsAndExponents.sqRoot(num)
+        returnedNumber = mathmod.ExponentsAndRoots.sqRoot(num)
         cprint.info(_("That equals... %s") % returnedNumber)
         logging.info("user sqrooted number %s" % (returnedNumber))
 
