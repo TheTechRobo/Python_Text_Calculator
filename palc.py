@@ -67,4 +67,5 @@ except Exception as ename:
 time.sleep(0.2)
 cprint.ok("\rWelcome to Palc!" + MANYSPACE)
 time.sleep(1)
-pressanykey.pressanykey()
+if sys.stdin.isatty and sys.stdout.isatty:
+    pressanykey.pressanykey()
