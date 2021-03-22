@@ -1,11 +1,5 @@
-from __future__ import print_function #we need to tell the user if they are using python 2.
+from __future__ import print_function #we need to tell the user if they are using python 2. all this does is prevent Syntaxerrors.
 import warnings
-"""
-For area, import mathmod.area
-For volume, mathmod.volume
-For fibonacci, mathmod.fibonacci
-These could be included in mathmod at any time. They'd be in classes.
-"""
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
@@ -29,8 +23,7 @@ def confloat(n1,n2):
 def _confloat(item):
     return float(item)
 
-class Arithmetic:
-    def multiplication(*args, n1=None,n2=None): #multiplication
+def multiplication(*args, n1=None,n2=None): #multiplication
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -46,7 +39,7 @@ class Arithmetic:
         for number in nums[1:]: #https://stackoverflow.com/a/34384791/9654083
             result = result * number
         return result
-    def division(*args, n1=None,n2=None): #division
+def division(*args, n1=None,n2=None): #division
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -62,7 +55,7 @@ class Arithmetic:
         for number in nums[1:]:
             result = result / number
         return result
-    def subtraction(*args,n1=None,n2=None): #subtraction
+def subtraction(*args,n1=None,n2=None): #subtraction
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -78,7 +71,7 @@ class Arithmetic:
         for number in nums[1:]:
             result = result - number
         return result
-    def addition(*args,n1=None,n2=None): #addition
+def addition(*args,n1=None,n2=None): #addition
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -94,28 +87,29 @@ class Arithmetic:
         for number in nums[1:]:
             result = result + number
         return result
-class ExponentsAndRoots:
-    def cuRoot(x):
+def cuRoot(x):
+        """
+        Approximate.
+        """
         # all credit goes to https://stackoverflow.com/a/28014443/9654083
         x = float(x)
         if 0 <= x:
             return x ** (1./3.)
         return - (-x) ** (1./3.)
-    def sqRoot(x):
+def sqRoot(x):
         x = float(x)
         return x ** 0.5
-    def exponent(n1, n2):
+def exponent(n1, n2):
         """
         param n1: Original number
         param n2: exponent
         """
         origin, ex = confloat(n1, n2)
         return origin ** ex
-class Misc:
-    def modulo(n1,n2):
+def modulo(n1,n2):
         n1, n2 = confloat(n1, n2)
         return n1 % n2
-    def tax(n1, tax=None, n2=None):
+def tax(n1, tax=None, n2=None):
         """
         param n1: Original number
         param tax: Tax in percentage (without percentage sign)
@@ -129,7 +123,7 @@ class Misc:
         usefulTax = (tax / 100) + 1
         answer = origin + tax
         return answer
-    def log(n1, e=True):
+def log(n1, e=True):
         """
         parameter n1: Original number
         parameter e: Use False if you want base 10 logarithm; True for e (natural). Defaults to natural.
@@ -141,7 +135,7 @@ class Misc:
         if not e:
             return math.log10(n1)
 
-    def whatIsXPercentOf(x, whole):
+def whatIsXPercentOf(x, whole):
         """
         whole = ORIGINAL NUMBER
         x = percent
@@ -150,7 +144,7 @@ class Misc:
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return (x * whole) / 100.0
-    def findPercentage(part, whole):
+def findPercentage(part, whole):
         """
         whole = number that would be 100%
         part = number that you want to convert to percentage (i.e. this number out of the number that would be 100%)
@@ -159,7 +153,7 @@ class Misc:
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return 100 * float(part) / float(whole)
-    def getInterest(units, rate, origin):
+def getInterest(units, rate, origin):
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
@@ -169,7 +163,7 @@ class Misc:
         interest = inRealNumbers * units
         result = origin + interest
         return {"interest": interest, "total": result}
-    def calculateInterest(units, rate, origin):
+def calculateInterest(units, rate, origin):
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
@@ -181,7 +175,7 @@ class Misc:
         result = origin + interest
         warnings.warn("Warning: This old function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
         return result
-    def calculateTemperature(origin, source, destination):
+def calculateTemperature(origin, source, destination):
         """
         origin: Original Number
         source: 
@@ -238,7 +232,7 @@ class Misc:
         else:
             raise ValueError("MATHMOD: Invalid input(s).")
         return yolo
-    def Spinner(numberOfTimes, choiceSelection):
+def Spinner(numberOfTimes, choiceSelection):
         """
         param numberOfTimes: Amount of times to conduct the spinner.
         param choiceSelection: An iterable of the choices. Should be in this format: ["choice1", "choice2", "etc"].
