@@ -1,3 +1,4 @@
+# https://dzone.com/articles/listing-a-directory-with-python
 MANYSPACE = "                                 "
 # Basic Setup
 try:
@@ -52,7 +53,18 @@ del pos, run_path
 translation = int(input("Please type the number corresponding to the language of choice...")) - 1
 LANG = list(settings["GETTEXT_NAMES"])[translation]
 LANG = settings["GETTEXT_NAMES"][LANG]
-print(LANG)
 lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
 lang_translations.install()
 del translation, LANG, settings
+
+cprint.info("Loading basic required files...",end="", flush=True)
+try:
+    import parsefunc
+except Exception as ename:
+    cprint.err("\nNope")
+    sys.exit(0)
+
+time.sleep(0.2)
+cprint.ok("\rWelcome to Palc!" + MANYSPACE)
+time.sleep(1)
+pressanykey.pressanykey()
