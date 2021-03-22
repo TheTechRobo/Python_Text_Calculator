@@ -1,4 +1,5 @@
-# Imports
+MANYSPACE = "                                 "
+# Basic Setup
 try:
     ModuleNotFoundError
 except NameError:
@@ -9,7 +10,7 @@ try:
     from modules.cprint import cprint
     import modules.standtextout as standtextout
     import modules.pressanykey as pressanykey
-    import gettext, time, logging
+    import gettext, time, logging, os, os.path
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
     sys.exit(1)
@@ -17,7 +18,6 @@ except Exception as ename:
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller (https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
 """
-    import os.path
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
@@ -33,6 +33,26 @@ except (ImportError, ModuleNotFoundError):
     if platform.system() == "Windows" or platform.system() == "":
         print("I have noticed that you may be running on Windows without colorama installed (pip install colorama).\nIf you experience issues with Palc like seeing weird characters instead of colours, try installing colorama.")
 
-standtextout.standTextOut("Translation Selection", cprint.ok, cprint.info)
+# Modular Translation Scheme
 
-print("And that's it for now.")
+standtextout.standTextOut("Translation Selection", cprint.ok, cprint.info)
+cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flush=True)
+time.sleep(0.4) #makes it more professional
+listing = os.listdir(resource_path("locales"))
+cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
+from runpy import run_path
+settings = run_path("locales/config.py") #https://stackoverflow.com/a/37339817/9654083
+pos = 1
+time.sleep(0.5)
+print("\r" + MANYSPACE)
+for item in settings["GETTEXT_NAMES"]:
+    cprint.info("%s. %s" % (pos, item))
+    pos += 1
+del pos, run_path
+translation = int(input("Please type the number corresponding to the language of choice...")) - 1
+LANG = list(settings["GETTEXT_NAMES"])[translation]
+LANG = settings["GETTEXT_NAMES"][LANG]
+print(LANG)
+lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
+lang_translations.install()
+del translation, LANG, settings
