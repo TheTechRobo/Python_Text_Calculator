@@ -12,7 +12,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           xs_max_size: '10'
           s_max_size: '100'
-          m_max_size: '500'
-          l_max_size: '1000'
-          fail_if_xl: 'false'
-          message_if_xl: 'This PR is extremely big! Please, split it 😊'
+          m_max_size: '400'
+          l_max_size: '1500'
+          fail_if_xl: 'true'
+          #message_if_xl: 'This PR is extremely big! Please, split it 😊'
