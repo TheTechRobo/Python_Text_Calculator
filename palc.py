@@ -16,6 +16,10 @@ except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
     sys.exit(1)
 
+logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
+
+logging.debug("Logging works!")
+
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller (https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
 """
@@ -65,7 +69,12 @@ except Exception as ename:
     sys.exit(0)
 
 time.sleep(0.2)
-cprint.ok("\rWelcome to Palc!" + MANYSPACE)
+cprint.ok("\rWelcome to ", end="")
+cprint.info("Palc", end="")
+cprint.ok("!" + MANYSPACE)
 time.sleep(1)
-if sys.stdin.isatty and sys.stdout.isatty:
-    pressanykey.pressanykey()
+def mainloop():
+    if sys.stdin.isatty:
+        pressanykey.pressanykey()
+        clearscreen.clearScreen()
+    cprint.info("Welcome to Palc!",end=" ");cprint.ok("Please enter a command...")
