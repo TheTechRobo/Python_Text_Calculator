@@ -7,11 +7,8 @@ except NameError:
     ModuleNotFoundError = ImportError
 import sys
 try:
-    import turbofunc.clearscreen as clearscreen
+    import turbofunc
     from cprint import cprint
-    import turbofunc.standtextout as standtextout
-    import turbofunc.pressanykey as pressanykey
-    import turbofunc.multiprint as multiprint
     import gettext, time, logging, os, os.path
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
@@ -40,7 +37,7 @@ except (ImportError, ModuleNotFoundError):
 
 # Modular Translation Scheme
 
-standtextout.standTextOut("Translation Selection", cprint.ok, cprint.info)
+turbofunc.standTextOut("Translation Selection", cprint.ok, cprint.info)
 cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flush=True)
 time.sleep(0.4) #makes it more professional
 listing = os.listdir(resource_path("locales"))
@@ -69,10 +66,10 @@ except Exception as ename:
     sys.exit(0)
 
 time.sleep(0.2)
-multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True)
+turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True)
 time.sleep(1)
 def mainloop():
     if sys.stdin.isatty:
-        pressanykey.pressanykey()
-        clearscreen.clearScreen()
-    multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, end="", flush=True)
+        turbofunc.pressanykey()
+        turbofunc.clearScreen()
+    turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, end="", flush=True)
