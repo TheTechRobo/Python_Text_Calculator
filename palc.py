@@ -7,9 +7,8 @@ except NameError:
     ModuleNotFoundError = ImportError
 import sys
 try:
-    import turbofunc
     from cprint import cprint
-    import gettext, time, logging, os, os.path
+    import turbofunc, gettext, time, logging, os, os.path
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
     sys.exit(1)
