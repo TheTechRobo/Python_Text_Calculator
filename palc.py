@@ -8,7 +8,8 @@ except NameError:
 import sys
 try:
     from cprint import cprint
-    import turbofunc, gettext, time, logging, os, os.path
+    from runpy import run_path
+    import turbofunc, gettext, time, logging, os, os.path, parsefunc
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
     sys.exit(1)
@@ -41,7 +42,6 @@ cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flus
 time.sleep(0.4) #makes it more professional
 listing = os.listdir(resource_path("locales"))
 cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
-from runpy import run_path
 settings = run_path("locales/config.py") #https://stackoverflow.com/a/37339817/9654083
 pos = 1
 time.sleep(0.5)
@@ -57,18 +57,12 @@ lang_translations = gettext.translation("base", localedir=resource_path("locales
 lang_translations.install()
 del translation, LANG, settings
 
-cprint.info("Loading basic required files...",end="", flush=True)
-try:
-    import parsefunc
-except Exception as ename:
-    cprint.err("\nNope")
-    sys.exit(0)
-
-time.sleep(0.2)
 turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True)
 time.sleep(1)
 def mainloop():
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-    turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, end="", flush=True)
+    turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, end="",flush=True)
+    cprint.warn("\nEnter HELP for help")
+    calc = input("                           \033[A\033[A")
