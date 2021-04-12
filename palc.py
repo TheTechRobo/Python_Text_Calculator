@@ -57,7 +57,7 @@ lang_translations = gettext.translation("base", localedir=resource_path("locales
 lang_translations.install()
 del translation, LANG, settings
 
-turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True)
+turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True, gettext=True)
 time.sleep(1)
 def mainloop():
     if sys.stdin.isatty:
