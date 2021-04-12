@@ -11,6 +11,7 @@ try:
     from cprint import cprint
     import turbofunc.standtextout as standtextout
     import turbofunc.pressanykey as pressanykey
+    import turbofunc.multiprint as multiprint
     import gettext, time, logging, os, os.path
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
@@ -68,12 +69,10 @@ except Exception as ename:
     sys.exit(0)
 
 time.sleep(0.2)
-cprint.ok("\rWelcome to ", end="")
-cprint.info("Palc", end="")
-cprint.ok("!" + MANYSPACE)
+multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True)
 time.sleep(1)
 def mainloop():
     if sys.stdin.isatty:
         pressanykey.pressanykey()
         clearscreen.clearScreen()
-    cprint.info("Welcome to Palc!",end=" ");cprint.ok("Please enter a command...")
+    multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, end="", flush=True)
