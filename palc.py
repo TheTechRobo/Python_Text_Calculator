@@ -7,15 +7,14 @@ except NameError:
     ModuleNotFoundError = ImportError
 import sys
 try:
-    import modules.clearscreen as clearscreen
-    from modules.cprint import cprint
-    import modules.standtextout as standtextout
-    import modules.pressanykey as pressanykey
+    import turbofunc.clearscreen as clearscreen
+    from cprint import cprint
+    import turbofunc.standtextout as standtextout
+    import turbofunc.pressanykey as pressanykey
     import gettext, time, logging, os, os.path
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
     sys.exit(1)
-
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 
 logging.debug("Logging works!")
@@ -30,7 +29,7 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-try: 
+try:
     import colorama
     colorama.init() #fixes bugs in CMD
 except (ImportError, ModuleNotFoundError):
