@@ -57,12 +57,14 @@ lang_translations = gettext.translation("base", localedir=resource_path("locales
 lang_translations.install()
 del translation, LANG, settings
 
-turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, end="", flush=True, gettext=True)
+turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
 time.sleep(1)
 def mainloop():
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-    turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, end="",flush=True)
+    turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, _=_, end="",flush=True)
     cprint.warn("\nEnter HELP for help")
     calc = input("                           \033[A\033[A")
+    parsefunc.parseCalc(calc)
+mainloop()
