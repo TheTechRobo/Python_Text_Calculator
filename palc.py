@@ -83,4 +83,5 @@ while True:
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
         else:
             cprint.warn("It's suggested to run EXIT instead of ^D." + MANYSPACE)
-        sys.exit("Bye!" + MANYSPACE)
+        cprint.info("Bye!" + MANYSPACE)
+        sys.exit(0)
