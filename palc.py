@@ -36,26 +36,28 @@ except (ImportError, ModuleNotFoundError):
         print("I have noticed that you may be running on Windows without colorama installed (pip install colorama).\nIf you experience issues with Palc like seeing weird characters instead of colours, try installing colorama.")
 
 # Modular Translation Scheme
-
-turbofunc.standTextOut("Translation Selection", cprint.ok, cprint.info)
-cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flush=True)
-time.sleep(0.4) #makes it more professional
-listing = os.listdir(resource_path("locales"))
-cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
-settings = run_path("locales/config.py") #https://stackoverflow.com/a/37339817/9654083
-pos = 1
-time.sleep(0.5)
-print("\r" + MANYSPACE)
-for item in settings["GETTEXT_NAMES"]:
-    cprint.info("%s. %s" % (pos, item))
+try:
+    turbofunc.standTextOut("Translation Selection", cprint.ok, cprint.info)
+    cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flush=True)
+    time.sleep(0.4) #makes it more professional
+    listing = os.listdir(resource_path("locales"))
+    cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
+    settings = run_path("locales/config.py") #https://stackoverflow.com/a/37339817/9654083
+    pos = 1
+    time.sleep(0.5)
+    print("\r" + MANYSPACE)
+    for item in settings["GETTEXT_NAMES"]:
+        cprint.info("%s. %s" % (pos, item))
     pos += 1
-del pos, run_path
-translation = int(input("Please type the number corresponding to the language of choice...")) - 1
-LANG = list(settings["GETTEXT_NAMES"])[translation]
-LANG = settings["GETTEXT_NAMES"][LANG]
-lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
-lang_translations.install()
-del translation, LANG, settings
+    del pos, run_path
+    translation = int(input("Please type the number corresponding to the language of choice...")) - 1
+    LANG = list(settings["GETTEXT_NAMES"])[translation]
+    LANG = settings["GETTEXT_NAMES"][LANG]
+    lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
+    lang_translations.install()
+    del translation, LANG, settings
+except (KeyboardInterrupt, EOFError):
+    sys.exit(0)
 
 turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
 time.sleep(1)
@@ -67,4 +69,12 @@ def mainloop():
     cprint.warn("\nEnter HELP for help")
     calc = input("                           \033[A\033[A")
     parsefunc.parseCalc(calc)
-mainloop()
+while True:
+    try:
+        mainloop()
+    except ValueError:
+        turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
+        cprint.err("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
+    except TypeError:
+        turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
+        cprint.err("You raised a TyepError! This may be because of a bug in Palc. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")

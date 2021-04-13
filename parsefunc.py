@@ -1,2 +1,2 @@
 def parseCalc(calc):
-    pass 
+    pass
