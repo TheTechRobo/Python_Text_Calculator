@@ -78,3 +78,9 @@ while True:
     except TypeError:
         turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
         cprint.err("You raised a TyepError! This may be because of a bug in Palc. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
+    except EOFError:
+        if sys.stdin.isatty:
+            cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
+        else:
+            cprint.warn("It's suggested to run EXIT instead of ^D." + MANYSPACE)
+        sys.exit("Bye!" + MANYSPACE)
