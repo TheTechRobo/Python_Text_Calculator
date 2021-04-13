@@ -42,7 +42,7 @@ try:
     time.sleep(0.4) #makes it more professional
     listing = os.listdir(resource_path("locales"))
     cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
-    settings = run_path("locales/config.py") #https://stackoverflow.com/a/37339817/9654083
+    settings = run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
     pos = 1
     time.sleep(0.5)
     print("\r" + MANYSPACE)

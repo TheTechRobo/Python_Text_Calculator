@@ -5,9 +5,12 @@ block_cipher = None
 def get_locales_data(): #(https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
     locales_data = []
     for locale in os.listdir(os.path.join('./locales')):
+        if locale == "CONFIG":
+            locales_data.append((os.path.join('./locales', locale, "config.py"),os.path.join('./locales', locale)))
+            continue
         locales_data.append((
             os.path.join('./locales', locale, 'LC_MESSAGES/*.mo'),
-            os.path.join('locales', locale, 'LC_MESSAGES')
+            os.path.join('locales', locale, 'LC_MESSAGES'),
         ))
     return locales_data
 
