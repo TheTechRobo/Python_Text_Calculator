@@ -48,7 +48,7 @@ try:
     print("\r" + MANYSPACE)
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
-    pos += 1
+        pos += 1
     del pos, run_path
     translation = int(input("Please type the number corresponding to the language of choice...")) - 1
     LANG = list(settings["GETTEXT_NAMES"])[translation]
