@@ -1,4 +1,5 @@
-import sys
+import sys, logging, turbofunc
+from cprint import cprint
 def showUserWhatIThink(msg):
     cprint.ok(_("BTW, I parsed your choice as:\n%s") % msg)
     logging.debug("Parsed user choice as %s" % msg)

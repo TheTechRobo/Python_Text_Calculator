@@ -8,8 +8,7 @@ except NameError:
 import sys
 try:
     from cprint import cprint
-    from runpy import run_path
-    import turbofunc, gettext, time, logging, os, os.path, parsefunc
+    import turbofunc, gettext, time, logging, os, os.path, parsefunc, runpy
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)" % ename)
     sys.exit(1)
@@ -42,20 +41,19 @@ try:
     time.sleep(0.4) #makes it more professional
     listing = os.listdir(resource_path("locales"))
     cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
-    settings = run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
+    settings = runpy.run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
     pos = 1
     time.sleep(0.5)
     print("\r" + MANYSPACE)
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
         pos += 1
-    del pos, run_path
     translation = int(input("Please type the number corresponding to the language of choice...")) - 1
     LANG = list(settings["GETTEXT_NAMES"])[translation]
     LANG = settings["GETTEXT_NAMES"][LANG]
     lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
     lang_translations.install()
-    del translation, LANG, settings
+    del translation, LANG, settings, pos, runpy
 except (KeyboardInterrupt, EOFError):
     sys.exit(0)
 
