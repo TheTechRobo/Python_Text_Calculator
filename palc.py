@@ -38,17 +38,27 @@ except (ImportError, ModuleNotFoundError):
 try:
     turbofunc.standTextOut("Translation Selection", cprint.ok, cprint.info)
     cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flush=True)
-    time.sleep(0.4) #makes it more professional
+    time.sleep(0.3) #makes it more professional
     listing = os.listdir(resource_path("locales"))
     cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
     settings = runpy.run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
     pos = 1
-    time.sleep(0.5)
+    time.sleep(0.3)
     print("\r" + MANYSPACE)
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
         pos += 1
-    translation = int(input("Please type the number corresponding to the language of choice...")) - 1
+    input_invalid_eh = True
+    while input_invalid_eh:
+        try:
+            translation = int(input("Please type the number corresponding to the language of choice...")) - 1
+            if translation > pos:
+                raise ValueError
+        except ValueError:
+            cprint.err("\033[FInvalid input, try again." + MANYSPACE * 2)
+            input_invalid_eh = True
+        else:
+            input_invalid_eh = False
     LANG = list(settings["GETTEXT_NAMES"])[translation]
     LANG = settings["GETTEXT_NAMES"][LANG]
     lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
