@@ -18,7 +18,11 @@ def parseCalc(calc):
         cprint.ok("I'll help!")
         cprint.info(helpText.split('\n')[2])
         cprint.ok(helpText.split('\n')[3])
-    pass
+
+def parse_division():
+    logging.debug("Right here")
+    cprint.ok(_("Please enter the first number and hit ENTER... "), end="", flush=True)
+    input()
 helpText = """Using Palc but don't know what to do??
 I'll help!
 There are a bunch of commands you can use. These are: 
