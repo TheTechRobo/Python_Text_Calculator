@@ -1,5 +1,14 @@
 import sys, logging, turbofunc
 from cprint import cprint
+def CleanInput(inp):
+    return inp.replace('\u200b', '').replace('\\', '').replace('\'', '').strip().lower()
+def GetNums():
+    list = []
+    n = 69
+    while n != "":
+        n = int(input().strip())
+        list.append(n)
+        cprint.info(_(string_2num), end="", flush=True)
 def showUserWhatIThink(msg):
     cprint.ok(_("BTW, I parsed your choice as:\n%s") % msg)
     logging.debug("Parsed user choice as %s" % msg)
@@ -21,10 +30,11 @@ def parseCalc(calc):
 
 def parse_division():
     logging.debug("Right here")
-    cprint.ok(_("Please enter the first number and hit ENTER... "), end="", flush=True)
-    input()
+    nums = GetNums()
+
+string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
 helpText = """Using Palc but don't know what to do??
 I'll help!
-There are a bunch of commands you can use. These are: 
+There are a bunch of commands you can use. These are:
 \033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m
 """#https://stackoverflow.com/a/17303428/9654083
