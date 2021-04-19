@@ -1,22 +1,30 @@
 import sys, logging, turbofunc
 from cprint import cprint
-def CleanInput(inp):
-    return inp.replace('\u200b', '').replace('\\', '').replace('\'', '').strip().lower()
 def GetNums():
-    list = []
+    nums = []
+    newNums = []
     n = 69
+    cprint.info(_("Please enter the first number..."), end="", flush=True)
     while n != "":
-        n = int(input().strip())
-        list.append(n)
+        n = turbofunc.CleanInput(input())
+        nums.append(n)
+        if n == "":
+            continue
         cprint.info(_(string_2num), end="", flush=True)
+    for item in nums:
+        if item != "":
+            newNums.append(int(item))
+    logging.debug("newNums: " % newNums)
+    logging.debug("nums: " % nums)
+    return newNums
 def showUserWhatIThink(msg):
-    cprint.ok(_("BTW, I parsed your choice as:\n%s") % msg)
+    cprint.ok(_("BTW, I parsed your choice as: %s") % msg)
     logging.debug("Parsed user choice as %s" % msg)
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
-    calc = calc.replace('\u200b', '').replace('\\', '').replace('\'', '').strip().lower() #gets rid of the common stuff, without having to use core words and whatnot
+    calc = turbofunc.CleanInput(calc).lower()
     if "/" in calc or _("div") in calc:
-        pass
+        parse_division()
     elif _("exit") in calc or _("quit") in calc or _("bye") in calc or _("leave") in calc:
         showUserWhatIThink("exit")
         sys.exit()
