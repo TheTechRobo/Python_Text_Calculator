@@ -30,6 +30,9 @@ def parseCalc(calc):
         sys.exit()
     elif _("help") in calc:
         cprint.info(helpText)
+    elif _("no u") in calc:
+        cprint.warn("Ha... ha... not... funny... whoever you are.")
+        sys.exit(69)
     else:
         cprint.err("UNKNOWN COMMAND - %s" % helpText.split('\n')[0]) #https://stackoverflow.com/a/11833277/9654083
         cprint.ok("I'll help!")

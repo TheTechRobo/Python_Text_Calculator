@@ -1,5 +1,7 @@
 # https://dzone.com/articles/listing-a-directory-with-python
 MANYSPACE = "                                 "
+oldCalc = "no u"
+
 # Basic Setup
 try:
     ModuleNotFoundError
@@ -70,13 +72,20 @@ except (KeyboardInterrupt, EOFError):
 turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
 time.sleep(1)
 def mainloop():
+    global oldCalc
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
     turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, _=_, end="",flush=True)
     cprint.warn("\nEnter HELP for help")
     calc = input("                           \033[A\033[A")
+    logging.debug("calc: %s" % calc)
+    logging.debug("oldcalc: %s" % oldCalc)
+    if "\u001b[A" in calc: #https://stackoverflow.com/a/23560936/9654083
+        parsefunc.parseCalc(oldCalc)
+        return
     parsefunc.parseCalc(calc)
+    oldCalc = calc
 while True:
     try:
         mainloop()
