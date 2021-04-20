@@ -33,6 +33,9 @@ def parseCalc(calc):
     elif _("no u") in calc:
         cprint.warn("Ha... ha... not... funny... whoever you are.")
         sys.exit(69)
+    elif "" in calc:
+        cprint.ok("Wow...you're quiet.")
+        turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
     else:
         cprint.err("UNKNOWN COMMAND - %s" % helpText.split('\n')[0]) #https://stackoverflow.com/a/11833277/9654083
         cprint.ok("I'll help!")
