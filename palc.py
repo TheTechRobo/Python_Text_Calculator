@@ -89,13 +89,15 @@ def mainloop():
 while True:
     try:
         mainloop()
-    except ValueError:
+    except ValueError as ename:
         turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
+        logging.info("VALUEERROR: %s" % ename)
         cprint.err("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
-    except TypeError:
+    except TypeError as ename:
         turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
-        cprint.err("You raised a TyepError! This may be because of a bug in Palc. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
-    except EOFError:
+        logging.info("TYPEERROR: %s" % ename)
+        cprint.err("You raised a TypeError! This may be because of a bug in Palc. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
+    except EOFError as ename:
         if sys.stdin.isatty:
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
         else:
