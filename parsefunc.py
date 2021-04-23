@@ -28,12 +28,13 @@ def parseCalc(calc):
     elif _("exit") in calc or _("quit") in calc or _("bye") in calc or _("leave") in calc:
         showUserWhatIThink("exit")
         sys.exit()
-    elif _("help") in calc:
+    #FOR TRANSLATORS: This is a translated if statement. If possible, use only a core part of the word(s) here, like for example "division" turns into "div".
+    elif _("help") in calc or _("?") in calc:
         cprint.info(helpText)
     elif _("no u") in calc:
         cprint.warn("Ha... ha... not... funny... whoever you are.")
         sys.exit(69)
-    elif "" in calc:
+    elif calc == "":
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
     else:
