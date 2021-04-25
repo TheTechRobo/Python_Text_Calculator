@@ -93,10 +93,16 @@ while True:
         turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
         logging.info("VALUEERROR: %s" % ename)
         cprint.err("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
+        if input("Get a backtrace? ").lower().strip()[0] == "y":
+            raise
+        cprint.warn(_("Aborting backtrace."))
     except TypeError as ename:
         turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
         logging.info("TYPEERROR: %s" % ename)
         cprint.err("You raised a TypeError! This is odd. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
+        if input("Get a backtrace? ").lower().strip()[0] == "y":
+            raise
+        cprint.warn(_("Aborting backtrace."))
     except EOFError as ename:
         if not sys.stdin.isatty:
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")

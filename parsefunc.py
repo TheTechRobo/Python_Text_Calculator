@@ -73,15 +73,15 @@ def parse_modulo():
     n2 = float(input())
     res = mathmod.modulo(n1,n2)
     cprint.info(_("The results are in! They indicate an answer of: "))
-    cprint.ok("\033[1m%s\033[0m" % res)
+    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
 
 def runMathmodFunc(func):
     logging.debug("Right here")
     nums = GetNums()
     res = func(*nums)
-    cprint.info(_("The results are in! They indicate an answer of..."))
-    cprint.ok("\033[1m%s\033[0m" % res)
+    cprint.ok(_("The results are in! They indicate an answer of..."))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, *nums are %s." % (res,nums))
 
 string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
