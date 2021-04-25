@@ -76,9 +76,12 @@ def mainloop():
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-    turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, _=_, end="",flush=True)
-    cprint.warn("\nEnter HELP for help")
-    calc = input("                           \033[A\033[A")
+        turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, _=_, end="",flush=True)
+        cprint.warn("\nEnter HELP for help", flush=True)
+        calc = input("                           \033[A\033[A")
+    else:
+        time.sleep(2.4)
+        calc = input("Waiting for command...")
     logging.debug("calc: %s" % calc)
     logging.debug("oldcalc: %s" % oldCalc)
     if "\u001b[A" in calc: #https://stackoverflow.com/a/23560936/9654083
