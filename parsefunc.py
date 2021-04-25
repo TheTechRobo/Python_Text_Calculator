@@ -60,7 +60,7 @@ def parse_multiplication():
     runMathmodFunc(mathmod.multiplication)
 
 def parse_addition():
-    runMathmodFunc(mathod.multiplication)
+    runMathmodFunc(mathmod.addition)
 
 def parse_subtraction():
     runMathmodFunc(mathmod.subtraction)
@@ -87,6 +87,7 @@ def runMathmodFunc(func):
 string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
 helpText = """Using Palc but don't know what to do??
 I'll help!
-There are a bunch of commands you can use. These are:
+There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo.
+Expressions (example: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now.
 \033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m
 """#https://stackoverflow.com/a/17303428/9654083

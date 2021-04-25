@@ -44,9 +44,9 @@ try:
     listing = os.listdir(resource_path("locales"))
     cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
     settings = runpy.run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
-    pos = 1
     time.sleep(0.3)
     print("\r" + MANYSPACE)
+    pos = 1
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
         pos += 1
@@ -57,7 +57,7 @@ try:
             if translation > pos:
                 raise ValueError
         except ValueError:
-            cprint.err("\033[FInvalid input, try again." + MANYSPACE * 2)
+            cprint.err("\033[F%s: Invalid input, try again." % translation + MANYSPACE * 2)
             input_invalid_eh = True
         else:
             input_invalid_eh = False
@@ -65,7 +65,7 @@ try:
     LANG = settings["GETTEXT_NAMES"][LANG]
     lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
     lang_translations.install()
-    del translation, LANG, settings, pos, runpy
+    del translation, LANG, settings, pos, runpy, input_invalid_eh
 except (KeyboardInterrupt, EOFError):
     sys.exit(0)
 
@@ -96,9 +96,9 @@ while True:
     except TypeError as ename:
         turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
         logging.info("TYPEERROR: %s" % ename)
-        cprint.err("You raised a TypeError! This may be because of a bug in Palc. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
+        cprint.err("You raised a TypeError! This is odd. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
     except EOFError as ename:
-        if sys.stdin.isatty:
+        if not sys.stdin.isatty:
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
         else:
             cprint.warn("It's suggested to run EXIT instead of ^D." + MANYSPACE)
