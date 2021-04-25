@@ -1,5 +1,6 @@
-import sys, logging, turbofunc
+import sys, logging, turbofunc, mathmod
 from cprint import cprint
+
 def GetNums():
     nums = []
     newNums = []
@@ -13,7 +14,7 @@ def GetNums():
         cprint.info(_(string_2num), end="", flush=True)
     for item in nums:
         if item != "":
-            newNums.append(int(item))
+            newNums.append(float(item))
     logging.debug("newNums: " % newNums)
     logging.debug("nums: " % nums)
     return newNums
@@ -23,8 +24,17 @@ def showUserWhatIThink(msg):
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
-    if "/" in calc or _("div") in calc:
+    if "/" in calc or _("div") in calc or "÷" in calc:
         parse_division()
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
+    elif _("mod") in calc:
+        parse_modulo()
+    elif _("sub") in calc or "-" in calc or _("min") in calc:
+        parse_subtraction()
+    elif _("add") in calc or "+" in calc:
+        parse_addition()
+    elif _("mult") in calc or calc == "x" or "*" in calc:
+        parse_multiplication()
     elif _("exit") in calc or _("quit") in calc or _("bye") in calc or _("leave") in calc:
         showUserWhatIThink("exit")
         sys.exit()
@@ -32,7 +42,7 @@ def parseCalc(calc):
     elif _("help") in calc or _("?") in calc:
         cprint.info(helpText)
     elif _("no u") in calc:
-        cprint.warn("Ha... ha... not... funny... whoever you are.")
+        cprint.warn(_("Ha... ha... not... funny... whoever you are."))
         sys.exit(69)
     elif calc == "":
         cprint.ok("Wow...you're quiet.")
@@ -44,8 +54,35 @@ def parseCalc(calc):
         cprint.ok(helpText.split('\n')[3])
 
 def parse_division():
+    runMathmodFunc(mathmod.division)
+
+def parse_multiplication():
+    runMathmodFunc(mathmod.multiplication)
+
+def parse_addition():
+    runMathmodFunc(mathod.multiplication)
+
+def parse_subtraction():
+    runMathmodFunc(mathmod.subtraction)
+
+def parse_modulo():
+    logging.debug("Right here")
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
+    n1 = float(input())
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
+    n2 = float(input())
+    res = mathmod.modulo(n1,n2)
+    cprint.info(_("The results are in! They indicate an answer of: "))
+    cprint.ok("\033[1m%s\033[0m" % res)
+    logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
+
+def runMathmodFunc(func):
     logging.debug("Right here")
     nums = GetNums()
+    res = func(*nums)
+    cprint.info(_("The results are in! They indicate an answer of..."))
+    cprint.ok("\033[1m%s\033[0m" % res)
+    logging.info("Got res %s, *nums are %s." % (res,nums))
 
 string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
 helpText = """Using Palc but don't know what to do??
