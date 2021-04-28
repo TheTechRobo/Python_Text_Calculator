@@ -54,7 +54,14 @@ def parseCalc(calc):
         cprint.ok(helpText.split('\n')[3])
 
 def parse_division():
-    runMathmodFunc(mathmod.division)
+    try:
+        runMathmodFunc(mathmod.division)
+    except ZeroDivisionError:
+        turbofunc.standTextOut("Oops!")
+        # FOR TRANSLATORS: **PLEASE** keep the \033[1m and \033[0m and \n
+        cprint.err(_("I see you divided by 0. \033[1mPlease don't do that\033[0m"), end="")
+        cprint.err(_(", as it doesn't work."))
+        cprint.info(_("Think of it as Siri does. Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends."))
 
 def parse_multiplication():
     runMathmodFunc(mathmod.multiplication)
@@ -69,10 +76,10 @@ def parse_modulo():
     logging.debug("Right here")
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
     n1 = float(input())
-    turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
     n2 = float(input())
     res = mathmod.modulo(n1,n2)
-    cprint.info(_("The results are in! They indicate an answer of: "))
+    cprint.info(_("The results are in! They indicate an answer of... "))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
 
