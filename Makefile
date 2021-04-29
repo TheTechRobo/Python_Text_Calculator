@@ -11,3 +11,5 @@ test:
 	python3 palc.py < fradd.txt
 	@echo Finished testing
 # This code belongs on Reddit
+clean:
+	@rm -i fradd.txt engadd.txt
