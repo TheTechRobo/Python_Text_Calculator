@@ -12,4 +12,4 @@ test:
 	@echo Finished testing
 # This code belongs on Reddit
 clean:
-	@rm -i fradd.txt engadd.txt
+	@rm -iR fradd.txt engadd.txt __pycache__ palc.log || echo "Failed to delete." #infrared
