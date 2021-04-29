@@ -121,6 +121,7 @@ while True:
         turbofunc.standTextOut(_("Bye!"), printMechanismString=cprint.ok)
         sys.exit(0)
     except KeyboardInterrupt as ename:
+        print()
         turbofunc.standTextOut(_("Bye!"), printMechanismString=cprint.ok)
         sys.exit(0)
     except Exception as ename:
