@@ -54,11 +54,14 @@ try:
     input_invalid_eh = True
     while input_invalid_eh:
         try:
-            translation = input("Please type the number corresponding to the language of choice...")
+            #todo: use turbofunc sanitise input
+            translation = input("Please type the number corresponding to the language of choice...").strip()
             translation = int(translation)
-            if translation > pos:
+            if translation > pos or translation < 1:
                 raise ValueError
         except ValueError:
+            if translation == "":
+                translation = "(blank)"
             cprint.err("\033[F %s: Invalid input, try again." % translation + MANYSPACE * 2)
             input_invalid_eh = True
         else:
