@@ -1,4 +1,4 @@
-import sys, logging, turbofunc, mathmod
+import sys, logging, turbofunc, mathmod, runpy, time
 from cprint import cprint
 
 def GetNums():
@@ -98,3 +98,12 @@ There are a bunch of commands you can use. These are: addition, subtraction, mul
 Expressions (example: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now.
 \033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m
 """#https://stackoverflow.com/a/17303428/9654083
+if __name__ == "__main__":
+    cprint.warn("Do not run parsefunc on its own. Attempting to run Palc...")
+    time.sleep(3)
+    try:
+        runpy.run_path("palc.py")
+    except Exception as ename:
+        cprint.fatal("Failed. (%s)" % ename)
+else:
+    del runpy
