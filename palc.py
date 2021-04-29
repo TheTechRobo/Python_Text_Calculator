@@ -75,19 +75,20 @@ try:
 except (KeyboardInterrupt, EOFError):
     sys.exit(0)
 
-turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
+turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
 time.sleep(1)
 def mainloop():
     global oldCalc
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-        turbofunc.multiprint({"\nWelcome to ": cprint.info, "Palc": cprint.ok, "!" + MANYSPACE + "\n": cprint.info, "Please enter a command...": cprint.ok}, _=_, end="",flush=True)
+        turbofunc.multiprint({_("\nWelcome to"): cprint.info, " ": print, _("Palc"): cprint.ok, "!" + MANYSPACE + "\n": cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
         cprint.warn("\nEnter HELP for help", flush=True)
         calc = input("                           \033[A\033[A")
     else:
         time.sleep(2.4)
-        calc = input("Waiting for command...")
+        calc = input(_("Waiting for command..."))
+        time.sleep(0.8)
     logging.debug("calc: %s" % calc)
     logging.debug("oldcalc: %s" % oldCalc)
     if "\u001b[A" in calc: #https://stackoverflow.com/a/23560936/9654083
@@ -99,17 +100,17 @@ while True:
     try:
         mainloop()
     except ValueError as ename:
-        turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
+        turbofunc.standTextOut(_("Oops!"),cprint.warn,cprint.err)
         logging.info("VALUEERROR: %s" % ename)
-        cprint.err("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
-        if input("Get a backtrace? ").lower().strip()[0] == "y":
+        cprint.err(_("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues."))
+        if input(_("Get a backtrace? ")).lower().strip()[0] == "y":
             raise
         cprint.warn(_("Aborting backtrace."))
     except TypeError as ename:
-        turbofunc.standTextOut("Oops!",cprint.warn,cprint.err)
+        turbofunc.standTextOut(_("Oops!"),cprint.warn,cprint.err)
         logging.info("TYPEERROR: %s" % ename)
-        cprint.err("You raised a TypeError! This is odd. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.")
-        if input("Get a backtrace? ").lower().strip()[0] == "y":
+        cprint.err(_("You raised a TypeError! This is odd. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues."))
+        if input(_("Get a backtrace? ")).lower().strip()[0] == "y":
             raise
         cprint.warn(_("Aborting backtrace."))
     except EOFError as ename:
@@ -117,5 +118,13 @@ while True:
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
         else:
             cprint.warn("It's suggested to run EXIT instead of ^D." + MANYSPACE)
-        cprint.info("Bye!" + MANYSPACE)
+        turbofunc.standTextOut(_("Bye!"), printMechanismString=cprint.ok)
         sys.exit(0)
+    except KeyboardInterrupt as ename:
+        turbofunc.standTextOut(_("Bye!"), printMechanismString=cprint.ok)
+        sys.exit(0)
+    except Exception as ename:
+        turbofunc.standTextOut("Oops!", cprint.warn,cprint.err)
+        cprint.warn(_("Unknown error!"))
+        if input(_("Get a backtrace? ")).lower().strip()[0] == "y":
+            raise
