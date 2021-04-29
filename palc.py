@@ -50,18 +50,21 @@ try:
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
         pos += 1
+    pos -= 1
     input_invalid_eh = True
     while input_invalid_eh:
         try:
-            translation = int(input("Please type the number corresponding to the language of choice...")) - 1
+            translation = input("Please type the number corresponding to the language of choice...")
+            translation = int(translation)
             if translation > pos:
                 raise ValueError
         except ValueError:
-            cprint.err("\033[F%s: Invalid input, try again." % translation + MANYSPACE * 2)
+            cprint.err("\033[F %s: Invalid input, try again." % translation + MANYSPACE * 2)
             input_invalid_eh = True
         else:
             input_invalid_eh = False
-    LANG = list(settings["GETTEXT_NAMES"])[translation]
+    logging.debug("Selected translation %s" % (translation - 1))
+    LANG = list(settings["GETTEXT_NAMES"])[translation - 1]
     LANG = settings["GETTEXT_NAMES"][LANG]
     lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
     lang_translations.install()
