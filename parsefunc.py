@@ -1,4 +1,4 @@
-import sys, logging, turbofunc, mathmod, runpy, time
+import sys, logging, turbofunc, mathmod, runpy, time, random
 from cprint import cprint
 
 def GetNums():
@@ -31,7 +31,7 @@ def parseCalc(calc):
         parse_modulo()
     elif _("sub") in calc or "-" in calc or _("min") in calc:
         parse_subtraction()
-    elif _("add") in calc or "+" in calc:
+    elif _("add") in calc or "+" in calc or _("plus") in calc:
         parse_addition()
     elif _("mult") in calc or calc == "x" or "*" in calc:
         parse_multiplication()
@@ -39,11 +39,11 @@ def parseCalc(calc):
         showUserWhatIThink("exit")
         sys.exit()
     #FOR TRANSLATORS: This is a translated if statement. If possible, use only a core part of the word(s) here, like for example "division" turns into "div".
-    elif _("help") in calc or _("?") in calc:
+    elif _("help") in calc or _("?") in calc or _("confus") in calc or _("huh") in calc or _("sos") in calc or _("what") in calc:
         cprint.info(helpText)
-    elif _("no u") in calc:
+    elif _("no") in calc:
         cprint.warn(_("Ha... ha... not... funny... whoever you are."))
-        sys.exit(69)
+        sys.exit(random.choice((42,69))) #the funny number
     elif calc == "":
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
