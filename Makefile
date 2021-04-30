@@ -12,4 +12,4 @@ test:
 	@echo Finished testing
 # This code belongs on Reddit
 clean:
-	@rm -iR fradd.txt engadd.txt __pycache__ palc.log || echo "Failed to delete." #infrared
+	@rm -iR fradd.txt engadd.txt __pycache__ palc.log || echo "Some files failed to delete. This could be because of missing permissions, if the files still exist please check their perms." #infrared
