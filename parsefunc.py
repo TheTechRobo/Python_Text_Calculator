@@ -40,7 +40,8 @@ def parseCalc(calc):
         sys.exit()
     #FOR TRANSLATORS: This is a translated if statement. If possible, use only a core part of the word(s) here, like for example "division" turns into "div".
     elif _("help") in calc or _("?") in calc or _("confus") in calc or _("huh") in calc or _("sos") in calc or _("what") in calc:
-        cprint.info(helpText)
+        #TODO: refactor
+        cprint.info(_(helpText))
     elif _("no") in calc:
         cprint.warn(_("Ha... ha... not... funny... whoever you are."))
         sys.exit(random.choice((42,69))) #the funny number
@@ -48,10 +49,11 @@ def parseCalc(calc):
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
     else:
-        cprint.err("UNKNOWN COMMAND - %s" % helpText.split('\n')[0]) #https://stackoverflow.com/a/11833277/9654083
-        cprint.ok("I'll help!")
-        cprint.info(helpText.split('\n')[2])
-        cprint.ok(helpText.split('\n')[3])
+        #TODO: refactor
+        cprint.err(_("UNKNOWN COMMAND - %s") % helpText.split('\n')[0]) #https://stackoverflow.com/a/11833277/9654083
+        cprint.ok(_("I'll help!"))
+        cprint.info(_(helpText.split('\n')[2]))
+        cprint.ok(_(helpText.split('\n')[3]))
 
 def parse_division():
     try:
@@ -91,6 +93,7 @@ def runMathmodFunc(func):
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, *nums are %s." % (res,nums))
 
+#TODO: make a function wrapper for this, for gettext
 string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
 helpText = """Using Palc but don't know what to do??
 I'll help!
