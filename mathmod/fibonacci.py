@@ -26,7 +26,7 @@ def CalculateFixedFibo(amount):
     amount -= 2 #because we have already added the first two numbers
     for i in range(0, amount):
         num = num0 + num1 #set variable num to the sum of num0 and num1.
-        if hi == 0:
+        if hi is 0:
             num0 = num
             hi = 1
         else: #every other time this loops it will run this instead of the previous block
