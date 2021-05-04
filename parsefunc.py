@@ -75,16 +75,18 @@ def parse_subtraction():
     runMathmodFunc(mathmod.subtraction)
 
 def parse_modulo():
+    run2NumMathmodFunc(mathmod.modulo)
+
+def run2NumMathmodFunc(func):
     logging.debug("Right here")
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
-    n1 = float(input())
+    n1 = float(turbofunc.CleanInput(input()))
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
-    n2 = float(input())
-    res = mathmod.modulo(n1,n2)
+    n2 = float(turbofunc.CleanInput(input()))
+    res = func(n1,n2)
     cprint.info(_("The results are in! They indicate an answer of... "))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
-
 def runMathmodFunc(func):
     logging.debug("Right here")
     nums = GetNums()
