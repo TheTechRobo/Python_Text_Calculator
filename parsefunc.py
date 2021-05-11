@@ -90,7 +90,10 @@ def run2NumMathmodFunc(func):
 def runMathmodFunc(func):
     logging.debug("Right here")
     nums = GetNums()
-    res = func(*nums)
+    try:
+        res = func(*nums)
+    except IndexError:
+        raise ValueError
     cprint.ok(_("The results are in! They indicate an answer of..."))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, *nums are %s." % (res,nums))
