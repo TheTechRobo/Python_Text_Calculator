@@ -62,6 +62,7 @@ def parse_division():
         turbofunc.standTextOut("Oops!")
         # FOR TRANSLATORS: **PLEASE** keep the \033[1m and \033[0m and \n
         cprint.err(_("I see you divided by 0. \033[1mPlease don't do that\033[0m"), end="")
+        # FOR TRANSLATORS: This is not a typo. It is a continuation of "Please don't do that".
         cprint.err(_(", as it doesn't work."))
         cprint.info(_("Think of it as Siri does. Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends."))
 
