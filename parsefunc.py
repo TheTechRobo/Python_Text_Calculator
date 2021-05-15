@@ -1,6 +1,8 @@
 import sys, logging, turbofunc, mathmod, runpy, time, random
 from cprint import cprint
-
+MANYSPACE = "                    "
+class Vars:
+    CommandRetry = True
 def GetNums():
     nums = []
     newNums = []
@@ -48,12 +50,22 @@ def parseCalc(calc):
     elif calc == "":
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
-    else:
-        #TODO: refactor
-        cprint.err(_("UNKNOWN COMMAND - %s") % helpText.split('\n')[0]) #https://stackoverflow.com/a/11833277/9654083
-        cprint.ok(_("I'll help!"))
-        cprint.info(_(helpText.split('\n')[2]))
-        cprint.ok(_(helpText.split('\n')[3]))
+    else: #FIXME: in all other "if" outcomes we need to set Vars.CommandRetry to False.
+        #TODO: add a list of all calcs and change this to elif calc not in ("blah", "yak", "ok")
+          # then change "else" to raise a ValueError "This calculation exists, but is not implemented. Contact the developer."
+        if Vars.CommandRetry is True:
+            cprint.err(_("A-what?") + MANYSPACE) #funky kong :p
+            cprint.warn(_("Please retry"))
+            calc = input(_("Command? "))
+            Vars.CommandRetry = False
+            print()
+            parseCalc(calc)
+        elif Vars.CommandRetry is False:
+            cprint.fatal("I still can't understand what you would like to do.\n")
+            h()
+            Vars.CommandRetry = True
+        else:
+            raise ValueError("This should never happen. Contact the developer.")
 
 def parse_division():
     try:
@@ -102,18 +114,18 @@ def runMathmodFunc(func):
 
 #TODO: make a function wrapper for this, for gettext
 string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
-helpText = """Using Palc but don't know what to do??
-I'll help!
-There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo.
-Expressions (example: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now.
-\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m
-"""#https://stackoverflow.com/a/17303428/9654083
+def h():
+    cprint.info("I'll help!")
+    cprint.ok("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo.")
+    cprint.warn("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now.")
+    cprint.info("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m")#https://stackoverflow.com/a/17303428/9654083
 if __name__ == "__main__":
     cprint.warn("Do not run parsefunc on its own. Attempting to run Palc...")
     time.sleep(3)
     try:
         runpy.run_path("palc.py")
     except Exception as ename:
-        cprint.fatal("Failed. (%s)" % ename)
+        cprint.err("Failed. Raising backtrace...")
+        raise
 else:
     del runpy
