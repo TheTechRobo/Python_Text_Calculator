@@ -102,14 +102,14 @@ while True:
     except ValueError as ename:
         turbofunc.standTextOut(_("Oops!"),cprint.warn,cprint.err)
         logging.info("VALUEERROR: %s" % ename)
-        cprint.err(_("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues."))
+        cprint.err(_("You raised a ValueError! This is typically caused by an erroneous input. If it wasn't, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.\nFor further information, get a backtrace."))
         if input(_("Get a backtrace? ")).lower().strip()[0] == "y":
             raise
         cprint.warn(_("Aborting backtrace."))
     except TypeError as ename:
         turbofunc.standTextOut(_("Oops!"),cprint.warn,cprint.err)
         logging.info("TYPEERROR: %s" % ename)
-        cprint.err(_("You raised a TypeError! This is odd. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues."))
+        cprint.err(_("You raised a TypeError! This is odd. If you are sure that your inputs were correct, please file a bug report at github.com/thetechrobo/python-text-calculator/issues.\nFor further information, get a backtrace."))
         if input(_("Get a backtrace? ")).lower().strip()[0] == "y":
             raise
         cprint.warn(_("Aborting backtrace."))
