@@ -111,10 +111,8 @@ def runMathmodFunc(func):
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, *nums are %s." % (res,nums))
 
-#TODO: make a function wrapper for this, for gettext
 string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
 def h():
-    cprint.info(_("I'll help!") + MANYSPACE)
     cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo."))
     cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
     cprint.info(_("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m"))#https://stackoverflow.com/a/17303428/9654083
