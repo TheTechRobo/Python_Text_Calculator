@@ -29,7 +29,7 @@ def multiplication(*args, n1=None,n2=None): #multiplication
         """
         if n1 is not None or n2 is not None:
             n1,n2 = confloat(n1,n2)
-            warnings.warn("This n1 and n2 API is deprecated. Stop using it.")
+            warnings.warn("The n1/n2 API is deprecated. Stop using it.")
             return n1 * n2
         nums = []
         for item in args:

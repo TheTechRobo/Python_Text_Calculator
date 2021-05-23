@@ -111,7 +111,7 @@ def runMathmodFunc(func):
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, *nums are %s." % (res,nums))
 
-string_2num = "Please enter the next number, or enter a blank line to confirm your choices... "
+string_2num = "Please enter the next number; a blank line will confirm... "
 def h():
     cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo."))
     cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
