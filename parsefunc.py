@@ -1,4 +1,4 @@
-import sys, logging, turbofunc, mathmod, runpy, time, random
+import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random
 from cprint import cprint
 MANYSPACE = "                    "
 class Vars:
@@ -37,6 +37,17 @@ def parseCalc(calc):
         parse_addition()
     elif _("mult") in calc or calc == "x" or "*" in calc:
         parse_multiplication()
+    elif _("fib") in calc:
+        choice = input(_("Welcome to the fibonacci calculator.\n\t1 - Looped fibonacci (infinite)\n\t2 - Calculate a certain number of fibonacci numbers.\nSelect one: "))
+        if int(turbofunc.CleanInput(choice)) == 1:
+            try:
+                mathmod.fibonacci.CalculateLoopedFibo()
+            except KeyboardInterrupt:
+                print()
+        elif int(turbofunc.CleanInput(choice)) == 2:
+            num = int(turbofunc.CleanInput(input(_("Enter the number of fibonacci to calculate...")))) #NOW THATS A LOTTA PARENTHESIS!!!
+            cprint.info(_("The results are in! They indicate an answer of..."))
+            turbofunc.standTextOut(str(mathmod.fibonacci.CalculateFixedFibo(num)))
     elif _("exit") in calc or _("quit") in calc or _("bye") in calc or _("leave") in calc:
         showUserWhatIThink("exit")
         sys.exit()

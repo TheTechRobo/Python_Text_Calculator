@@ -39,26 +39,32 @@ def CalculateLoopedFibo():
     """
     This is looped fibonacci which is indefinite.
     """
+    final = list()
     print("0, 1", end=", ")
     num0 = 0
     num1 = 1
     hi = 0
-    while True:
-        num = num0 + num1 #set variable num to the sum of num0 and num1.
-        if hi == 0:
-            num0 = num
-            hi = 1
-        else: #every other time this loops it will run this instead of the previous block
-            num1 = num # set num1 to num
-            hi = 0 #next time it wont do this block it'll do the previous one
-        print(num, end=", ", flush=True) #print the current number
-        time.sleep(0.5)
+    try:
+        while True:
+            num = num0 + num1 #set variable num to the sum of num0 and num1.
+            if hi == 0:
+                num0 = num
+                hi = 1
+            else: #every other time this loops it will run this instead of the previous block
+                num1 = num # set num1 to num
+                hi = 0 #next time it wont do this block it'll do the previous one
+            print(num, end=", ", flush=True) #print the current number
+            final.append(num)
+            time.sleep(0.4)
+    except KeyboardInterrupt:
+        return final
 
 if __name__ == "__main__":
-    print("Press Control-C to stop.")
+    print("Press Control+C to stop.")
     try:
         CalculateLoopedFibo()
     except KeyboardInterrupt:
         print("Thanks for using Mathmod's fibonacci function!")
-    except Exception as ename:
-        print("An error occured. (%s)" % ename)
+    except Exception:
+        print("An error occured. Raising backtrace...")
+        raise
