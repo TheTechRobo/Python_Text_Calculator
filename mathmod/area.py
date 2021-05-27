@@ -39,7 +39,7 @@ def areaTrapezium(height, base1, base2):
     Also known as a "trapezoid" in the US.
     """
     height, base1, base2 = _floats(height, base1, base2)
-    return 0.5 * h * (base1 + base2)
+    return 0.5 * height * (base1 + base2)
 areaTrapezoid = areaTrapezium
 
 def areaCircle(radius):
