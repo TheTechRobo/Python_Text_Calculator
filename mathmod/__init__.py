@@ -1,5 +1,6 @@
 from __future__ import print_function #we need to tell the user if they are using python 2. all this does is prevent Syntaxerrors.
 import warnings
+from decimal import Decimal
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
@@ -87,18 +88,35 @@ def addition(*args,n1=None,n2=None): #addition
         for number in nums[1:]:
             result = result + number
         return result
-def cuRoot(x):
+def cuRoot(origin, useDecimal=False):
         """
-        Approximate.
+        (Deprecated) wrapper around rootGeneral
         """
         # all credit goes to https://stackoverflow.com/a/28014443/9654083
-        x = float(x)
-        if 0 <= x:
-            return x ** (1./3.)
-        return - (-x) ** (1./3.)
-def sqRoot(x):
-        x = float(x)
-        return x ** 0.5
+        rootGeneral(origin, 3, useDecimal)
+def sqRoot(origin, useDecimal=False):
+    """
+    (Deprecated) wrapper around rootGeneral
+    """
+    return rootGeneral(origin, 2, useDecimal)
+def rootGeneral(origin, root, useDecimal=False):
+    """
+    Setting useDecimal to True may provide a more accurate calculation, but could be considerably slower.
+    float('0.1') + float('0.2') = 0.30000000000000004, while float(Decimal('0.1') + Decimal('0.2')) = 0.3.
+    """
+    if useDecimal is True:
+        origin = Decimal(origin)
+        root = Decimal(root)
+        one = Decimal('1')
+    else:
+        origin = float(origin)
+        root = float(root)
+        one = 1
+    num = one / root
+    res = origin ** num
+    if useDecimal is True:
+        return float(Decimal(res))
+    return res
 def exponent(n1, n2):
         """
         param n1: Original number
