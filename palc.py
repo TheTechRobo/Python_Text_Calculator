@@ -12,7 +12,10 @@ try:
     from cprint import cprint
     import turbofunc, gettext, time, logging, os, os.path, parsefunc, runpy
 except Exception as ename:
-    print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: If it's not an error with parsefunc.py, try `pip install -r requirements.txt'." % ename)
+    if "No module named 'parsefunc'" in str(ename):
+        cprint.fatal("\n\n\nERROR 0: COULD NOT LOAD PARSEFUNC.\nThis is a fatal error. Please contact TheTechRobo.\n\n")
+        sys.exit(8)
+    print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: Try `pip install -r requirements.txt'." % ename)
     sys.exit(1)
 logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 
