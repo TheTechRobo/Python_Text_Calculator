@@ -58,11 +58,15 @@ try:
     while input_invalid_eh:
         try:
             #todo: use turbofunc sanitise input
-            translation = input("Please type the number corresponding to the language of choice...").strip()
-            translation = int(translation)
+            translation = int(turbofunc.CleanInput(input("Please type the number corresponding to the language of choice...")))
             if translation > pos or translation < 1:
                 raise ValueError
         except ValueError:
+            if "translation" in globals():
+                pass
+                #print("\ntranslationinglobals\n")
+            else:
+                translation = ""
             if translation == "":
                 translation = "(blank)"
             cprint.err("\033[F %s: Invalid input, try again." % translation + MANYSPACE * 2)
@@ -85,7 +89,7 @@ def mainloop():
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-        turbofunc.multiprint({_("\nWelcome to"): cprint.info, " ": print, _("Palc"): cprint.ok, "!" + MANYSPACE + "\n": cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
+        turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!%s\n" % MANYSPACE: cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
         cprint.warn("\nEnter HELP for help", flush=True)
         calc = input("                           \033[A\033[A")
     else:
