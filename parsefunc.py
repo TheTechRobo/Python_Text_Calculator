@@ -1,6 +1,13 @@
 import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random
 from cprint import cprint
 MANYSPACE = "                    "
+
+# Data for the Beta {{{
+def express_fibonacci(num):
+    fib = mathmod.fibonacci.CalculateFixedFibo(num)
+    return fib[len(fib) - 1]
+# }}}
+
 class Vars:
     CommandRetry = True
 def GetNums():
@@ -60,6 +67,20 @@ def parseCalc(calc):
     elif calc == "":
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
+    elif "beta" in calc:
+        cprint.warn("You are entering the BETA section of Palc.\nThis may or may not work.")
+        cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
+        cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
+        cprint.ok("Safe mode enabled.")
+        from simpleeval import simple_eval
+        calc2 = input("?")
+        if calc2 == "SET MODE UNSAFE":
+            cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
+            cprint.ok(eval(input("UNSAFE MODE - ")))
+            return
+        cprint.ok(simple_eval(calc2, functions={
+            "Palcfib": express_fibonacci,
+        }))
     else:
         #TODO: add a list of all calcs and change this to elif calc not in ("blah", "yak", "ok")
           # then change "else" to raise a ValueError "This calculation exists, but is not implemented. Contact the developer."
