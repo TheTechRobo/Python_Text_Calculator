@@ -38,6 +38,7 @@ def parseCalc(calc):
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
     elif _("mod") in calc:
         parse_modulo()
+    # FOR TRANSLATORS: this is a translated if statement with the meaning of "subtraction" (or, in the case of "min", "minus"). Translate only  a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod".
     elif _("sub") in calc or "-" in calc or _("min") in calc:
         parse_subtraction()
     elif _("add") in calc or "+" in calc or _("plus") in calc:
