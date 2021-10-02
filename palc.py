@@ -122,10 +122,6 @@ def mainloop():
         time.sleep(0.8)
     logging.debug("calc: %s" % calc)
     logging.debug("oldcalc: %s" % oldCalc)
-    if "\u001b[A" in calc: #https://stackoverflow.com/a/23560936/9654083
-        parsefunc.parseCalc(oldCalc)
-        return
-    parsefunc.parseCalc(calc)
     oldCalc = calc
 while True:
     try:
