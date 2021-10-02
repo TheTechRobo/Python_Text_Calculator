@@ -87,7 +87,7 @@ time.sleep(1)
 def mainloop():
     calc = ""
     global oldCalc
-    if sys.stdin.isatty:
+    if sys.stdin.isatty():
         turbofunc.pressanykey()
         turbofunc.clearScreen()
         turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!%s\n" % MANYSPACE: cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
@@ -120,6 +120,7 @@ def mainloop():
         time.sleep(2.4)
         calc = input(_("Waiting for command..."))
         time.sleep(0.8)
+        parsefunc.parseCalc(calc)
     logging.debug("calc: %s" % calc)
     logging.debug("oldcalc: %s" % oldCalc)
     oldCalc = calc
