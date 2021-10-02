@@ -45,6 +45,9 @@ def parseCalc(calc):
         parse_addition()
     elif _("mult") in calc or calc == "x" or "*" in calc:
         parse_multiplication()
+    # FOR TRANSLATORS: this is a translated if statement with the meaning of "factorial". Translate only a core part of the word if possible without ambuguity, like for example "modulo" turns into "mod".
+    elif _("fac") in calc or "!" in calc:
+        parse_factorial()
     elif _("fib") in calc:
         choice = input(_("Welcome to the fibonacci calculator.\n\t1 - Looped fibonacci (infinite)\n\t2 - Calculate a certain number of fibonacci numbers.\nSelect one: "))
         if int(turbofunc.CleanInput(choice)) == 1:
@@ -89,6 +92,14 @@ def parseCalc(calc):
           # then change "else" to raise a ValueError "This calculation exists, but is not implemented. Contact the developer."
         cprint.err(_("Sorry, that is not a valid command.\n"))
         h()
+# TODO: Move to mathmod.
+def parse_factorial():
+    turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ")
+    num = int(turbofunc.CleanInput(input()))
+    fin = mathmod.factorial(num)
+    cprint.ok(_("The results are in! They indicate an answer of..."))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % fin, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    logging.info("Got res %s, num are %s." % (fin,num))
 
 def parse_division():
     try:

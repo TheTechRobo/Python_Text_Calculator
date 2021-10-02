@@ -88,17 +88,12 @@ def addition(*args,n1=None,n2=None): #addition
         for number in nums[1:]:
             result = result + number
         return result
-def cuRoot(origin, useDecimal=False):
-        """
-        (Deprecated) wrapper around rootGeneral
-        """
-        # all credit goes to https://stackoverflow.com/a/28014443/9654083
-        rootGeneral(origin, 3, useDecimal)
-def sqRoot(origin, useDecimal=False):
-    """
-    (Deprecated) wrapper around rootGeneral
-    """
-    return rootGeneral(origin, 2, useDecimal)
+def factorial(num):
+    fin = num
+    while num > 1:
+        num -= 1
+        fin = fin * num
+    return fin
 def rootGeneral(origin, root, useDecimal=False):
     """
     Setting useDecimal to True may provide a more accurate calculation, but could be considerably slower.

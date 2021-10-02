@@ -83,7 +83,7 @@ except (KeyboardInterrupt, EOFError):
 turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
 time.sleep(1)
 def mainloop():
-    calc = ""
+    calc = []
     global oldCalc
     if sys.stdin.isatty():
         turbofunc.pressanykey()
@@ -95,12 +95,18 @@ def mainloop():
             keypress = turbofunc.pressanykey(string=string, decodeGetchToUnicode=True)
             if keypress == "\r" or keypress == "\n" or keypress == "\r\n":
                 print()
+                a = ""
+                for i in calc:
+                    a += i
+                calc = a
+                del a
                 parsefunc.parseCalc(calc)
                 break
             if keypress == "\x7f" or keypress == "\b":
                 if len(calc) == 0:
                     string = ""
                     continue
+                print("\b ", end="")
                 string = "\b"
                 calc = calc[:-1] #https://stackoverflow.com/a/15478161/9654083
                 continue
