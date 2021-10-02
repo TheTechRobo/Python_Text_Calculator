@@ -85,13 +85,22 @@ except (KeyboardInterrupt, EOFError):
 turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
 time.sleep(1)
 def mainloop():
+    calc = ""
     global oldCalc
     if sys.stdin.isatty:
         turbofunc.pressanykey()
         turbofunc.clearScreen()
         turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!%s\n" % MANYSPACE: cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
         cprint.warn("\nEnter HELP for help", flush=True)
-        calc = input("                           \033[A\033[A")
+        string = ("                           \033[A\033[A")
+        while True:
+            keypress = turbofunc.pressanykey(string=string, decodeGetchToUnicode=True)
+            if keypress == "\r" or keypress == "\n" or keypress == "\r\n":
+                parsefunc.parseCalc(calc)
+                break
+            else:
+                print(keypress, end="", flush=True)
+                calc += keypress
     else:
         time.sleep(2.4)
         calc = input(_("Waiting for command..."))
