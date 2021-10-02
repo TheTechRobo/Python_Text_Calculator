@@ -1,7 +1,6 @@
 # https://dzone.com/articles/listing-a-directory-with-python
 MANYSPACE = "                                 "
 oldCalc = "no u"
-
 # Basic Setup
 try:
     ModuleNotFoundError
@@ -17,10 +16,9 @@ except Exception as ename:
         sys.exit(8)
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: Try `pip install -r requirements.txt'." % ename)
     sys.exit(1)
-logging.basicConfig(filename="palc.log", level=logging.DEBUG, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
+logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 
 logging.debug("Logging works!")
-
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller (https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
 """
@@ -117,7 +115,7 @@ def mainloop():
                 calc += keypress
             string = ""
     else:
-        time.sleep(2.4)
+        time.sleep(1.4)
         calc = input(_("Waiting for command..."))
         time.sleep(0.8)
         parsefunc.parseCalc(calc)
