@@ -1,8 +1,6 @@
 name: Test Python-script.
 
-on: 
-  - [push]
-  - [pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
