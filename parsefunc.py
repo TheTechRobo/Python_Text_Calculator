@@ -73,9 +73,11 @@ def parseCalc(calc):
         cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
         cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
         cprint.ok("Safe mode enabled.")
+        logging.debug("EEM")
         from simpleeval import simple_eval
         calc2 = input("?")
         if calc2 == "SET MODE UNSAFE":
+            logging.debug("EEM UNSAFE")
             cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
             cprint.ok(eval(input("UNSAFE MODE - ")))
             return
