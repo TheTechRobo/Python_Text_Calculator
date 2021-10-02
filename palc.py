@@ -96,11 +96,26 @@ def mainloop():
         while True:
             keypress = turbofunc.pressanykey(string=string, decodeGetchToUnicode=True)
             if keypress == "\r" or keypress == "\n" or keypress == "\r\n":
+                print()
                 parsefunc.parseCalc(calc)
                 break
+            if keypress == "\x7f" or keypress == "\b":
+                if len(calc) == 0:
+                    string = ""
+                    continue
+                string = "\b"
+                calc = calc[:-1] #https://stackoverflow.com/a/15478161/9654083
+                continue
+            if keypress == "\x1b":
+                if oldCalc == "no u":
+                    cprint.warn(_("\nHa...ha...not...funny...whoever you are."))
+                    sys.exit(69)
+                calc += oldCalc
+                print(oldCalc, end="", flush=True)
             else:
                 print(keypress, end="", flush=True)
                 calc += keypress
+            string = ""
     else:
         time.sleep(2.4)
         calc = input(_("Waiting for command..."))
