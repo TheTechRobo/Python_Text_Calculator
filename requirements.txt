@@ -2,3 +2,4 @@ turbofunc~=2.0
 cprint~=1.2.2
 python-radix-ng~=0.2
 simpleeval~=0.9.10
+colorama~=0.4.4

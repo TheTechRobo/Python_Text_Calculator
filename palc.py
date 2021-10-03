@@ -112,6 +112,11 @@ def mainloop():
                     sys.exit(69)
                 calc += oldCalc
                 print(oldCalc, end="", flush=True)
+                continue
+            if keypress == "\x03":
+                raise KeyboardInterrupt
+            if keypress == "\x04":
+                raise EOFError
             else:
                 print(keypress, end="", flush=True)
                 calc += keypress
