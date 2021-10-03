@@ -19,14 +19,10 @@ except Exception as ename:
 logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 
 logging.debug("Logging works!")
+
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller (https://stackoverflow.com/questions/61718298/compiling-gettext-locales-with-pyinstaller-in-python-3-x)
-"""
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
+    """ Get absolute path to resource, works for dev and for PyInstaller https://stackoverflow.com/a/44352931/9654083"""
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
 try:
