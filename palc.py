@@ -1,5 +1,5 @@
 # https://dzone.com/articles/listing-a-directory-with-python
-MANYSPACE = "                                 "
+MANYSPACE = "                                 " #todo: check terminal size then subtract character count from it
 oldCalc = "no u"
 # Basic Setup
 try:

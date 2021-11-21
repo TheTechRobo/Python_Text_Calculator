@@ -49,6 +49,13 @@ def areaCircle(radius):
     radius = _floats(radius)[0]
     return pi * (radius ** 2)
 
+def areaSemicircle(radius):
+    """
+    See areaCircle
+    """
+    r = _floats(radius)[0]
+    return 0.5 * (area_circle(r))
+
 def areaEllipse(major, minor):
     """
     param major: Length of Semi-major axis
@@ -56,3 +63,28 @@ def areaEllipse(major, minor):
     """
     major, minor = _floats(major, minor)
     return pi * major * minor
+
+def areaSector(angle, radius):
+    """
+    :param angle: Angle in radians
+    :param radius: Radius of the sector
+    """
+    angle, radius = _floats(angle, radius)
+    return 0.5 * (radius ** 2) * angle
+
+def areaRhombus(base, height):
+    """
+    :param base: Length of any side.
+    :param height: Height of the rhombus.
+    Source: https://byjus.com/maths/area-of-rhombus/
+    """
+    base, height = _floats(base, height)
+    return base * height
+
+def areaRing(inner, outer):
+    """
+    :param inner: Radius of the inner circle
+    :param outer: Inner but outer
+    """
+    inner, outer = _floats(inner, outer)
+    return pi * ((outer ** 2) - (inner ** 2))
