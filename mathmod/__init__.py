@@ -94,7 +94,7 @@ def factorial(num):
         num -= 1
         fin = fin * num
     return fin
-def rootGeneral(origin, root, useDecimal=False):
+def root_general(origin, root, useDecimal=False):
     """
     Setting useDecimal to True may provide a more accurate calculation, but could be considerably slower.
     float('0.1') + float('0.2') = 0.30000000000000004, while float(Decimal('0.1') + Decimal('0.2')) = 0.3.
@@ -112,6 +112,8 @@ def rootGeneral(origin, root, useDecimal=False):
     if useDecimal is True:
         return float(Decimal(res))
     return res
+rootGeneral = root_general
+
 def exponent(n1, n2):
         """
         param n1: Original number
@@ -245,7 +247,7 @@ def calculateTemperature(origin, source, destination):
         else:
             raise ValueError("MATHMOD: Invalid input(s).")
         return yolo
-def Spinner(numberOfTimes, choiceSelection):
+def spinner(numberOfTimes, choiceSelection):
         """
         param numberOfTimes: Amount of times to conduct the spinner.
         param choiceSelection: An iterable of the choices. Should be in this format: ["choice1", "choice2", "etc"].
@@ -261,3 +263,4 @@ def Spinner(numberOfTimes, choiceSelection):
         resultAsTuple = tuple(result)
         del random, result #the garbage won't do
         return resultAsTuple
+Spinner = spinner
