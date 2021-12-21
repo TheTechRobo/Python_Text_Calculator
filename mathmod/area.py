@@ -18,45 +18,45 @@ def _floats(*args):
         hi.append(float(item))
     return hi
 
-def areaTriangle(base, height):
+def area_triangle(base, height):
     base, height = _floats(base, height)
     return base * height * 0.5
 
-def areaSquare(length):
+def area_square(length):
     a = _floats(a)[0]
     return a * a
 
-def areaRectangle(width, height):
+def area_rectangle(width, height):
     width, height = _floats(width, height)
     return width * height
 
-def areaParallelogram(base, height):
+def area_parallelogram(base, height):
     base, height = _floats(base, height)
     return base * height
 
-def areaTrapezium(height, base1, base2):
+def area_trapezium(height, base1, base2):
     """
     Also known as a "trapezoid" in the US.
     """
     height, base1, base2 = _floats(height, base1, base2)
     return 0.5 * height * (base1 + base2)
-areaTrapezoid = areaTrapezium
+area_trapezoid = area_trapezium
 
-def areaCircle(radius):
+def area_circle(radius):
     """
     Uses `math.pi' as pi.
     """
     radius = _floats(radius)[0]
     return pi * (radius ** 2)
 
-def areaSemicircle(radius):
+def area_semicircle(radius):
     """
     See areaCircle
     """
     r = _floats(radius)[0]
     return 0.5 * (area_circle(r))
 
-def areaEllipse(major, minor):
+def area_ellipse(major, minor):
     """
     param major: Length of Semi-major axis
     param minor: Length of Semi-minor axis
@@ -64,7 +64,7 @@ def areaEllipse(major, minor):
     major, minor = _floats(major, minor)
     return pi * major * minor
 
-def areaSector(angle, radius):
+def area_sector(angle, radius):
     """
     :param angle: Angle in radians
     :param radius: Radius of the sector
@@ -72,7 +72,7 @@ def areaSector(angle, radius):
     angle, radius = _floats(angle, radius)
     return 0.5 * (radius ** 2) * angle
 
-def areaRhombus(base, height):
+def area_rhombus(base, height):
     """
     :param base: Length of any side.
     :param height: Height of the rhombus.
@@ -81,7 +81,7 @@ def areaRhombus(base, height):
     base, height = _floats(base, height)
     return base * height
 
-def areaRing(inner, outer):
+def area_ring(inner, outer):
     """
     :param inner: Radius of the inner circle
     :param outer: Inner but outer

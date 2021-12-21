@@ -1,4 +1,5 @@
 import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random
+import mathmod.area
 from cprint import cprint
 MANYSPACE = "                    "
 
@@ -33,6 +34,8 @@ def showUserWhatIThink(msg):
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
+    if "test" in calc:
+        area_interactive()
     if "/" in calc or _("div") in calc or "÷" in calc:
         parse_division()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
@@ -88,11 +91,9 @@ def parseCalc(calc):
             "Palcfib": express_fibonacci,
         }))
     else:
-        #TODO: add a list of all calcs and change this to elif calc not in ("blah", "yak", "ok")
-          # then change "else" to raise a ValueError "This calculation exists, but is not implemented. Contact the developer."
         cprint.err(_("Sorry, that is not a valid command.\n"))
         h()
-# TODO: Move to mathmod.
+
 def parse_factorial():
     turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ")
     num = int(turbofunc.CleanInput(input()))
@@ -145,6 +146,34 @@ def runMathmodFunc(func):
     cprint.ok(_("The results are in! They indicate an answer of..."))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
     logging.info("Got res %s, *nums are %s." % (res,nums))
+
+def _gen_entry(name, prompts, func):
+    return {
+            "name": name, "prompts": prompts, "function": func
+            }
+
+def generic_interactive(datums):
+    cprint.info("Select a shape...")
+    pos = 1
+    for datum in datums:
+        print(f"{pos}. {datum['name']}")
+    exit(1)
+
+def area_interactive():
+    calculation_list = [
+            _gen_entry(_("Triangle"), [_("Please enter the length of the base of the triangle..."), _("Please enter the height of the base of the triangle...")], mathmod.area.area_triangle),
+            _gen_entry(_("Square"), [_("Please enter the length of the square...")], mathmod.area.area_square),
+            _gen_entry(_("Rectangle"), [_("Please enter the width of the rectangle..."), _("Please enter the height of the rectangle...")], mathmod.area.area_rectangle),
+            _gen_entry(_("Parallelogram"), [_("Please enter the length of the base of the parallelogram..."), _("Please enter the height of the parallelogram...")], mathmod.area.area_parallelogram),
+            _gen_entry(_("Trapezium / Trapezoid"), [_("Please enter the height of the shape..."), _("Please enter the length of the first base of the shape..."), _("Please enter the length of the second base of the shape...")], mathmod.area.area_trapezium),
+            _gen_entry(_("Circle"), [_("Please enter the radius of the circle...")], mathmod.area.area_circle),
+            _gen_entry(_("Semicircle"), [_("Please enter the radius of the semicircle...")], mathmod.area.area_semicircle),
+            _gen_entry(_("Ellipse"), [_("Please enter the length of the semi-major axis..."), _("Please enter the length of the semi-minor axis...")], mathmod.area.area_ellipse),
+            _gen_entry(_("Sector"), [_("Please enter the angle of the sector, in radians..."), _("Please enter the radius of the sector...")], mathmod.area.area_sector),
+            _gen_entry(_("Rhombus"), [_("Please enter the length of any side of the rhombus..."), _("Please enter the height of the rhombus...")], mathmod.area.area_rhombus),
+            _gen_entry(_("Ring"), [_("Please enter the radius of the inner circle..."), _("Please enter the radius of the outer circle...")], mathmod.area.area_ring),
+            ]
+    generic_interactive(calculation_list)
 
 string_2num = "Please enter the next number; a blank line will confirm... "
 def h():
