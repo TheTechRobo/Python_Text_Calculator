@@ -34,7 +34,7 @@ def showUserWhatIThink(msg):
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
-    if "test" in calc:
+    if _("area") in calc or "#" in calc:
         area_interactive()
     elif "/" in calc or _("div") in calc or "÷" in calc:
         parse_division()
