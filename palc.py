@@ -147,7 +147,7 @@ while True:
             raise
         cprint.warn(_("Aborting backtrace."))
     except EOFError as ename:
-        if not sys.stdin.isatty:
+        if not sys.stdin.isatty():
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
         else:
             cprint.warn("It's suggested to run EXIT instead of ^D." + MANYSPACE)
