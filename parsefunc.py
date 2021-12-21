@@ -36,7 +36,7 @@ def parseCalc(calc):
     calc = turbofunc.CleanInput(calc).lower()
     if "test" in calc:
         area_interactive()
-    if "/" in calc or _("div") in calc or "÷" in calc:
+    elif "/" in calc or _("div") in calc or "÷" in calc:
         parse_division()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
     elif _("mod") in calc:
@@ -156,8 +156,24 @@ def generic_interactive(datums):
     cprint.info("Select a shape...")
     pos = 1
     for datum in datums:
-        print(f"{pos}. {datum['name']}")
-    exit(1)
+        cprint.ok(f"{pos}. {datum['name']}")
+        pos += 1
+    userInput = input(_("Type the number corresponding to your shape!"))
+    try:
+        inp = int(turbofunc.CleanInput(userInput)) - 1
+        if inp < 0:
+            raise ValueError("no")
+        datums[inp]
+    except Exception:
+        cprint.err(_("Please enter an actual option, ok??"))
+        return
+    cprint.info(_("Ok, proceeding with %s...") % datums[inp]['name'])
+    args = []
+    for prompt in datums[inp]['prompts']:
+        args.append(turbofunc.CleanInput(input(prompt)))
+    res = datums[inp]['function'](*args)
+    cprint.ok(_("The results are in! They indicate an answer of..."))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
 
 def area_interactive():
     calculation_list = [

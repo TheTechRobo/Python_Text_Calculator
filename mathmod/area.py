@@ -23,7 +23,7 @@ def area_triangle(base, height):
     return base * height * 0.5
 
 def area_square(length):
-    a = _floats(a)[0]
+    a = _floats(length)[0]
     return a * a
 
 def area_rectangle(width, height):
