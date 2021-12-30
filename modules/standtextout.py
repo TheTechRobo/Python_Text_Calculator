@@ -8,7 +8,10 @@ def standTextOut(string, printMechanismDash=print, printMechanismString=print):
     param printMechanismString: how it will output the string that is sandwidched in between the dashes. Defaults to print.
         ***READ THE ABOVE IMPORTANT NOTICE (of printMechanismDash)!!!***
     """
-    width = os.get_terminal_size().columns
+    try:
+        width = os.get_terminal_size().columns
+    except Exception:
+        width = 80
     dashes = "-" * width
     printMechanismDash(dashes)
     printMechanismString(string.center(width))
