@@ -190,63 +190,6 @@ def calculateInterest(units, rate, origin):
         result = origin + interest
         warnings.warn("Warning: This old function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
         return result
-def calculateTemperature(origin, source, destination):
-        """
-        origin: Original Number
-        source: 
-          - 1 for Farenheit
-          - 2 for Celsius
-          - 3 for Kelvin
-          - 4 for Rankine
-        destination: 
-          - 1 for Farenheit
-          - 2 for Celsius
-          - 3 for Kelvin
-          - 4 for Rankine
-        It would start at 0 but it would require some code changes in parsefunc so whatever. \__(^_^)__/
-        """
-        origin = float(origin)
-        source = int(source)
-        destination = int(destination)
-        if source == 1 and destination == 2:
-            yolo = origin - 32
-            yolo = yolo * 5/9
-        elif source == 2 and destination == 1:
-            yolo = origin * 9/5
-            yolo = yolo + 32
-        elif source == 1 and destination == 3:
-            #convert to celsius
-            yolo = origin - 32
-            yolo = yolo * 5/9
-            #convert from celsius to kelvin
-            yolo = yolo + 273.15
-        elif source == 2 and destination == 3:
-            yolo = origin + 273.15 #convert to kelvin
-        elif source == 3 and destination == 2:
-            yolo = origin - 273.15 #do the opposite of celsius to kelvin
-        elif source == 3 and destination == 1: #kelvin to farenheit
-            yolo = origin - 273.15
-            yolo = yolo * 9/5
-            yolo = yolo + 32
-        elif source == 4 and destination == 1: #rankine to farenheit
-            yolo = origin - 459.67
-        elif source == 4 and destination == 2: #rankine to celsius
-            yolo = (origin - 491.67) * 5/9
-        elif source == 4 and destination == 3: #rankine to kelvin
-            yolo = origin * 5/9
-        elif source == 1 and destination == 4: #farenheit to rankine
-            yolo = origin + 459.67
-        elif source == 2 and destination == 4: #celsius to rankine
-            yolo = origin * 9/5 + 491.67
-        elif source == 3 and destination == 4: #kelvin to rankine
-            yolo = origin * 1.8
-        #elif source == destination: 
-            #raise ValueError("bruh moment.")
-            #pass
-        # TO FIGURE OUT THE FORMULA I JUST GOOGLED 5 ____ TO _____ AND LOOKED AT THE FORMULA IT SHOWS.
-        else:
-            raise ValueError("MATHMOD: Invalid input(s).")
-        return yolo
 def spinner(numberOfTimes, choiceSelection):
         """
         param numberOfTimes: Amount of times to conduct the spinner.
