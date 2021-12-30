@@ -1,7 +1,11 @@
 # python-text-calculator
 # For installation instructions see [INSTALLING.md](INSTALLING.md)
 
-NOTE: In Mathmod 0.11, syntax will change and Mathmod will not be compatible with python versions earlier than 3.4.
+### Compatibility Warnings
+
+- In Mathmod 0.11, syntax will change and Mathmod will not be compatible with python versions earlier than 3.4.
+
+- In Palc 0.11, Palc will no longer be compatible with Python versions earlier than 3.7.
 
 ## I cannot emphasize this enough: to contribute, READ [CONTRIBUTING.md](CONTRIBUTING.md) FIRST!!!!
 
@@ -23,7 +27,7 @@ I always make my forked repositories better — and this one is no exception!
 Thanks for visiting!
 
 # Recommended packages
-It's suggested, if you're on Windows, to install `colorama` package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary (but doesn't harm anything) for all other operating systems. 
+It's suggested, if you're using the Windows CMD, to install `colorama` package (`pip install colorama`), to increase the chances of Palc working correctly. This module is unnecessary (but doesn't harm anything) for all other operating systems. 
 
 # Input-redirection documentation
 WIP
