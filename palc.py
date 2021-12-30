@@ -31,7 +31,7 @@ except Exception:
         print("Could not access python-future and am on Python 2; won't continue. Try installing the module 'future' (pip install future).")
 
 try:
-    raw_input
+    raw_input # pylint: disable=pointless-statement,used-before-assignment
     input = raw_input
 except Exception:
     pass
@@ -379,9 +379,6 @@ Anything else - Back to menu."))
        elif calc == " ":
             logging.error("user said nothing")
             cprint.err(_("You speak quietly"))
-       elif calc is None:
-            logging.error("User attempted to type nothing as a command")
-            cprint.err(_("I can't heeeaaaarrrrr youuuuuuuu"))
        else:
             logging.error("User typed an invalid command (%s)" % calc)
             cprint.err(_('''
@@ -389,8 +386,8 @@ I don't understand your request. Here are the currently supported calculations:
 multiplication, division, subtraction, addition, modulo, square, area, volume, cube, power, root, ord, fibonacci, logarithm, memory, percentage calculator, interest calculator, temperature, and base. Sorry for the inconvenience
 '''))
 standTextOut(_("Welcome to Palc!"), print, cprint.info)
-palc()
-"""try:
+
+try:
     palc() #run all that code
 except SyntaxError as ename: #easter eggz
     raise #raise exact same exception
@@ -416,4 +413,4 @@ except Exception as ename:
 finally:
     logging.info("Program finished.")
 #EOF
-"""
+
