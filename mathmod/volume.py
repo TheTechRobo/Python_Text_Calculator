@@ -97,5 +97,5 @@ def volume_tetrahedron(length):
     """
     length: length of the edge
     """
-    a = float(a)
+    a = float(length)
     return a ** 3 / (6 * sqrt(2))

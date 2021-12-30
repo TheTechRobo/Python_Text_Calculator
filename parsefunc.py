@@ -165,15 +165,17 @@ def generic_interactive(datums):
     for datum in datums:
         cprint.ok(f"{pos}. {datum['name']}")
         pos += 1
-    userInput = input(_("Type the number corresponding to your shape!"))
-    try:
-        inp = int(turbofunc.CleanInput(userInput)) - 1
-        if inp < 0:
-            raise ValueError("no")
-        datums[inp]
-    except Exception:
-        cprint.err(_("Please enter an actual option, ok??"))
-        return
+    while True:
+        userInput = input(_("Type the number corresponding to your shape!"))
+        try:
+            inp = int(turbofunc.CleanInput(userInput)) - 1
+            if inp < 0:
+                raise ValueError("no")
+            datums[inp] # pylint: disable=pointless-statement, locally-disabled
+        except (ValueError, IndexError):
+            cprint.err(_("Please enter an actual option, ok??"))
+        else:
+            break
     cprint.info(_("Ok, proceeding with %s...") % datums[inp]['name'])
     args = []
     for prompt in datums[inp]['prompts']:

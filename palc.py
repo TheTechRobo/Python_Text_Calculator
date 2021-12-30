@@ -51,7 +51,6 @@ try:
     input_invalid_eh = True
     while input_invalid_eh:
         try:
-            #todo: use turbofunc sanitise input
             translation = int(turbofunc.CleanInput(input("Please type the number corresponding to the language of choice...")))
             if translation > pos or translation < 1:
                 raise ValueError
