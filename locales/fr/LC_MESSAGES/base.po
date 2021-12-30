@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc POST-REWRITE\n"
-"POT-Creation-Date: 2021-12-21 10:55-0500\n"
-"PO-Revision-Date: 2021-12-21 11:05-0500\n"
+"POT-Creation-Date: 2021-12-29 20:35-0500\n"
+"PO-Revision-Date: 2021-12-29 20:35-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -16,17 +16,21 @@ msgstr ""
 "X-Poedit-Flags-xgettext: --add-comments=\"FOR TRANSLATORS:\"\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: palc.py:79 palc.py:87
+#: palc.py:79
 msgid ""
 "\n"
 "Welcome to "
 msgstr ""
 "\n"
-"Bienvenue à"
+"Bienvenue à "
 
 #: palc.py:79 palc.py:87
 msgid "Palc"
 msgstr ""
+
+#: palc.py:87
+msgid "Welcome to "
+msgstr "Bienvenue à "
 
 #: palc.py:87
 msgid "Please enter a command..."
@@ -86,59 +90,63 @@ msgstr "Salut !"
 msgid "Unknown error!"
 msgstr "\aErreur inconnue !\a"
 
-#: parsefunc.py:17
+#: parsefunc.py:18
 #, fuzzy
 #| msgid "Please enter the first number: "
 msgid "Please enter the first number..."
 msgstr "Premier nombre ? "
 
-#: parsefunc.py:31
+#: parsefunc.py:32
 #, python-format
 msgid "BTW, I parsed your choice as: %s"
 msgstr ""
 
-#: parsefunc.py:38
+#: parsefunc.py:37
+msgid "area"
+msgstr "aire"
+
+#: parsefunc.py:39
 msgid "div"
 msgstr "div"
 
 #. FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
-#: parsefunc.py:41
+#: parsefunc.py:42
 msgid "mod"
 msgstr "mod"
 
 #. FOR TRANSLATORS: this is a translated if statement with the meaning of "subtraction" (or, in the case of "min", "minus"). Translate only  a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod".
-#: parsefunc.py:44
+#: parsefunc.py:45
 msgid "sub"
 msgstr "sous"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
 # This one's the same as the other because I have no idea what it should be other than "soustraire".
-#: parsefunc.py:44
+#: parsefunc.py:45
 msgid "min"
 msgstr "sous"
 
-#: parsefunc.py:46
+#: parsefunc.py:47
 msgid "add"
 msgstr "ajoute"
 
-#: parsefunc.py:46
+#: parsefunc.py:47
 msgid "plus"
 msgstr "plus"
 
-#: parsefunc.py:48
+#: parsefunc.py:49
 msgid "mult"
 msgstr "mult"
 
 #. FOR TRANSLATORS: this is a translated if statement with the meaning of "factorial". Translate only a core part of the word if possible without ambuguity, like for example "modulo" turns into "mod".
-#: parsefunc.py:51
+#: parsefunc.py:52
 msgid "fac"
 msgstr "fac"
 
-#: parsefunc.py:53
+#: parsefunc.py:54
 msgid "fib"
 msgstr "fib"
 
-#: parsefunc.py:54
+#: parsefunc.py:55
 msgid ""
 "Welcome to the fibonacci calculator.\n"
 "\t1 - Looped fibonacci (infinite)\n"
@@ -146,65 +154,65 @@ msgid ""
 "Select one: "
 msgstr ""
 
-#: parsefunc.py:61
+#: parsefunc.py:62
 msgid "Enter the number of fibonacci to calculate..."
 msgstr "Entrer le nombre des chiffres fibonacci que tu veux calculer ..."
 
-#: parsefunc.py:62 parsefunc.py:100 parsefunc.py:145
+#: parsefunc.py:63 parsefunc.py:101 parsefunc.py:146 parsefunc.py:175
 msgid "The results are in! They indicate an answer of..."
 msgstr ""
 
-#: parsefunc.py:64
+#: parsefunc.py:65
 msgid "exit"
 msgstr "quitter"
 
-#: parsefunc.py:64
+#: parsefunc.py:65
 msgid "quit"
 msgstr "quitter"
 
-#: parsefunc.py:64
+#: parsefunc.py:65
 msgid "bye"
 msgstr "salut"
 
-#: parsefunc.py:64
+#: parsefunc.py:65
 msgid "leave"
 msgstr "partir"
 
 # This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
 #. FOR TRANSLATORS: This is a translated if statement. If possible, use only a core part of the word(s) here, like for example "division" turns into "div".
-#: parsefunc.py:68
+#: parsefunc.py:69
 msgid "help"
 msgstr "aide"
 
-#: parsefunc.py:68
+#: parsefunc.py:69
 msgid "?"
 msgstr "?"
 
-#: parsefunc.py:68
+#: parsefunc.py:69
 msgid "confus"
 msgstr "confus"
 
-#: parsefunc.py:68
+#: parsefunc.py:69
 msgid "huh"
 msgstr ""
 
-#: parsefunc.py:68
+#: parsefunc.py:69
 msgid "sos"
 msgstr ""
 
-#: parsefunc.py:68
+#: parsefunc.py:69
 msgid "what"
 msgstr ""
 
-#: parsefunc.py:70
+#: parsefunc.py:71
 msgid "no"
 msgstr "non"
 
-#: parsefunc.py:71
+#: parsefunc.py:72
 msgid "Ha... ha... not... funny... whoever you are."
 msgstr ""
 
-#: parsefunc.py:78
+#: parsefunc.py:79
 msgid ""
 "This part of Palc is untranslated because it's meant to be used by Palc "
 "maintainers only. It is discouraged to use"
@@ -212,37 +220,37 @@ msgstr ""
 "Cette partie de Palc n'est pas traducté parce que ce n'est pas recommandé "
 "d'utiliser."
 
-#: parsefunc.py:93
+#: parsefunc.py:94
 msgid "Sorry, that is not a valid command.\n"
 msgstr "Désolé, ce n'est pas une commande.\n"
 
-#: parsefunc.py:97
+#: parsefunc.py:98
 msgid "Please enter the"
 msgstr "Veuillez entrer le"
 
-#: parsefunc.py:97
+#: parsefunc.py:98
 msgid "number"
 msgstr "nombre"
 
-#: parsefunc.py:97
+#: parsefunc.py:98
 msgid "to"
 msgstr "pour"
 
-#: parsefunc.py:97
+#: parsefunc.py:98
 msgid "factorial"
 msgstr ""
 
 #. FOR TRANSLATORS: **PLEASE** keep the \033[1m and \033[0m and \n
-#: parsefunc.py:110
+#: parsefunc.py:111
 msgid "I see you divided by 0. [1mPlease don't do that[0m"
 msgstr ""
 
 #. FOR TRANSLATORS: This is not a typo. It is a continuation of "Please don't do that".
-#: parsefunc.py:112
+#: parsefunc.py:113
 msgid ", as it doesn't work."
 msgstr ""
 
-#: parsefunc.py:113
+#: parsefunc.py:114
 msgid ""
 "Think of it as Siri does. Imagine that you have zero cookies and you split "
 "them evenly among zero friends. How many cookies does each person get? See? "
@@ -250,47 +258,232 @@ msgid ""
 "and you are sad that you have no friends."
 msgstr ""
 
-#: parsefunc.py:114
+#: parsefunc.py:115
 msgid "Boom. Roasted."
 msgstr "Boum. Insulté."
 
-#: parsefunc.py:130 parsefunc.py:132
+#: parsefunc.py:131 parsefunc.py:133
 #, fuzzy
 #| msgid "Please enter the first number: "
 msgid "Please enter the "
 msgstr "Premier nombre ? "
 
-#: parsefunc.py:130
+#: parsefunc.py:131
 msgid "first"
 msgstr ""
 
-#: parsefunc.py:130 parsefunc.py:132
+#: parsefunc.py:131 parsefunc.py:133
 msgid " number"
 msgstr " nombre"
 
-#: parsefunc.py:132
+#: parsefunc.py:133
 msgid "second"
 msgstr "deuxième"
 
-#: parsefunc.py:135
+#: parsefunc.py:136
 msgid "The results are in! They indicate an answer of... "
 msgstr ""
 
-#: parsefunc.py:165
+#: parsefunc.py:161
+msgid "Type the number corresponding to your shape!"
+msgstr ""
+
+#: parsefunc.py:168
+#, fuzzy
+#| msgid "Please enter a command..."
+msgid "Please enter an actual option, ok??"
+msgstr "Veuillez entrer une commande ..."
+
+#: parsefunc.py:170
+#, python-format
+msgid "Ok, proceeding with %s..."
+msgstr ""
+
+#: parsefunc.py:180
+msgid "Triangle"
+msgstr ""
+
+#: parsefunc.py:180
+#, fuzzy
+#| msgid "What length is the base of the triangle? "
+msgid "Please enter the length of the base of the triangle..."
+msgstr "Longueur de la base du triangle ? "
+
+#: parsefunc.py:180
+#, fuzzy
+#| msgid "What length is the base of the triangle? "
+msgid "Please enter the height of the base of the triangle..."
+msgstr "Longueur de la base du triangle ? "
+
+#: parsefunc.py:181
+#, fuzzy
+#| msgid "square"
+msgid "Square"
+msgstr "carre"
+
+#: parsefunc.py:181
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the length of the square..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:182
+msgid "Rectangle"
+msgstr ""
+
+#: parsefunc.py:182
+#, fuzzy
+#| msgid "What is the height of the rectangle? "
+msgid "Please enter the width of the rectangle..."
+msgstr "Hauteur du rectangle ? "
+
+#: parsefunc.py:182
+#, fuzzy
+#| msgid "What is the height of the rectangle? "
+msgid "Please enter the height of the rectangle..."
+msgstr "Hauteur du rectangle ? "
+
+#: parsefunc.py:183
+msgid "Parallelogram"
+msgstr ""
+
+#: parsefunc.py:183
+#, fuzzy
+#| msgid "What is the length of the side of the square? "
+msgid "Please enter the length of the base of the parallelogram..."
+msgstr "Longueur du côté du carré ? "
+
+#: parsefunc.py:183
+#, fuzzy
+#| msgid "Please enter the original temperature..."
+msgid "Please enter the height of the parallelogram..."
+msgstr "Veuillez entrer la température originale ..."
+
+#: parsefunc.py:184
+msgid "Trapezium / Trapezoid"
+msgstr ""
+
+#: parsefunc.py:184
+#, fuzzy
+#| msgid "What is the height of the shape? "
+msgid "Please enter the height of the shape..."
+msgstr "Hauteur de la forme ? "
+
+#: parsefunc.py:184
+#, fuzzy
+#| msgid "What is the length of the side of the square? "
+msgid "Please enter the length of the first base of the shape..."
+msgstr "Longueur du côté du carré ? "
+
+#: parsefunc.py:184
+#, fuzzy
+#| msgid "What is the length of the side of the square? "
+msgid "Please enter the length of the second base of the shape..."
+msgstr "Longueur du côté du carré ? "
+
+#: parsefunc.py:185
+msgid "Circle"
+msgstr ""
+
+#: parsefunc.py:185
+#, fuzzy
+#| msgid "What is the radius of the circle? "
+msgid "Please enter the radius of the circle..."
+msgstr "Rayon du cercle ? "
+
+#: parsefunc.py:186
+msgid "Semicircle"
+msgstr ""
+
+#: parsefunc.py:186
+#, fuzzy
+#| msgid "What is the radius of the semicircle? "
+msgid "Please enter the radius of the semicircle..."
+msgstr "Rayon du demi-cercle ? "
+
+#: parsefunc.py:187
+msgid "Ellipse"
+msgstr ""
+
+#: parsefunc.py:187
+#, fuzzy
+#| msgid "What is the length of the major axis? "
+msgid "Please enter the length of the semi-major axis..."
+msgstr "Longueur de l'axe principal ? "
+
+#: parsefunc.py:187
+#, fuzzy
+#| msgid "What is the length of the minor axis? "
+msgid "Please enter the length of the semi-minor axis..."
+msgstr "Longueur de l'axe secondaire ? "
+
+#: parsefunc.py:188
+msgid "Sector"
+msgstr ""
+
+#: parsefunc.py:188
+#, fuzzy
+#| msgid "Please enter the tax percentage without the percent sign: "
+msgid "Please enter the angle of the sector, in radians..."
+msgstr ""
+"Saisissez le montant de la taxe en pourcentage (sans le signe pourcentage) : "
+
+#: parsefunc.py:188
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the radius of the sector..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:189
+msgid "Rhombus"
+msgstr ""
+
+#: parsefunc.py:189
+#, fuzzy
+#| msgid "What is the length of the side of the base? "
+msgid "Please enter the length of any side of the rhombus..."
+msgstr "Longueur du côté de la base ? "
+
+#: parsefunc.py:189
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the height of the rhombus..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:190
+msgid "Ring"
+msgstr ""
+
+#: parsefunc.py:190
+#, fuzzy
+#| msgid "What is the radius of the inner circle? "
+msgid "Please enter the radius of the inner circle..."
+msgstr "Rayon du cercle intérieur ? "
+
+#: parsefunc.py:190
+#, fuzzy
+#| msgid "What is the radius of the outer circle? "
+msgid "Please enter the radius of the outer circle..."
+msgstr "Rayon du cercle extérieur ? "
+
+#: parsefunc.py:196
 msgid ""
 "There are a bunch of commands you can use. These are: addition, subtraction, "
 "multiplication, division, modulo, and fibonacci."
 msgstr ""
 
-#: parsefunc.py:166
+#: parsefunc.py:197
 msgid "Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."
 msgstr ""
 
-#: parsefunc.py:167
+#: parsefunc.py:198
 msgid ""
 "[1mPlease enjoy Palc![0m [94mFeedback or bug reports? Go to [4mgithub.com/"
 "thetechrobo/python-text-calculator/issues[0m[94m![0m"
 msgstr ""
+
+#~ msgid "Welcome to"
+#~ msgstr "Bienvenue à "
 
 #~ msgid ""
 #~ "I can't load the file parsefunc.py. This file is necessary for proper "
@@ -353,9 +546,6 @@ msgstr ""
 
 #~ msgid "find the remainder of two numbers after division"
 #~ msgstr "trouver le reste de deux numéros après la division"
-
-#~ msgid "area"
-#~ msgstr "aire"
 
 #~ msgid "calculate area"
 #~ msgstr "calculer une aire"
@@ -421,9 +611,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Racine carré ou cubique ? (carre/cube, n'ajouter pas les accents)\n"
 #~ "Saisie : "
-
-#~ msgid "square"
-#~ msgstr "carre"
 
 #~ msgid ""
 #~ "Currently I don't support the root you chose. Hopefully this will change :D"
@@ -946,9 +1133,6 @@ msgstr ""
 #~ "Tes résultat sont... \n"
 #~ "%s"
 
-#~ msgid "Please enter the original temperature..."
-#~ msgstr "Veuillez entrer la température originale ..."
-
 #~ msgid "destination"
 #~ msgstr "déstination"
 
@@ -1026,11 +1210,6 @@ msgstr ""
 #~ msgid "Choose one: "
 #~ msgstr "Choisissez-en une : "
 
-#~ msgid "Please enter the tax percentage without the percent sign: "
-#~ msgstr ""
-#~ "Saisissez le montant de la taxe en pourcentage (sans le signe "
-#~ "pourcentage) : "
-
 #~ msgid "You did not type answer. Abort."
 #~ msgstr "Vous n'avez pas saisi une réponse valide."
 
@@ -1057,9 +1236,6 @@ msgstr ""
 #~ msgid "What length is the side of the triangle? "
 #~ msgstr "Longueur du côté du triangle ? "
 
-#~ msgid "What length is the base of the triangle? "
-#~ msgstr "Longueur de la base du triangle ? "
-
 #~ msgid "What length is the height of the triangle? "
 #~ msgstr "Hauteur du triangle ? "
 
@@ -1075,20 +1251,11 @@ msgstr ""
 #~ msgid "What is the length of the second side? "
 #~ msgstr "Quel est le longueur du second côté ? "
 
-#~ msgid "What is the length of the side of the square? "
-#~ msgstr "Longueur du côté du carré ? "
-
 #~ msgid "What is the length of the rectangle? "
 #~ msgstr "Longueur du rectangle ? "
 
-#~ msgid "What is the height of the rectangle? "
-#~ msgstr "Hauteur du rectangle ? "
-
 #~ msgid "What is the length of the base? "
 #~ msgstr "Longueur de la base ? "
-
-#~ msgid "What is the height of the shape? "
-#~ msgstr "Hauteur de la forme ? "
 
 #~ msgid "What is the length of the first diagonal? "
 #~ msgstr "Longueur de la première diagonale ? "
@@ -1105,29 +1272,11 @@ msgstr ""
 #~ msgid "What is the height of the trapezium? "
 #~ msgstr "Hauteur du trapèze ? "
 
-#~ msgid "What is the radius of the circle? "
-#~ msgstr "Rayon du cercle ? "
-
-#~ msgid "What is the radius of the semicircle? "
-#~ msgstr "Rayon du demi-cercle ? "
-
 #~ msgid "What is the radius of the circular sector? "
 #~ msgstr "Rayon du secteur circulaire ? "
 
 #~ msgid "What is the angle of the circular sector *in degrees*? "
 #~ msgstr "Quel est l'angle du secteur circulaire *en degrés* ? "
-
-#~ msgid "What is the radius of the outer circle? "
-#~ msgstr "Rayon du cercle extérieur ? "
-
-#~ msgid "What is the radius of the inner circle? "
-#~ msgstr "Rayon du cercle intérieur ? "
-
-#~ msgid "What is the length of the major axis? "
-#~ msgstr "Longueur de l'axe principal ? "
-
-#~ msgid "What is the length of the minor axis? "
-#~ msgstr "Longueur de l'axe secondaire ? "
 
 #, python-format
 #~ msgid "The area is: %s"
@@ -1162,9 +1311,6 @@ msgstr ""
 
 #~ msgid "What is the radius of the sphere? "
 #~ msgstr "Rayon de la sphère ? "
-
-#~ msgid "What is the length of the side of the base? "
-#~ msgstr "Longueur du côté de la base ? "
 
 #~ msgid "What is the height of the prism? "
 #~ msgstr "Hauteur du prisme ? "

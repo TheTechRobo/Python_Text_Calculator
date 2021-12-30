@@ -84,7 +84,7 @@ def mainloop():
     if sys.stdin.isatty():
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-        turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!%s\n" % MANYSPACE: cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
+        turbofunc.multiprint({"\n" + _("Welcome to "): cprint.info, _("Palc"): cprint.ok, "!%s\n" % MANYSPACE: cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
         cprint.warn("\nEnter HELP for help", flush=True)
         string = ("                           \033[A\033[A")
         while True:
