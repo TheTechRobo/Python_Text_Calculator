@@ -66,4 +66,5 @@ def mathmod_tests():
 
 print(":WARN: TEST SUITE UNFINISHED !")
 
-if __name__ == "__main__": mathmod_tests()
+if __name__ == "__main__":
+    mathmod_tests()
