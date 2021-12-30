@@ -1,4 +1,4 @@
-import mathmod, mathmod.area, mathmod.volume
+import sys, mathmod, mathmod.area, mathmod.volume
 v = mathmod.volume
 
 class Testing:
@@ -43,6 +43,7 @@ class Testing:
             print(f"{test['name']}:", end=" ")
             print("FAIL") if not test['status'] else print("PASS")
         print(f"\n\t{self.successful_tests} passed; {self.failed_tests} failed; {self.failed_tests + self.successful_tests} total")
+        sys.exit(self.failed_tests)
 
 def test_area_square():
     return mathmod.area.area_square(5)
