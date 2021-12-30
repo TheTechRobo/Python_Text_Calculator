@@ -1,5 +1,6 @@
 import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random
 import mathmod.area
+import mathmod.volume as mv
 from cprint import cprint
 MANYSPACE = "                    "
 
@@ -34,8 +35,13 @@ def showUserWhatIThink(msg):
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
-    if _("area") in calc or "#" in calc:
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "area". Translatate only part of the word if it uses multiple charatcers and is possible without being confused, e.g. modulo turns into mod
+    if _("ar") in calc or "#" in calc:
         area_interactive()
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "volume". Translate only part of the word if possible without being confusing, e.g. modulo turns into mod
+    elif _("vol") in calc:
+        volume_interactive()
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "division". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod"
     elif "/" in calc or _("div") in calc or "÷" in calc:
         parse_division()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
@@ -153,7 +159,8 @@ def _gen_entry(name, prompts, func):
             }
 
 def generic_interactive(datums):
-    cprint.info("Select a shape...")
+    cprint.warn(_("Please report any bugs you find!"))
+    cprint.info(_("Select a shape..."))
     pos = 1
     for datum in datums:
         cprint.ok(f"{pos}. {datum['name']}")
@@ -174,6 +181,23 @@ def generic_interactive(datums):
     res = datums[inp]['function'](*args)
     cprint.ok(_("The results are in! They indicate an answer of..."))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+
+def volume_interactive():
+    generic_interactive(
+            [
+                _gen_entry(_("Cuboid (e.g. cubes, rectangular solids,...)"), [_("Please enter the length of the base of the cuboid..."), _("Please enter the width of the base of the cuboid..."), _("Please enter the height of the cuboid...")], mv.volume_cuboid),
+                _gen_entry(_("Cube"), [_("Please enter the length of the base...")], mv.volume_cube),
+                _gen_entry(_("Cylinder"), [_("Please enter the radius of the circular base..."), _("Please enter the height of the cylinder...")], mv.volume_cylinder),
+                _gen_entry(_("Hollow cylinder"), [_("Please enter the outer radius..."), _("Please enter the height OR length of the cylinder..."), _("Please enter the thickness of the cylinder...")], mv.volume_hollow_cylinder),
+                _gen_entry(_("Prism"), [_("Please enter the area of the base..."), _("Please enter the height of the prism...")], mv.volume_prism),
+                _gen_entry(_("Sphere"), [_("Please enter the radius of the sphere...")], mv.volume_sphere),
+                _gen_entry(_("Hollow sphere"), [_("Please enter the total radius of the sphere..."), _("Please enter the radius of the hollow space...")], mv.volume_hollow_sphere),
+                _gen_entry(_("Pyramid"), [_("Please enter the area of the base..."), _("Please enter the height of the pyramid, bottom to tip...")], mv.volume_pyramid),
+                _gen_entry(_("Cone"), [_("Please enter the radius of the base..."), _("Please enter the height ")], mv.volume_right_circular_cone),
+                _gen_entry(_("Ellipsoid"), [_("Please enter the 1st semi axe..."), _("Please enter the 2nd semi-axe..."), _("Please enter the 3rd semi-axe...")], mv.volume_ellipsoid),
+                _gen_entry(_("Tetrahedron"), [_("Please enter the length of the edge of the tetrahedron...")], mv.volume_tetrahedron) # like Tetris
+            ]
+    )
 
 def area_interactive():
     calculation_list = [
