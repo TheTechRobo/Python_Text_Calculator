@@ -31,7 +31,7 @@ def GetNums():
     return newNums
 def showUserWhatIThink(msg):
     cprint.ok(_("BTW, I parsed your choice as: %s") % msg)
-    logging.debug("Parsed user choice as %s" % msg)
+    logging.debug(f"Parsed user choice as {msg}")
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
@@ -57,9 +57,19 @@ def parseCalc(calc):
         parse_addition()
     elif _("mult") in calc or calc == "x" or "*" in calc:
         parse_multiplication()
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "root". Translate only a core paert of the word if possible without ambiguity (e.g. modulo turns into mod)
+    elif _("root") in calc:
+        parse_any_root()
+    # FOR TRANSLATORS: This == translated if statement with the meaning of "square root" or "square". Translate onyl a core part of the word if  possible without ambiguity (e.g. modulo turns into mod)
+    elif _("sq") in calc:
+        parse_square_root()
+    # FOR TRANSLATORS: This is translated if statement w meaning of "cube root" or "cube". Translate only a core part of the word if possible without ambiguity e.g. modulo turns into mod.
+    elif _("cu") in calc:
+        parse_cube_root()
     # FOR TRANSLATORS: this is a translated if statement with the meaning of "factorial". Translate only a core part of the word if possible without ambuguity, like for example "modulo" turns into "mod".
     elif _("fac") in calc or "!" in calc:
         parse_factorial()
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci" - translate only a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod"
     elif _("fib") in calc:
         choice = input(_("Welcome to the fibonacci calculator.\n\t1 - Looped fibonacci (infinite)\n\t2 - Calculate a certain number of fibonacci numbers.\nSelect one: "))
         if int(turbofunc.CleanInput(choice)) == 1:
@@ -135,6 +145,29 @@ def parse_subtraction():
 def parse_modulo():
     run2NumMathmodFunc(mathmod.modulo)
 
+def parse_square_root():
+    run1NumMathmodFunc(mathmod.square_root, _("square root"))
+
+def parse_cube_root():
+    run1NumMathmodFunc(mathmod.cube_root, _("cube root"))
+
+def parse_any_root():
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("original "): cprint.ok, _("number") + " ...": cprint.info}, end="", flush=True)
+    n1 = float(turbofunc.CleanInput(input()))
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("root"): cprint.ok, _("(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."): cprint.info}, end="", flush=True)
+    n2 = float(turbofunc.CleanInput(input()))
+    res = mathmod.root_general(n1,n2)
+    cprint.info(_("The results are in! They indicate an answer of... "))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
+
+def run1NumMathmodFunc(func, action):
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("number "): cprint.ok, _("to "): cprint.info, action: cprint.ok, " ...": cprint.info}, end="", flush=True)
+    n1 = float(turbofunc.CleanInput(input()))
+    res = func(n1)
+    cprint.info(_("The results are in! They indicate an answer of... "))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    logging.info("Got res %s, num are %s." % (res,n1))
 def run2NumMathmodFunc(func):
     logging.debug("Right here")
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
