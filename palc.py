@@ -1,18 +1,21 @@
 import sys
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller https://stackoverflow.com/a/44352931/9654083"""
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
 # https://dzone.com/articles/listing-a-directory-with-python
 MANYSPACE = "                                 " #todo: check terminal size then subtract character count from it
 oldCalc = "no u"
 # Basic Setup
 try:
     from cprint import cprint
-    import turbofunc, gettext, time, logging, platform, os, os.path, parsefunc, runpy
+    import turbofunc, gettext, time, logging, platform, os, os.path, runpy
+    import parsefunc
 except Exception as ename:
-    if "No module named 'parsefunc'" in str(ename):
-        cprint.fatal("\n\n\nERROR 0: COULD NOT LOAD PARSEFUNC.\nThis is a fatal error. Please contact TheTechRobo.\n\n")
-        sys.exit(8)
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: Try `pip install -r requirements.txt'." % ename)
-    sys.exit(1)
+    sys.exit(8)
 
 try:
     import colorama
@@ -23,11 +26,6 @@ except (ImportError, ModuleNotFoundError):
 
 logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 logging.debug("Logging works!")
-
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller https://stackoverflow.com/a/44352931/9654083"""
-    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
 
 # Modular Translation Scheme
 try:
