@@ -1,23 +1,27 @@
+import sys
+
 # https://dzone.com/articles/listing-a-directory-with-python
 MANYSPACE = "                                 " #todo: check terminal size then subtract character count from it
 oldCalc = "no u"
 # Basic Setup
 try:
-    ModuleNotFoundError
-except NameError:
-    ModuleNotFoundError = ImportError
-import sys
-try:
     from cprint import cprint
-    import turbofunc, gettext, time, logging, os, os.path, parsefunc, runpy
+    import turbofunc, gettext, time, logging, platform, os, os.path, parsefunc, runpy
 except Exception as ename:
     if "No module named 'parsefunc'" in str(ename):
         cprint.fatal("\n\n\nERROR 0: COULD NOT LOAD PARSEFUNC.\nThis is a fatal error. Please contact TheTechRobo.\n\n")
         sys.exit(8)
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: Try `pip install -r requirements.txt'." % ename)
     sys.exit(1)
-logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 
+try:
+    import colorama
+    colorama.init() #fixes bugs in CMD
+except (ImportError, ModuleNotFoundError):
+    if platform.system() == "Windows" or platform.system() == "":
+        print("I have noticed that you may be running on Windows without colorama installed (pip install colorama).\nIf you experience issues with Palc like seeing weird characters instead of colours, try installing colorama.")
+
+logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
 logging.debug("Logging works!")
 
 def resource_path(relative_path):
@@ -25,45 +29,36 @@ def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
-try:
-    import colorama
-    colorama.init() #fixes bugs in CMD
-except (ImportError, ModuleNotFoundError):
-    import platform
-    if platform.system() == "Windows" or platform.system() == "":
-        print("I have noticed that you may be running on Windows without colorama installed (pip install colorama).\nIf you experience issues with Palc like seeing weird characters instead of colours, try installing colorama.")
-
 # Modular Translation Scheme
 try:
     turbofunc.standTextOut("Translation Selection", cprint.ok, cprint.info)
-    cprint.info("Checking for locales... Please stand by." + MANYSPACE, end="", flush=True)
-    time.sleep(0.3) #makes it more professional
+    cprint.info("Checking for locales... Please stand by.", end="", flush=True)
     listing = os.listdir(resource_path("locales"))
+    time.sleep(0.211)
     cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
     settings = runpy.run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
-    time.sleep(0.3)
-    print("\r" + MANYSPACE)
+    print("\r" + MANYSPACE + "\n\033[1A", end="")
     pos = 1
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
         pos += 1
     pos -= 1
+    time.sleep(0.3)
     input_invalid_eh = True
     while input_invalid_eh:
         try:
-            translation = int(turbofunc.CleanInput(input("Please type the number corresponding to the language of choice...")))
+            translatio = turbofunc.CleanInput(input("Please type the number corresponding to the language of choice..."))
+            translation = int(translatio)
             if translation > pos or translation < 1:
                 raise ValueError
         except ValueError:
-            if "translation" in globals():
-                pass
-                #print("\ntranslationinglobals\n")
-            else:
-                translation = ""
+            if not ("translation" in globals()):
+                translation = translatio
             if translation == "":
                 translation = "(blank)"
             cprint.err("\033[F %s: Invalid input, try again." % translation + MANYSPACE * 2)
             input_invalid_eh = True
+            del translation, translatio
         else:
             input_invalid_eh = False
     logging.debug("Selected translation %s" % (translation - 1))
@@ -71,7 +66,7 @@ try:
     LANG = settings["GETTEXT_NAMES"][LANG]
     lang_translations = gettext.translation("base", localedir=resource_path("locales"), languages=[LANG])
     lang_translations.install()
-    del translation, LANG, settings, pos, runpy, input_invalid_eh
+    del translatio, translation, LANG, settings, pos, runpy, input_invalid_eh
 except (KeyboardInterrupt, EOFError):
     sys.exit(0)
 
@@ -90,12 +85,7 @@ def mainloop():
             keypress = turbofunc.pressanykey(string=string, decodeGetchToUnicode=True)
             if keypress == "\r" or keypress == "\n" or keypress == "\r\n":
                 print()
-                a = ""
-                for i in calc:
-                    a += i
-                calc = a
-                del a
-                parsefunc.parseCalc(calc)
+                parsefunc.parseCalc("".join(calc)) #https://www.geeksforgeeks.org/python-convert-list-characters-string/
                 break
             if keypress == "\x7f" or keypress == "\b":
                 if len(calc) == 0:
@@ -156,6 +146,14 @@ while True:
         print()
         turbofunc.standTextOut(_("Bye!"), printMechanismString=cprint.ok)
         sys.exit(0)
+    except ZeroDivisionError:
+        turbofunc.standTextOut("Oops!", cprint.warn, cprint.err)
+        # FOR TRANSLATORS: **PLEASE** keep the \033[1m and \033[0m and \n
+        cprint.err(_("I see you divided by 0. \033[1mPlease don't do that\033[0m"), end="")
+        # FOR TRANSLATORS: This is not a typo. It is a continuation of "Please don't do that".
+        cprint.err(_(", as it doesn't work."))
+        cprint.info(_("Think of it as Siri does. Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends."))
+        cprint.warn(_("Boom. Roasted."))
     except Exception as ename:
         turbofunc.standTextOut("Oops!", cprint.warn,cprint.err)
         cprint.warn(_("Unknown error!"))

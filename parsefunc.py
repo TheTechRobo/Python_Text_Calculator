@@ -122,21 +122,11 @@ def parse_factorial():
     turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ")
     num = int(turbofunc.CleanInput(input()))
     fin = mathmod.factorial(num)
-    cprint.ok(_("The results are in! They indicate an answer of..."))
-    turbofunc.standTextOut("\033[1m%s\033[0m" % fin, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    standResOut(fin)
     logging.info("Got res %s, num are %s." % (fin,num))
 
 def parse_division():
-    try:
-        runMathmodFunc(mathmod.division)
-    except ZeroDivisionError:
-        turbofunc.standTextOut("Oops!")
-        # FOR TRANSLATORS: **PLEASE** keep the \033[1m and \033[0m and \n
-        cprint.err(_("I see you divided by 0. \033[1mPlease don't do that\033[0m"), end="")
-        # FOR TRANSLATORS: This is not a typo. It is a continuation of "Please don't do that".
-        cprint.err(_(", as it doesn't work."))
-        cprint.info(_("Think of it as Siri does. Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn’t make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends."))
-        cprint.ok(_("Boom. Roasted."))
+    runMathmodFunc(mathmod.division)
 
 def parse_multiplication():
     runMathmodFunc(mathmod.multiplication)
@@ -162,16 +152,18 @@ def parse_any_root():
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("root"): cprint.ok, _("(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."): cprint.info}, end="", flush=True)
     n2 = float(turbofunc.CleanInput(input()))
     res = mathmod.root_general(n1,n2)
+    standResOut(res)
+    logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
+
+def standResOut(res):
     cprint.info(_("The results are in! They indicate an answer of... "))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
-    logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
 
 def run1NumMathmodFunc(func, action):
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("number "): cprint.ok, _("to "): cprint.info, action: cprint.ok, " ...": cprint.info}, end="", flush=True)
     n1 = float(turbofunc.CleanInput(input()))
     res = func(n1)
-    cprint.info(_("The results are in! They indicate an answer of... "))
-    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    standResOut(res)
     logging.info("Got res %s, num are %s." % (res,n1))
 def run2NumMathmodFunc(func):
     logging.debug("Right here")
@@ -180,8 +172,7 @@ def run2NumMathmodFunc(func):
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
     n2 = float(turbofunc.CleanInput(input()))
     res = func(n1,n2)
-    cprint.info(_("The results are in! They indicate an answer of... "))
-    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    standResOut(res)
     logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
 def runMathmodFunc(func):
     logging.debug("Right here")
@@ -190,8 +181,7 @@ def runMathmodFunc(func):
         res = func(*nums)
     except IndexError:
         raise ValueError
-    cprint.ok(_("The results are in! They indicate an answer of..."))
-    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    standResOut(res)
     logging.info("Got res %s, *nums are %s." % (res,nums))
 
 def _gen_entry(name, prompts, func):
@@ -222,8 +212,7 @@ def generic_interactive(datums):
     for prompt in datums[inp]['prompts']:
         args.append(turbofunc.CleanInput(input(prompt)))
     res = datums[inp]['function'](*args)
-    cprint.ok(_("The results are in! They indicate an answer of..."))
-    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    standResOut(res)
 
 def volume_interactive():
     generic_interactive(
@@ -335,8 +324,7 @@ def based():
     except Exception as ename:
         cprint.err(_("Failed to convert numbers. Remember to only put the digits in that base in! (%s)") % ename)
         return
-    cprint.ok(_("The results are in! They indicate an answer of..."))
-    turbofunc.standTextOut("\033[1m%s\033[0m" % result, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+    standResOut(result)
 
 def h():
     cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo, and fibonacci."))
