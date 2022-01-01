@@ -1,4 +1,4 @@
-import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random
+import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random, python_radix
 import mathmod.area
 import mathmod.volume as mv
 from cprint import cprint
@@ -13,6 +13,7 @@ def express_fibonacci(num):
 class Vars:
     CommandRetry = True
 def GetNums():
+    string_2num = _("Please enter the next number; a blank line will confirm... ")
     nums = []
     newNums = []
     n = 69
@@ -22,7 +23,7 @@ def GetNums():
         nums.append(n)
         if n == "":
             continue
-        cprint.info(_(string_2num), end="", flush=True)
+        cprint.info(string_2num, end="", flush=True)
     for item in nums:
         if item != "":
             newNums.append(float(item))
@@ -69,6 +70,10 @@ def parseCalc(calc):
     # FOR TRANSLATORS: this is a translated if statement with the meaning of "factorial". Translate only a core part of the word if possible without ambuguity, like for example "modulo" turns into "mod".
     elif _("fac") in calc or "!" in calc:
         parse_factorial()
+    # FOR TRANSLATORS: This is a translated if statement w the meaning of "radix" or "base"  translate only a core part of the word if possible without ambiguity, e.g. "modulo" turn sinto "mod".
+    elif _("rad") in calc or _("bas") in calc:
+        showUserWhatIThink("convert bases")
+        based()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci" - translate only a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod"
     elif _("fib") in calc:
         choice = input(_("Welcome to the fibonacci calculator.\n\t1 - Looped fibonacci (infinite)\n\t2 - Calculate a certain number of fibonacci numbers.\nSelect one: "))
@@ -309,7 +314,30 @@ def tax():
                 break
         print()
 
-string_2num = "Please enter the next number; a blank line will confirm... "
+def based():
+    cprint.info(_("Please enter the original base."))
+    cprint.ok(_("ProTip: 2 is binary, 8 is octal, 10 is decimal, 16 is hex, and 36 has all the letters in the alphabet."))
+    cprint.warn(_("Don't type anything above %d. Additionally, typing anything below 2 will cause the conversion to either hang or fail.") % python_radix.python_radix.max_base)
+    originalBase = int(turbofunc.CleanInput(input(_("Type: ")))) # that's a lotta brackets. HOW BOUT A LITTLE MORE
+    print("\033[4A", end="")
+    cprint.info(_("Please enter the destination base."))
+    destinationBase = int(turbofunc.CleanInput(input("\n\n" + _("Type: "+"  \b\b"))))
+    exp = lambda thingy : not (thingy > python_radix.python_radix.max_base or thingy < 2)
+    if exp(originalBase) is False or exp(destinationBase) is False:
+        return cprint.fatal(_("I told you not to do that."))
+    logging.debug(f"loading converter for base {originalBase} => {destinationBase}")
+    conv = python_radix.Converter(originalBase, destinationBase)
+    print("\033[4A", end="") #https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html
+    cprint.info(_("Please enter the original number (it should not have a decimal point)."))
+    number = turbofunc.CleanInput(input("\n\n" + _("Type: "+"  \b\b")))
+    try:
+        result = conv.convert(number)
+    except Exception as ename:
+        cprint.err(_("Failed to convert numbers. Remember to only put the digits in that base in! (%s)") % ename)
+        return
+    cprint.ok(_("The results are in! They indicate an answer of..."))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % result, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+
 def h():
     cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo, and fibonacci."))
     cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
