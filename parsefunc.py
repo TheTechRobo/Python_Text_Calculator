@@ -44,6 +44,9 @@ def parseCalc(calc):
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "division". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod"
     elif "/" in calc or _("div") in calc or "÷" in calc:
         parse_division()
+    # FOR TRANSLATORS: This is translated if statement w the meaning of "tax". Translate only a core part of the word if possible without ambiguity, e.g. modulo turns into mod
+    elif _("tax") in calc:
+        tax()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
     elif _("mod") in calc:
         parse_modulo()
@@ -216,6 +219,62 @@ def area_interactive():
             _gen_entry(_("Ring"), [_("Please enter the radius of the inner circle..."), _("Please enter the radius of the outer circle...")], mathmod.area.area_ring),
             ]
     generic_interactive(calculation_list)
+def thing():
+    while True:
+        print("hi")
+def tax():
+    cprint.ok(_("Select your Tax Type"))
+    cprint.info(_("1. Sales Tax"))
+    cprint.warn(_("No other types are currently supported."))
+    input(_("Type: "))
+    print("\033[4A", end="")
+    cprint.ok(_("You picked Sales Tax."))
+    cprint.ok(_("Would you like to use a tax preset?"))
+    cprint.info(_("1. Yes - I live in Canada") + MANYSPACE)
+    cprint.info(_("2. No") + MANYSPACE)
+    cprint.warn(_("No other types are currently supported."))
+    while True:
+        try:
+            preset = int(input(_("Type: ")))
+        except (TypeError, ValueError):
+            cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idk that its a dead meme
+        else:
+            break
+    print("\033[5A]", end="") if preset != 2 else print("", end="")
+    if preset == 2:
+        cprint.info(_("Ok, no preset it is."))
+        percentage = float(input(_("Please type the percentage of tax in your local area.")))
+    elif preset == 1:
+        sussypresetlist = {
+                "": -1,
+                _("Ontario"): mathmod.tax_types.sales.Canada.ontario,
+                _("Quebec"): mathmod.tax_types.sales.Canada.quebec,
+                _("Yukon/Northwest Territories/Nunavut/Alberta"): mathmod.tax_types.sales.Canada.yukon,
+                _("British Columbia/Manitoba"): mathmod.tax_types.sales.Canada.manitoba,
+                _("New Brunswick/Nova Scotia/Newfoundland/Prince Edward Island"): mathmod.tax_types.sales.Canada.newfoundland,
+                _("Saskatchewan"): mathmod.tax_types.sales.Canada.saskatchewan,
+        }
+        sus = list(sussypresetlist)
+        ind = 0
+        for su in sus: #s
+            if ind == 0:
+                ind += 1
+                continue
+            cprint.info(f"{ind}. {su}")
+            ind += 1
+        while True:
+            try:
+                presetterInd = int(input(_("Please enter the One You Want™")))
+            except (ValueError, TypeError):
+                cprint.err(_("Nice try, but you have to actually type a number."))
+            else:
+                try:
+                    percentage = sussypresetlist[sus[presetterInd]]
+                except IndexError:
+                    cprint.err(_("Nice try, but the number has to be in range."))
+                    continue
+                break
+        print()
 
 string_2num = "Please enter the next number; a blank line will confirm... "
 def h():

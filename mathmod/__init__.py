@@ -124,11 +124,33 @@ def exponent(n1, n2):
 def modulo(n1,n2):
         n1, n2 = confloat(n1, n2)
         return n1 % n2
+
+class tax_types:
+    """
+    Presets for Tax Percentages.
+    """
+    class sales:
+        class Canada:
+            ontario = 13
+            quebec = 14.975
+            yukon = 5
+            northwest_territories = 5
+            nunavut = 5
+            alberta = 5
+            british_columbia = 12
+            manitoba = 12
+            new_brunswick = 15
+            nova_scotia = 15
+            newfoundland = 15
+            prince_edward_island = 15
+            saskatchewan = 11
+
 def tax(n1, tax=None, n2=None):
         """
         param n1: Original number
         param tax: Tax in percentage (without percentage sign)
         param n2: Deprecated symlink to tax
+        You can use the tax_types class for presets.
         """
         if n2 is None:
             origin, tax = confloat(n1, tax)
