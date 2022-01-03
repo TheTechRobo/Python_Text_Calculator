@@ -136,7 +136,8 @@ def tax(n1, tax=None, n2=None):
             warnings.warn("You are using an old API that will be deprecated; please check Mathmod's new docs.")
             origin, tax = confloat(n1, n2)
         usefulTax = (tax / 100) + 1
-        answer = origin + tax
+        percentageTax = percent_of(tax, n1)
+        answer = origin + percentageTax
         return answer
 def log(n1, e=True):
         """
@@ -150,7 +151,7 @@ def log(n1, e=True):
         if not e:
             return math.log10(n1)
 
-def whatIsXPercentOf(x, whole):
+def percent_of(x, whole):
         """
         whole = ORIGINAL NUMBER
         x = percent
@@ -159,6 +160,7 @@ def whatIsXPercentOf(x, whole):
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return (x * whole) / 100.0
+whatIsXPercentOf = percent_of
 def findPercentage(part, whole):
         """
         whole = number that would be 100%
