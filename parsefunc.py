@@ -297,11 +297,14 @@ def tax():
             else:
                 try:
                     percentage = sussypresetlist[sus[presetterInd]]
+                    if percentage is None:
+                        raise IndexError
                 except IndexError:
                     cprint.err(_("Nice try, but the number has to be in range."))
                     continue
                 break
-        print()
+        origin = float(input(_("What is the original number?")))
+        standResOut(mathmod.tax(origin, percentage))
 
 def based():
     cprint.info(_("Please enter the original base."))
