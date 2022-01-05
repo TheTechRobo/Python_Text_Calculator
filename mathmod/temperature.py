@@ -6,7 +6,15 @@ class Temperatures(Enum):
     RANKINE    = "r"
     KELVIN     = "k"
 
+def _handle_error(d):
+    try:
+        d.value
+    except AttributeError as e:
+        raise TypeError("You need to use the Temperatures enum. (%s)" % e)
+
 def _select_temperature(source, destination):
+    _handle_error(source)
+    _handle_error(destination)
     return str(source.value).upper() + str(destination.value).upper()
 
 f_to_c = lambda a : (a - 32) * 5/9
