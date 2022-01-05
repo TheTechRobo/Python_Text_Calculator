@@ -48,6 +48,9 @@ def parseCalc(calc):
     # FOR TRANSLATORS: This is translated if statement w the meaning of "tax". Translate only a core part of the word if possible without ambiguity, e.g. modulo turns into mod
     elif _("tax") in calc:
         tax()
+    # FOR TRANSLATORS: This is a translated if statement with the meaning of "power" or "exponent". Translate only a core part of the word if possible without ambiguity (e.g. modulo turns into mod)
+    elif _("pow") in calc or "**" in calc or "expo" in calc:
+        exponent()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
     elif _("mod") in calc:
         parse_modulo()
@@ -188,6 +191,18 @@ def _gen_entry(name, prompts, func):
     return {
             "name": name, "prompts": prompts, "function": func
             }
+
+def _sus(sy, baka=""):
+    turbofunc.multiprint({
+        _("Please enter the "): cprint.info, sy: cprint.ok, "... "+baka: cprint.info
+        }, flush=True, end="")
+    return float(turbofunc.CleanInput(input()))
+
+def exponent():
+    origin = _sus(_("original number"))
+    print("\033[1A", end="")
+    exp = _sus(_("exponent"), MANYSPACE + "\b" * len(MANYSPACE))
+    standResOut(mathmod.exponent(origin, exp))
 
 def generic_interactive(datums):
     cprint.warn(_("Please report any bugs you find!"))

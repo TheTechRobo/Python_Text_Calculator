@@ -114,13 +114,15 @@ def root_general(origin, root, useDecimal=False):
     return res
 rootGeneral = root_general
 
-def exponent(n1, n2):
+def exponent(n1, exponent):
         """
         param n1: Original number
-        param n2: exponent
+        param exponent: exponent
         """
-        origin, ex = confloat(n1, n2)
+        origin, ex = confloat(n1, exponent)
         return origin ** ex
+power = exponent
+
 def modulo(n1,n2):
         n1, n2 = confloat(n1, n2)
         return n1 % n2
