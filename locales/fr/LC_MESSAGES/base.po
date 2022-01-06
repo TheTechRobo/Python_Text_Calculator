@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Palc POST-REWRITE\n"
 "POT-Creation-Date: 2021-12-29 20:35-0500\n"
-"PO-Revision-Date: 2021-12-29 20:35-0500\n"
+"PO-Revision-Date: 2022-01-06 09:06-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: palc.py:79 palc.py:87
 msgid "Palc"
-msgstr ""
+msgstr "Palc"
 
 #: palc.py:87
 msgid "Welcome to "
@@ -34,7 +34,7 @@ msgstr "Bienvenue à "
 
 #: palc.py:87
 msgid "Please enter a command..."
-msgstr "Veuillez entrer une commande ..."
+msgstr "Veuillez saisir une commande ..."
 
 #: palc.py:111
 msgid ""
@@ -62,15 +62,13 @@ msgstr ""
 
 #: palc.py:139 palc.py:146 palc.py:163
 msgid "Get a backtrace? "
-msgstr ""
+msgstr "Voir un message d'erreur ? "
 
 # Old source text:
 # Going back...
 #: palc.py:141 palc.py:148
-#, fuzzy
-#| msgid "going back."
 msgid "Aborting backtrace."
-msgstr "retour au menu..."
+msgstr ""
 
 #: palc.py:145
 msgid ""
@@ -91,10 +89,8 @@ msgid "Unknown error!"
 msgstr "\aErreur inconnue !\a"
 
 #: parsefunc.py:18
-#, fuzzy
-#| msgid "Please enter the first number: "
 msgid "Please enter the first number..."
-msgstr "Premier nombre ? "
+msgstr "Veuillez saisir le nombre premier..."
 
 #: parsefunc.py:32
 #, python-format
@@ -202,7 +198,7 @@ msgstr ""
 
 #: parsefunc.py:69
 msgid "what"
-msgstr ""
+msgstr "quoi"
 
 #: parsefunc.py:71
 msgid "no"
@@ -210,7 +206,7 @@ msgstr "non"
 
 #: parsefunc.py:72
 msgid "Ha... ha... not... funny... whoever you are."
-msgstr ""
+msgstr "Ha ... ha ... pas ... drôle ... que qui vous soyez."
 
 #: parsefunc.py:79
 msgid ""
@@ -218,7 +214,7 @@ msgid ""
 "maintainers only. It is discouraged to use"
 msgstr ""
 "Cette partie de Palc n'est pas traducté parce que ce n'est pas recommandé "
-"d'utiliser."
+"d'utiliser"
 
 #: parsefunc.py:94
 msgid "Sorry, that is not a valid command.\n"
@@ -263,14 +259,12 @@ msgid "Boom. Roasted."
 msgstr "Boum. Insulté."
 
 #: parsefunc.py:131 parsefunc.py:133
-#, fuzzy
-#| msgid "Please enter the first number: "
 msgid "Please enter the "
-msgstr "Premier nombre ? "
+msgstr "Veuillez saisir le "
 
 #: parsefunc.py:131
 msgid "first"
-msgstr ""
+msgstr "premier"
 
 #: parsefunc.py:131 parsefunc.py:133
 msgid " number"
@@ -289,10 +283,8 @@ msgid "Type the number corresponding to your shape!"
 msgstr ""
 
 #: parsefunc.py:168
-#, fuzzy
-#| msgid "Please enter a command..."
 msgid "Please enter an actual option, ok??"
-msgstr "Veuillez entrer une commande ..."
+msgstr ""
 
 #: parsefunc.py:170
 #, python-format
@@ -304,10 +296,8 @@ msgid "Triangle"
 msgstr ""
 
 #: parsefunc.py:180
-#, fuzzy
-#| msgid "What length is the base of the triangle? "
 msgid "Please enter the length of the base of the triangle..."
-msgstr "Longueur de la base du triangle ? "
+msgstr "Veuillez saisir le longueur de la base du triangle..."
 
 #: parsefunc.py:180
 #, fuzzy
@@ -316,26 +306,20 @@ msgid "Please enter the height of the base of the triangle..."
 msgstr "Longueur de la base du triangle ? "
 
 #: parsefunc.py:181
-#, fuzzy
-#| msgid "square"
 msgid "Square"
-msgstr "carre"
+msgstr "Carré"
 
 #: parsefunc.py:181
-#, fuzzy
-#| msgid "Please enter the first number: "
 msgid "Please enter the length of the square..."
-msgstr "Premier nombre ? "
+msgstr "Veuillez saisir la longeur du carré..."
 
 #: parsefunc.py:182
 msgid "Rectangle"
-msgstr ""
+msgstr "Rectangle"
 
 #: parsefunc.py:182
-#, fuzzy
-#| msgid "What is the height of the rectangle? "
 msgid "Please enter the width of the rectangle..."
-msgstr "Hauteur du rectangle ? "
+msgstr ""
 
 #: parsefunc.py:182
 #, fuzzy
