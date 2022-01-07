@@ -1,7 +1,8 @@
-import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random, python_radix
+import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random, python_radix, simpleeval
 import mathmod.area
 import mathmod.volume as mv
 from cprint import cprint
+from simpleeval import simple_eval
 MANYSPACE = "                    "
 
 # Data for the Beta {{{
@@ -31,54 +32,68 @@ def GetNums():
     logging.debug("nums: " % nums)
     return newNums
 def showUserWhatIThink(msg):
-    cprint.ok(_("BTW, I parsed your choice as: %s") % msg)
+    cprint.ok(_("Parsing input as \"%s\"") % msg)
     logging.debug(f"Parsed user choice as {msg}")
 def parseCalc(calc):
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "area". Translatate only part of the word if it uses multiple charatcers and is possible without being confused, e.g. modulo turns into mod
     if _("ar") in calc or "#" in calc:
+        showUserWhatIThink(_("area"))
         area_interactive()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "volume". Translate only part of the word if possible without being confusing, e.g. modulo turns into mod
     elif _("vol") in calc:
+        showUserWhatIThink(_("volume"))
         volume_interactive()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "division". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod"
     elif "/" in calc or _("div") in calc or "÷" in calc:
+        showUserWhatIThink(_("division"))
         parse_division()
     # FOR TRANSLATORS: This is translated if statement w the meaning of "tax". Translate only a core part of the word if possible without ambiguity, e.g. modulo turns into mod
     elif _("tax") in calc:
+        showUserWhatIThink(_("tax"))
         tax()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "power" or "exponent". Translate only a core part of the word if possible without ambiguity (e.g. modulo turns into mod)
     elif _("pow") in calc or "**" in calc or "expo" in calc:
+        showUserWhatIThink(_("exponent"))
         exponent()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
     elif _("mod") in calc:
+        showUserWhatIThink(_("modulo"))
         parse_modulo()
     # FOR TRANSLATORS: this is a translated if statement with the meaning of "subtraction" (or, in the case of "min", "minus"). Translate only  a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod".
     elif _("sub") in calc or "-" in calc or _("min") in calc:
+        showUserWhatIThink(_("subtraction"))
         parse_subtraction()
     elif _("add") in calc or "+" in calc or _("plus") in calc:
+        showUserWhatIThink(_("addition"))
         parse_addition()
     elif _("mult") in calc or calc == "x" or "*" in calc:
+        showUserWhatIThink(_("multiplication"))
         parse_multiplication()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "root". Translate only a core paert of the word if possible without ambiguity (e.g. modulo turns into mod)
     elif _("root") in calc:
+        showUserWhatIThink(_("root (general)"))
         parse_any_root()
     # FOR TRANSLATORS: This == translated if statement with the meaning of "square root" or "square". Translate onyl a core part of the word if  possible without ambiguity (e.g. modulo turns into mod)
     elif _("sq") in calc:
+        showUserWhatIThink(_("square root"))
         parse_square_root()
     # FOR TRANSLATORS: This is translated if statement w meaning of "cube root" or "cube". Translate only a core part of the word if possible without ambiguity e.g. modulo turns into mod.
     elif _("cu") in calc:
+        showUserWhatIThink(_("cuberoot"))
         parse_cube_root()
     # FOR TRANSLATORS: this is a translated if statement with the meaning of "factorial". Translate only a core part of the word if possible without ambuguity, like for example "modulo" turns into "mod".
     elif _("fac") in calc or "!" in calc:
+        showUserWhatIThink(_("factorial"))
         parse_factorial()
     # FOR TRANSLATORS: This is a translated if statement w the meaning of "radix" or "base"  translate only a core part of the word if possible without ambiguity, e.g. "modulo" turn sinto "mod".
     elif _("rad") in calc or _("bas") in calc:
-        showUserWhatIThink("convert bases")
+        showUserWhatIThink(_("convert bases"))
         based()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci" - translate only a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod"
     elif _("fib") in calc:
+        showUserWhatIThink(_("fibonacci"))
         choice = input(_("Welcome to the fibonacci calculator.\n\t1 - Looped fibonacci (infinite)\n\t2 - Calculate a certain number of fibonacci numbers.\nSelect one: "))
         if int(turbofunc.CleanInput(choice)) == 1:
             try:
@@ -90,7 +105,7 @@ def parseCalc(calc):
             cprint.info(_("The results are in! They indicate an answer of..."))
             turbofunc.standTextOut(str(mathmod.fibonacci.CalculateFixedFibo(num)))
     elif _("exit") in calc or _("quit") in calc or _("bye") in calc or _("leave") in calc:
-        showUserWhatIThink("exit")
+        showUserWhatIThink(_("leave"))
         sys.exit()
     #FOR TRANSLATORS: This is a translated if statement. If possible, use only a core part of the word(s) here, like for example "division" turns into "div".
     elif _("help") in calc or _("?") in calc or _("confus") in calc or _("huh") in calc or _("sos") in calc or _("what") in calc:
@@ -102,21 +117,27 @@ def parseCalc(calc):
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
     elif "beta" in calc:
+        showUserWhatIThink(_("beta **UNSUPPORTED**"))
         cprint.warn("You are entering the BETA section of Palc.\nThis may or may not work.")
         cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
         cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
         cprint.ok("Safe mode enabled.")
         logging.debug("EEM")
-        from simpleeval import simple_eval
         calc2 = input("?")
         if calc2 == "SET MODE UNSAFE":
             logging.debug("EEM UNSAFE")
-            cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
+            cprint.warn("Unsafe mode enabled. Be very careful what you type here!\n"
+                    "DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
             cprint.ok(eval(input("UNSAFE MODE - ")))
             return
-        cprint.ok(simple_eval(calc2, functions={
-            "Palcfib": express_fibonacci,
-        }))
+        functions = {
+                "Palcfib": express_fibonacci,
+        }
+        try: simple_eval_ = simple_eval(calc2, functions=functions)
+        except simpleeval.FunctionNotDefined:
+            cprint.err(_("You can't use that function here."))
+            return
+        standResOut(simple_eval_)
     else:
         cprint.err(_("Sorry, that is not a valid command.\n"))
         h()
