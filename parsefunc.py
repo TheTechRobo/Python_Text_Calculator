@@ -301,16 +301,15 @@ def tax():
         try:
             preset = int(input(_("Type: ")))
         except (TypeError, ValueError):
-            cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idk that its a dead meme
+            cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idc that its a dead meme
         else:
             break
-    print("\033[5A]", end="") if preset != 2 else print("", end="")
+    print("\033[5A", end="") if preset != 2 else print("", end="")
     if preset == 2:
         cprint.info(_("Ok, no preset it is."))
         percentage = float(input(_("Please type the percentage of tax in your local area.")))
     elif preset == 1:
         sussypresetlist = {
-                "": -1,
                 _("Ontario"): mathmod.tax_types.sales.Canada.ontario,
                 _("Quebec"): mathmod.tax_types.sales.Canada.quebec,
                 _("Yukon/Northwest Territories/Nunavut/Alberta"): mathmod.tax_types.sales.Canada.yukon,
@@ -319,16 +318,13 @@ def tax():
                 _("Saskatchewan"): mathmod.tax_types.sales.Canada.saskatchewan,
         }
         sus = list(sussypresetlist)
-        ind = 0
-        for su in sus: #s
-            if ind == 0:
-                ind += 1
-                continue
-            cprint.info(f"{ind}. {su}")
-            ind += 1
+        for ind, su in enumerate(sussypresetlist):
+            cprint.info(f"{ind + 1}. {su}")
         while True:
             try:
-                presetterInd = int(input(_("Please enter the One You Want™")))
+                presetterInd = int(input(_("Please enter the One You Want™: "))) - 1
+                if presetterInd < 0:
+                    presetterInd = 32237
             except (ValueError, TypeError):
                 cprint.err(_("Nice try, but you have to actually type a number."))
             else:
@@ -340,7 +336,7 @@ def tax():
                     cprint.err(_("Nice try, but the number has to be in range."))
                     continue
                 break
-        origin = float(input(_("What is the original number?")))
+        origin = _sus("original number")
         standResOut(mathmod.tax(origin, percentage))
 
 def based():
