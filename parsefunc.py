@@ -1,9 +1,8 @@
 import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random, python_radix, simpleeval
 import mathmod.area
 import mathmod.volume as mv
-from cprint import cprint
+from cprint_inter import cprint
 from simpleeval import simple_eval
-MANYSPACE = "                    "
 
 # Data for the Beta {{{
 def express_fibonacci(num):
@@ -115,7 +114,7 @@ def parseCalc(calc):
         sys.exit(random.choice((42,69))) #the funny number
     elif calc == "":
         cprint.ok("Wow...you're quiet.")
-        turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True)
+        turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True, no=True)
     elif "beta" in calc:
         showUserWhatIThink(_("beta **UNSUPPORTED**"))
         cprint.warn("You are entering the BETA section of Palc.\nThis may or may not work.")
@@ -143,7 +142,7 @@ def parseCalc(calc):
         h()
 
 def parse_factorial():
-    turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ")
+    turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ", no=True)
     num = int(turbofunc.CleanInput(input()))
     fin = mathmod.factorial(num)
     standResOut(fin)
@@ -171,9 +170,9 @@ def parse_cube_root():
     run1NumMathmodFunc(mathmod.cube_root, _("cube root"))
 
 def parse_any_root():
-    turbofunc.multiprint({_("Please enter the "): cprint.info, _("original "): cprint.ok, _("number") + " ...": cprint.info}, end="", flush=True)
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("original "): cprint.ok, _("number") + " ...": cprint.info}, end="", flush=True, no=True)
     n1 = float(turbofunc.CleanInput(input()))
-    turbofunc.multiprint({_("Please enter the "): cprint.info, _("root"): cprint.ok, _("(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."): cprint.info}, end="", flush=True)
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("root"): cprint.ok, _("(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."): cprint.info}, end="", flush=True, no=True)
     n2 = float(turbofunc.CleanInput(input()))
     res = mathmod.root_general(n1,n2)
     standResOut(res)
@@ -184,16 +183,16 @@ def standResOut(res):
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
 
 def run1NumMathmodFunc(func, action):
-    turbofunc.multiprint({_("Please enter the "): cprint.info, _("number "): cprint.ok, _("to "): cprint.info, action: cprint.ok, " ...": cprint.info}, end="", flush=True)
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("number "): cprint.ok, _("to "): cprint.info, action: cprint.ok, " ...": cprint.info}, end="", no=True, flush=True)
     n1 = float(turbofunc.CleanInput(input()))
     res = func(n1)
     standResOut(res)
     logging.info("Got res %s, num are %s." % (res,n1))
 def run2NumMathmodFunc(func):
     logging.debug("Right here")
-    turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True, no=True)
     n1 = float(turbofunc.CleanInput(input()))
-    turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True)
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True, no=True)
     n2 = float(turbofunc.CleanInput(input()))
     res = func(n1,n2)
     standResOut(res)
@@ -214,15 +213,17 @@ def _gen_entry(name, prompts, func):
             }
 
 def _sus(sy, baka=""):
+    extra = turbofunc.clear_length(_("Please enter the ")+sy +"... "+baka)
+    extraa = (extra * " ") + (extra * "\b")
     turbofunc.multiprint({
-        _("Please enter the "): cprint.info, sy: cprint.ok, "... "+baka: cprint.info
-        }, flush=True, end="")
+        _("Please enter the "): cprint.info, sy: cprint.ok, "... "+baka+extraa: cprint.info
+        }, no=True, flush=True, end="")
     return float(turbofunc.CleanInput(input()))
 
 def exponent():
     origin = _sus(_("original number"))
     print("\033[1A", end="")
-    exp = _sus(_("exponent"), MANYSPACE + "\b" * len(MANYSPACE))
+    exp = _sus(_("exponent"))
     standResOut(mathmod.exponent(origin, exp))
 
 def generic_interactive(datums):
@@ -293,8 +294,8 @@ def tax():
     print("\033[4A", end="")
     cprint.ok(_("You picked Sales Tax."))
     cprint.ok(_("Would you like to use a tax preset?"))
-    cprint.info(_("1. Yes - I live in Canada") + MANYSPACE)
-    cprint.info(_("2. No") + MANYSPACE)
+    cprint.info(_("1. Yes - I live in Canada"))
+    cprint.info(_("2. No"))
     cprint.warn(_("No other types are currently supported."))
     while True:
         try:

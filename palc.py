@@ -1,18 +1,16 @@
-import sys
-
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller https://stackoverflow.com/a/44352931/9654083"""
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
 # https://dzone.com/articles/listing-a-directory-with-python
-MANYSPACE = "                                 " #todo: check terminal size then subtract character count from it
+
 oldCalc = "no u"
 # Basic Setup
 try:
-    from cprint import cprint
-    import turbofunc, gettext, time, logging, platform, os, os.path, runpy
+    import sys, turbofunc, gettext, time, logging, platform, os, os.path, runpy
     import parsefunc
+    from cprint_inter import cprint
 except Exception as ename:
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: Try `pip install -r requirements.txt'." % ename)
     sys.exit(8)
@@ -33,9 +31,9 @@ try:
     cprint.info("Checking for locales... Please stand by.", end="", flush=True)
     listing = os.listdir(resource_path("locales"))
     time.sleep(0.211)
-    cprint.info("\rParsing list..." + MANYSPACE, end="", flush=True)
+    cprint.info("\rParsing list...", end="", flush=True)
     settings = runpy.run_path(resource_path("locales/CONFIG/config.py")) #https://stackoverflow.com/a/37339817/9654083
-    print("\r" + MANYSPACE + "\n\033[1A", end="")
+    print("\r" + "\n\033[1A", end="")
     pos = 1
     for item in settings["GETTEXT_NAMES"]:
         cprint.info("%s. %s" % (pos, item))
@@ -54,7 +52,7 @@ try:
                 translation = translatio
             if translation == "":
                 translation = "(blank)"
-            cprint.err("\033[F %s: Invalid input, try again." % translation + MANYSPACE * 2)
+            cprint.err("\033[F %s: Invalid input, try again." % translation)
             input_invalid_eh = True
             del translation, translatio
         else:
@@ -68,7 +66,7 @@ try:
 except (KeyboardInterrupt, EOFError):
     sys.exit(0)
 
-turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!" + MANYSPACE + "\n": cprint.info}, _=_, end="", flush=True)
+turbofunc.multiprint({_("\nWelcome to "): cprint.info, _("Palc"): cprint.ok, "!" + "\n": cprint.info}, _=_, no=True, end="", flush=True)
 time.sleep(1)
 def mainloop():
     calc = []
@@ -76,7 +74,7 @@ def mainloop():
     if sys.stdin.isatty():
         turbofunc.pressanykey()
         turbofunc.clearScreen()
-        turbofunc.multiprint({"\n" + _("Welcome to "): cprint.info, _("Palc"): cprint.ok, "!%s\n" % MANYSPACE: cprint.info, _("Please enter a command..."): cprint.ok}, _=_, end="",flush=True)
+        turbofunc.multiprint({"\n" + _("Welcome to "): cprint.info, _("Palc"): cprint.ok, "!\n": cprint.info, _("Please enter a command..."): cprint.ok}, no=True, _=_, end="",flush=True)
         cprint.warn("\nEnter HELP for help", flush=True)
         string = ("                           \033[A\033[A")
         while True:
@@ -137,7 +135,7 @@ while True:
         if not sys.stdin.isatty():
             cprint.warn("Your batch script ended prematurely. Next time, run the command \"exit\".")
         else:
-            cprint.warn("It's suggested to run EXIT instead of ^D." + MANYSPACE)
+            cprint.warn("It's suggested to run EXIT instead of ^D.")
         turbofunc.standTextOut(_("Bye!"), printMechanismString=cprint.ok)
         sys.exit(0)
     except KeyboardInterrupt as ename:
