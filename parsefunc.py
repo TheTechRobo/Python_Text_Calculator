@@ -43,6 +43,7 @@ def showUserWhatIThink(msg):
     cprint.ok(_("Parsing input as \"%s\"") % msg)
     logging.debug(f"Parsed user choice as {msg}")
 def parseCalc(calc):
+    sudo()
     logging.info("User entered `%s'" % calc)
     calc = turbofunc.CleanInput(calc).lower()
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "area". Translatate only part of the word if it uses multiple charatcers and is possible without being confused, e.g. modulo turns into mod
@@ -115,31 +116,37 @@ def parseCalc(calc):
     elif calc == "":
         cprint.ok("Wow...you're quiet.")
         turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True, no=True)
+    elif "ceta" in calc:
+        parse_ceta(input("hi: "))
     elif "beta" in calc:
-        showUserWhatIThink(_("beta **UNSUPPORTED**"))
-        cprint.warn("You are entering the BETA section of Palc.\nThis may or may not work.")
-        cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
-        cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
-        cprint.ok("Safe mode enabled.")
-        logging.debug("EEM")
-        calc2 = input("?")
-        if calc2 == "SET MODE UNSAFE":
-            logging.debug("EEM UNSAFE")
-            cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
-            cprint.err("DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
-            cprint.ok(eval(input("UNSAFE MODE - ")))
-            return
-        functions = {
-                "Palcfib": express_fibonacci,
-        }
-        try: simple_eval_ = simple_eval(calc2, functions=functions)
-        except simpleeval.FunctionNotDefined:
-            cprint.err(_("You can't use that function here."))
-            return
-        standResOut(simple_eval_)
+        parse_beta()
     else:
         cprint.err(_("Sorry, that is not a valid command.\n"))
         h()
+
+def parse_beta():
+    showUserWhatIThink(_("beta **UNSUPPORTED**"))
+    cprint.warn("You are entering the BETA section of Palc.\nThis may or may not work.")
+    cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
+    cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
+    cprint.ok("Safe mode enabled.")
+    logging.debug("EEM")
+    calc2 = input("?")
+    if calc2 == "SET MODE UNSAFE":
+        logging.debug("EEM UNSAFE")
+        cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
+        cprint.err("DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
+        cprint.ok(eval(input("UNSAFE MODE - ")))
+        return
+    functions = {
+            "Palcfib": express_fibonacci,
+    }
+    try: simple_eval_ = simple_eval(calc2, functions=functions)
+    except simpleeval.FunctionNotDefined:
+        cprint.err(_("You can't use that function here."))
+        return
+    standResOut(simple_eval_)
+
 
 def parse_fibonacci():
     cprint.info(_("Welcome to the fibonacci calculator."))
@@ -382,7 +389,65 @@ def h():
     cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
     cprint.info(_("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m"))#https://stackoverflow.com/a/17303428/9654083
 
+def add_calculations(*args):
+    for i in args: CALCULATIONS.append(i)
 
+def funny():
+    cprint.warn(_("Ha... ha... not... funny... Jim."))
+    sys.exit(random.choice((42,69)))
+
+def sudo():
+    add_calculations(
+        Calculation(h, ("?", _("help"), _("idk"), _("confus"), _("sos"), _("what")),
+            _("help")),
+        Calculation(sys.exit, (_("exit"), _("quit"), _("bye"), _("leave")),
+            _("exit Palc")),
+        # FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci"
+        Calculation(parse_fibonacci, (_("fib"),),
+            _("fibonacci")),
+        # FOR TRANSLATORS: This is a translated if statement with the meaning of "factorial"
+        Calculation(parse_factorial, ("!", _("fac")),
+            _("factorial")),
+        # FOR TRANSLATORS: Translated if statement (meaning of division)
+        Calculation(parse_division, ("/", _("div"), "÷"),
+            _("division")),
+        Calculation(parse_multiplication, (_("mult"), "*"),
+            _("multiplication")),
+        Calculation(parse_addition, (_("add"), "+", _("plus")),
+            _("addition")),
+        Calculation(parse_subtraction, (_("sub"), "-", _("min")),
+            _("subtraction")),
+        Calculation(parse_modulo, (_("mod"),),
+            _("modulo")),
+        Calculation(parse_square_root, (_("sq"),),
+            _("square root")),
+        Calculation(parse_cube_root, (_("cu"),),
+            _("cuberoot")),
+        Calculation(parse_any_root, (_("root"),),
+            _("root")),
+        Calculation(exponent, (_("pow"), "**", _("expo")),
+            _("exponent")),
+        Calculation(volume_interactive, (_("vol"),),
+            _("volume")),
+        Calculation(area_interactive, (_("ar"),"#"),
+            _("area")),
+        Calculation(tax, (_("tax"),),
+            _("tax")),
+        Calculation(based, (_("rad"), _("base")),
+            _("convert bases")),
+        Calculation(funny, _("no"),
+            _("be the most unfunny person ever")),
+        Calculation(parse_beta, ("beta",),
+            _("use the beta (UNSUPPORTED")),
+        )
+
+def parse_ceta(calcc):
+    for calc in CALCULATIONS:
+        for word in calc.core_words:
+            if word in calcc:
+                return calc.run()() #im literally only doing this bc it looks stupid
+    cprint.err(_("Sorry, but I didn't quite get that."))
+    h()
 
 if __name__ == "__main__":
     cprint.warn("Do not run parsefunc on its own. Attempting to run Palc...")

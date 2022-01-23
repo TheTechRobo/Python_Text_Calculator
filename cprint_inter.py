@@ -1,7 +1,8 @@
 from cprint import cprint
 import turbofunc, copy
 
-tspc = turbofunc.string_plus_clear
+def tspc(*args, **kwargs):
+    return turbofunc.string_plus_clear(*args, **kwargs, backspace=True)
 
 oc = copy.deepcopy(cprint)
 class cprint(oc):
