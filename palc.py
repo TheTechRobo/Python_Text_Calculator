@@ -100,7 +100,7 @@ def mainloop():
                 continue
             if keypress == "\x03":
                 raise KeyboardInterrupt
-            if keypress == "\x04":
+            if keypress == "\x04": # pylint: disable=no-else-raise
                 raise EOFError
             else:
                 print(keypress, end="", flush=True)

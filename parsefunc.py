@@ -69,7 +69,8 @@ def parse_beta():
     functions = {
             "Palcfib": express_fibonacci,
     }
-    try: simple_eval_ = simple_eval(calc2, functions=functions)
+    try:
+        simple_eval_ = simple_eval(calc2, functions=functions)
     except simpleeval.FunctionNotDefined:
         cprint.err(_("You can't use that function here."))
         return
@@ -254,7 +255,10 @@ def tax():
             cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idc that its a dead meme
         else:
             break
-    print("\033[5A", end="") if preset != 2 else print("", end="")
+    if preset != 2:
+        print("\033[5A", end="")
+    else:
+        print("", end="")
     if preset == 2:
         cprint.info(_("Ok, no preset it is."))
         percentage = float(input(_("Please type the percentage of tax in your local area: ")))
@@ -318,7 +322,8 @@ def h():
     cprint.info(_("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m"))#https://stackoverflow.com/a/17303428/9654083
 
 def add_calculations(*args):
-    for i in args: CALCULATIONS.append(i)
+    for i in args:
+        CALCULATIONS.append(i)
 
 def funny():
     cprint.warn(_("Ha... ha... not... funny... Jim."))
