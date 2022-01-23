@@ -1,5 +1,4 @@
 # python-text-calculator
-# For installation instructions see [INSTALLING.md](INSTALLING.md)
 
 ### Compatibility Warnings
 
@@ -22,7 +21,7 @@ This is a Python script named "Palc" I forked when I wanted to learn math in Pyt
 
 Learning this has been very interesting and educational. 
 
-I always make my forked repositories better — and this one is no exception!  
+I always try to make my forked repositories better — and this one is no exception!  
 
 Thanks for visiting!
 
