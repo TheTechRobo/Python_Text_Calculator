@@ -146,10 +146,9 @@ def mémoire():
                     write_slot(slot, number)
                     cprint.warn(_("Palc will now ignore the file; but if you want to delete it you'll have to do so yourself"))
                     return
-                else:
-                    cprint.err(_("Abort."))
-                    cprint.fatal(_("We can't read the memory slot until you migrate it."))
-                    return
+                cprint.err(_("Abort."))
+                cprint.fatal(_("We can't read the memory slot until you migrate it."))
+                return
             cprint.fatal(_("Slot does not exist!"))
     elif int(a) == 2:
         write_slot(slot, turbofunc.CleanInput(input("Number? ")))
