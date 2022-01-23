@@ -1,8 +1,11 @@
 import sys, logging, turbofunc, mathmod, mathmod.fibonacci, mathmod.area
-import runpy, time, random, python_radix, simpleeval
+import runpy, time, random, python_radix, simpleeval, os,json, os.path, appdirs
 import mathmod.volume as mv
 from cprint_inter import cprint
 from simpleeval import simple_eval
+
+name = "Palc"
+author = "TheTechRobo"
 
 class Calculation:
     def __init__(self, function, core_words, what_i_think):
@@ -98,6 +101,61 @@ def parse_factorial():
     fin = mathmod.factorial(num)
     standResOut(fin)
     logging.info("Got res %s, num are %s." % (fin,num))
+
+def write_slot(slot, number):
+    appdir = appdirs.user_data_dir(name, author)
+    path = os.path.join(appdir, "slots.json")
+    if not os.path.exists(path):
+        if not os.path.exists(appdir):
+            os.mkdir(appdir)
+        with open(path, "w+") as file:
+            file.write("{}")
+    with open(path) as j:
+        slojson = json.load(j)
+    slot_exists = not (slojson.get(slot) is None)
+    if slot_exists:
+        cprint.warn(_("The slot %s already exists. Do you want to overwrite it?") % slot)
+        overwrite = turbofunc.CleanInput(input(_("Type: ")))[0].lower() == "y"
+        if overwrite:
+            cprint.warn(_("Ok, overwriting..."))
+        else:
+            return cprint.fatal(_("Abort."))
+    slojson[slot] = number
+    with open(path, "w") as fil:
+        fil.write(json.dumps(slojson))
+
+def mémoire():
+    cprint.info(_("M E M O R Y"))
+    slot = turbofunc.CleanInput(input("What is your memory slot of choice?"))
+    cprint.ok(_("Read or Write?\n1 - Read\n2 - Write"))
+    a = turbofunc.CleanInput(input(_("Type: ")))
+    if int(a) == 1:
+        try:
+            with open(os.path.join(appdirs.user_data_dir(name, author), "slots.json")) as f:
+                j = json.load(f)
+            standResOut(j[slot])
+        except (KeyError, FileNotFoundError):
+            if os.path.isfile(str(slot)):
+                cprint.warn(_("We have found a 0.7-style memory slot with this name. 0.7 memory slots were very crude. We won't read the slot for you unless you move it."))
+                cprint.ok(_("Would you like to migrate the memory slot to 0.11 mode?"), end="")
+                yn = True if turbofunc.CleanInput(input())[0].lower() == 'y' else False
+                if yn:
+                    cprint.info(_("Migrating memory slot..."))
+                    with open(str(slot)) as data:
+                        number = data.read()
+                    write_slot(slot, number)
+                    cprint.warn(_("Palc will now ignore the file; but if you want to delete it you'll have to do so yourself"))
+                    return
+                else:
+                    cprint.err(_("Abort."))
+                    cprint.fatal(_("We can't read the memory slot until you migrate it."))
+                    return
+            cprint.fatal(_("Slot does not exist!"))
+    elif int(a) == 2:
+        write_slot(slot, turbofunc.CleanInput(input("Number? ")))
+    else:
+        cprint.ok(_("No"))
+        raise SyntaxError("just no")
 
 def parse_division():
     runMathmodFunc(mathmod.division)
@@ -372,6 +430,8 @@ def sudo():
             _("be the most unfunny person ever")),
         Calculation(parse_beta, ("beta",),
             _("use the beta (UNSUPPORTED")),
+        Calculation(mémoire, (_("mem"), _("save"), _("var"), _("load")),
+            _("load or save a memory slot")),
         )
 
 def parse_ceta(calcc):
