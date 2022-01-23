@@ -1,8 +1,18 @@
-import sys, logging, turbofunc, mathmod, mathmod.fibonacci, runpy, time, random, python_radix, simpleeval
-import mathmod.area
+import sys, logging, turbofunc, mathmod, mathmod.fibonacci, mathmod.area
+import runpy, time, random, python_radix, simpleeval
 import mathmod.volume as mv
 from cprint_inter import cprint
 from simpleeval import simple_eval
+
+class Calculation:
+    def __init__(self, function, core_words, what_i_think):
+        self.function, self.core_words, self.what_i_think = \
+                function, core_words, what_i_think
+    def run(self):
+        showUserWhatIThink(self.what_i_think)
+        return self.function
+
+CALCULATIONS = []
 
 # Data for the Beta {{{
 def express_fibonacci(num):
@@ -13,7 +23,6 @@ def express_fibonacci(num):
 class Vars:
     CommandRetry = True
 def GetNums():
-    string_2num = _("Please enter the next number; a blank line will confirm... ")
     nums = []
     newNums = []
     n = 69
@@ -23,12 +32,12 @@ def GetNums():
         nums.append(n)
         if n == "":
             continue
-        cprint.info(string_2num, end="", flush=True)
+        cprint.info(_("Please enter the next number; a blank line will confirm... "), end="", flush=True)
     for item in nums:
         if item != "":
             newNums.append(float(item))
-    logging.debug("newNums: " % newNums)
-    logging.debug("nums: " % nums)
+    logging.debug(f"newNums: {newNums}")
+    logging.debug(f"nums: {nums}")
     return newNums
 def showUserWhatIThink(msg):
     cprint.ok(_("Parsing input as \"%s\"") % msg)
@@ -93,16 +102,7 @@ def parseCalc(calc):
     # FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci" - translate only a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod"
     elif _("fib") in calc:
         showUserWhatIThink(_("fibonacci"))
-        choice = input(_("Welcome to the fibonacci calculator.\n\t1 - Looped fibonacci (infinite)\n\t2 - Calculate a certain number of fibonacci numbers.\nSelect one: "))
-        if int(turbofunc.CleanInput(choice)) == 1:
-            try:
-                mathmod.fibonacci.CalculateLoopedFibo()
-            except KeyboardInterrupt:
-                print()
-        elif int(turbofunc.CleanInput(choice)) == 2:
-            num = int(turbofunc.CleanInput(input(_("Enter the number of fibonacci to calculate...")))) #NOW THATS A LOTTA PARENTHESIS!!!
-            cprint.info(_("The results are in! They indicate an answer of..."))
-            turbofunc.standTextOut(str(mathmod.fibonacci.CalculateFixedFibo(num)))
+        parse_fibonacci()
     elif _("exit") in calc or _("quit") in calc or _("bye") in calc or _("leave") in calc:
         showUserWhatIThink(_("leave"))
         sys.exit()
@@ -125,8 +125,8 @@ def parseCalc(calc):
         calc2 = input("?")
         if calc2 == "SET MODE UNSAFE":
             logging.debug("EEM UNSAFE")
-            cprint.warn("Unsafe mode enabled. Be very careful what you type here!\n"
-                    "DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
+            cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
+            cprint.err("DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
             cprint.ok(eval(input("UNSAFE MODE - ")))
             return
         functions = {
@@ -140,6 +140,21 @@ def parseCalc(calc):
     else:
         cprint.err(_("Sorry, that is not a valid command.\n"))
         h()
+
+def parse_fibonacci():
+    cprint.info(_("Welcome to the fibonacci calculator."))
+    cprint.ok("\t" + _("1 - Looped fibonacci (infinite)") + "\n" \
+            + "\t" + _("2 - Calculate a certain number of fibonacci numbers."))
+    choice = int(turbofunc.CleanInput(input(_("Select one: "))))
+    if choice == 1:
+        try:
+            mathmod.fibonacci.CalculateLoopedFibo()
+        except KeyboardInterrupt:
+            print()
+    elif choice == 2:
+        num = int(turbofunc.CleanInput(input(_("Enter the number of fibonacci to calculate...")))) #NOW THATS A LOTTA PARENTHESIS!!!
+        cprint.info(_("The results are in! They indicate an answer of..."))
+        standResOut(str(mathmod.fibonacci.CalculateFixedFibo(num)))
 
 def parse_factorial():
     turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ", no=True)
@@ -366,6 +381,9 @@ def h():
     cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo, and fibonacci."))
     cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
     cprint.info(_("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m"))#https://stackoverflow.com/a/17303428/9654083
+
+
+
 if __name__ == "__main__":
     cprint.warn("Do not run parsefunc on its own. Attempting to run Palc...")
     time.sleep(3)
