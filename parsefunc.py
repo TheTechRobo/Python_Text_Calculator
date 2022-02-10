@@ -124,6 +124,19 @@ def write_slot(slot, number):
     with open(path, "w") as fil:
         fil.write(json.dumps(slojson))
 
+def logarithm():
+    cprint.info(_("Select the desired mode of logarithm. Options: "))
+    count = 0
+    modes = []
+    for mode in mathmod.LogarithmModes:
+        modes.append(mode)
+        count += 1
+        cprint.ok("%d.  %s" % (count, mode.value))
+    ind = int(_sus(_("mode to process"))) - 1
+    if (len(mathmod.LogarithmModes) - 1) < ind or ind < 0:
+        return cprint.err(_("Nice try, but you need to type in a number that's in range"))
+    standResOut(mathmod.log(float(_sus(_("original number"))), modes[ind]))
+
 def mémoire():
     cprint.info(_("M E M O R Y"))
     slot = turbofunc.CleanInput(input("What is your memory slot of choice?"))
@@ -425,12 +438,14 @@ def sudo():
             _("tax")),
         Calculation(based, (_("rad"), _("base")),
             _("convert bases")),
-        Calculation(funny, _("no"),
+        Calculation(funny, (_("no"),),
             _("be the most unfunny person ever")),
         Calculation(parse_beta, ("beta",),
             _("use the beta (UNSUPPORTED")),
         Calculation(mémoire, (_("mem"), _("save"), _("var"), _("load")),
             _("load or save a memory slot")),
+        Calculation(logarithm, (_("loga"),),
+            _("calculate logarithm")),
         )
 
 def parse_ceta(calcc):

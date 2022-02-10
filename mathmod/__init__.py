@@ -1,10 +1,12 @@
 from __future__ import print_function #we need to tell the user if they are using python 2. all this does is prevent Syntaxerrors.
-import warnings
+import warnings, math
 from decimal import Decimal
+from enum import Enum, auto
+import sys
 
 if __name__ == "__main__":
     print("Please do not run any of these files directly. They don't do anything useful on their own.")
-import sys
+
 if sys.version_info < (3,4):
     raise ImportError(
     "You are running Mathmod 0.11 on Python 2 or Python < 3.4. Mathmod 0.11 and up is no longer compatible with Python 2.x, and somehow you still got this version installed."
@@ -163,13 +165,21 @@ def tax(n1, tax=None, n2=None):
         percentageTax = percent_of(tax, n1)
         answer = origin + percentageTax
         return answer
-def log(n1, e=True):
+
+class LogarithmModes(Enum):
+    base10 = "Base 10"
+    e      = "Natural (e)"
+def log(n1, mode):
         """
         parameter n1: Original number
-        parameter e: Use False if you want base 10 logarithm; True for e (natural). Defaults to natural.
+        parameter mode: Select the desired mode from the LogarithmModes enum.
         """
-        import math
         n1 = float(n1)
+        try:
+            mode.value
+        except AttributeError:
+            raise TypeError("You have to use a mode from the Enum.")
+        e = mode == LogarithmModes.e
         if e:
             return math.log(n1)
         if not e:
