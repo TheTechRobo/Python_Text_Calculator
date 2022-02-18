@@ -150,6 +150,12 @@ def calc_chr():
     char = _sus("number to chr", func=wrapchr)
     standResOut(char)
 
+def interest():
+    orogin = _sus("original number")
+    rate = _sus("interest rate")
+    units = _sus("number of units of time")
+    standResOut(mathmod.interest(units, rate, orogin))
+
 def mémoire():
     cprint.info(_("M E M O R Y"))
     slot = turbofunc.CleanInput(input("What is your memory slot of choice?"))
@@ -470,6 +476,8 @@ def sudo():
             _("calculate the ASCII code of a character")),
         Calculation(calc_chr, (_("chr"),),
             _("calculate the character of an ASCII code")),
+        Calculation(interest, (_("interest"), _("rate")),
+            _("calculate interest rate")),
         )
 
 def parse_ceta(calcc):

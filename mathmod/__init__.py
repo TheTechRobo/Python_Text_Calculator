@@ -194,7 +194,7 @@ def percent_of(x, whole):
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return (x * whole) / 100.0
-whatIsXPercentOf = percent_of
+whatIsXPercentOf, percentage_of = percent_of, percent_of
 def findPercentage(part, whole):
         """
         whole = number that would be 100%
@@ -204,28 +204,24 @@ def findPercentage(part, whole):
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return 100 * float(part) / float(whole)
-def getInterest(units, rate, origin):
+def interest(units, rate, origin):
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
         origin: Original number.
         '''
-        inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
+        inRealNumbers = percentage_of(whole=origin, x=rate)
         interest = inRealNumbers * units
         result = origin + interest
         return {"interest": interest, "total": result}
 def calculateInterest(units, rate, origin):
         '''
-        units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
-        rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.
-        origin: Original number.
+        DO NOT USE THIS FUNCTION.
         THIS FUNCTION WILL BE REMOVED IN MATHMOD 0.12 - DO NOT USE!!!!
         '''
-        inRealNumbers = Misc.whatIsXPercentOf(whole=origin, x=rate)
-        interest = inRealNumbers * units
-        result = origin + interest
-        warnings.warn("Warning: This old function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
-        return result
+        warnings.warn("Warning: This old interest function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
+        return interest(units, rate, origin)
+getInterest = calculateInterest
 def spinner(numberOfTimes, choiceSelection):
         """
         param numberOfTimes: Amount of times to conduct the spinner.
