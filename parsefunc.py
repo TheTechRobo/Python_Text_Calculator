@@ -137,6 +137,19 @@ def logarithm():
         return cprint.err(_("Nice try, but you need to type in a number that's in range"))
     standResOut(mathmod.log(float(_sus(_("original number"))), modes[ind]))
 
+def calc_ord():
+    char = _sus("character to ord", func=str)
+    if len(char) > 1:
+        raise ValueError("we need a CHARACTER, not a STRING of characters")
+    standResOut(ord(char))
+
+def wrapchr(code, *args, **kwargs):
+    return chr(int(code))
+
+def calc_chr():
+    char = _sus("number to chr", func=wrapchr)
+    standResOut(char)
+
 def mémoire():
     cprint.info(_("M E M O R Y"))
     slot = turbofunc.CleanInput(input("What is your memory slot of choice?"))
@@ -233,13 +246,20 @@ def _gen_entry(name, prompts, func):
             "name": name, "prompts": prompts, "function": func
             }
 
-def _sus(sy, baka=""):
+def __sus(sy, baka=""):
     extra = turbofunc.clear_length(_("Please enter the ")+sy +"... "+baka)
     extraa = (extra * " ") + (extra * "\b")
     turbofunc.multiprint({
         _("Please enter the "): cprint.info, sy: cprint.ok, "... "+baka+extraa: cprint.info
         }, no=True, flush=True, end="")
-    return float(turbofunc.CleanInput(input()))
+    return turbofunc.CleanInput(input())
+
+def _sus(*args, **kwargs):
+    if not (func := kwargs.get("func")):
+        func = float
+    else:
+        del kwargs["func"]
+    return func(__sus(*args, **kwargs))
 
 def exponent():
     origin = _sus(_("original number"))
@@ -446,6 +466,10 @@ def sudo():
             _("load or save a memory slot")),
         Calculation(logarithm, (_("loga"),),
             _("calculate logarithm")),
+        Calculation(calc_ord, (_("ord"),),
+            _("calculate the ASCII code of a character")),
+        Calculation(calc_chr, (_("chr"),),
+            _("calculate the character of an ASCII code")),
         )
 
 def parse_ceta(calcc):
