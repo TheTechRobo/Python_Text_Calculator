@@ -4,7 +4,7 @@
 
 - In Mathmod 0.11, syntax will change and Mathmod will not be compatible with python versions earlier than 3.4.
 
-- In Palc 0.11, Palc will no longer be compatible with Python versions earlier than 3.7.
+- In Palc 0.11, Palc will no longer be compatible with Python versions earlier than 3.8.
 
 ## I cannot emphasize this enough: to contribute, READ [CONTRIBUTING.md](CONTRIBUTING.md) FIRST!!!!
 
