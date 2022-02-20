@@ -26,7 +26,7 @@ def confloat(n1,n2):
 def _confloat(item):
     return float(item)
 
-def multiplication(*args, n1=None,n2=None): #multiplication
+def multiplication(*args, n1=None,n2=None) -> float: #multiplication
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -42,7 +42,7 @@ def multiplication(*args, n1=None,n2=None): #multiplication
         for number in nums[1:]: #https://stackoverflow.com/a/34384791/9654083
             result = result * number
         return result
-def division(*args, n1=None,n2=None): #division
+def division(*args, n1=None,n2=None) -> float: #division
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -58,7 +58,7 @@ def division(*args, n1=None,n2=None): #division
         for number in nums[1:]:
             result = result / number
         return result
-def subtraction(*args,n1=None,n2=None): #subtraction
+def subtraction(*args,n1=None,n2=None) -> float: #subtraction
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -74,7 +74,7 @@ def subtraction(*args,n1=None,n2=None): #subtraction
         for number in nums[1:]:
             result = result - number
         return result
-def addition(*args,n1=None,n2=None): #addition
+def addition(*args,n1=None,n2=None) -> float: #addition
         """
         please do not use n1 or n2 anymore, they're deprecated.
         """
@@ -90,13 +90,13 @@ def addition(*args,n1=None,n2=None): #addition
         for number in nums[1:]:
             result = result + number
         return result
-def factorial(num):
-    fin = num
+def factorial(num: int) -> int:
+    fin = int(num)
     while num > 1:
         num -= 1
         fin = fin * num
     return fin
-def root_general(origin, root, useDecimal=False):
+def root_general(origin: float, root: float, useDecimal=False) -> float:
     """
     Setting useDecimal to True may provide a more accurate calculation, but could be considerably slower.
     float('0.1') + float('0.2') = 0.30000000000000004, while float(Decimal('0.1') + Decimal('0.2')) = 0.3.
@@ -116,7 +116,7 @@ def root_general(origin, root, useDecimal=False):
     return res
 rootGeneral = root_general
 
-def exponent(n1, exponent):
+def exponent(n1: float, exponent: float) -> float:
         """
         param n1: Original number
         param exponent: exponent
@@ -125,7 +125,7 @@ def exponent(n1, exponent):
         return origin ** ex
 power = exponent
 
-def modulo(n1,n2):
+def modulo(n1: float, n2: float) -> float:
         n1, n2 = confloat(n1, n2)
         return n1 % n2
 
@@ -149,18 +149,12 @@ class tax_types:
             prince_edward_island = 15
             saskatchewan = 11
 
-def tax(n1, tax=None, n2=None):
+def tax(n1: float, tax: float) -> float:
         """
         param n1: Original number
         param tax: Tax in percentage (without percentage sign)
-        param n2: Deprecated symlink to tax
         You can use the tax_types class for presets.
         """
-        if n2 is None:
-            origin, tax = confloat(n1, tax)
-        else:
-            warnings.warn("You are using an old API that will be deprecated; please check Mathmod's new docs.")
-            origin, tax = confloat(n1, n2)
         usefulTax = (tax / 100) + 1
         percentageTax = percent_of(tax, n1)
         answer = origin + percentageTax
@@ -169,7 +163,7 @@ def tax(n1, tax=None, n2=None):
 class LogarithmModes(Enum):
     base10 = "Base 10"
     e      = "Natural (e)"
-def log(n1, mode):
+def log(n1: float, mode: LogarithmModes):
         """
         parameter n1: Original number
         parameter mode: Select the desired mode from the LogarithmModes enum.
@@ -185,7 +179,7 @@ def log(n1, mode):
         if not e:
             return math.log10(n1)
 
-def percent_of(x, whole):
+def percent_of(x: float, whole: float) -> float:
         """
         whole = ORIGINAL NUMBER
         x = percent
@@ -195,7 +189,7 @@ def percent_of(x, whole):
             raise ValueError("Invalid input (0).")
         return (x * whole) / 100.0
 whatIsXPercentOf, percentage_of = percent_of, percent_of
-def findPercentage(part, whole):
+def findPercentage(part: float, whole: float) -> float:
         """
         whole = number that would be 100%
         part = number that you want to convert to percentage (i.e. this number out of the number that would be 100%)
@@ -204,7 +198,7 @@ def findPercentage(part, whole):
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return 100 * float(part) / float(whole)
-def interest(units, rate, origin):
+def interest(units: float, rate: float, origin: float) -> float:
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.
         rate: How much money per unit of time. So if you want to do 5% per unit of time, you'd type 5. 15%? Type 15.

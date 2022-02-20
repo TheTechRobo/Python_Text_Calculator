@@ -51,7 +51,7 @@ switch_statement = {
         "KR": k_to_r, #dammit why cant the last one have a funny one D:
 }
 
-def calculate_temperature(number, source, destination):
+def calculate_temperature(number: float, source: Temperatures, destination: Temperatures) -> float:
     number = float(number)
     formula = switch_statement[_select_temperature(source, destination)]
     return formula(number)

@@ -9,7 +9,7 @@ if sys.version_info < (3,4):
     "\nThanks for using Mathmod, and sorry for the inconvenience."
     )
 
-def calculate_fixed_fibonacci(amount):
+def calculate_fixed_fibonacci(amount: int) -> list:
     """
     This is manual fibonacci mode -- that is, you choose how many numbers it does and returns a list of fibonacci up to that amount of calculations. Instead of it in a while loop and printing the numbers to the screen.
     Set `amount' to how many numbers of fibonacci you want to calculate.
@@ -36,7 +36,7 @@ def calculate_fixed_fibonacci(amount):
     return theList
 CalculateFixedFibo = calculate_fixed_fibonacci
 
-def calculate_endless_fibonacci():
+def calculate_endless_fibonacci() -> list:
     """
     This is looped fibonacci which is indefinite.
     """
@@ -57,7 +57,7 @@ def calculate_endless_fibonacci():
             print(num, end=", ", flush=True) #print the current number
             final.append(num)
             time.sleep(0.4)
-    except KeyboardInterrupt:
+    finally:
         return final
 CalculateLoopedFibo = calculate_endless_fibonacci
 
