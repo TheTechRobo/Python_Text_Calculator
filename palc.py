@@ -12,6 +12,8 @@ try:
     import parsefunc
     from cprint_inter import cprint
 except Exception as ename:
+    if "parsefunc" in ename:
+        raise
     print("ERROR 0: COULD NOT LOAD NECESSARY MODULES.\nThis is a fatal error. (%s)\nHINT: Try `pip install -r requirements.txt'." % ename)
     sys.exit(8)
 
