@@ -25,20 +25,24 @@ def express_fibonacci(num):
 
 class Vars:
     CommandRetry = True
-def GetNums():
+def GetNums(msg=None, msg2=None, post=float):
+    if not msg:
+        msg = _("Please enter the first number...")
+    if not msg2:
+        msg2 = _("Please enter the next number; a blank line will confirm...")
     nums = []
     newNums = []
     n = 69
-    cprint.info(_("Please enter the first number..."), end="", flush=True)
+    cprint.info(msg, end="", flush=True)
     while n != "":
         n = turbofunc.CleanInput(input())
         nums.append(n)
         if n == "":
             continue
-        cprint.info(_("Please enter the next number; a blank line will confirm... "), end="", flush=True)
+        cprint.info(msg2, end=" ", flush=True)
     for item in nums:
         if item != "":
-            newNums.append(float(item))
+            newNums.append(post(item))
     logging.debug(f"newNums: {newNums}")
     logging.debug(f"nums: {nums}")
     return newNums
@@ -155,6 +159,11 @@ def interest():
     rate = _sus("interest rate")
     units = _sus("number of units of time")
     standResOut(mathmod.interest(units, rate, orogin))
+
+def spinner():
+    mydata = GetNums(_("Please enter the first item..."), _("Please enter the next item; a blank line will confirm..."), post=str)
+    times = _sus(_("amount of times you want to spin"), func=int)
+    standResOut(mathmod.spinner(mydata, times))
 
 def mémoire():
     cprint.info(_("M E M O R Y"))
@@ -478,6 +487,8 @@ def sudo():
             _("calculate the character of an ASCII code")),
         Calculation(interest, (_("interest"), _("rate")),
             _("calculate interest rate")),
+        Calculation(spinner, (_("spin"), _("random"), _("pick")),
+            _("use the spinner")),
         )
 
 def parse_ceta(calcc):

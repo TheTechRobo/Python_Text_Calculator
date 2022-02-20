@@ -222,7 +222,8 @@ def calculateInterest(units, rate, origin):
         warnings.warn("Warning: This old interest function is deprecated, you'll need to change it in 0.12.\nIf you're an end user and don't know what this means, contact the developer about this issue so they can continue to use new versions of Mathmod.")
         return interest(units, rate, origin)
 getInterest = calculateInterest
-def spinner(numberOfTimes, choiceSelection):
+
+def spinner(choice_selection: list, number_of_times: int) -> list:
         """
         param numberOfTimes: Amount of times to conduct the spinner.
         param choiceSelection: An iterable of the choices. Should be in this format: ["choice1", "choice2", "etc"].
@@ -231,8 +232,8 @@ def spinner(numberOfTimes, choiceSelection):
         Thanks to StackOverflow for showing that I should use a tuple rather than a list. (https://stackoverflow.com/questions/1708510/list-vs-tuple-when-to-use-each)
         """
         result = list()
-        for i in range(0, numberOfTimes):
-            c = random.choice(choiceSelection)
-            result.append( (str(c) + " ") )
-        return resultAsTuple
+        for i in range(0, number_of_times):
+            c = random.choice(choice_selection)
+            result.append(str(c) + " ")
+        return result
 Spinner = spinner
