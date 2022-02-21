@@ -62,7 +62,7 @@ def volume_hollow_sphere(total: float, hollow: float) -> float:
     hollow: Radius of the hollow space
     total: Radius of the entire sphere
     """
-    return sphere(total) - sphere(hollow)
+    return volume_sphere(total) - volume_sphere(hollow)
 
 def volume_pyramid(area: float, height: float) -> float:
     """
