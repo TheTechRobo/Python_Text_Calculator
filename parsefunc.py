@@ -82,8 +82,8 @@ def parse_beta():
 
 def list():
     cprint.info(_("OK, here the list of commands!"))
-    for calc in calculation_list:
-        cprint.ok(f"\t{calc.what_i_think}")
+    for calc in CALCULATIONS:
+        cprint.ok(f"\t{calc.core_words}: {calc.what_i_think}", no=True)
 
 def choose_percent_sign():
     cprint.info(_("1. Percentage.\n2. Modulo"))
