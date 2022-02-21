@@ -24,7 +24,7 @@ except (ImportError, ModuleNotFoundError):
     if platform.system() == "Windows" or platform.system() == "":
         print("I have noticed that you may be running on Windows without colorama installed (pip install colorama).\nIf you experience issues with Palc like seeing weird characters instead of colours, try installing colorama.")
 
-logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. This was logged on line %(lineno)d in function %(funcName)s, file %(filename)s.', datefmt='%d/%m/%Y %H:%M:%S') #set up logging.
+logging.basicConfig(filename="palc.log", level=logging.INFO, format='%(levelname)s @ %(asctime)s: %(message)s. Logged on line %(lineno)d (function %(funcName)s), file %(filename)s.', datefmt='%Y.%m.%d %H:%M:%S') #set up logging.
 logging.debug("Logging works!")
 
 # Modular Translation Scheme

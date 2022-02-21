@@ -157,7 +157,7 @@ def tax(n1: float, tax: float) -> float:
         """
         usefulTax = (tax / 100) + 1
         percentageTax = percent_of(tax, n1)
-        answer = origin + percentageTax
+        answer = n1 + percentageTax
         return answer
 
 class LogarithmModes(Enum):

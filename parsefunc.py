@@ -12,7 +12,8 @@ class Calculation:
         self.function, self.core_words, self.what_i_think = \
                 function, core_words, what_i_think
     def run(self):
-        showUserWhatIThink(self.what_i_think)
+        logging.debug(f"Parsing user input as `{self.what_i_think}'")
+        cprint.ok(_("Parsing input as \"%s\"") % self.what_i_think)
         return self.function
 
 CALCULATIONS = []
@@ -20,7 +21,7 @@ CALCULATIONS = []
 # Data for the Beta {{{
 def express_fibonacci(num):
     fib = mathmod.fibonacci.CalculateFixedFibo(num)
-    return fib[len(fib) - 1]
+    return fib[len(fib) - 1] #returns last item from the fibonacci list
 # }}}
 
 class Vars:
@@ -46,9 +47,6 @@ def GetNums(msg=None, msg2=None, post=float):
     logging.debug(f"newNums: {newNums}")
     logging.debug(f"nums: {nums}")
     return newNums
-def showUserWhatIThink(msg):
-    cprint.ok(_("Parsing input as \"%s\"") % msg)
-    logging.debug(f"Parsed user choice as {msg}")
 def parseCalc(calc):
     sudo()
     logging.info("User entered `%s'" % calc)
@@ -60,15 +58,14 @@ def parseCalc(calc):
         parse_ceta(calc)
 
 def parse_beta():
-    showUserWhatIThink(_("beta **UNSUPPORTED**"))
-    cprint.warn("You are entering the BETA section of Palc.\nThis may or may not work.")
+    cprint.warn("You are entering the BETA section of Palc. This may or may not work.")
     cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
     cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
     cprint.ok("Safe mode enabled.")
     logging.debug("EEM")
     calc2 = input("?")
     if calc2 == "SET MODE UNSAFE":
-        logging.debug("EEM UNSAFE")
+        logging.warn("SET MODE UNSAFE has been run. Be very careful!")
         cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
         cprint.err("DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
         cprint.ok(eval(input("UNSAFE MODE - ")))
@@ -97,14 +94,13 @@ def parse_fibonacci():
     elif choice == 2:
         num = int(turbofunc.CleanInput(input(_("Enter the number of fibonacci to calculate...")))) #NOW THATS A LOTTA PARENTHESIS!!!
         cprint.info(_("The results are in! They indicate an answer of..."))
-        standResOut(str(mathmod.fibonacci.CalculateFixedFibo(num)))
+        standResOut(str(mathmod.fibonacci.CalculateFixedFibo(num)), text="fibonacci", origin=num)
 
 def parse_factorial():
     turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ", no=True)
     num = int(turbofunc.CleanInput(input()))
     fin = mathmod.factorial(num)
-    standResOut(fin)
-    logging.info("Got res %s, num are %s." % (fin,num))
+    standResOut(fin, text = "factorial", origin=num)
 
 def write_slot(slot, number):
     appdir = appdirs.user_data_dir(name, author)
@@ -121,12 +117,14 @@ def write_slot(slot, number):
         cprint.warn(_("The slot %s already exists. Do you want to overwrite it?") % slot)
         overwrite = turbofunc.CleanInput(input(_("Type: ")))[0].lower() == "y"
         if overwrite:
+            logging.info(f"Overwriting memory slot {slot}")
             cprint.warn(_("Ok, overwriting..."))
         else:
             return cprint.fatal(_("Abort."))
     slojson[slot] = number
     with open(path, "w") as fil:
         fil.write(json.dumps(slojson))
+    standResOut(_("Finished."), text="write_slot", origin=slot)
 
 def logarithm():
     cprint.info(_("Select the desired mode of logarithm. Options: "))
@@ -139,31 +137,30 @@ def logarithm():
     ind = int(_sus(_("mode to process"))) - 1
     if (len(mathmod.LogarithmModes) - 1) < ind or ind < 0:
         return cprint.err(_("Nice try, but you need to type in a number that's in range"))
-    standResOut(mathmod.log(float(_sus(_("original number"))), modes[ind]))
+    num = _sus(_("original number"))
+    standResOut(mathmod.log(num, modes[ind]), text=f"logarithm_{mode}", origin=num)
 
 def calc_ord():
     char = _sus("character to ord", func=str)
     if len(char) > 1:
         raise ValueError("we need a CHARACTER, not a STRING of characters")
-    standResOut(ord(char))
-
-def wrapchr(code, *args, **kwargs):
-    return chr(int(code))
+    standResOut(ord(char), text="ord", origin=char)
 
 def calc_chr():
-    char = _sus("number to chr", func=wrapchr)
-    standResOut(char)
+    code = _sus("number to chr", func=int)
+    char = ord(code)
+    standResOut(char, text="chr", origin=code)
 
 def interest():
     orogin = _sus("original number")
     rate = _sus("interest rate")
     units = _sus("number of units of time")
-    standResOut(mathmod.interest(units, rate, orogin))
+    standResOut(mathmod.interest(units, rate, orogin), text="interest", origin=orogin)
 
 def spinner():
     mydata = GetNums(_("Please enter the first item..."), _("Please enter the next item; a blank line will confirm..."), post=str)
     times = _sus(_("amount of times you want to spin"), func=int)
-    standResOut(mathmod.spinner(mydata, times))
+    standResOut(mathmod.spinner(mydata, times), text="spin", origin=f"number_of_times={times}, choices={mydata}")
 
 def mémoire():
     cprint.info(_("M E M O R Y"))
@@ -174,7 +171,7 @@ def mémoire():
         try:
             with open(os.path.join(appdirs.user_data_dir(name, author), "slots.json")) as f:
                 j = json.load(f)
-            standResOut(j[slot])
+            standResOut(j[slot], text="read_slot", origin=slot)
         except (KeyError, FileNotFoundError):
             if os.path.isfile(str(slot)):
                 cprint.warn(_("We have found a 0.7-style memory slot with this name. 0.7 memory slots were very crude. We won't read the slot for you unless you move it."))
@@ -210,7 +207,7 @@ def parse_subtraction():
     runMathmodFunc(mathmod.subtraction)
 
 def parse_modulo():
-    run2NumMathmodFunc(mathmod.modulo)
+    run2NumMathmodFunc(mathmod.modulo, ("n1", "n2"))
 
 def parse_square_root():
     run1NumMathmodFunc(mathmod.square_root, _("square root"))
@@ -224,10 +221,10 @@ def parse_any_root():
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("root"): cprint.ok, _("(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."): cprint.info}, end="", flush=True, no=True)
     n2 = float(turbofunc.CleanInput(input()))
     res = mathmod.root_general(n1,n2)
-    standResOut(res)
-    logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
+    standResOut(res, text="root", origin=f"origin={n1}, root={n2}")
 
-def standResOut(res):
+def standResOut(res, text="?", origin="?"):
+    logging.info(f"{text}({origin}): {res}")
     cprint.info(_("The results are in! They indicate an answer of... "))
     turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
 
@@ -235,26 +232,21 @@ def run1NumMathmodFunc(func, action):
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("number "): cprint.ok, _("to "): cprint.info, action: cprint.ok, " ...": cprint.info}, end="", no=True, flush=True)
     n1 = float(turbofunc.CleanInput(input()))
     res = func(n1)
-    standResOut(res)
-    logging.info("Got res %s, num are %s." % (res,n1))
-def run2NumMathmodFunc(func):
-    logging.debug("Right here")
+    standResOut(res, text=func.__name__, origin=n1)
+def run2NumMathmodFunc(func, signature):
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True, no=True)
     n1 = float(turbofunc.CleanInput(input()))
     turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True, no=True)
     n2 = float(turbofunc.CleanInput(input()))
     res = func(n1,n2)
-    standResOut(res)
-    logging.info("Got res %s, nums are %s." % (res,(n1,n2)))
+    standResOut(res, text=func.__name__, origin=f"{signature[0]}={n1}, {signature[1]}={n2}")
 def runMathmodFunc(func):
-    logging.debug("Right here")
     nums = GetNums()
     try:
         res = func(*nums)
     except IndexError:
         raise ValueError
-    standResOut(res)
-    logging.info("Got res %s, *nums are %s." % (res,nums))
+    standResOut(res, text=func.__name__, origin=str(nums).lstrip("[").rstrip("]"))
 
 def _gen_entry(name, prompts, func):
     return {
@@ -280,7 +272,7 @@ def exponent():
     origin = _sus(_("original number"))
     print("\033[1A", end="")
     exp = _sus(_("exponent"))
-    standResOut(mathmod.exponent(origin, exp))
+    standResOut(mathmod.exponent(origin, exp), text="exponent", origin=f"origin={origin}, exponent={exponent}")
 
 def generic_interactive(datums):
     cprint.warn(_("Please report any bugs you find!"))
@@ -304,8 +296,9 @@ def generic_interactive(datums):
     args = []
     for prompt in datums[inp]['prompts']:
         args.append(turbofunc.CleanInput(input(prompt)))
-    res = datums[inp]['function'](*args)
-    standResOut(res)
+    function = datums[inp]["function"]
+    res = function(args)
+    standResOut(res, text=function.__name__, origin=str(args).lstrip("[").rstrip("]"))
 
 def volume_interactive():
     generic_interactive(
@@ -388,6 +381,7 @@ def tax():
                 cprint.err(_("Nice try, but you have to actually type a number."))
             else:
                 try:
+                    name = sus[presetterInd]
                     percentage = sussypresetlist[sus[presetterInd]]
                     if percentage is None:
                         raise IndexError
@@ -396,7 +390,7 @@ def tax():
                     continue
                 break
     origin = _sus("original number")
-    standResOut(mathmod.tax(origin, percentage))
+    standResOut(mathmod.tax(origin, percentage), text="tax", origin=f"origin={origin}, percentage={percentage}")
 
 def based():
     cprint.info(_("Please enter the original base."))
@@ -419,7 +413,7 @@ def based():
     except Exception as ename:
         cprint.err(_("Failed to convert numbers. Remember to only put the digits in that base in! (%s)") % ename)
         return
-    standResOut(result)
+    standResOut(result, text="base", origin=f"origin={number}, base={destinationBase}") #after base
 
 def h():
     cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo, and fibonacci."))
