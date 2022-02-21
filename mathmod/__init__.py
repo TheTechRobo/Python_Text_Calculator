@@ -189,7 +189,7 @@ def percent_of(x: float, whole: float) -> float:
             raise ValueError("Invalid input (0).")
         return (x * whole) / 100.0
 whatIsXPercentOf, percentage_of = percent_of, percent_of
-def findPercentage(part: float, whole: float) -> float:
+def find_percentage(part: float, whole: float) -> float:
         """
         whole = number that would be 100%
         part = number that you want to convert to percentage (i.e. this number out of the number that would be 100%)
@@ -198,6 +198,7 @@ def findPercentage(part: float, whole: float) -> float:
         if whole == 0:
             raise ValueError("Invalid input (0).")
         return 100 * float(part) / float(whole)
+findPercentage = find_percentage
 def interest(units: float, rate: float, origin: float) -> float:
         '''
         units: if the rate is per month, and you want to calculate 3 months, you'd type 3 for this. If the rate is per year, and you want 2 years, you'd type 2 for this. And so on.

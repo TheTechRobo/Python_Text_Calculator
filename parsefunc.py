@@ -80,6 +80,34 @@ def parse_beta():
         return
     standResOut(simple_eval_)
 
+def choose_percent_sign():
+    cprint.info(_("1. Percentage.\n2. Modulo"))
+    choice = _sus(_("mode you pick"), func=int)
+    if choice == 1:
+        percentage()
+    elif choice == 2:
+        parse_modulo()
+    else:
+        cprint.err(_("Invalid."))
+def percentage():
+    cprint.info(_("What would you like to do?"))
+    cprint.info(_("\t1. Find X percent of Y."), no=True)
+    cprint.info(_("\t2. Find what percentage X out of Y is."), no=True)
+    choice = _sus(_("choice"), func=int)
+    if choice == 1:
+        x_percent_of_why()
+    elif choice == 2:
+        x_of_y()
+
+def x_percent_of_why():
+    part = _sus(_("percentage"))
+    whole = _sus(_("whole"))
+    standResOut(mathmod.percent_of(part, whole), text="percent_of", origin=f"part={part}, whole={whole}")
+
+def x_of_y():
+    part = _sus(_("part"))
+    whole = _sus(_("total"))
+    standResOut(mathmod.find_percentage(part, whole), text="find_percentage", origin=f"part={part}, whole={whole}")
 
 def parse_fibonacci():
     cprint.info(_("Welcome to the fibonacci calculator."))
@@ -483,6 +511,9 @@ def sudo():
             _("calculate interest rate")),
         Calculation(spinner, (_("spin"), _("random"), _("pick")),
             _("use the spinner")),
+        Calculation(choose_percent_sign, ("%",), _("pick percentage sign")),
+        Calculation(percentage, (_("perc"),),
+            _("pick percentage mode")),
         )
 
 def parse_ceta(calcc):
