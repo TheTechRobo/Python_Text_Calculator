@@ -449,7 +449,7 @@ def based():
     standResOut(result, text="base", origin=f"origin={number}, base={destinationBase}") #after base
 
 def h():
-    cprint.ok(_("There are a bunch of commands you can use. These are: addition, subtraction, multiplication, division, modulo, and fibonacci."))
+    cprint.ok(_("There are a bunch of commands you can use. Find them by typing in `list'."))
     cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
     cprint.info(_("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m"))#https://stackoverflow.com/a/17303428/9654083
 
