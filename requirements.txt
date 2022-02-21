@@ -4,3 +4,4 @@ python-radix-ng~=0.3.1
 simpleeval~=0.9.10
 colorama~=0.4.4
 appdirs~=1.4.4
+mathmod~=0.11rc1

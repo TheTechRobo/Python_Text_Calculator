@@ -9,7 +9,6 @@ test:
 	python3 palc.py < engadd.txt
 	sleep 5
 	python3 palc.py < fradd.txt
-	python3 test.py
 	@echo Finished testing
 # This code belongs on Reddit
 binary:

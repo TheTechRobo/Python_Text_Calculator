@@ -80,6 +80,11 @@ def parse_beta():
         return
     standResOut(simple_eval_)
 
+def list():
+    cprint.info(_("OK, here the list of commands!"))
+    for calc in calculation_list:
+        cprint.ok(f"\t{calc.what_i_think}")
+
 def choose_percent_sign():
     cprint.info(_("1. Percentage.\n2. Modulo"))
     choice = _sus(_("mode you pick"), func=int)
@@ -514,6 +519,8 @@ def sudo():
         Calculation(choose_percent_sign, ("%",), _("pick percentage sign")),
         Calculation(percentage, (_("perc"),),
             _("pick percentage mode")),
+        Calculation(list, (_("list"), _("commands")),
+            _("list available calculations")),
         )
 
 def parse_ceta(calcc):
