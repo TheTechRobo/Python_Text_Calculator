@@ -229,6 +229,6 @@ def spinner(choice_selection: list, number_of_times: int) -> list:
         result = list()
         for i in range(0, number_of_times):
             c = random.choice(choice_selection)
-            result.append(str(c) + " ")
+            result.append(str(c))
         return result
 Spinner = spinner
