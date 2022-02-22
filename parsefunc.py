@@ -1,5 +1,6 @@
-import sys, logging, turbofunc, mathmod, mathmod.fibonacci, mathmod.area
+import sys, logging, turbofunc
 import runpy, time, random, python_radix, simpleeval, os,json, os.path, appdirs
+import mathmod, mathmod.fibonacci, mathmod.area, mathmod.temperature
 import mathmod.volume as mv
 from cprint_inter import cprint
 from simpleeval import simple_eval
@@ -457,6 +458,27 @@ def area_interactive():
 def thing():
     while True:
         print("hi")
+def temperature():
+    cprint.info("Ryan the Temperature")
+    ke = _("Please press the corresponding key of your %s temperature.")
+    cprint.ok(_("\t(F)ahrenheit\n\t(C)elsius\n\t(K)elvin\n\t(R)ankine"))
+    cprint.info(ke % "source")
+    source = turbofunc.pressanykey(string="Type: ")
+    key = source
+    print(key)
+    if  key not in ("r", "f", "c", "k"):
+        cprint.fatal(_("Invalid temperature."))
+        return
+    cprint.info(ke % "destination")
+    destination = turbofunc.pressanykey(string=_("Type: "))
+    key = destination
+    print(key)
+    if key not in ("r","f","c","k"):
+        cprint.fatal(_("Invalid temperature."))
+        return
+    final = (source + destination).upper()
+    n = _sus(_("original number"))
+    standResOut(mathmod.temperature.switch_statement[final](n), text="temperature", origin=f"origin={n}, temperature={final}")
 def based():
     cprint.info(_("Please enter the original base."))
     cprint.ok(_("ProTip: 2 is binary, 8 is octal, 10 is decimal, 16 is hex, and 36 has all the letters in the alphabet."))
@@ -553,6 +575,8 @@ def sudo():
             _("pick percentage mode")),
         Calculation(clist, (_("list"), _("commands")),
             _("list available calculations")),
+        Calculation(temperature,  (_("temp"),),
+            _("calculate temperature")),
         )
 
 def parse_ceta(calcc):
