@@ -80,7 +80,7 @@ def parse_beta():
         return
     standResOut(simple_eval_)
 
-def list():
+def clist():
     cprint.info(_("OK, here the list of commands!"))
     for calc in CALCULATIONS:
         cprint.ok(f"\t{calc.core_words}: {calc.what_i_think}", no=True)
@@ -135,30 +135,6 @@ def parse_factorial():
     fin = mathmod.factorial(num)
     standResOut(fin, text = "factorial", origin=num)
 
-def write_slot(slot, number):
-    appdir = appdirs.user_data_dir(name, author)
-    path = os.path.join(appdir, "slots.json")
-    if not os.path.exists(path):
-        if not os.path.exists(appdir):
-            os.mkdir(appdir)
-        with open(path, "w+") as file:
-            file.write("{}")
-    with open(path) as j:
-        slojson = json.load(j)
-    slot_exists = not (slojson.get(slot) is None)
-    if slot_exists:
-        cprint.warn(_("The slot %s already exists. Do you want to overwrite it?") % slot)
-        overwrite = turbofunc.CleanInput(input(_("Type: ")))[0].lower() == "y"
-        if overwrite:
-            logging.info(f"Overwriting memory slot {slot}")
-            cprint.warn(_("Ok, overwriting..."))
-        else:
-            return cprint.fatal(_("Abort."))
-    slojson[slot] = number
-    with open(path, "w") as fil:
-        fil.write(json.dumps(slojson))
-    standResOut(_("Finished."), text="write_slot", origin=slot)
-
 def logarithm():
     cprint.info(_("Select the desired mode of logarithm. Options: "))
     count = 0
@@ -195,9 +171,122 @@ def spinner():
     times = _sus(_("amount of times you want to spin"), func=int)
     standResOut(mathmod.spinner(mydata, times), text="spin", origin=f"number_of_times={times}, choices={mydata}")
 
+
+def write_slot(slot, number, filename="slots.json"):
+    appdir = appdirs.user_data_dir(name, author)
+    path = os.path.join(appdir, filename)
+    if not os.path.exists(path):
+        if not os.path.exists(appdir):
+            os.mkdir(appdir)
+        with open(path, "w+") as file:
+            file.write("{}")
+    with open(path) as j:
+        slojson = json.load(j)
+    slot_exists = not (slojson.get(slot) is None)
+    if slot_exists:
+        cprint.warn(_("The slot %s already exists. Do you want to overwrite it?") % slot)
+        overwrite = turbofunc.CleanInput(input(_("Type: ")))[0].lower() == "y"
+        if overwrite:
+            logging.info(f"Overwriting memory slot {slot}")
+            cprint.warn(_("Ok, overwriting..."))
+        else:
+            return cprint.fatal(_("Abort."))
+    slojson[slot] = number
+    with open(path, "w") as fil:
+        fil.write(json.dumps(slojson))
+    standResOut(_("Finished."), text="write_slot", origin=slot)
+
+def tax():
+    cprint.ok(_("Select your Tax Type"))
+    cprint.info(_("1. Sales Tax"))
+    cprint.warn(_("No other types are currently supported."))
+    input(_("Type: "))
+    print("\033[4A", end="")
+    cprint.ok(_("You picked Sales Tax."))
+    cprint.ok(_("Would you like to use a tax preset?"))
+    cprint.info(_("1. Yes - I live in Canada"))
+    cprint.info(_("2. Yes - use a Memory Slot"))
+    cprint.info(_("3. No"))
+    cprint.warn(_("No other types are currently supported."))
+    while True:
+        try:
+            preset = int(input(_("Type: ")))
+        except (TypeError, ValueError):
+            cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idc that its a dead meme
+        else:
+            break
+    if preset != 3:
+        print("\033[5A", end="")
+    else:
+        print("", end="")
+    if preset == 3:
+        cprint.info(_("Ok, no preset it is."))
+        percentage = float(input(_("Please type the percentage of tax in your local area: ")))
+    elif preset == 2:
+        percentage = tax_slots()
+        if percentage is None:
+            cprint.fatal(_("Could not load Memory-Slot for some reason."))
+            return False
+    elif preset == 1:
+        sussypresetlist = {
+                _("Ontario"): mathmod.tax_types.sales.Canada.ontario,
+                _("Quebec"): mathmod.tax_types.sales.Canada.quebec,
+                _("Yukon/Northwest Territories/Nunavut/Alberta"): mathmod.tax_types.sales.Canada.yukon,
+                _("British Columbia/Manitoba"): mathmod.tax_types.sales.Canada.manitoba,
+                _("New Brunswick/Nova Scotia/Newfoundland/Prince Edward Island"): mathmod.tax_types.sales.Canada.newfoundland,
+                _("Saskatchewan"): mathmod.tax_types.sales.Canada.saskatchewan,
+        }
+        sus = list(sussypresetlist)
+        for ind, su in enumerate(sussypresetlist):
+            cprint.info(f"{ind + 1}. {su}")
+        while True:
+            try:
+                presetterInd = int(input(_("Please enter the One You Want™: "))) - 1
+                if presetterInd < 0:
+                    presetterInd = 32237
+            except (ValueError, TypeError):
+                cprint.err(_("Nice try, but you have to actually type a number."))
+            else:
+                try:
+                    name = sus[presetterInd]
+                    percentage = sussypresetlist[sus[presetterInd]]
+                    if percentage is None:
+                        raise IndexError
+                except IndexError:
+                    cprint.err(_("Nice try, but the number has to be in range."))
+                    continue
+                break
+    origin = _sus("original number")
+    standResOut(mathmod.tax(origin, percentage), text="tax", origin=f"origin={origin}, percentage={percentage}")
+
+
+
+def tax_slots():
+    cprint.info(_("M E M O R Y"))
+    try:
+        with open(os.path.join(appdirs.user_data_dir(name, author), "slots.json")) as f:
+            j = json.load(f)
+    except IOError:
+        j = {}
+    for title, current_slot in j.items():
+        cprint.info(f"{title}: {current_slot}")
+    else:
+        cprint.err(_("No memory slots currently exist."))
+    cprint.warn(_("To create a new slot, use the MEMORY command."))
+    try:
+        slot = turbofunc.CleanInput(input(_("Please enter a slot.")))
+    except KeyboardInterrupt:
+        cprint.err(_("Abort."))
+        return None
+    try:
+        return float(j[slot])
+    except KeyError:
+        cprint.err(_("This slot does not exist."))
+        return None
+
 def mémoire():
     cprint.info(_("M E M O R Y"))
-    slot = turbofunc.CleanInput(input("What is your memory slot of choice?"))
+    slot = turbofunc.CleanInput(input(_("What is your memory slot of choice?")))
     cprint.ok(_("Read or Write?\n1 - Read\n2 - Write"))
     a = turbofunc.CleanInput(input(_("Type: ")))
     if int(a) == 1:
@@ -205,7 +294,7 @@ def mémoire():
             with open(os.path.join(appdirs.user_data_dir(name, author), "slots.json")) as f:
                 j = json.load(f)
             standResOut(j[slot], text="read_slot", origin=slot)
-        except (KeyError, FileNotFoundError):
+        except (KeyError, IOError):
             if os.path.isfile(str(slot)):
                 cprint.warn(_("We have found a 0.7-style memory slot with this name. 0.7 memory slots were very crude. We won't read the slot for you unless you move it."))
                 cprint.ok(_("Would you like to migrate the memory slot to 0.11 mode?"), end="")
@@ -368,63 +457,6 @@ def area_interactive():
 def thing():
     while True:
         print("hi")
-def tax():
-    cprint.ok(_("Select your Tax Type"))
-    cprint.info(_("1. Sales Tax"))
-    cprint.warn(_("No other types are currently supported."))
-    input(_("Type: "))
-    print("\033[4A", end="")
-    cprint.ok(_("You picked Sales Tax."))
-    cprint.ok(_("Would you like to use a tax preset?"))
-    cprint.info(_("1. Yes - I live in Canada"))
-    cprint.info(_("2. No"))
-    cprint.warn(_("No other types are currently supported."))
-    while True:
-        try:
-            preset = int(input(_("Type: ")))
-        except (TypeError, ValueError):
-            cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idc that its a dead meme
-        else:
-            break
-    if preset != 2:
-        print("\033[5A", end="")
-    else:
-        print("", end="")
-    if preset == 2:
-        cprint.info(_("Ok, no preset it is."))
-        percentage = float(input(_("Please type the percentage of tax in your local area: ")))
-    elif preset == 1:
-        sussypresetlist = {
-                _("Ontario"): mathmod.tax_types.sales.Canada.ontario,
-                _("Quebec"): mathmod.tax_types.sales.Canada.quebec,
-                _("Yukon/Northwest Territories/Nunavut/Alberta"): mathmod.tax_types.sales.Canada.yukon,
-                _("British Columbia/Manitoba"): mathmod.tax_types.sales.Canada.manitoba,
-                _("New Brunswick/Nova Scotia/Newfoundland/Prince Edward Island"): mathmod.tax_types.sales.Canada.newfoundland,
-                _("Saskatchewan"): mathmod.tax_types.sales.Canada.saskatchewan,
-        }
-        sus = list(sussypresetlist)
-        for ind, su in enumerate(sussypresetlist):
-            cprint.info(f"{ind + 1}. {su}")
-        while True:
-            try:
-                presetterInd = int(input(_("Please enter the One You Want™: "))) - 1
-                if presetterInd < 0:
-                    presetterInd = 32237
-            except (ValueError, TypeError):
-                cprint.err(_("Nice try, but you have to actually type a number."))
-            else:
-                try:
-                    name = sus[presetterInd]
-                    percentage = sussypresetlist[sus[presetterInd]]
-                    if percentage is None:
-                        raise IndexError
-                except IndexError:
-                    cprint.err(_("Nice try, but the number has to be in range."))
-                    continue
-                break
-    origin = _sus("original number")
-    standResOut(mathmod.tax(origin, percentage), text="tax", origin=f"origin={origin}, percentage={percentage}")
-
 def based():
     cprint.info(_("Please enter the original base."))
     cprint.ok(_("ProTip: 2 is binary, 8 is octal, 10 is decimal, 16 is hex, and 36 has all the letters in the alphabet."))
@@ -519,7 +551,7 @@ def sudo():
         Calculation(choose_percent_sign, ("%",), _("pick percentage sign")),
         Calculation(percentage, (_("perc"),),
             _("pick percentage mode")),
-        Calculation(list, (_("list"), _("commands")),
+        Calculation(clist, (_("list"), _("commands")),
             _("list available calculations")),
         )
 
