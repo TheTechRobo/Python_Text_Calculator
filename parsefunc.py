@@ -1,608 +1,543 @@
-"""
-Just a small module to call mathmod's functions and then parse the results.
-"""
+import sys, logging, turbofunc, mathmod, mathmod.fibonacci, mathmod.area
+import runpy, time, random, python_radix, simpleeval, os,json, os.path, appdirs
+import mathmod.volume as mv
+from cprint_inter import cprint
+from simpleeval import simple_eval
 
-def main(Comandeer):
-    globals()['_'] = Commandeer
+name = "Palc"
+author = "TheTechRobo"
 
-import mathmod
-from modules.cprint import cprint
-import logging
+class Calculation:
+    def __init__(self, function, core_words, what_i_think):
+        self.function, self.core_words, self.what_i_think = \
+                function, core_words, what_i_think
+    def run(self):
+        logging.debug(f"Parsing user input as `{self.what_i_think}'")
+        cprint.ok(_("Parsing input as \"%s\"") % self.what_i_think)
+        return self.function
 
-class Builtins: 
-    def getInput():
-        nums = []
-        num = float(input(_("Please enter the first number: ")))
-        nums.append(num)
+CALCULATIONS = []
+
+# Data for the Beta {{{
+def express_fibonacci(num):
+    fib = mathmod.fibonacci.CalculateFixedFibo(num)
+    return fib[len(fib) - 1] #returns last item from the fibonacci list
+# }}}
+
+class Vars:
+    CommandRetry = True
+def GetNums(msg=None, msg2=None, post=float):
+    if not msg:
+        msg = _("Please enter the first number...")
+    if not msg2:
+        msg2 = _("Please enter the next number; a blank line will confirm...")
+    nums = []
+    newNums = []
+    n = 69
+    cprint.info(msg, end="", flush=True)
+    while n != "":
+        n = turbofunc.CleanInput(input())
+        nums.append(n)
+        if n == "":
+            continue
+        cprint.info(msg2, end=" ", flush=True)
+    for item in nums:
+        if item != "":
+            newNums.append(post(item))
+    logging.debug(f"newNums: {newNums}")
+    logging.debug(f"nums: {nums}")
+    return newNums
+def parseCalc(calc):
+    sudo()
+    logging.info("User entered `%s'" % calc)
+    calc = turbofunc.CleanInput(calc).lower()
+    if calc == "":
+        cprint.ok("Wow...you're quiet.")
+        turbofunc.multiprint({"get good lo-": cprint.err, "I didn't say anything\n": cprint.warn}, end="", flush=True, no=True)
+    else:
+        parse_ceta(calc)
+
+def parse_beta():
+    cprint.warn("You are entering the BETA section of Palc. This may or may not work.")
+    cprint.err(_("This part of Palc is untranslated because it's meant to be used by Palc maintainers only. It is discouraged to use"))
+    cprint.info("You are entering the BETA Expression Evaluation Mode, or EEM.")
+    cprint.ok("Safe mode enabled.")
+    logging.debug("EEM")
+    calc2 = input("?")
+    if calc2 == "SET MODE UNSAFE":
+        logging.warn("SET MODE UNSAFE has been run. Be very careful!")
+        cprint.warn("Unsafe mode enabled. Be very careful what you type here!")
+        cprint.err("DO NOT COPYPASTE HERE UNLESS YOU KNOW *EXACTLY* WHAT YOU ARE DOING")
+        cprint.ok(eval(input("UNSAFE MODE - ")))
+        return
+    functions = {
+            "Palcfib": express_fibonacci,
+    }
+    try:
+        simple_eval_ = simple_eval(calc2, functions=functions)
+    except simpleeval.FunctionNotDefined:
+        cprint.err(_("You can't use that function here."))
+        return
+    standResOut(simple_eval_)
+
+def list():
+    cprint.info(_("OK, here the list of commands!"))
+    for calc in CALCULATIONS:
+        cprint.ok(f"\t{calc.core_words}: {calc.what_i_think}", no=True)
+
+def choose_percent_sign():
+    cprint.info(_("1. Percentage.\n2. Modulo"))
+    choice = _sus(_("mode you pick"), func=int)
+    if choice == 1:
+        percentage()
+    elif choice == 2:
+        parse_modulo()
+    else:
+        cprint.err(_("Invalid."))
+def percentage():
+    cprint.info(_("What would you like to do?"))
+    cprint.info(_("\t1. Find X percent of Y."), no=True)
+    cprint.info(_("\t2. Find what percentage X out of Y is."), no=True)
+    choice = _sus(_("choice"), func=int)
+    if choice == 1:
+        x_percent_of_why()
+    elif choice == 2:
+        x_of_y()
+
+def x_percent_of_why():
+    part = _sus(_("percentage"))
+    whole = _sus(_("whole"))
+    standResOut(mathmod.percent_of(part, whole), text="percent_of", origin=f"part={part}, whole={whole}")
+
+def x_of_y():
+    part = _sus(_("part"))
+    whole = _sus(_("total"))
+    standResOut(mathmod.find_percentage(part, whole), text="find_percentage", origin=f"part={part}, whole={whole}")
+
+def parse_fibonacci():
+    cprint.info(_("Welcome to the fibonacci calculator."))
+    cprint.ok("\t" + _("1 - Looped fibonacci (infinite)") + "\n" \
+            + "\t" + _("2 - Calculate a certain number of fibonacci numbers."))
+    choice = int(turbofunc.CleanInput(input(_("Select one: "))))
+    if choice == 1:
+        try:
+            mathmod.fibonacci.CalculateLoopedFibo()
+        except KeyboardInterrupt:
+            print()
+    elif choice == 2:
+        num = int(turbofunc.CleanInput(input(_("Enter the number of fibonacci to calculate...")))) #NOW THATS A LOTTA PARENTHESIS!!!
+        cprint.info(_("The results are in! They indicate an answer of..."))
+        standResOut(str(mathmod.fibonacci.CalculateFixedFibo(num)), text="fibonacci", origin=num)
+
+def parse_factorial():
+    turbofunc.multiprint({_("Please enter the"): cprint.ok, _("number"): cprint.info, _("to"): cprint.ok, _("factorial"): cprint.info, "...": cprint.ok}, end=" ", no=True)
+    num = int(turbofunc.CleanInput(input()))
+    fin = mathmod.factorial(num)
+    standResOut(fin, text = "factorial", origin=num)
+
+def write_slot(slot, number):
+    appdir = appdirs.user_data_dir(name, author)
+    path = os.path.join(appdir, "slots.json")
+    if not os.path.exists(path):
+        if not os.path.exists(appdir):
+            os.mkdir(appdir)
+        with open(path, "w+") as file:
+            file.write("{}")
+    with open(path) as j:
+        slojson = json.load(j)
+    slot_exists = not (slojson.get(slot) is None)
+    if slot_exists:
+        cprint.warn(_("The slot %s already exists. Do you want to overwrite it?") % slot)
+        overwrite = turbofunc.CleanInput(input(_("Type: ")))[0].lower() == "y"
+        if overwrite:
+            logging.info(f"Overwriting memory slot {slot}")
+            cprint.warn(_("Ok, overwriting..."))
+        else:
+            return cprint.fatal(_("Abort."))
+    slojson[slot] = number
+    with open(path, "w") as fil:
+        fil.write(json.dumps(slojson))
+    standResOut(_("Finished."), text="write_slot", origin=slot)
+
+def logarithm():
+    cprint.info(_("Select the desired mode of logarithm. Options: "))
+    count = 0
+    modes = []
+    for mode in mathmod.LogarithmModes:
+        modes.append(mode)
+        count += 1
+        cprint.ok("%d.  %s" % (count, mode.value))
+    ind = int(_sus(_("mode to process"))) - 1
+    if (len(mathmod.LogarithmModes) - 1) < ind or ind < 0:
+        return cprint.err(_("Nice try, but you need to type in a number that's in range"))
+    num = _sus(_("original number"))
+    standResOut(mathmod.log(num, modes[ind]), text=f"logarithm_{mode}", origin=num)
+
+def calc_ord():
+    char = _sus("character to ord", func=str)
+    if len(char) > 1:
+        raise ValueError("we need a CHARACTER, not a STRING of characters")
+    standResOut(ord(char), text="ord", origin=char)
+
+def calc_chr():
+    code = _sus("number to chr", func=int)
+    char = ord(code)
+    standResOut(char, text="chr", origin=code)
+
+def interest():
+    orogin = _sus("original number")
+    rate = _sus("interest rate")
+    units = _sus("number of units of time")
+    standResOut(mathmod.interest(units, rate, orogin), text="interest", origin=orogin)
+
+def spinner():
+    mydata = GetNums(_("Please enter the first item..."), _("Please enter the next item; a blank line will confirm..."), post=str)
+    times = _sus(_("amount of times you want to spin"), func=int)
+    standResOut(mathmod.spinner(mydata, times), text="spin", origin=f"number_of_times={times}, choices={mydata}")
+
+def mémoire():
+    cprint.info(_("M E M O R Y"))
+    slot = turbofunc.CleanInput(input("What is your memory slot of choice?"))
+    cprint.ok(_("Read or Write?\n1 - Read\n2 - Write"))
+    a = turbofunc.CleanInput(input(_("Type: ")))
+    if int(a) == 1:
+        try:
+            with open(os.path.join(appdirs.user_data_dir(name, author), "slots.json")) as f:
+                j = json.load(f)
+            standResOut(j[slot], text="read_slot", origin=slot)
+        except (KeyError, FileNotFoundError):
+            if os.path.isfile(str(slot)):
+                cprint.warn(_("We have found a 0.7-style memory slot with this name. 0.7 memory slots were very crude. We won't read the slot for you unless you move it."))
+                cprint.ok(_("Would you like to migrate the memory slot to 0.11 mode?"), end="")
+                yn = True if turbofunc.CleanInput(input())[0].lower() == 'y' else False
+                if yn:
+                    cprint.info(_("Migrating memory slot..."))
+                    with open(str(slot)) as data:
+                        number = data.read()
+                    write_slot(slot, number)
+                    cprint.warn(_("Palc will now ignore the file; but if you want to delete it you'll have to do so yourself"))
+                    return
+                cprint.err(_("Abort."))
+                cprint.fatal(_("We can't read the memory slot until you migrate it."))
+                return
+            cprint.fatal(_("Slot does not exist!"))
+    elif int(a) == 2:
+        write_slot(slot, turbofunc.CleanInput(input("Number? ")))
+    else:
+        cprint.ok(_("No"))
+        raise SyntaxError("just no")
+
+def parse_division():
+    runMathmodFunc(mathmod.division)
+
+def parse_multiplication():
+    runMathmodFunc(mathmod.multiplication)
+
+def parse_addition():
+    runMathmodFunc(mathmod.addition)
+
+def parse_subtraction():
+    runMathmodFunc(mathmod.subtraction)
+
+def parse_modulo():
+    run2NumMathmodFunc(mathmod.modulo, ("n1", "n2"))
+
+def parse_square_root():
+    run1NumMathmodFunc(mathmod.square_root, _("square root"))
+
+def parse_cube_root():
+    run1NumMathmodFunc(mathmod.cube_root, _("cube root"))
+
+def parse_any_root():
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("original "): cprint.ok, _("number") + " ...": cprint.info}, end="", flush=True, no=True)
+    n1 = float(turbofunc.CleanInput(input()))
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("root"): cprint.ok, _("(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."): cprint.info}, end="", flush=True, no=True)
+    n2 = float(turbofunc.CleanInput(input()))
+    res = mathmod.root_general(n1,n2)
+    standResOut(res, text="root", origin=f"origin={n1}, root={n2}")
+
+def standResOut(res, text="?", origin="?"):
+    logging.info(f"{text}({origin}): {res}")
+    cprint.info(_("The results are in! They indicate an answer of... "))
+    turbofunc.standTextOut("\033[1m%s\033[0m" % res, printMechanismDash=cprint.info, printMechanismString=cprint.ok)
+
+def run1NumMathmodFunc(func, action):
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("number "): cprint.ok, _("to "): cprint.info, action: cprint.ok, " ...": cprint.info}, end="", no=True, flush=True)
+    n1 = float(turbofunc.CleanInput(input()))
+    res = func(n1)
+    standResOut(res, text=func.__name__, origin=n1)
+def run2NumMathmodFunc(func, signature):
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("first"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True, no=True)
+    n1 = float(turbofunc.CleanInput(input()))
+    turbofunc.multiprint({_("Please enter the "): cprint.info, _("second"): cprint.ok, _(" number") + " ...": cprint.info}, end="", flush=True, no=True)
+    n2 = float(turbofunc.CleanInput(input()))
+    res = func(n1,n2)
+    standResOut(res, text=func.__name__, origin=f"{signature[0]}={n1}, {signature[1]}={n2}")
+def runMathmodFunc(func):
+    nums = GetNums()
+    try:
+        res = func(*nums)
+    except IndexError:
+        raise ValueError
+    standResOut(res, text=func.__name__, origin=str(nums).lstrip("[").rstrip("]"))
+
+def _gen_entry(name, prompts, func):
+    return {
+            "name": name, "prompts": prompts, "function": func
+            }
+
+def __sus(sy, baka=""):
+    extra = turbofunc.clear_length(_("Please enter the ")+sy +"... "+baka)
+    extraa = (extra * " ") + (extra * "\b")
+    turbofunc.multiprint({
+        _("Please enter the "): cprint.info, sy: cprint.ok, "... "+baka+extraa: cprint.info
+        }, no=True, flush=True, end="")
+    return turbofunc.CleanInput(input())
+
+def _sus(*args, **kwargs):
+    if not (func := kwargs.get("func")):
+        func = float
+    else:
+        del kwargs["func"]
+    return func(__sus(*args, **kwargs))
+
+def exponent():
+    origin = _sus(_("original number"))
+    print("\033[1A", end="")
+    exp = _sus(_("exponent"))
+    standResOut(mathmod.exponent(origin, exp), text="exponent", origin=f"origin={origin}, exponent={exponent}")
+
+def generic_interactive(datums):
+    cprint.warn(_("Please report any bugs you find!"))
+    cprint.info(_("Select a shape..."))
+    pos = 1
+    for datum in datums:
+        cprint.ok(f"{pos}. {datum['name']}")
+        pos += 1
+    while True:
+        userInput = input(_("Type the number corresponding to your shape!"))
+        try:
+            inp = int(turbofunc.CleanInput(userInput)) - 1
+            if inp < 0:
+                raise ValueError("no")
+            datums[inp] # pylint: disable=pointless-statement, locally-disabled
+        except (ValueError, IndexError):
+            cprint.err(_("Please enter an actual option, ok??"))
+        else:
+            break
+    cprint.info(_("Ok, proceeding with %s...") % datums[inp]['name'])
+    args = []
+    for prompt in datums[inp]['prompts']:
+        args.append(turbofunc.CleanInput(input(prompt)))
+    function = datums[inp]["function"]
+    res = function(args)
+    standResOut(res, text=function.__name__, origin=str(args).lstrip("[").rstrip("]"))
+
+def volume_interactive():
+    generic_interactive(
+            [
+                _gen_entry(_("Cuboid (e.g. cubes, rectangular solids,...)"), [_("Please enter the length of the base of the cuboid..."), _("Please enter the width of the base of the cuboid..."), _("Please enter the height of the cuboid...")], mv.volume_cuboid),
+                _gen_entry(_("Cube"), [_("Please enter the length of the base...")], mv.volume_cube),
+                _gen_entry(_("Cylinder"), [_("Please enter the radius of the circular base..."), _("Please enter the height of the cylinder...")], mv.volume_cylinder),
+                _gen_entry(_("Hollow cylinder"), [_("Please enter the outer radius..."), _("Please enter the height OR length of the cylinder..."), _("Please enter the thickness of the cylinder...")], mv.volume_hollow_cylinder),
+                _gen_entry(_("Prism"), [_("Please enter the area of the base..."), _("Please enter the height of the prism...")], mv.volume_prism),
+                _gen_entry(_("Sphere"), [_("Please enter the radius of the sphere...")], mv.volume_sphere),
+                _gen_entry(_("Hollow sphere"), [_("Please enter the total radius of the sphere..."), _("Please enter the radius of the hollow space...")], mv.volume_hollow_sphere),
+                _gen_entry(_("Pyramid"), [_("Please enter the area of the base..."), _("Please enter the height of the pyramid, bottom to tip...")], mv.volume_pyramid),
+                _gen_entry(_("Cone"), [_("Please enter the radius of the base..."), _("Please enter the height ")], mv.volume_right_circular_cone),
+                _gen_entry(_("Ellipsoid"), [_("Please enter the 1st semi axe..."), _("Please enter the 2nd semi-axe..."), _("Please enter the 3rd semi-axe...")], mv.volume_ellipsoid),
+                _gen_entry(_("Tetrahedron"), [_("Please enter the length of the edge of the tetrahedron...")], mv.volume_tetrahedron) # like Tetris
+            ]
+    )
+
+def area_interactive():
+    calculation_list = [
+            _gen_entry(_("Triangle"), [_("Please enter the length of the base of the triangle..."), _("Please enter the height of the base of the triangle...")], mathmod.area.area_triangle),
+            _gen_entry(_("Square"), [_("Please enter the length of the square...")], mathmod.area.area_square),
+            _gen_entry(_("Rectangle"), [_("Please enter the width of the rectangle..."), _("Please enter the height of the rectangle...")], mathmod.area.area_rectangle),
+            _gen_entry(_("Parallelogram"), [_("Please enter the length of the base of the parallelogram..."), _("Please enter the height of the parallelogram...")], mathmod.area.area_parallelogram),
+            _gen_entry(_("Trapezium / Trapezoid"), [_("Please enter the height of the shape..."), _("Please enter the length of the first base of the shape..."), _("Please enter the length of the second base of the shape...")], mathmod.area.area_trapezium),
+            _gen_entry(_("Circle"), [_("Please enter the radius of the circle...")], mathmod.area.area_circle),
+            _gen_entry(_("Semicircle"), [_("Please enter the radius of the semicircle...")], mathmod.area.area_semicircle),
+            _gen_entry(_("Ellipse"), [_("Please enter the length of the semi-major axis..."), _("Please enter the length of the semi-minor axis...")], mathmod.area.area_ellipse),
+            _gen_entry(_("Sector"), [_("Please enter the angle of the sector, in radians..."), _("Please enter the radius of the sector...")], mathmod.area.area_sector),
+            _gen_entry(_("Rhombus"), [_("Please enter the length of any side of the rhombus..."), _("Please enter the height of the rhombus...")], mathmod.area.area_rhombus),
+            _gen_entry(_("Ring"), [_("Please enter the radius of the inner circle..."), _("Please enter the radius of the outer circle...")], mathmod.area.area_ring),
+            ]
+    generic_interactive(calculation_list)
+def thing():
+    while True:
+        print("hi")
+def tax():
+    cprint.ok(_("Select your Tax Type"))
+    cprint.info(_("1. Sales Tax"))
+    cprint.warn(_("No other types are currently supported."))
+    input(_("Type: "))
+    print("\033[4A", end="")
+    cprint.ok(_("You picked Sales Tax."))
+    cprint.ok(_("Would you like to use a tax preset?"))
+    cprint.info(_("1. Yes - I live in Canada"))
+    cprint.info(_("2. No"))
+    cprint.warn(_("No other types are currently supported."))
+    while True:
+        try:
+            preset = int(input(_("Type: ")))
+        except (TypeError, ValueError):
+            cprint.err(_("That number is a bit sus. Sure you typed it in right?")) #idc that its a dead meme
+        else:
+            break
+    if preset != 2:
+        print("\033[5A", end="")
+    else:
+        print("", end="")
+    if preset == 2:
+        cprint.info(_("Ok, no preset it is."))
+        percentage = float(input(_("Please type the percentage of tax in your local area: ")))
+    elif preset == 1:
+        sussypresetlist = {
+                _("Ontario"): mathmod.tax_types.sales.Canada.ontario,
+                _("Quebec"): mathmod.tax_types.sales.Canada.quebec,
+                _("Yukon/Northwest Territories/Nunavut/Alberta"): mathmod.tax_types.sales.Canada.yukon,
+                _("British Columbia/Manitoba"): mathmod.tax_types.sales.Canada.manitoba,
+                _("New Brunswick/Nova Scotia/Newfoundland/Prince Edward Island"): mathmod.tax_types.sales.Canada.newfoundland,
+                _("Saskatchewan"): mathmod.tax_types.sales.Canada.saskatchewan,
+        }
+        sus = list(sussypresetlist)
+        for ind, su in enumerate(sussypresetlist):
+            cprint.info(f"{ind + 1}. {su}")
         while True:
-            num = input(_("Please enter the next number; a blank line will confirm your numbers: "))
-            if num == "":
-                break
-            try: 
-                num = float(num)
-            except Exception as ename:
-                cprint.err(_("ERRID 3: %s is not a number.") % num)
-                logging.error("ERRID3: The number given was not a number. (Dump: %s)" % num)
-            nums.append(num)
-        return nums
-
-class theBasics:
-    def addition():
-        nums = Builtins.getInput()
-        try:
-            returnedNumber = mathmod.Arithmetic.addition(*nums)
-        except ValueError as ename:
-            logging.error("While parsing add(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
-            cprint.info(_("An exception was raised!\nValueError\n"))
-            raise
-        cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed addition with nums as %s, answer = %s" % (nums, returnedNumber))
-    def subtraction():
-        nums = Builtins.getInput()
-        try:
-            returnedNumber = mathmod.Arithmetic.subtraction(*nums)
-        except ValueError as ename:
-            logging.error("While parsing sub(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
-            cprint.info(_("An exception was raised!\nValueError\n"))
-            raise
-        cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed subtraction with %s as nums, answer as %s" % (nums, returnedNumber))
-    def multiplication():
-        nums = Builtins.getInput()
-        try:
-            returnedNumber = mathmod.Arithmetic.multiplication(*nums)
-        except ValueError as ename:
-            logging.error("While parsing multi(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
-            cprint.info(_("An exception was raised!\nValueError\n"))
-            raise
-        cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed multiplication with %s as nums, answer as %s" % (nums, returnedNumber))
-    def division():
-        nums = Builtins.getInput()
-        try:
-            returnedNumber = mathmod.Arithmetic.division(*nums)
-        except ZeroDivisionError:
-            logging.error("User decided to divide by zero. (nums: %s)" % nums)
-            raise SyntaxError("yes, because diving by 0 makes sense") % (nums)
-        except ValueError as ename:
-            cprint.err(_("An exception was raised!\nValueError\n"))
-            logging.error("While parsing div(%(n1)s), a ValueError was thrown. (%(error)s)" % {"n1": nums, "error": ename})
-            raise
-        cprint.info(_("The response is...%s") % returnedNumber)
-        logging.info("Parsed division with %s as nums, answer as %s" % (nums, returnedNumber))
-    def mod(): #modulo
-        n1 = float(input(_("Please enter the first number: ")))
-        n2 = float(input(_("Please enter the second number: ")))
-        result = mathmod.Misc.modulo(n1,n2)
-        cprint.info(_("\nThat equals...\n%s\n") % result)
-        logging.info("User attempted to modulo numbers %s and %s, and got result %s" % (n1,n2,result))
-class rootsAndTheOtherOne:
-    def curoot():
-        try:
-            number = float(input(_("Number to be rooted? ")))
-        except Exception as ename:
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: n1=%s, n2=%s)") % (n1, n2))
-        try:
-            nothernumber = mathmod.ExponentsAndRoots.cuRoot(number)
-        except ValueError as ename:
-            cprint.err(_("An exception was raised!\nValueError\n"))
-            logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
-            raise
-        logging.info("Parsed curoot(%s) to get %s..." % (number, nothernumber))
-        cprint.info(_("The answer is... %s") % nothernumber)
-    def powerful():
-        origin = input(_("Enter the original number: "))
-        ex = input(_("Enter the exponent: "))
-        try:
-            float(origin)
-            float(ex)
-        except Exception as ename:
-            cprint.err(_("ERRID 3: One or more of your numbers was not a number."))
-            raise ValueError(_("ERRID3: One or more of the numbers was not a number. (Dump: origin=%s, ex=%s)") % (origin, ex))
-        try:
-            returnedNumber = mathmod.ExponentsAndRoots.exponent(origin, ex)
-        except ValueError as ename:
-            cprint.err(_("An exception was raised!\nValueError\n"))
-            logging.error("While parsing curoot(%(number)s), a ValueError was thrown. (%(error)s)" % {"number": number, "error": ename})
-            raise
-        cprint.info(_("The answer is... %s") % returnedNumber)
-        logging.info("User exponented number %s with %s, getting %s" % (origin, ex, returnedNumber))
-    def sqroot():
-        num = float(input(_("Number to be rooted?")))
-        returnedNumber = mathmod.ExponentsAndRoots.sqRoot(num)
-        cprint.info(_("That equals... %s") % returnedNumber)
-        logging.info("user sqrooted number %s" % (returnedNumber))
-
-class misc:
-    hText = (_("\nCurrent list of commands: multiplication, division, addition, square, subtraction, modulo, area, volume, cube, exponents, root, logarithm, "
-                      "tax calculator, spinner, memory, interest calculator, fibonacci sequence, percentage calculator, convert temperature, \"ord'ing\", and convert "
-                      "bases (aka number systems). Type quit to quit.\n"
-                      "Bugs? Head on over to https://github.com/thetechrobo/python-text-calculator/issues\n"
-                      "To contribute: go to https://github.com/thetechrobo/python-text-calculator/"
-                      "\nBlack Lives Matter! For more info, go to blacklivesmatter.com."))
-    def h():
-        cprint.info(_(misc.hText))
-    def vol():
-        logging.warning("User ran `volume.py'.")
-        Volume.VolMain()
-    def area():
-        logging.warning("User ran `area.py'.")
-        Area.AreaMain()
-    def fib():
-        hi = input(_("Would you like...\n    1 - Calculate a fixed amount of fibonacci numbers.\n    2 - Calculate fibonacci indefinitely.\nType: "))
-        if hi[0] == "1":
-            cprint.info(_("Fixed it is."))
-            from mathmod.fibonacci import CalculateFixedFibo
-            amount = int(input(_("How many numbers of fibonacci would you like to calculate? ")))
-            logging.info("About to run fixed fibonacci (amount=%s)" % amount)
-            finalProduct = CalculateFixedFibo(amount)
-            cprint.info(_("Your fibonacci numbers were..."))
-            cprint.ok(finalProduct)
-            logging.info("User did fixed fibo with amount of %s, and the results are in the next log entry!..." % amount)
-            logging.info(finalProduct)
-        else:
-            cprint.info(_("Looped it is."))
-            from mathmod.fibonacci import CalculateLoopedFibo
-            logging.info("About to run looped fibonacci")
-            cprint.ok(_("Press Control-C to stop."))
             try:
-                CalculateLoopedFibo()
-            except Exception as ename:
-                logging.err("Exception %s in looped fibonacci" % ename)
-                cprint.err(_("An error occured."))
-            except KeyboardInterrupt:
-                logging.info("Exited fibonacci loop.")
-        logging.info("User ran fibonacci function")
-    def showUserWhatIThink(whatDOyouthink):
-        cprint.ok(_("I think you want me to: \n%s") % whatDOyouthink)
-        isItCorrect = input(_("Is this correct? (Y/n)")).lower()
-        if _("y") in isItCorrect:
-            logging.info("Palc chose the right calculation (%s) for calc choice that should be shown above." % whatDOyouthink)
-        elif "n" in isItCorrect:
-            cprint.info(_("Try different wording. Or, if you want that calculation choice to be made right, file a ticket."))
-            if _("y") in input(_("Would you like to file a ticket? (Y/n)\nType: ")).lower(): 
-                import webbrowser
-                webbrowser.open("http://github.com/thetechrobo/python-text-calculator/issues/new")
-                logging.info("User chose to file a ticket because they didn't want Palc to %s" % whatDOyouthink)
-                input(_("Press ENTER to continue..."))
-                cprint.info(_("Proceeding with the function I thought it was."))
-            else:
-                cprint.info(_("OK, proceeding with the function I thought it was."))
-        else:
-            cprint.info(_("Defaulting to yes."))
-            logging.info("Defaulting to yes for right calc (%s) for calc choice that should be shown above" % whatDOyouthink)
-    def readMyMemory():
-        cprint.info(_("This is the remember function.\nIt will read a number that was previously stored in a file."))
-        try:
-            slot = str(int(input(_("What slot number did you use? "))))
-            with open(slot, "r") as memory:
-                theMem = memory.read()
-                cprint.info(_("Number: %s" % theMem))
-                logging.info("Retrieved number %s from memory slot %s" % (theMem, slot))
-        except Exception as e:
-            logging.info("There was an error retrieving the file from memory. (Err %s)" % e)
-            cprint.err(_("There was an error reading the file. Did you save the number by using the save function? Did you accidentally rename the file? "
-            "Do you have the correct permissions?"))
-    def remember():
-        cprint.info(_("This is the memory function.\nIt will save a number into a file that can be used later with Palc... Or you can just read it with a text editor."))
-        toRemember = float(input(_("\nPlease enter the number to be saved: ")))
-        slot = str(int(input(_("What slot would you like to use? (Hint: you can use any integer you want as long as you remember it)\nType: "))))
-        toRemember = str(toRemember)
-        memory = open(slot, "w+")
-        memory.write(toRemember)
-        logging.info("Saved number %s to memory slot %s" % (toRemember, slot))
-    def calculateInterest(): 
-        origin = int(input(_("What is the original number? ")))
-        rate = float(input(_("What is the rate of interest in percentage (without the percent sign)? ")))
-        print()
-        units = int(input(_('''How many units of time would you like to calculate? 
-Essentially, one unit of time could be one month, or one decade. It all depends on what you typed in the rate of interest question: it could be per year, per decade...we didn't ask.
-It was up to you to type the correct amount in the rate question.
-We have no idea what the rate represented: it could have been that rate per century for all we know.
-This calculator wasn't programmed with the ability to track time.
-So, with that out of the way, type the amount we should multiply the interest by (aka the amount of units of time).\nType it: ''')))
-        number = mathmod.Misc.getInterest(units, rate, origin)["total"]
-        interest = mathmod.Misc.getInterest(units, rate, origin)["interest"]
-        logging.info("INTERESTCALC: origin: %s rate: %s howMany: %s answer: %s, interest %s " % (origin, rate, units, number, interest))
-        cprint.info(_("The interest is: \n%s") % interest)
-        cprint.info(_("The total price is: \n%s") % number)
-    def base():
-        cprint.info(_("Please wait a moment."))
-        from modules.pythonradix import Converter
-        cprint.info(_("Please enter the original base.\n\
-HINT: Base 2 is binary, base 8 is octal, base 10 is decimal (normal), and base 16 is hex."))
-        originalBase = int(input(_("Enter your choice: ")))
-        cprint.info(_("Please enter the destination base.\n\
-Again, base 2 is binary, 8 is octal, 10 is normal, and 16 is hex."))
-        destinationBase = int(input(_("Enter your choice: ")))
-        cprint.ok(_("Please wait a moment."), end="")
-        converter = Converter(originalBase, destinationBase)
-        number = input(_("\rPlease enter your original number - it should not have a decimal point. "))
-        try:
-            result = converter.convert(number)
-        except Exception as ename:
-            cprint.err(_("Your number was messed up, or maybe Palc screwed it up, or maybe python-radix is buggy.\nMake sure that you didn't include things like `0b' for"
-                        "binary calculation. So instead of `0b100111' being your input, try `100111' instead."))
-            logging.info("ERROR during base conversion! %s" % ename)
-            return
-        cprint.info(_("The result is... %s") % result)
-        logging.info("Base conversion done, with origin base %s, des base %s, and origin number %s" % (originalBase, destinationBase, number))
-    def logarithm(): #https://stackoverflow.com/questions/33754670/calculate-logarithm-in-python
-        base = input(_("1 - Base 10\n2 - Natural (e) logarithm\nPick one: "))
-        number = float(input(_("What is the number? ")))
-        if base[0] == "1":
-            result = mathmod.Misc.log(number, False)
-            cprint.info(_("The result is... %s") % result)
-            doNotLog = False
-        elif base[0] == "2":
-            result = mathmod.Misc.log(number, True)
-            cprint.info(_("The result is... %s") % result)
-            doNotLog = False
-        else:
-            cprint.err(_("The logarithm you typed is not available."))
-            cprint.ok(_("Try again."))
-            logging.info("User attempted to use a logarithm that is unavailable.")
-            doNotLog = True
-        if doNotLog:
-            return
-        logging.info("User used logarithm choice %s with number %s, getting a result of %s" % (base, number, result))
-    def spinner():
-        choices = input(_("Please enter your choices separated by commas. Example: First part of spinner, SecondPartOfSpinner, 3, 4, 5, 6, The End\nType: ")).strip().split(", ") #https://www.w3schools.com/python/ref_string_split.asp
-        times = int(input(_("How many times to conduct the spinner? ")))
-        output = mathmod.Misc.Spinner(times, choices)
-        cprint.ok(_("Your results were...\n%s") % output)
-        logging.info("Spinner: choices %s, times %s, output %s" % (choices, times, output))
-class Temperature:
-    def tempCalc():
-        message = """What is the %s temperature unit? 
-    1 - Farenheit
-    2 - Celsius
-    3 - Kelvin
-    4 - Rankine
-                                                   \033[A\033[A\033[A\033[A\033[A"""
-        source = int(input(_(message) % "source"))
-        origin = float(input(_("Please enter the original temperature...")))
-        destination = int(input(_(message % "destination")))
-        print("                  ")
-        try:
-            yolo = mathmod.Misc.calculateTemperature(origin=origin, source=source, destination=destination)
-        except ValueError:
-            cprint.err(_("Invalid input(s)."))
-            logging.error("User typed invalid temperature answer %s, %s" % (source, destination))
-        cprint.info(_("That equals... \n%s                       ") % yolo)
-        logging.info("User ran temperature calculator, with source %s, destination %s, and original number %s" % (source, destination, origin))
-class Percentage:
-    def percentage1():
-        origin = float(input(_("What is the ORIGINAL NUMBER? ")))
-        percent = float(input(_("What is the PERCENTAGE? ")))
-        logging.info("Got percentage RN origin %s percent %s" % (origin, percent))
-        cprint.info(_("That equals..."))
-        try:
-            cprint.info(mathmod.Misc.whatIsXPercentOf(percent, origin))
-        except ValueError:
-            cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
-    def percentage2():
-        origin = float(input(_("What is the number that would be 100%? ")))
-        part = float(input(_("What is the number that you want to convert to percentage (i.e. this number out of the number that would be 100%)? ")))
-        logging.info("Got percentage RN origin %s and %s" % (origin, part))
-        cprint.info(_("That equals..."))
-        try:
-            cprint.info(mathmod.Misc.findPercentage(part, origin))
-        except ValueError:
-            cprint.err(_("You requested an impossible situation by entering 0 there - that would require division by 0."))
-    def chooseOneTwo():
-        chosenPercentageCalc = int(input(_('''1 - Calculate "What is x% of y?"
-2 - Convert a number to percentage (i.e. how much percent of ___ is ___?).
-Type: ''')))
-        if chosenPercentageCalc == 1:
-            Percentage.percentage1()
-        elif chosenPercentageCalc == 2:
-            Percentage.percentage2()
-        else:
-            cprint.err(_("You didn't type a valid answer. Abort."))
-            logging.info("User did not answer correct percentage interpretation")
-
-class Tax:
-    def taxCalc():
-        cprint.info(_('''1 - Ontario Sales Tax
-2 - Quebec Sales Tax
-3 - Yukon, Northwest Territories, Nunavut, and Alberta Sales Tax
-4 - BC / Manitoba Sales Tax
-5 - New Brunswick / Nova Scotia / Newfoundland / PEI Sales Tax
-6 - Saskatchewan Sales Tax
-7 - Custom Tax'''))
-        whatPlace = int(input(_("Choose one: ")))
-        if whatPlace == 1:
-            percent = 13.0
-        elif whatPlace == 2:
-            percent = 14.975
-        elif whatPlace == 3:
-            percent = 5.0
-        elif whatPlace == 4:
-            percent = 12.0
-        elif whatPlace == 5:
-            percent = 15.0
-        elif whatPlace == 6:
-            percent = 11.0
-        elif whatPlace == 7:
-            percent = float(input(_("Please enter the tax percentage without the percent sign: ")))
-        else:
-            cprint.err(_("You did not type answer. Abort."))
-            logging.error("User typed %s into tax...aka an invalid answer." % whatPlace)
-            return
-        originPrice = float(input(_("What is the original price (before tax)? ")))
-        result = mathmod.Misc.tax(originPrice, percent)
-        logging.info("User used Sales Tax %s Percent with originPrice %s, price %s" % (percent, originPrice, newPrice))
-        cprint.info(_("After tax, the price is: \n%s" % result))
-
-class Area:
-    class choices: #readability
-        EQUILATERAL_TRIANGLE = 1
-        RIGHT_ANGLE_TRIANGLE = 2
-        ACUTE_TRIANGLE = 3
-        OBTUSE_TRIANGLE = 4
-        SQUARE = 5
-        RECTANGLE = 6
-        EVIL = 7
-        PARALLELOGRAM = 8
-        RHOMBUS = 9
-        TRAPEZIUM = 10
-        CIRCLE = 11
-        SEMICIRCLE = 12
-        CIRCULAR_SECTOR = 13
-        RING = 14
-        ELLIPSE = 15
-    selectionMessage = '''Options:
-1 - Equilateral triangle
-2 - Right angle triangle
-3 - Acute triangle
-4 - Obtuse triangle
-5 - Square
-6 - Rectangle
-8 - Parallelogram
-9 - Rhombus
-10 - Trapezium
-11 - Circle
-12 - Semicircle
-13 - Circular sector
-14 - Ring
-15 - Ellipse'''
-    def AreaMain():
-        cprint.info(_(Area.selectionMessage))
-        while True:
-            try:
-                choice = int(input(_("Please type one: ")))
+                presetterInd = int(input(_("Please enter the One You Want™: "))) - 1
+                if presetterInd < 0:
+                    presetterInd = 32237
             except (ValueError, TypeError):
-                cprint.err(_("Please type an integer"))
-                logging.error("User did ValueError // TypeError while inputting areaInteractive choice")
-            if choice == Area.choices.EVIL:
-                cprint.err(_("I was too lazy to change 7."))
-                logging.info("Lazy 7")
-                area = "NULL"
-            elif choice == Area.choices.EQUILATERAL_TRIANGLE:
-                from mathmod.area import area_equilateral_triangle as equtri
-                a = float(input(_("What length is the side of the triangle? ")))
-                area = equtri(a)
-                logging.info("User used equalateral triangle area with origin %s answer %s" % (a, area))
-            elif choice == Area.choices.RIGHT_ANGLE_TRIANGLE:
-                from mathmod.area import area_right_triangle as righttri
-                b = float(input(_("What length is the base of the triangle? ")))
-                h = float(input(_("What length is the height of the triangle? ")))
-                area = righttri(b=b, h=h)
-                logging.info("User used Righttri area with variable b=%s, h=%s, answer=%s" % (b, h, area))
-            elif choice == Area.choices.ACUTE_TRIANGLE:
-                from mathmod.area import area_acute_triangle as actri
-                a = float(input(_("What is the length of the first side? ")))
-                b = float(input(_("what is the length of the second side? ")))
-                c = float(input(_("What is the length of the third side? ")))
-                area = actri(a, b, c)
-                logging.info("User used Acutetri area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area)) 
-            elif choice == Area.choices.OBTUSE_TRIANGLE:
-                from mathmod.area import area_obtuse_triangle as obtri
-                a = float(input(_("What is the length of the first side? ")))
-                b = float(input(_("What is the length of the second side? ")))
-                c = float(input(_("What is the length of the third side? ")))
-                area = obtri(a, b, c)
-                logging.info("User used Obtuse Triangle area with variable a=%s, b=%s, c=%s, answer=%s" % (a, b, c, area))
-            elif choice == Area.choices.SQUARE:
-                from mathmod.area import area_square as sq
-                a = float(input(_("What is the length of the side of the square? ")))
-                area = sq(a)
-                logging.info("User used Square area with variable a=%s, answer=%s" % (a, area))
-            elif choice == Area.choices.RECTANGLE:
-                from mathmod.area import area_rectangle as rec
-                l = float(input(_("What is the length of the rectangle? ")))
-                b = float(input(_("What is the height of the rectangle? ")))
-                area = rec(l, b)
-                logging.info("User used Rectangle area with variable l=%s, b=%s, answer=%s" % (l, b, area))
-            elif choice == Area.choices.PARALLELOGRAM:
-                from mathmod.area import area_parallelogram as para
-                b = float(input(_("What is the length of the base? ")))
-                h = float(input(_("What is the height of the shape? ")))
-                area = para(b, h)
-                logging.info("User used Parallelogram area with variable b=%s, h=%s, answer=%s" % (b, h, area))
-            elif choice == Area.choices.RHOMBUS:
-                from mathmod.area import area_rhombus as rhombu
-                do = float(input(_("What is the length of the first diagonal? ")))
-                ds = float(input(_("What is the length of the 2nd diagonal? ")))
-                area = rhombu(do, ds)
-                logging.info("User used Rhombus area with variable do=%s, ds=%s, answer=%s" % (do, ds, area))
-            elif choice == Area.choices.TRAPEZIUM:
-                from mathmod.area import area_trapezium as trapezi
-                a = float(input(_("What is the length of the 1st set of parallel sides? ")))
-                b = float(input(_("What is the length of the 2nd set of parallel sides? ")))
-                h = float(input(_("What is the height of the trapezium? ")))
-                area = trapezi(a, b, h)
-                logging.info("User used Trapezium area with variable a=%s, b=%s, h=%s, answer=%s" % (a, b, h, area))
-            elif choice == Area.choices.CIRCLE:
-                from mathmod.area import area_circle as circl
-                r = float(input(_("What is the radius of the circle? ")))
-                area = circl(r)
-                logging.info("User used Circle area with variable r=%s, answer=%s" % (r, area))
-            elif choice == Area.choices.SEMICIRCLE:
-                from mathmod.area import area_semicircle as semi
-                r = float(input(_("What is the radius of the semicircle? ")))
-                area = semi(r)
-                logging.info("User used Semicircle area with variable r=%s, answer=%s" % (r, area))
-            elif choice == Area.choices.CIRCULAR_SECTOR:
-                from mathmod.area import area_circular_sector as cirsector
-                r = float(input(_("What is the radius of the circular sector? ")))
-                a = float(input(_("What is the angle of the circular sector *in degrees*? ")))
-                area = cirsector(r, a)
-                logging.info("User used Cirsector area with variable r=%s, a=%s answer=%s" % (r, a, area))
-            elif choice == Area.choices.RING: #my precious!
-                from mathmod.area import area_ring as myprecious
-                ro = float(input(_("What is the radius of the outer circle? ")))
-                rs = float(input(_("What is the radius of the inner circle? ")))
-                area = myprecious(ro, rs)
-                logging.info("User used Ring area with variable ro=%s, rs=%s answer=%s" % (ro, rs, area))
-            elif choice == Area.choices.ELLIPSE:
-                from mathmod.area import area_ellipse as el
-                a = float(input(_("What is the length of the major axis? ")))
-                b = float(input(_("What is the length of the minor axis? ")))
-                area = el(a, b)
-                logging.info("User used Ellipse area with variable a=%s, b=%s answer=%s" % (a, b, area))
-            if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
-                cprint.info(_("The area is: %s") % area)
+                cprint.err(_("Nice try, but you have to actually type a number."))
+            else:
+                try:
+                    name = sus[presetterInd]
+                    percentage = sussypresetlist[sus[presetterInd]]
+                    if percentage is None:
+                        raise IndexError
+                except IndexError:
+                    cprint.err(_("Nice try, but the number has to be in range."))
+                    continue
                 break
+    origin = _sus("original number")
+    standResOut(mathmod.tax(origin, percentage), text="tax", origin=f"origin={origin}, percentage={percentage}")
 
-class Volume:
-    selectionMessage = '''Options:
-1 - Cube
-2 - Cuboid
-3 - Cylinder
-4 - Hollow cylinder
-5 - Cone
-6 - Sphere
-8 - Hollow sphere
-9 - Triangular prism
-10 - Pentagonal prism
-11 - Hexagonal prism
-12 - Square-based pyramid
-13 - Triangular pyramid
-14 - Pentagon-based pyramid
-15 - Hexagon-based pyramid'''
-    class choices: #readability
-        CUBE = 1
-        CUBOID = 2
-        CYLINDER = 3
-        HOLLOW_CYLINDER= 4
-        CONE = 5
-        SPHERE = 6
-        EVIL = 7
-        HOLLOW_SPHERE = 8
-        TRIANGULAR_PRISM = 9
-        PENTAGONAL_PRISM = 10
-        HEXAGONAL_PRISM = 11
-        SQUARE_BASED_PYRAMID = 12
-        TRIANGULAR_PYRAMID = 13
-        PENTAGON_BASED_PYRAMID = 14
-        HEXAGON_BASED_PYRAMID = 15
-    def VolMain():
-        cprint.info(_(Volume.selectionMessage))
-        while True:
-            try:
-                choice = int(input(_("Please type one: ")))
-            except (ValueError, TypeError) as ename:
-                cprint.err("Please type an integer")
-                logging.error("User did a ValueError or TypeError while inputting choice in volinteractive (%s)" % ename)
-            if choice == Volume.choices.EVIL:
-                cprint.ok("Sorry, that was not an option. >:)")
-                logging.info(">:) choice 7")
-                volume = "NULL"
-            elif choice == Volume.choices.CUBE:
-                from mathmod.volume import vol_cube
-                a = float(input(_("What length is the side of the cube? ")))
-                volume = vol_cube(a)
-                logging.info("User ran Cuvolu(m) a=%s answer=%s" % (a, volume))
-            elif choice == Volume.choices.CUBOID:
-                from mathmod.volume import vol_cuboid
-                b = float(input(_("What length is the breadth of the cuboid? ")))
-                h = float(input(_("What length is the height of the cuboid? ")))
-                l = float(input(_("What length is the cuboid? ")))
-                volume = vol_cuboid(b=b, h=h, l=l)
-                logging.info("User ran Cuboid Volume l=%s b=%s h=%s answer=%s" % (l, b, h, volume))
-            elif choice == Volume.choices.CYLINDER:
-                from mathmod.volume import vol_cylinder
-                r = float(input(_("What is the radius of the cylinder? ")))
-                h = float(input(_("What is the height of the cylinder? ")))
-                volume = vol_cylinder(r=r, h=h)
-                logging.info("User ran Cylinder Volume r=%s h=%s answer=%s" % (r, h, volume))
-            elif choice == Volume.choices.HOLLOW_CYLINDER:
-                from mathmod.volume import vol_hollow_cylinder
-                ro = float(input(_("What is the radius of the hollow space? ")))
-                rs = float(input(_("What is the radius of the cylinder? ")))
-                h = float(input(_("What is the height of the cylinder? ")))
-                volume = vol_hollow_cylinder(ro=ro, rs=rs, h=h)
-                logging.info("User ran Hollowcylinder Volume ro=%s rs=%s h=%s answer=%s" % (ro, rs, h, volume))
-            elif choice == Volume.choices.CONE:
-                from mathmod.volume import vol_cone
-                r = float(input(_("What is the radius of the cone? ")))
-                h = float(input(_("What is the height of the cone? ")))
-                volume = vol_cone(r=r, h=h)
-                logging.info("User ran Conevol r=%s h=%s answer=%s" % (r, h, volume))
-            elif choice == Volume.choices.SPHERE:
-                from mathmod.volume import vol_sphere
-                r = float(input(_("What is the radius of the sphere? ")))
-                volume = vol_sphere(r)
-                logging.info("User ran sphere Volume r=%s answer=%s" % (r, volume))
-            elif choice == Volume.choices.HOLLOW_SPHERE:
-                from mathmod.volume import vol_hollow_sphere
-                ro = float(input(_("What is the radius of the sphere? ")))
-                rs = float(input(_("What is the radius of the hollow space? ")))
-                volume = vol_hollow_sphere(ro=ro, rs=rs)
-                logging.info("User ran Hollowsphere Volume ro=%s rs=%s answer=%s" % (ro, rs, volume))
-            elif choice == Volume.choices.TRIANGULAR_PRISM:
-                from mathmod.volume import vol_tri_prism
-                a = float(input(_("What is the length of the side of the base? ")))
-                h = float(input(_("What is the height of the prism? ")))
-                volume = vol_tri_prism(a=a, h=h)
-                logging.info("User ran Triangle Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-            elif choice == Volume.choices.PENTAGONAL_PRISM:
-                from mathmod.volume import vol_penta_prism
-                a = float(input(_("What is the length of the side of the base? ")))
-                h = float(input(_("What is the height of the prism? ")))
-                volume = vol_penta_prism(a=a, h=h)
-                logging.info("User ran PentaPrism Volume a=%s h=%s answer=%s" % (a, h, volume))
-            elif choice == Volume.choices.HEXAGONAL_PRISM:
-                from mathmod.volume import vol_hexa_prism
-                a = float(input(_("What is the length of the side of the hexagon? ")))
-                h = float(input(_("What is the height of the prism? ")))
-                volume = vol_hexa_prism(a=a, h=h)
-                logging.info("User ran Hexagon Prism Volume a=%s h=%s answer=%s" % (a, h, volume))
-            elif choice == Volume.choices.SQUARE_BASED_PYRAMID:
-                from mathmod.volume import vol_sqr_pyramid
-                a = float(input(_("What is the length of the side of the base? ")))
-                h = float(input(_("What is the height of the pyramid? ")))
-                volume = vol_sqr_pyramid(a=a, h=h)
-                logging.info("User ran Square Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-            elif choice == Volume.choices.TRIANGULAR_PYRAMID:
-                from mathmod.volume import vol_tri_pyramid
-                a = float(input(_("What is the length of the side of the base? ")))
-                h = float(input(_("What is the height of the pyramid? ")))
-                volume = vol_tri_pyramid(a=a, h=h)
-                logging.info("User ran Triangle Pyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-            elif choice == Volume.choices.PENTAGON_BASED_PYRAMID:
-                from mathmod.volume import vol_penta_pyramid
-                a = float(input(_("What is the length of the side of the base? ")))
-                h = float(input(_("What is the height of the pyramid? ")))
-                volume = vol_penta_pyramid(a=a, h=h)
-                logging.info("User ran Pentapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-            elif choice == Volume.choices.HEXAGON_BASED_PYRAMID:
-                from mathmod.volume import vol_hexa_pyramid
-                a = float(input(_("What is the length of the side of the base? ")))
-                h = float(input(_("What is the height of the pyramid? ")))
-                volume = vol_hexa_pyramid(a=a, h=h)
-                logging.info("User ran Hexapyramid Volume a=%s h=%s answer=%s" % (a, h, volume))
-            if choice in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]: 
-                cprint.info(_("The volume is: %s") % volume)
-                break
+def based():
+    cprint.info(_("Please enter the original base."))
+    cprint.ok(_("ProTip: 2 is binary, 8 is octal, 10 is decimal, 16 is hex, and 36 has all the letters in the alphabet."))
+    cprint.warn(_("Don't type anything above %d. Additionally, typing anything below 2 will cause the conversion to either hang or fail.") % python_radix.python_radix.max_base)
+    originalBase = int(turbofunc.CleanInput(input(_("Type: ")))) # that's a lotta brackets. HOW BOUT A LITTLE MORE
+    print("\033[4A", end="")
+    cprint.info(_("Please enter the destination base."))
+    destinationBase = int(turbofunc.CleanInput(input("\n\n" + _("Type: "+"  \b\b"))))
+    exp = lambda thingy : not (thingy > python_radix.python_radix.max_base or thingy < 2)
+    if exp(originalBase) is False or exp(destinationBase) is False:
+        return cprint.fatal(_("I told you not to do that."))
+    logging.debug(f"loading converter for base {originalBase} => {destinationBase}")
+    conv = python_radix.Converter(originalBase, destinationBase)
+    print("\033[4A", end="") #https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html
+    cprint.info(_("Please enter the original number (it should not have a decimal point)."))
+    number = turbofunc.CleanInput(input("\n\n" + _("Type: "+"  \b\b")))
+    try:
+        result = conv.convert(number)
+    except Exception as ename:
+        cprint.err(_("Failed to convert numbers. Remember to only put the digits in that base in! (%s)") % ename)
+        return
+    standResOut(result, text="base", origin=f"origin={number}, base={destinationBase}") #after base
+
+def h():
+    cprint.ok(_("There are a bunch of commands you can use. Find them by typing in `list'."))
+    cprint.warn(_("Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."))
+    cprint.info(_("\033[1mPlease enjoy Palc!\033[0m \033[94mFeedback or bug reports? Go to \033[4mgithub.com/thetechrobo/python-text-calculator/issues\033[0m\033[94m!\033[0m"))#https://stackoverflow.com/a/17303428/9654083
+
+def add_calculations(*args):
+    for i in args:
+        CALCULATIONS.append(i)
+
+def funny():
+    cprint.warn(_("Ha... ha... not... funny... Jim."))
+    sys.exit(random.choice((42,69)))
+
+def sudo():
+    add_calculations(
+        Calculation(h, ("?", _("help"), _("idk"), _("confus"), _("sos"), _("what")),
+            _("help")),
+        Calculation(sys.exit, (_("exit"), _("quit"), _("bye"), _("leave")),
+            _("exit Palc")),
+        # FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci"
+        Calculation(parse_fibonacci, (_("fib"),),
+            _("fibonacci")),
+        # FOR TRANSLATORS: This is a translated if statement with the meaning of "factorial"
+        Calculation(parse_factorial, ("!", _("fac")),
+            _("factorial")),
+        # FOR TRANSLATORS: Translated if statement (meaning of division)
+        Calculation(parse_division, ("/", _("div"), "÷"),
+            _("division")),
+        Calculation(parse_multiplication, (_("mult"), "*"),
+            _("multiplication")),
+        Calculation(parse_addition, (_("add"), "+", _("plus")),
+            _("addition")),
+        Calculation(parse_subtraction, (_("sub"), "-", _("min")),
+            _("subtraction")),
+        Calculation(parse_modulo, (_("mod"),),
+            _("modulo")),
+        Calculation(parse_square_root, (_("sq"),),
+            _("square root")),
+        Calculation(parse_cube_root, (_("cu"),),
+            _("cuberoot")),
+        Calculation(parse_any_root, (_("root"),),
+            _("root")),
+        Calculation(exponent, (_("pow"), "**", _("expo")),
+            _("exponent")),
+        Calculation(volume_interactive, (_("vol"),),
+            _("volume")),
+        Calculation(area_interactive, (_("ar"),"#"),
+            _("area")),
+        Calculation(tax, (_("tax"),),
+            _("tax")),
+        Calculation(based, (_("rad"), _("base")),
+            _("convert bases")),
+        Calculation(funny, (_("no"),),
+            _("be the most unfunny person ever")),
+        Calculation(parse_beta, ("beta",),
+            _("use the beta (UNSUPPORTED")),
+        Calculation(mémoire, (_("mem"), _("save"), _("var"), _("load")),
+            _("load or save a memory slot")),
+        Calculation(logarithm, (_("loga"),),
+            _("calculate logarithm")),
+        Calculation(calc_ord, (_("ord"),),
+            _("calculate the ASCII code of a character")),
+        Calculation(calc_chr, (_("chr"),),
+            _("calculate the character of an ASCII code")),
+        Calculation(interest, (_("interest"), _("rate")),
+            _("calculate interest rate")),
+        Calculation(spinner, (_("spin"), _("random"), _("pick")),
+            _("use the spinner")),
+        Calculation(choose_percent_sign, ("%",), _("pick percentage sign")),
+        Calculation(percentage, (_("perc"),),
+            _("pick percentage mode")),
+        Calculation(list, (_("list"), _("commands")),
+            _("list available calculations")),
+        )
+
+def parse_ceta(calcc):
+    for calc in CALCULATIONS:
+        for word in calc.core_words:
+            if word in calcc:
+                return calc.run()() #im literally only doing this bc it looks stupid
+    cprint.err(_("Sorry, but I didn't quite get that."))
+    h()
 
 if __name__ == "__main__":
-    print("Please don't run this file directly, it can only be used with Palc")
+    cprint.warn("Do not run parsefunc on its own. Attempting to run Palc...")
+    time.sleep(3)
     try:
-        import runpy
-        runpy.run_path(path_name="palc.py")
-    finally:
-        print("Next time, run palc.py rather than this file.")
+        runpy.run_path("palc.py")
+    except Exception as ename:
+        cprint.err("Failed. Raising backtrace...")
+        raise
+else:
+    del runpy
