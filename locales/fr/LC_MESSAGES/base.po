@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Palc POST-REWRITE\n"
-"POT-Creation-Date: 2021-12-29 20:35-0500\n"
-"PO-Revision-Date: 2022-01-06 09:06-0500\n"
+"POT-Creation-Date: 2022-02-22 19:59-0500\n"
+"PO-Revision-Date: 2022-02-22 20:04-0500\n"
 "Last-Translator: TheTechRobo\n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-Flags-xgettext: --add-comments=\"FOR TRANSLATORS:\"\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: palc.py:79
+#: palc.py:71
 msgid ""
 "\n"
 "Welcome to "
@@ -24,19 +24,19 @@ msgstr ""
 "\n"
 "Bienvenue à "
 
-#: palc.py:79 palc.py:87
+#: palc.py:71 palc.py:79
 msgid "Palc"
 msgstr "Palc"
 
-#: palc.py:87
+#: palc.py:79
 msgid "Welcome to "
 msgstr "Bienvenue à "
 
-#: palc.py:87
+#: palc.py:79
 msgid "Please enter a command..."
 msgstr "Veuillez saisir une commande ..."
 
-#: palc.py:111
+#: palc.py:98
 msgid ""
 "\n"
 "Ha...ha...not...funny...whoever you are."
@@ -44,15 +44,15 @@ msgstr ""
 "\n"
 "Ha ... ha ... pas ... drôle ... que qui vous soyez."
 
-#: palc.py:126
+#: palc.py:113
 msgid "Waiting for command..."
 msgstr "Attendre pour une commande ..."
 
-#: palc.py:136 palc.py:143
+#: palc.py:123 palc.py:130
 msgid "Oops!"
 msgstr "Zut !"
 
-#: palc.py:138
+#: palc.py:125
 msgid ""
 "You raised a ValueError! This is typically caused by an erroneous input. If "
 "it wasn't, please file a bug report at github.com/thetechrobo/python-text-"
@@ -60,17 +60,17 @@ msgid ""
 "For further information, get a backtrace."
 msgstr ""
 
-#: palc.py:139 palc.py:146 palc.py:163
+#: palc.py:126 palc.py:133 palc.py:158
 msgid "Get a backtrace? "
 msgstr "Voir un message d'erreur ? "
 
 # Old source text:
 # Going back...
-#: palc.py:141 palc.py:148
+#: palc.py:128 palc.py:135
 msgid "Aborting backtrace."
 msgstr ""
 
-#: palc.py:145
+#: palc.py:132
 msgid ""
 "You raised a TypeError! This is odd. If you are sure that your inputs were "
 "correct, please file a bug report at github.com/thetechrobo/python-text-"
@@ -78,175 +78,21 @@ msgid ""
 "For further information, get a backtrace."
 msgstr ""
 
-#: palc.py:154 palc.py:158
+#: palc.py:141 palc.py:145
 msgid "Bye!"
 msgstr "Salut !"
 
-#: palc.py:162
-#, fuzzy
-#| msgid "\aUnknown Error!\a"
-msgid "Unknown error!"
-msgstr "\aErreur inconnue !\a"
-
-#: parsefunc.py:18
-msgid "Please enter the first number..."
-msgstr "Veuillez saisir le nombre premier..."
-
-#: parsefunc.py:32
-#, python-format
-msgid "BTW, I parsed your choice as: %s"
-msgstr ""
-
-#: parsefunc.py:37
-msgid "area"
-msgstr "aire"
-
-#: parsefunc.py:39
-msgid "div"
-msgstr "div"
-
-#. FOR TRANSLATORS: This is a translated if statement with the meaning of "modulo". Translate only a core part of the word if it uses multiple characters and is possible without being confused, like for example "modulo" turns into "mod".
-#: parsefunc.py:42
-msgid "mod"
-msgstr "mod"
-
-#. FOR TRANSLATORS: this is a translated if statement with the meaning of "subtraction" (or, in the case of "min", "minus"). Translate only  a core part of the word if possible without ambiguity, like for example "modulo" turns into "mod".
-#: parsefunc.py:45
-msgid "sub"
-msgstr "sous"
-
-# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-# This one's the same as the other because I have no idea what it should be other than "soustraire".
-#: parsefunc.py:45
-msgid "min"
-msgstr "sous"
-
-#: parsefunc.py:47
-msgid "add"
-msgstr "ajoute"
-
-#: parsefunc.py:47
-msgid "plus"
-msgstr "plus"
-
-#: parsefunc.py:49
-msgid "mult"
-msgstr "mult"
-
-#. FOR TRANSLATORS: this is a translated if statement with the meaning of "factorial". Translate only a core part of the word if possible without ambuguity, like for example "modulo" turns into "mod".
-#: parsefunc.py:52
-msgid "fac"
-msgstr "fac"
-
-#: parsefunc.py:54
-msgid "fib"
-msgstr "fib"
-
-#: parsefunc.py:55
-msgid ""
-"Welcome to the fibonacci calculator.\n"
-"\t1 - Looped fibonacci (infinite)\n"
-"\t2 - Calculate a certain number of fibonacci numbers.\n"
-"Select one: "
-msgstr ""
-
-#: parsefunc.py:62
-msgid "Enter the number of fibonacci to calculate..."
-msgstr "Entrer le nombre des chiffres fibonacci que tu veux calculer ..."
-
-#: parsefunc.py:63 parsefunc.py:101 parsefunc.py:146 parsefunc.py:175
-msgid "The results are in! They indicate an answer of..."
-msgstr ""
-
-#: parsefunc.py:65
-msgid "exit"
-msgstr "quitter"
-
-#: parsefunc.py:65
-msgid "quit"
-msgstr "quitter"
-
-#: parsefunc.py:65
-msgid "bye"
-msgstr "salut"
-
-#: parsefunc.py:65
-msgid "leave"
-msgstr "partir"
-
-# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#. FOR TRANSLATORS: This is a translated if statement. If possible, use only a core part of the word(s) here, like for example "division" turns into "div".
-#: parsefunc.py:69
-msgid "help"
-msgstr "aide"
-
-#: parsefunc.py:69
-msgid "?"
-msgstr "?"
-
-#: parsefunc.py:69
-msgid "confus"
-msgstr "confus"
-
-#: parsefunc.py:69
-msgid "huh"
-msgstr ""
-
-#: parsefunc.py:69
-msgid "sos"
-msgstr ""
-
-#: parsefunc.py:69
-msgid "what"
-msgstr "quoi"
-
-#: parsefunc.py:71
-msgid "no"
-msgstr "non"
-
-#: parsefunc.py:72
-msgid "Ha... ha... not... funny... whoever you are."
-msgstr "Ha ... ha ... pas ... drôle ... que qui vous soyez."
-
-#: parsefunc.py:79
-msgid ""
-"This part of Palc is untranslated because it's meant to be used by Palc "
-"maintainers only. It is discouraged to use"
-msgstr ""
-"Cette partie de Palc n'est pas traducté parce que ce n'est pas recommandé "
-"d'utiliser"
-
-#: parsefunc.py:94
-msgid "Sorry, that is not a valid command.\n"
-msgstr "Désolé, ce n'est pas une commande.\n"
-
-#: parsefunc.py:98
-msgid "Please enter the"
-msgstr "Veuillez entrer le"
-
-#: parsefunc.py:98
-msgid "number"
-msgstr "nombre"
-
-#: parsefunc.py:98
-msgid "to"
-msgstr "pour"
-
-#: parsefunc.py:98
-msgid "factorial"
-msgstr ""
-
 #. FOR TRANSLATORS: **PLEASE** keep the \033[1m and \033[0m and \n
-#: parsefunc.py:111
+#: palc.py:150
 msgid "I see you divided by 0. [1mPlease don't do that[0m"
 msgstr ""
 
 #. FOR TRANSLATORS: This is not a typo. It is a continuation of "Please don't do that".
-#: parsefunc.py:113
+#: palc.py:152
 msgid ", as it doesn't work."
 msgstr ""
 
-#: parsefunc.py:114
+#: palc.py:153
 msgid ""
 "Think of it as Siri does. Imagine that you have zero cookies and you split "
 "them evenly among zero friends. How many cookies does each person get? See? "
@@ -254,217 +100,1164 @@ msgid ""
 "and you are sad that you have no friends."
 msgstr ""
 
-#: parsefunc.py:115
+#: palc.py:154
 msgid "Boom. Roasted."
 msgstr "Boum. Insulté."
 
-#: parsefunc.py:131 parsefunc.py:133
+#: palc.py:157
+#, fuzzy
+#| msgid "\aUnknown Error!\a"
+msgid "Unknown error!"
+msgstr "\aErreur inconnue !\a"
+
+#: parsefunc.py:17
+#, python-format
+msgid "Parsing input as \"%s\""
+msgstr ""
+
+#: parsefunc.py:32
+msgid "Please enter the first number..."
+msgstr "Veuillez saisir le nombre premier..."
+
+#: parsefunc.py:34
+#, fuzzy
+#| msgid ""
+#| "Please enter the next number; a blank line will confirm your numbers: "
+msgid "Please enter the next number; a blank line will confirm..."
+msgstr ""
+"Veuillez entrer le nombre prochain; un ligne blanc va confirmer vos nombres : "
+
+#: parsefunc.py:63
+msgid ""
+"This part of Palc is untranslated because it's meant to be used by Palc "
+"maintainers only. It is discouraged to use"
+msgstr ""
+"Cette partie de Palc n'est pas traducté parce que ce n'est pas recommandé "
+"d'utiliser"
+
+#: parsefunc.py:80
+msgid "You can't use that function here."
+msgstr ""
+
+#: parsefunc.py:85
+msgid "OK, here the list of commands!"
+msgstr ""
+
+#: parsefunc.py:90
+msgid ""
+"1. Percentage.\n"
+"2. Modulo"
+msgstr ""
+
+#: parsefunc.py:91
+msgid "mode you pick"
+msgstr ""
+
+#: parsefunc.py:97
+#, fuzzy
+#| msgid "Invalid input(s)."
+msgid "Invalid."
+msgstr "Saisie(s) invalide(s)."
+
+#: parsefunc.py:99
+#, fuzzy
+#| msgid "Would you like to do it again (Y/n)? "
+msgid "What would you like to do?"
+msgstr "Souhaitez-vous exécuter de nouveau cette fonction (O/n)? "
+
+#: parsefunc.py:100
+msgid "\t1. Find X percent of Y."
+msgstr ""
+
+#: parsefunc.py:101
+msgid "\t2. Find what percentage X out of Y is."
+msgstr ""
+
+#: parsefunc.py:102
+msgid "choice"
+msgstr ""
+
+#: parsefunc.py:109
+#, fuzzy
+#| msgid "percent"
+msgid "percentage"
+msgstr "pourcent"
+
+#: parsefunc.py:110
+msgid "whole"
+msgstr ""
+
+#: parsefunc.py:114
+msgid "part"
+msgstr ""
+
+#: parsefunc.py:115
+msgid "total"
+msgstr ""
+
+#: parsefunc.py:119
+#, fuzzy
+#| msgid "Enter the number of fibonacci to calculate..."
+msgid "Welcome to the fibonacci calculator."
+msgstr "Entrer le nombre des chiffres fibonacci que tu veux calculer ..."
+
+#: parsefunc.py:120
+msgid "1 - Looped fibonacci (infinite)"
+msgstr ""
+
+#: parsefunc.py:121
+msgid "2 - Calculate a certain number of fibonacci numbers."
+msgstr ""
+
+#: parsefunc.py:122
+#, fuzzy
+#| msgid "Please type one: "
+msgid "Select one: "
+msgstr "Choisissez une option : "
+
+#: parsefunc.py:129
+msgid "Enter the number of fibonacci to calculate..."
+msgstr "Entrer le nombre des chiffres fibonacci que tu veux calculer ..."
+
+#: parsefunc.py:130
+msgid "The results are in! They indicate an answer of..."
+msgstr ""
+
+#: parsefunc.py:134
+msgid "Please enter the"
+msgstr "Veuillez entrer le"
+
+#: parsefunc.py:134 parsefunc.py:342
+msgid "number"
+msgstr "nombre"
+
+#: parsefunc.py:134
+msgid "to"
+msgstr "pour"
+
+#: parsefunc.py:134 parsefunc.py:529
+msgid "factorial"
+msgstr ""
+
+#: parsefunc.py:140
+msgid "Select the desired mode of logarithm. Options: "
+msgstr ""
+
+#: parsefunc.py:147
+msgid "mode to process"
+msgstr ""
+
+#: parsefunc.py:149
+msgid "Nice try, but you need to type in a number that's in range"
+msgstr ""
+
+#: parsefunc.py:150 parsefunc.py:395 parsefunc.py:480
+#, fuzzy
+#| msgid "Original number?"
+msgid "original number"
+msgstr "Saisissez le nombre d'origine : "
+
+#: parsefunc.py:171
+#, fuzzy
+#| msgid "Please enter the first number..."
+msgid "Please enter the first item..."
+msgstr "Veuillez saisir le nombre premier..."
+
+#: parsefunc.py:171
+#, fuzzy
+#| msgid ""
+#| "Please enter the next number; a blank line will confirm your numbers: "
+msgid "Please enter the next item; a blank line will confirm..."
+msgstr ""
+"Veuillez entrer le nombre prochain; un ligne blanc va confirmer vos nombres : "
+
+#: parsefunc.py:172
+msgid "amount of times you want to spin"
+msgstr ""
+
+#: parsefunc.py:188
+#, python-format
+msgid "The slot %s already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: parsefunc.py:189 parsefunc.py:204 parsefunc.py:214 parsefunc.py:292
+#: parsefunc.py:473 parsefunc.py:486
+msgid "Type: "
+msgstr "Saisissez : "
+
+#: parsefunc.py:192
+msgid "Ok, overwriting..."
+msgstr ""
+
+#: parsefunc.py:194 parsefunc.py:280 parsefunc.py:310
+msgid "Abort."
+msgstr "Tu n'a pas tappez une reponse valide. Abandon."
+
+#: parsefunc.py:198
+msgid "Finished."
+msgstr ""
+
+#: parsefunc.py:201
+msgid "Select your Tax Type"
+msgstr ""
+
+#: parsefunc.py:202
+msgid "1. Sales Tax"
+msgstr ""
+
+#: parsefunc.py:203 parsefunc.py:211
+msgid "No other types are currently supported."
+msgstr ""
+
+#: parsefunc.py:206
+msgid "You picked Sales Tax."
+msgstr ""
+
+#: parsefunc.py:207
+#, fuzzy
+#| msgid ""
+#| "Would you like to file a ticket? (Y/n)\n"
+#| "Type: "
+msgid "Would you like to use a tax preset?"
+msgstr ""
+"Souhaitez-vous soumettre un billet? (O/n)\n"
+"Saisie : "
+
+#: parsefunc.py:208
+msgid "1. Yes - I live in Canada"
+msgstr ""
+
+#: parsefunc.py:209
+msgid "2. Yes - use a Memory Slot"
+msgstr ""
+
+#: parsefunc.py:210
+msgid "3. No"
+msgstr ""
+
+#: parsefunc.py:216
+msgid "That number is a bit sus. Sure you typed it in right?"
+msgstr ""
+
+#: parsefunc.py:224
+#, fuzzy
+#| msgid "Looped it is."
+msgid "Ok, no preset it is."
+msgstr "J'utilise infinite."
+
+#: parsefunc.py:225
+msgid "Please type the percentage of tax in your local area: "
+msgstr ""
+
+#: parsefunc.py:229
+msgid "Could not load Memory-Slot for some reason."
+msgstr ""
+
+#: parsefunc.py:233
+msgid "Ontario"
+msgstr ""
+
+#: parsefunc.py:234
+msgid "Quebec"
+msgstr ""
+
+#: parsefunc.py:235
+msgid "Yukon/Northwest Territories/Nunavut/Alberta"
+msgstr ""
+
+#: parsefunc.py:236
+msgid "British Columbia/Manitoba"
+msgstr ""
+
+#: parsefunc.py:237
+msgid "New Brunswick/Nova Scotia/Newfoundland/Prince Edward Island"
+msgstr ""
+
+#: parsefunc.py:238
+msgid "Saskatchewan"
+msgstr ""
+
+#: parsefunc.py:245
+#, fuzzy
+#| msgid "Please enter the second number: "
+msgid "Please enter the One You Want™: "
+msgstr "Deuxième nombre ? "
+
+#: parsefunc.py:249
+msgid "Nice try, but you have to actually type a number."
+msgstr ""
+
+#: parsefunc.py:257
+msgid "Nice try, but the number has to be in range."
+msgstr ""
+
+#: parsefunc.py:266 parsefunc.py:289
+msgid "M E M O R Y"
+msgstr ""
+
+#: parsefunc.py:275
+msgid "No memory slots currently exist."
+msgstr ""
+
+#: parsefunc.py:276
+msgid "To create a new slot, use the MEMORY command."
+msgstr ""
+
+#: parsefunc.py:278
+#, fuzzy
+#| msgid "Please enter the"
+msgid "Please enter a slot."
+msgstr "Veuillez entrer le"
+
+#: parsefunc.py:285
+msgid "This slot does not exist."
+msgstr ""
+
+#: parsefunc.py:290
+msgid "What is your memory slot of choice?"
+msgstr ""
+
+#: parsefunc.py:291
+msgid ""
+"Read or Write?\n"
+"1 - Read\n"
+"2 - Write"
+msgstr ""
+
+#: parsefunc.py:300
+msgid ""
+"We have found a 0.7-style memory slot with this name. 0.7 memory slots were "
+"very crude. We won't read the slot for you unless you move it."
+msgstr ""
+
+#: parsefunc.py:301
+#, fuzzy
+#| msgid ""
+#| "Would you like to set the memory or recall? (set / recall)\n"
+#| "Type: "
+msgid "Would you like to migrate the memory slot to 0.11 mode?"
+msgstr ""
+"Souhaitez-vous écrire ou lire la mémoire? (ecrire / lire, n'ajouter pas les "
+"accents)\n"
+"Saisie : "
+
+#: parsefunc.py:304
+msgid "Migrating memory slot..."
+msgstr ""
+
+#: parsefunc.py:308
+msgid ""
+"Palc will now ignore the file; but if you want to delete it you'll have to do "
+"so yourself"
+msgstr ""
+
+#: parsefunc.py:311
+msgid "We can't read the memory slot until you migrate it."
+msgstr ""
+
+#: parsefunc.py:313
+msgid "Slot does not exist!"
+msgstr ""
+
+#: parsefunc.py:317
+msgid "No"
+msgstr ""
+
+#: parsefunc.py:336 parsefunc.py:542
+#, fuzzy
+#| msgid "square a number"
+msgid "square root"
+msgstr "élever un nombre au carré"
+
+#: parsefunc.py:339
+#, fuzzy
+#| msgid "cube"
+msgid "cube root"
+msgstr "cube"
+
+#: parsefunc.py:342 parsefunc.py:344 parsefunc.py:355 parsefunc.py:360
+#: parsefunc.py:362 parsefunc.py:380 parsefunc.py:383
 msgid "Please enter the "
 msgstr "Veuillez saisir le "
 
-#: parsefunc.py:131
-msgid "first"
-msgstr "premier"
+#: parsefunc.py:342
+#, fuzzy
+#| msgid "Original number?"
+msgid "original "
+msgstr "Saisissez le nombre d'origine : "
 
-#: parsefunc.py:131 parsefunc.py:133
-msgid " number"
-msgstr " nombre"
+#: parsefunc.py:344 parsefunc.py:545 parsefunc.py:546
+msgid "root"
+msgstr "racine"
 
-#: parsefunc.py:133
-msgid "second"
-msgstr "deuxième"
+#: parsefunc.py:344
+msgid "(e.g. type 2 for square, 3 for cube, 4 for quad, etc)..."
+msgstr ""
 
-#: parsefunc.py:136
+#: parsefunc.py:351
 msgid "The results are in! They indicate an answer of... "
 msgstr ""
 
-#: parsefunc.py:161
+#: parsefunc.py:355
+#, fuzzy
+#| msgid "number"
+msgid "number "
+msgstr "nombre"
+
+#: parsefunc.py:355
+#, fuzzy
+#| msgid "to"
+msgid "to "
+msgstr "pour"
+
+#: parsefunc.py:360
+msgid "first"
+msgstr "premier"
+
+#: parsefunc.py:360 parsefunc.py:362
+msgid " number"
+msgstr " nombre"
+
+#: parsefunc.py:362
+msgid "second"
+msgstr "deuxième"
+
+#: parsefunc.py:397 parsefunc.py:548
+#, fuzzy
+#| msgid "Exponent? "
+msgid "exponent"
+msgstr "Saisissez l'exposant : "
+
+#: parsefunc.py:401
+msgid "Please report any bugs you find!"
+msgstr ""
+
+#: parsefunc.py:402
+msgid "Select a shape..."
+msgstr ""
+
+#: parsefunc.py:408
 msgid "Type the number corresponding to your shape!"
 msgstr ""
 
-#: parsefunc.py:168
+#: parsefunc.py:415
 msgid "Please enter an actual option, ok??"
 msgstr ""
 
-#: parsefunc.py:170
+#: parsefunc.py:418
 #, python-format
 msgid "Ok, proceeding with %s..."
 msgstr ""
 
-#: parsefunc.py:180
+#: parsefunc.py:429
+msgid "Cuboid (e.g. cubes, rectangular solids,...)"
+msgstr ""
+
+#: parsefunc.py:429
+#, fuzzy
+#| msgid "Please enter the length of the base of the triangle..."
+msgid "Please enter the length of the base of the cuboid..."
+msgstr "Veuillez saisir le longueur de la base du triangle..."
+
+#: parsefunc.py:429
+#, fuzzy
+#| msgid "Please enter the length of the base of the triangle..."
+msgid "Please enter the width of the base of the cuboid..."
+msgstr "Veuillez saisir le longueur de la base du triangle..."
+
+#: parsefunc.py:429
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the height of the cuboid..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:430
+msgid "Cube"
+msgstr ""
+
+#: parsefunc.py:430
+#, fuzzy
+#| msgid "Please enter the length of the square..."
+msgid "Please enter the length of the base..."
+msgstr "Veuillez saisir la longeur du carré..."
+
+#: parsefunc.py:431
+msgid "Cylinder"
+msgstr ""
+
+#: parsefunc.py:431
+#, fuzzy
+#| msgid "What is the radius of the circle? "
+msgid "Please enter the radius of the circular base..."
+msgstr "Rayon du cercle ? "
+
+#: parsefunc.py:431
+#, fuzzy
+#| msgid "What is the height of the rectangle? "
+msgid "Please enter the height of the cylinder..."
+msgstr "Hauteur du rectangle ? "
+
+#: parsefunc.py:432
+msgid "Hollow cylinder"
+msgstr ""
+
+#: parsefunc.py:432
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the outer radius..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:432
+#, fuzzy
+#| msgid "What is the height of the rectangle? "
+msgid "Please enter the height OR length of the cylinder..."
+msgstr "Hauteur du rectangle ? "
+
+#: parsefunc.py:432
+#, fuzzy
+#| msgid "What is the radius of the circle? "
+msgid "Please enter the thickness of the cylinder..."
+msgstr "Rayon du cercle ? "
+
+#: parsefunc.py:433
+msgid "Prism"
+msgstr ""
+
+#: parsefunc.py:433 parsefunc.py:436
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the area of the base..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:433
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the height of the prism..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:434
+msgid "Sphere"
+msgstr ""
+
+#: parsefunc.py:434
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the radius of the sphere..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:435
+msgid "Hollow sphere"
+msgstr ""
+
+#: parsefunc.py:435
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the total radius of the sphere..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:435
+#, fuzzy
+#| msgid "What is the radius of the circle? "
+msgid "Please enter the radius of the hollow space..."
+msgstr "Rayon du cercle ? "
+
+#: parsefunc.py:436
+msgid "Pyramid"
+msgstr ""
+
+#: parsefunc.py:436
+#, fuzzy
+#| msgid "What length is the base of the triangle? "
+msgid "Please enter the height of the pyramid, bottom to tip..."
+msgstr "Longueur de la base du triangle ? "
+
+#: parsefunc.py:437
+msgid "Cone"
+msgstr ""
+
+#: parsefunc.py:437
+#, fuzzy
+#| msgid "Please enter the first number: "
+msgid "Please enter the radius of the base..."
+msgstr "Premier nombre ? "
+
+#: parsefunc.py:437
+#, fuzzy
+#| msgid "Please enter the "
+msgid "Please enter the height "
+msgstr "Veuillez saisir le "
+
+#: parsefunc.py:438
+msgid "Ellipsoid"
+msgstr ""
+
+#: parsefunc.py:438
+#, fuzzy
+#| msgid "Please enter the first number..."
+msgid "Please enter the 1st semi axe..."
+msgstr "Veuillez saisir le nombre premier..."
+
+#: parsefunc.py:438
+#, fuzzy
+#| msgid "Please enter the first number..."
+msgid "Please enter the 2nd semi-axe..."
+msgstr "Veuillez saisir le nombre premier..."
+
+#: parsefunc.py:438
+#, fuzzy
+#| msgid "Please enter the first number..."
+msgid "Please enter the 3rd semi-axe..."
+msgstr "Veuillez saisir le nombre premier..."
+
+#: parsefunc.py:439
+msgid "Tetrahedron"
+msgstr ""
+
+#: parsefunc.py:439
+#, fuzzy
+#| msgid "Please enter the length of the base of the triangle..."
+msgid "Please enter the length of the edge of the tetrahedron..."
+msgstr "Veuillez saisir le longueur de la base du triangle..."
+
+#: parsefunc.py:445
 msgid "Triangle"
 msgstr ""
 
-#: parsefunc.py:180
+#: parsefunc.py:445
 msgid "Please enter the length of the base of the triangle..."
 msgstr "Veuillez saisir le longueur de la base du triangle..."
 
-#: parsefunc.py:180
+#: parsefunc.py:445
 #, fuzzy
 #| msgid "What length is the base of the triangle? "
 msgid "Please enter the height of the base of the triangle..."
 msgstr "Longueur de la base du triangle ? "
 
-#: parsefunc.py:181
+#: parsefunc.py:446
 msgid "Square"
 msgstr "Carré"
 
-#: parsefunc.py:181
+#: parsefunc.py:446
 msgid "Please enter the length of the square..."
 msgstr "Veuillez saisir la longeur du carré..."
 
-#: parsefunc.py:182
+#: parsefunc.py:447
 msgid "Rectangle"
 msgstr "Rectangle"
 
-#: parsefunc.py:182
+#: parsefunc.py:447
 msgid "Please enter the width of the rectangle..."
 msgstr ""
 
-#: parsefunc.py:182
+#: parsefunc.py:447
 #, fuzzy
 #| msgid "What is the height of the rectangle? "
 msgid "Please enter the height of the rectangle..."
 msgstr "Hauteur du rectangle ? "
 
-#: parsefunc.py:183
+#: parsefunc.py:448
 msgid "Parallelogram"
 msgstr ""
 
-#: parsefunc.py:183
+#: parsefunc.py:448
 #, fuzzy
 #| msgid "What is the length of the side of the square? "
 msgid "Please enter the length of the base of the parallelogram..."
 msgstr "Longueur du côté du carré ? "
 
-#: parsefunc.py:183
+#: parsefunc.py:448
 #, fuzzy
 #| msgid "Please enter the original temperature..."
 msgid "Please enter the height of the parallelogram..."
 msgstr "Veuillez entrer la température originale ..."
 
-#: parsefunc.py:184
+#: parsefunc.py:449
 msgid "Trapezium / Trapezoid"
 msgstr ""
 
-#: parsefunc.py:184
+#: parsefunc.py:449
 #, fuzzy
 #| msgid "What is the height of the shape? "
 msgid "Please enter the height of the shape..."
 msgstr "Hauteur de la forme ? "
 
-#: parsefunc.py:184
+#: parsefunc.py:449
 #, fuzzy
 #| msgid "What is the length of the side of the square? "
 msgid "Please enter the length of the first base of the shape..."
 msgstr "Longueur du côté du carré ? "
 
-#: parsefunc.py:184
+#: parsefunc.py:449
 #, fuzzy
 #| msgid "What is the length of the side of the square? "
 msgid "Please enter the length of the second base of the shape..."
 msgstr "Longueur du côté du carré ? "
 
-#: parsefunc.py:185
+#: parsefunc.py:450
 msgid "Circle"
 msgstr ""
 
-#: parsefunc.py:185
+#: parsefunc.py:450
 #, fuzzy
 #| msgid "What is the radius of the circle? "
 msgid "Please enter the radius of the circle..."
 msgstr "Rayon du cercle ? "
 
-#: parsefunc.py:186
+#: parsefunc.py:451
 msgid "Semicircle"
 msgstr ""
 
-#: parsefunc.py:186
+#: parsefunc.py:451
 #, fuzzy
 #| msgid "What is the radius of the semicircle? "
 msgid "Please enter the radius of the semicircle..."
 msgstr "Rayon du demi-cercle ? "
 
-#: parsefunc.py:187
+#: parsefunc.py:452
 msgid "Ellipse"
 msgstr ""
 
-#: parsefunc.py:187
+#: parsefunc.py:452
 #, fuzzy
 #| msgid "What is the length of the major axis? "
 msgid "Please enter the length of the semi-major axis..."
 msgstr "Longueur de l'axe principal ? "
 
-#: parsefunc.py:187
+#: parsefunc.py:452
 #, fuzzy
 #| msgid "What is the length of the minor axis? "
 msgid "Please enter the length of the semi-minor axis..."
 msgstr "Longueur de l'axe secondaire ? "
 
-#: parsefunc.py:188
+#: parsefunc.py:453
 msgid "Sector"
 msgstr ""
 
-#: parsefunc.py:188
+#: parsefunc.py:453
 #, fuzzy
 #| msgid "Please enter the tax percentage without the percent sign: "
 msgid "Please enter the angle of the sector, in radians..."
 msgstr ""
 "Saisissez le montant de la taxe en pourcentage (sans le signe pourcentage) : "
 
-#: parsefunc.py:188
+#: parsefunc.py:453
 #, fuzzy
 #| msgid "Please enter the first number: "
 msgid "Please enter the radius of the sector..."
 msgstr "Premier nombre ? "
 
-#: parsefunc.py:189
+#: parsefunc.py:454
 msgid "Rhombus"
 msgstr ""
 
-#: parsefunc.py:189
+#: parsefunc.py:454
 #, fuzzy
 #| msgid "What is the length of the side of the base? "
 msgid "Please enter the length of any side of the rhombus..."
 msgstr "Longueur du côté de la base ? "
 
-#: parsefunc.py:189
+#: parsefunc.py:454
 #, fuzzy
 #| msgid "Please enter the first number: "
 msgid "Please enter the height of the rhombus..."
 msgstr "Premier nombre ? "
 
-#: parsefunc.py:190
+#: parsefunc.py:455
 msgid "Ring"
 msgstr ""
 
-#: parsefunc.py:190
+#: parsefunc.py:455
 #, fuzzy
 #| msgid "What is the radius of the inner circle? "
 msgid "Please enter the radius of the inner circle..."
 msgstr "Rayon du cercle intérieur ? "
 
-#: parsefunc.py:190
+#: parsefunc.py:455
 #, fuzzy
 #| msgid "What is the radius of the outer circle? "
 msgid "Please enter the radius of the outer circle..."
 msgstr "Rayon du cercle extérieur ? "
 
-#: parsefunc.py:196
-msgid ""
-"There are a bunch of commands you can use. These are: addition, subtraction, "
-"multiplication, division, modulo, and fibonacci."
+#: parsefunc.py:463
+#, python-format
+msgid "Please press the corresponding key of your %s temperature."
 msgstr ""
 
-#: parsefunc.py:197
+#: parsefunc.py:464
+msgid ""
+"\t(F)ahrenheit\n"
+"\t(C)elsius\n"
+"\t(K)elvin\n"
+"\t(R)ankine"
+msgstr ""
+
+#: parsefunc.py:470 parsefunc.py:477
+#, fuzzy
+#| msgid "temperature"
+msgid "Invalid temperature."
+msgstr "temperature"
+
+#: parsefunc.py:483
+#, fuzzy
+#| msgid "Please enter the "
+msgid "Please enter the original base."
+msgstr "Veuillez saisir le "
+
+#: parsefunc.py:484
+msgid ""
+"ProTip: 2 is binary, 8 is octal, 10 is decimal, 16 is hex, and 36 has all the "
+"letters in the alphabet."
+msgstr ""
+
+#: parsefunc.py:485
+#, python-format
+msgid ""
+"Don't type anything above %d. Additionally, typing anything below 2 will "
+"cause the conversion to either hang or fail."
+msgstr ""
+
+#: parsefunc.py:488
+#, fuzzy
+#| msgid "Please enter the first number..."
+msgid "Please enter the destination base."
+msgstr "Veuillez saisir le nombre premier..."
+
+#: parsefunc.py:489 parsefunc.py:497
+#, fuzzy
+#| msgid "Type: "
+msgid "Type:   \b\b"
+msgstr "Saisissez : "
+
+#: parsefunc.py:492
+msgid "I told you not to do that."
+msgstr ""
+
+#: parsefunc.py:496
+#, fuzzy
+#| msgid ""
+#| "\rPlease enter your original number - it should not have a decimal point. "
+msgid "Please enter the original number (it should not have a decimal point)."
+msgstr "\rVeuillez entrez ton nombre original sans le point décimale. "
+
+#: parsefunc.py:501
+#, python-format
+msgid ""
+"Failed to convert numbers. Remember to only put the digits in that base in! "
+"(%s)"
+msgstr ""
+
+#: parsefunc.py:506
+msgid ""
+"There are a bunch of commands you can use. Find them by typing in `list'."
+msgstr ""
+
+#: parsefunc.py:507
 msgid "Expressions (such as: 1 + 3 / (2 * 6.4)) DO NOT WORK as of now."
 msgstr ""
 
-#: parsefunc.py:198
+#: parsefunc.py:508
 msgid ""
 "[1mPlease enjoy Palc![0m [94mFeedback or bug reports? Go to [4mgithub.com/"
 "thetechrobo/python-text-calculator/issues[0m[94m![0m"
 msgstr ""
+
+#: parsefunc.py:515
+#, fuzzy
+#| msgid "Ha... ha... not... funny... whoever you are."
+msgid "Ha... ha... not... funny... Jim."
+msgstr "Ha ... ha ... pas ... drôle ... que qui vous soyez."
+
+# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
+#: parsefunc.py:520 parsefunc.py:521
+msgid "help"
+msgstr "aide"
+
+#: parsefunc.py:520
+msgid "idk"
+msgstr ""
+
+#: parsefunc.py:520
+msgid "confus"
+msgstr "confus"
+
+#: parsefunc.py:520
+msgid "sos"
+msgstr ""
+
+#: parsefunc.py:520
+msgid "what"
+msgstr "quoi"
+
+#: parsefunc.py:522
+msgid "exit"
+msgstr "quitter"
+
+#: parsefunc.py:522
+msgid "quit"
+msgstr "quitter"
+
+#: parsefunc.py:522
+msgid "bye"
+msgstr "salut"
+
+#: parsefunc.py:522
+msgid "leave"
+msgstr "partir"
+
+#: parsefunc.py:523
+msgid "exit Palc"
+msgstr "quitter Palc"
+
+#. FOR TRANSLATORS: This is a translated if statement with the meaning of "fibonacci"
+#: parsefunc.py:525
+msgid "fib"
+msgstr "fib"
+
+#: parsefunc.py:526
+msgid "fibonacci"
+msgstr "fibonacci"
+
+#. FOR TRANSLATORS: This is a translated if statement with the meaning of "factorial"
+#: parsefunc.py:528
+msgid "fac"
+msgstr "fac"
+
+#. FOR TRANSLATORS: Translated if statement (meaning of division)
+#: parsefunc.py:531
+msgid "div"
+msgstr "div"
+
+#: parsefunc.py:532
+msgid "division"
+msgstr ""
+
+#: parsefunc.py:533
+msgid "mult"
+msgstr "mult"
+
+#: parsefunc.py:534
+msgid "multiplication"
+msgstr "multiplication"
+
+#: parsefunc.py:535
+msgid "add"
+msgstr "ajoute"
+
+#: parsefunc.py:535
+msgid "plus"
+msgstr "plus"
+
+#: parsefunc.py:536
+msgid "addition"
+msgstr "addition"
+
+#: parsefunc.py:537
+msgid "sub"
+msgstr "sous"
+
+# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
+# This one's the same as the other because I have no idea what it should be other than "soustraire".
+#: parsefunc.py:537
+msgid "min"
+msgstr "sous"
+
+#: parsefunc.py:538
+msgid "subtraction"
+msgstr "soustraction"
+
+#: parsefunc.py:539
+msgid "mod"
+msgstr "mod"
+
+#: parsefunc.py:540
+msgid "modulo"
+msgstr ""
+
+# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
+#: parsefunc.py:541
+msgid "sq"
+msgstr "carre"
+
+#: parsefunc.py:543
+msgid "cu"
+msgstr "cu"
+
+#: parsefunc.py:544
+msgid "cuberoot"
+msgstr ""
+
+#: parsefunc.py:547
+msgid "pow"
+msgstr "élever"
+
+#: parsefunc.py:547
+msgid "expo"
+msgstr "expo"
+
+#: parsefunc.py:549
+msgid "vol"
+msgstr "vol"
+
+#: parsefunc.py:550
+msgid "volume"
+msgstr ""
+
+#: parsefunc.py:551
+#, fuzzy
+#| msgid "area"
+msgid "ar"
+msgstr "aire"
+
+#: parsefunc.py:552
+msgid "area"
+msgstr "aire"
+
+# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
+#: parsefunc.py:553 parsefunc.py:554
+msgid "tax"
+msgstr "taxe"
+
+#: parsefunc.py:555
+#, fuzzy
+#| msgid "add"
+msgid "rad"
+msgstr "ajoute"
+
+#: parsefunc.py:555
+msgid "base"
+msgstr "base"
+
+#: parsefunc.py:556
+#, fuzzy
+#| msgid "convert number systems"
+msgid "convert bases"
+msgstr "convertir les systèmes de bases numérique"
+
+#: parsefunc.py:557
+msgid "no"
+msgstr "non"
+
+#: parsefunc.py:558
+msgid "be the most unfunny person ever"
+msgstr ""
+
+#: parsefunc.py:560
+msgid "load the expression parser"
+msgstr ""
+
+#: parsefunc.py:561
+msgid "mem"
+msgstr "mém"
+
+#: parsefunc.py:561
+msgid "save"
+msgstr "sauv"
+
+#: parsefunc.py:561
+msgid "var"
+msgstr ""
+
+#: parsefunc.py:561
+msgid "load"
+msgstr ""
+
+#: parsefunc.py:562
+msgid "load or save a memory slot"
+msgstr ""
+
+#: parsefunc.py:563
+msgid "loga"
+msgstr "loga"
+
+#: parsefunc.py:564
+msgid "calculate logarithm"
+msgstr "calculer la logarithme"
+
+#: parsefunc.py:565
+msgid "ord"
+msgstr "ord"
+
+#: parsefunc.py:566
+msgid "calculate the ASCII code of a character"
+msgstr ""
+
+#: parsefunc.py:567
+msgid "chr"
+msgstr ""
+
+#: parsefunc.py:568
+msgid "calculate the character of an ASCII code"
+msgstr ""
+
+#: parsefunc.py:569
+msgid "interest"
+msgstr "interet"
+
+#: parsefunc.py:569
+msgid "rate"
+msgstr ""
+
+#: parsefunc.py:570
+msgid "calculate interest rate"
+msgstr ""
+
+#: parsefunc.py:571
+msgid "spin"
+msgstr "tourner"
+
+#: parsefunc.py:571
+msgid "random"
+msgstr "aléa"
+
+#: parsefunc.py:571
+msgid "pick"
+msgstr "choisir"
+
+#: parsefunc.py:572
+msgid "use the spinner"
+msgstr "tourner un fileur"
+
+#: parsefunc.py:573
+msgid "pick percentage sign"
+msgstr "choisir la signe de pourcentage"
+
+#: parsefunc.py:574
+msgid "perc"
+msgstr "pour"
+
+#: parsefunc.py:575
+msgid "pick percentage mode"
+msgstr "choisir la mode pourcentage"
+
+#: parsefunc.py:576
+msgid "list"
+msgstr "list"
+
+#: parsefunc.py:576
+msgid "commands"
+msgstr "commandes"
+
+#: parsefunc.py:577
+msgid "list available calculations"
+msgstr "lister les calculations disponibles"
+
+#: parsefunc.py:578
+msgid "temp"
+msgstr "temp"
+
+#: parsefunc.py:579
+msgid "calculate temperature"
+msgstr "calculer la température"
+
+#: parsefunc.py:587
+msgid "Sorry, but I didn't quite get that."
+msgstr "Je suis désolé, mais je ne comprends pas ce que tu demandes."
+
+#~ msgid "?"
+#~ msgstr "?"
+
+#~ msgid "Sorry, that is not a valid command.\n"
+#~ msgstr "Désolé, ce n'est pas une commande.\n"
 
 #~ msgid "Welcome to"
 #~ msgstr "Bienvenue à "
@@ -490,19 +1283,8 @@ msgstr ""
 #~ "liste des calculs)\n"
 #~ "Saisie : "
 
-# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#~ msgid "tax"
-#~ msgstr "taxe"
-
 #~ msgid "calculate tax"
 #~ msgstr "calculer une taxe"
-
-# This is a translated if statement. DO NOT ADD ACCENTS, and make sure to keep a key word inside.
-#~ msgid "sq"
-#~ msgstr "carre"
-
-#~ msgid "square a number"
-#~ msgstr "élever un nombre au carré"
 
 #~ msgid "Number to square? "
 #~ msgstr "Nombre à mettre au carré? "
@@ -525,23 +1307,8 @@ msgstr ""
 #~ "2 - Utiliser la calculatrice pourcentage\n"
 #~ "Autre chose - Retour au menu."
 
-#~ msgid "Type: "
-#~ msgstr "Saisissez : "
-
 #~ msgid "find the remainder of two numbers after division"
 #~ msgstr "trouver le reste de deux numéros après la division"
-
-#~ msgid "calculate area"
-#~ msgstr "calculer une aire"
-
-#~ msgid "vol"
-#~ msgstr "vol"
-
-#~ msgid "use the volume calculator"
-#~ msgstr "utiliser la calculatrice volume"
-
-#~ msgid "cube"
-#~ msgstr "cube"
 
 #~ msgid "cube a number"
 #~ msgstr "élever un nombre au cube"
@@ -553,20 +1320,11 @@ msgstr ""
 #~ "\n"
 #~ "Saisissez le nombre à mettre au cube : "
 
-#~ msgid "spin"
-#~ msgstr "tourner"
-
 #~ msgid "spinner"
 #~ msgstr "fileur"
 
 #~ msgid "roulette"
 #~ msgstr "roulette"
-
-#~ msgid "spin a spinner"
-#~ msgstr "tourner un fileur"
-
-#~ msgid "power"
-#~ msgstr "elever"
 
 #~ msgid "ex"
 #~ msgstr "ex"
@@ -583,9 +1341,6 @@ msgstr ""
 #~ msgstr ""
 #~ "La fonction << cube deux fois >> a été supprimé car c'est bête. Désolé."
 
-#~ msgid "root"
-#~ msgstr "racine"
-
 #~ msgid "use the root function (opposite of exponents)"
 #~ msgstr "utiliser la fonction racine (opposé d'exposant)"
 
@@ -601,15 +1356,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Pour le moment je ne supporte pas la racine que vous voulez. J'espère que "
 #~ "ça va changer :D"
-
-#~ msgid "base"
-#~ msgstr "base"
-
-#~ msgid "convert number systems"
-#~ msgstr "convertir les systèmes de bases numérique"
-
-#~ msgid "ord"
-#~ msgstr "ord"
 
 #~ msgid "ord a character"
 #~ msgstr "\"ord\" un caractère"
@@ -631,19 +1377,8 @@ msgstr ""
 #~ msgid "use the logarithm function"
 #~ msgstr "utiliser la fonction logarithme"
 
-#~ msgid "mem"
-#~ msgstr "mem"
-
 #~ msgid "use the memory function"
 #~ msgstr "utiliser la fonction mémoire"
-
-#~ msgid ""
-#~ "Would you like to set the memory or recall? (set / recall)\n"
-#~ "Type: "
-#~ msgstr ""
-#~ "Souhaitez-vous écrire ou lire la mémoire? (ecrire / lire, n'ajouter pas "
-#~ "les accents)\n"
-#~ "Saisie : "
 
 #~ msgid "set"
 #~ msgstr "ecrire"
@@ -659,20 +1394,11 @@ msgstr ""
 #~ msgid "Starting fibonacci sequence. Please wait."
 #~ msgstr "Démarrage de la séquence Fibonacci. Veuillez patienter."
 
-#~ msgid "percent"
-#~ msgstr "pourcent"
-
 #~ msgid "use the percentage function"
 #~ msgstr "utiliser la fonction pourcentage"
 
-#~ msgid "interest"
-#~ msgstr "interet"
-
 #~ msgid "use the interest calculator"
 #~ msgstr "utiliser le calculateur d'intérêt"
-
-#~ msgid "temperature"
-#~ msgstr "temperature"
 
 #~ msgid "use the temperature converter"
 #~ msgstr "utiliser le convertisseur de température"
@@ -772,12 +1498,6 @@ msgstr ""
 #~ "Une erreur s'est produite. Veuillez soumettre un billet sur github.com/"
 #~ "thetechrobo/python-text-calculator/issues."
 
-#~ msgid ""
-#~ "Please enter the next number; a blank line will confirm your numbers: "
-#~ msgstr ""
-#~ "Veuillez entrer le nombre prochain; un ligne blanc va confirmer vos "
-#~ "nombres : "
-
 #, python-format
 #~ msgid "ERRID 3: %s is not a number."
 #~ msgstr "Erreure id 3: %s n'est pas un nombre"
@@ -792,9 +1512,6 @@ msgstr ""
 #, python-format
 #~ msgid "The response is...%s"
 #~ msgstr "La résultat est...%s"
-
-#~ msgid "Please enter the second number: "
-#~ msgstr "Deuxième nombre ? "
 
 #, python-format
 #~ msgid ""
@@ -892,9 +1609,6 @@ msgstr ""
 #~ msgid "Your fibonacci numbers were..."
 #~ msgstr "Tes nombres de fibonacci a ete..."
 
-#~ msgid "Looped it is."
-#~ msgstr "J'utilise infinite."
-
 #~ msgid "Press Control-C to stop."
 #~ msgstr "Appuyez sur Ctrl-C pour arrêter."
 
@@ -921,13 +1635,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Essayez un libellé différent. Ou, si vous voulez que ce choix de calcul "
 #~ "soit implémenté, soumettez un billet."
-
-#~ msgid ""
-#~ "Would you like to file a ticket? (Y/n)\n"
-#~ "Type: "
-#~ msgstr ""
-#~ "Souhaitez-vous soumettre un billet? (O/n)\n"
-#~ "Saisie : "
 
 #~ msgid "Press ENTER to continue..."
 #~ msgstr "Pousse ENTER pour continuer..."
@@ -1061,10 +1768,6 @@ msgstr ""
 #~ "hexadécimale."
 
 #~ msgid ""
-#~ "\rPlease enter your original number - it should not have a decimal point. "
-#~ msgstr "\rVeuillez entrez ton nombre original sans le point décimale. "
-
-#~ msgid ""
 #~ "Your number was messed up, or maybe Palc screwed it up, or maybe python-"
 #~ "radix is buggy.\n"
 #~ "Make sure that you didn't include things like `0b' forbinary calculation. "
@@ -1116,12 +1819,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Tes résultat sont... \n"
 #~ "%s"
-
-#~ msgid "destination"
-#~ msgstr "déstination"
-
-#~ msgid "Invalid input(s)."
-#~ msgstr "Saisie(s) invalide(s)."
 
 #, python-format
 #~ msgid ""
@@ -1207,9 +1904,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Après ajout de la taxe, le prix est : \n"
 #~ "%s"
-
-#~ msgid "Please type one: "
-#~ msgstr "Choisissez une option : "
 
 #~ msgid "Please type an integer"
 #~ msgstr "Merci d'entrer un nombre entier"
@@ -1424,9 +2118,6 @@ msgstr ""
 #~ "14 - Pyramide a base pentagonale\n"
 #~ "15 - Pyramide a base hexagonale"
 
-#~ msgid "Would you like to do it again (Y/n)? "
-#~ msgstr "Souhaitez-vous exécuter de nouveau cette fonction (O/n)? "
-
 #~ msgid "Going back..."
 #~ msgstr "Retour au menu..."
 
@@ -1467,12 +2158,6 @@ msgstr ""
 
 #~ msgid "source"
 #~ msgstr "source"
-
-#~ msgid "Original number?"
-#~ msgstr "Saisissez le nombre d'origine : "
-
-#~ msgid "Exponent? "
-#~ msgstr "Saisissez l'exposant : "
 
 #, fuzzy
 #~| msgid ""
@@ -1652,9 +2337,6 @@ msgstr ""
 
 #~ msgid "Inverse it is!"
 #~ msgstr "J'utilise l'inverse cosine ! "
-
-#~ msgid "Abort."
-#~ msgstr "Tu n'a pas tappez une reponse valide. Abandon."
 
 # i got lazy
 #~ msgid "An unknown error occured. For debugging info, see Line 164"
