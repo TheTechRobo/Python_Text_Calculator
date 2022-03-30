@@ -134,8 +134,8 @@ def mainloop():
             if keypress == "\x04": # pylint: disable=no-else-raise
                 raise EOFError
             print(keypress, end="", flush=True)
-            calc.insert(cursorIndex, keypress)
-            print(calc, end="", flush=True)
+            calc.insert(cursorIndex - 1, keypress)
+            #print(calc, end="", flush=True)
             logging.debug(f"Keypress {keypress}")
             string = ""
     else:
