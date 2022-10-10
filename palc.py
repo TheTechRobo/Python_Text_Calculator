@@ -79,8 +79,44 @@ def mainloop():
         turbofunc.multiprint({"\n" + _("Welcome to "): cprint.info, _("Palc"): cprint.ok, "!\n": cprint.info, _("Please enter a command..."): cprint.ok}, no=True, _=_, end="",flush=True)
         cprint.warn("\nEnter HELP for help", flush=True)
         string = ("                           \033[A\033[A")
+        cursorIndex = 0
         while True:
-            keypress = turbofunc.pressanykey(string=string, decodeGetchToUnicode=True)
+            keypress = turbofunc.pressanykey(string=string, decodeGetchToUnicode=True, arrows=True)
+            if keypress == "\x1b[A":
+                # up
+                if oldCalc == "no u":
+                    cprint.warn(_("\nHa...ha...not...funny...whoever you are."))
+                    sys.exit(69)
+                calc += oldCalc
+                print(oldCalc, end="", flush=True)
+                continue
+            elif (len(calc) == 0 and keypress.startswith("\x1b")):
+                print("\a", end="", flush=True)
+                keypress = ""
+            elif keypress == "\x1b[B":
+                # down
+                print("\a", end="", flush=True)
+                continue
+            elif keypress == "\x1b[C":
+                # right
+                if cursorIndex >= len(calc):
+                    print("\a", end="", flush=True)
+                    continue
+                cursorIndex += 1
+                print(keypress, end="", flush=True)
+                continue
+            elif keypress == "\x1b[D":
+                # left
+                if cursorIndex <= 0:
+                    print("\a", end="", flush=True)
+                    continue
+                cursorIndex -= 1
+                print(keypress, end="", flush=True)
+                continue
+            else:
+                if keypress == "":
+                    continue
+                cursorIndex += 1
             if keypress == "\r" or keypress == "\n" or keypress == "\r\n":
                 print()
                 parsefunc.parseCalc("".join(calc)) #https://www.geeksforgeeks.org/python-convert-list-characters-string/
@@ -93,20 +129,14 @@ def mainloop():
                 string = "\b"
                 calc = calc[:-1] #https://stackoverflow.com/a/15478161/9654083
                 continue
-            if keypress == "\x1b":
-                if oldCalc == "no u":
-                    cprint.warn(_("\nHa...ha...not...funny...whoever you are."))
-                    sys.exit(69)
-                calc += oldCalc
-                print(oldCalc, end="", flush=True)
-                continue
             if keypress == "\x03":
                 raise KeyboardInterrupt
             if keypress == "\x04": # pylint: disable=no-else-raise
                 raise EOFError
-            else:
-                print(keypress, end="", flush=True)
-                calc += keypress
+            print(keypress, end="", flush=True)
+            calc.insert(cursorIndex - 1, keypress)
+            #print(calc, end="", flush=True)
+            logging.debug(f"Keypress {keypress}")
             string = ""
     else:
         time.sleep(1.4)
